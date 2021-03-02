@@ -1,0 +1,16 @@
+:root {
+    --background-light: #ffffff;
+    --background-dark: #232323;
+    --text-header-light: #3A5B62;
+    --text-header-dark: #ffffff;
+    --text-image: #ffffff;
+    --text-body-light: #000000;
+    --text-body-bold-light: #39ADC7;
+    --text-body-dark: #ffffff;
+    --text-body-bold-dark: #ffffff;
+    --footer-light: #CCEAF1;
+    --footer-dark: #000000;
+    --text-footer-light: #000000;
+    --text-footer-dark: #ffffff;
+    --hover-light: #8FF2FF;
+}

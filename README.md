@@ -1,2 +1,20 @@
-# 3CCO-2021-1-Grupo-09
-Grupo09_3CCO_2021_1 - Repositório criado para a disciplina de Pesquisa e Inovação
+# Finoban - Financing Open Banking
+Grupo 09 - 3CCOA
+
+## Contextualização
+TBD
+
+## Arquitetura
+TBD
+
+## Instalação
+TBD
+
+## Integrantes
+
+* Catarina Carneiro
+* Felipe Azevedo
+* José Silva
+* Mario Heleno
+* Victor Barbosa
+* Vinícius Carvalho

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/variables.css">
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>Finoban - Login</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart2() {
+            var data2 = google.visualization.arrayToDataTable([
+                ['Ano', 'Banco Cifra', 'S16 Bank', 'Banco do Presil'],
+                ['2021', 1000, 1000, 1000],
+                ['2022', 1200, 1150, 1100],
+                ['2023', 1500, 1300, 1300],
+                ['2024', 1900, 1450, 1500],
+                ['2025', 2400, 1700, 1800],
+                ['2026', 3000, 1950, 2100],
+            ]);
+
+            var options2 = {
+                title: 'Comparação de taxas de Financiamento durante o tempo',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart2.draw(data2, options2);
+        }
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Banco', 'Valor taxa'],
+                ['Banco Cifra', 7],
+                ['S16 Bank', 5.5],
+                ['Banco do Presil', 6]
+            ]);
+
+            var options = {
+                title: 'Comparação de taxas de Financiamento'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div class="screen1">
+        <header>
+            <h1>Finoban</h1>
+            <button class="button-dark-mode">
+                <span class="iconify" data-icon="emojione-monotone:last-quarter-moon" data-inline="false"></span>
+            </button>
+        </header>
+        <div class="login">
+            <section>
+                <div class="head-login">
+                    <a href="./index.html">
+                        <span class="iconify" data-icon="akar-icons:arrow-left" data-inline="false"></span>
+                    </a>
+                </div>
+                <div class="head-login">
+                    <h2>Comparação</h2>
+                </div>
+                <div class="head-login"></div>
+            </section>
+        </div>
+        <div class="graficos-dashboard">
+            <div id="piechart" style="width: 900px; height: 500px;"></div>
+            <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        </div>
+    </div>
+</body>
+</html>

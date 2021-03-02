@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background-light);
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+body, input, button, textarea {
+    color: var(--text-body-bold-light);
+    text-align: center;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: 'Rubik', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+button {
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    font-size: 1.05em;
+    line-height: 1.6;
+    border-radius: 16px;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    white-space: nowrap;
+    outline: 0;
+    transition: 0.1s;
+}
+
+button:hover {
+    transform: scale(0.975);
+}
