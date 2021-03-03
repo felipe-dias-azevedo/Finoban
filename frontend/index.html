@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/variables.css">
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/index.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <title>Finoban</title>
+    <script src="js/carrossel.js"></script>
 </head>
 <body>
     <div class="screen1">
@@ -26,21 +30,48 @@
             <a href="./login.html">
                 Entrar
             </a>
-            <button class="button-dark-mode">
+            <button class="button-dark-mode" onclick="changeDarkMode(false)">
                 <span class="iconify" data-icon="emojione-monotone:last-quarter-moon" data-inline="false"></span>
             </button>
         </header>
         <section>
-            <img src="./images/index-bg1.png" alt="">
+            <div>
+                <ul class="slider">
+                    <li>
+                        <div class="top-left">
+                            <h1>Lorem ipsum dolor sit amet</h1>
+                            <br> <br>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magni, nam repellat
+                                laboriosam laborum, nemo culpa molestias ab, voluptatibus dolore quos in labore
+                                reiciendis eos tempora est. Voluptas, dolore? Quaerat.
+                            </p>
+                            <button class="button-body">
+                                Veja agora
+                            </button>
+                        </div>
+                        <input type="radio" id="slide1" name="slide" onchange="show(1)" checked>
+                        <label for="slide1"><b>1</b></label>
+                        <img src="images/index-bg1.png" alt="">
+                    </li>
+                    <li>
+                        <input type="radio" name="slide" id="slide2" onchange="show(2)">
+                        <label for="slide2"><b>2</b></label>
+                        <img src="images/image 1.png" alt="">
+                    </li>
+                    <li>
+                        <input type="radio" name="slide" id="slide3" onchange="show(3)">
+                        <label for="slide3"><b>3</b></label>
+                        <img src="images/image 2.png" alt="" id="carrossel-image-3">
+                    </li>
+                </ul>
+            </div>
+            <!-- <img src="./images/Rectangle 3.png" alt="">
             <div class="img-text">
                 <h2>Lorem ipsum dolor sit amet.</h2>
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque quis, ullam voluptatem nulla rem cum? Eius accusantium, aspernatur modi minus porro, voluptatum labore maiores, eaque itaque eveniet commodi aliquid eligendi.
                 </p>
-                <button class="button-body">
-                    Veja agora
-                </button>
-            </div>
+            </div> -->
         </section>
     </div>
     <div class="screen2">
@@ -50,8 +81,12 @@
                 <h2>agora!</h2>
             </div>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptate veritatis harum quidem repellat rerum laborum cumque, quos corporis veniam eum consequatur tempore! Fuga ea, soluta ullam voluptate dolorem obcaecati?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, corporis. Reprehenderit odit architecto, eligendi accusamus maxime voluptate animi, laborum eaque aliquam voluptatum harum unde nulla temporibus cupiditate cumque molestiae quaerat.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptate veritatis harum quidem repellat
+                rerum laborum cumque, quos corporis veniam eum consequatur tempore! Fuga ea, soluta ullam voluptate
+                dolorem obcaecati?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, corporis. Reprehenderit odit architecto,
+                eligendi accusamus maxime voluptate animi, laborum eaque aliquam voluptatum harum unde nulla temporibus
+                cupiditate cumque molestiae quaerat.
             </p>
         </section>
         <div class="button-index">
@@ -81,4 +116,66 @@
         </footer>
     </div>
 </body>
+<script>
+    var element1 = document.querySelector(".slider li:nth-child(1) label");
+    var element2 = document.querySelector(".slider li:nth-child(2) label");
+    var element3 = document.querySelector(".slider li:nth-child(3) label");
+
+    element2.style.opacity = "0.5";
+    element3.style.opacity = "0.5";
+
+    function show(number) {
+        if (number == 1) {
+            element1.style.opacity = "1.0";
+            element2.style.opacity = "0.5";
+            element3.style.opacity = "0.5";
+            setTimeout(show(2), 2000)
+        } else if (number == 2) {
+            element2.style.opacity = "1.0";
+            element1.style.opacity = "0.5";
+            element3.style.opacity = "0.5";
+            setTimeout(show(3), 2000)
+        } else {
+            element3.style.opacity = "1.0";
+            element1.style.opacity = "0.5";
+            element2.style.opacity = "0.5";
+            setTimeout(show(1), 2000)
+        }
+    }
+
+
+    
+    var header = document.querySelector(".screen1 header");
+    var nav = document.querySelector(".screen header nav a");
+    var footer = document.querySelector(".screen2 footer")
+    var section = document.querySelector(".screen2 footer section")
+    var screen2 = document.querySelector(".screen2");
+    var body = document.body;
+    
+
+    function changeDarkMode() {
+        // foobackgroundColor = "#000000";
+        // element1.style.backgroundColor "#fff";
+        // footer.style.backgroundColor = "#000000";
+        // footer.style.color = "#000000";
+        // header.style.color = "#fff";
+        
+
+        // secao2.style.color = "#fff";
+        // carrossel_bolinhas.style.backgroundColor = "#fff";
+        body.classList.toggle("dark-mode-body");
+        header.classList.toggle("dark-mode-header");
+        element1.classList.toggle("dark-mode-slider-label");
+        element2.classList.toggle("dark-mode-slider-label");
+        element3.classList.toggle("dark-mode-slider-label");
+        footer.classList.toggle("dark-mode-footer");
+        section.classList.toggle("dark-mode-footer");
+        screen2.classList.toggle("dark-mode-color");
+        nav.classList.toggle("dark-mode-nav")
+        // element2.style.backgroundColor = "#fff";
+        // element3.style.backgroundColor = "#fff";
+    }
+
+</script>
+
 </html>
