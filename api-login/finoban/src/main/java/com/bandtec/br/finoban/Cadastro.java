@@ -17,15 +17,17 @@ public class Cadastro {
         private String email;
         private String senha;
         private String cep;
+        private String numeroCasa;
 
 
-    public Cadastro(String nome, String cnpj, String email, String senha, String cep) {
+    public Cadastro(String nome, String cnpj, String email, String senha, String cep, String numeroCasa) {
         super();
         this.nome = nome;
         this.cnpj = cnpj;
         this.email = email;
         this.senha = senha;
         this.cep = cep;
+        this.numeroCasa = numeroCasa;
     }
 
     public Cadastro() {
@@ -70,5 +72,21 @@ public class Cadastro {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getNumeroCasa() {
+        return numeroCasa;
+    }
+
+    public void setNumeroCasa(String numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 }

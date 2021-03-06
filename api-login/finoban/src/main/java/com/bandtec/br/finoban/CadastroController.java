@@ -14,8 +14,8 @@ public class CadastroController {
     public @ResponseBody
     Cadastro novoCadastro(@RequestParam String nome, @RequestParam String cnpj,
                           @RequestParam String email, @RequestParam String senha,
-                          @RequestParam String cep) {
-        Cadastro cadastro = new Cadastro(nome, cnpj, email, senha, cep);
+                          @RequestParam String cep, String numeroCasa) {
+        Cadastro cadastro = new Cadastro(nome, cnpj, email, senha, cep, numeroCasa);
         cadastroRepository.save(cadastro);
         return cadastro;
     }
