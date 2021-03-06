@@ -128,8 +128,9 @@ body {
     text-transform: uppercase;
     font-weight: 400;
     width: 200px;
+    margin-left: 75px;
     transition: 0.1s;
-    z-index: -1;
+    z-index: 99;
 }
 
 .screen1 section .button-body:hover {
@@ -275,22 +276,37 @@ body {
     border-radius: 36px;
     width: 100%;
 }
+
+.labels-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .slider .top-left {
     color: #fff;
-    left: 37px;
-    top: 118px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 65%;
+    padding-top: 100px;
+    height: 50%;
     transition: 0;
+    z-index: 1;
 }
 
 .slider .top-left h1 {
     font-size: 40px;
+    margin-left: 75px;
     /* width: 984px; */
     
 }
 .slider .top-left p {
-    width: 600px;
     text-align: left;
-    margin-left: 55px;
+    margin-left: 75px;
+    text-align: 55px;
+    line-height: 26px;
 }
 
  .slider input {
@@ -326,19 +342,17 @@ body {
     position: relative;
 }
 
-
-
-.slider li:nth-child(1) label {
-    left: 553px;
+.labels-img input:nth-child(1) {
+    margin-left: -50px;
 }
 
-.slider li:nth-child(2) label {
-    left: 593px;
+.labels-img input:nth-child(2) {
+    margin-left: 0px;
     /* bottom: 23px; */
 }
 
-.slider li:nth-child(3) label {
-    left: 633px;
+.labels-img input:nth-child(3) {
+    margin: 50px;
     /* bottom: 22px; */
 }
 
@@ -360,7 +374,8 @@ body {
     visibility: visible;
     z-index: 10;
 }
-
+.slider ul li #img-carrossel {
+}
 /*
     Dark mode
 */
