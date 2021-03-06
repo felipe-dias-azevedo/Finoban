@@ -45,7 +45,7 @@
                         <div>
                             <div class="top-left">
                                 <h1>Lorem ipsum dolor sit amet</h1>
-                                
+
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magni, nam repellat
                                     laboriosam laborum, nemo culpa molestias ab, voluptatibus dolore quos in labore
                                     reiciendis eos tempora est. Voluptas, dolore? Quaerat.
@@ -54,24 +54,24 @@
                                     Veja agora
                                 </button>
                             </div>
-                                <div class="labels-img">
-                                    <input type="radio" id="slide1" name="slide" onchange="show(1)" checked>
-                                    <label for="slide1"><b>1</b></label>
-                                    <input type="radio" name="slide" id="slide2" onchange="show(2)">
-                                    <label for="slide2"><b>2</b></label>
-                                    <input type="radio" name="slide" id="slide3" onchange="show(3)">
-                                    <label for="slide3"><b>3</b></label>
-                                    <img id="img-carrossel" src="images/index-bg1.png" alt="">
-                                </div>
+                            <div class="labels-img">
+                                <input type="radio" id="slide1" name="slide" onchange="show(1)" checked>
+                                <label for="slide1"><b>1</b></label>
+                                <input type="radio" name="slide" id="slide2" onchange="show(2)">
+                                <label for="slide2"><b>2</b></label>
+                                <input type="radio" name="slide" id="slide3" onchange="show(3)">
+                                <label for="slide3"><b>3</b></label>
+                                <img id="img-carrossel" src="images/index-bg1.png" alt="">
                             </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="images/image 1.png" alt="">
-                            </div>
-                        </li>
-                        <li>
-                            <img src="images/image 2.png" alt="" id="carrossel-image-3">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/image 1.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/image 2.png" alt="" id="carrossel-image-3">
                     </li>
                 </ul>
             </div>
@@ -127,9 +127,9 @@
     </div>
 </body>
 <script>
-    var element1 = document.querySelector(".labels-img input:nth-child(1)");
-    var element2 = document.querySelector(".labels-img input:nth-child(2)");
-    var element3 = document.querySelector(".slider li:nth-child(3) label");
+    var element1 = document.querySelector(".labels-img label:nth-child(2)");
+    var element2 = document.querySelector(".labels-img label:nth-child(4)");
+    var element3 = document.querySelector(".labels-img label:nth-child(6)");
     var texto_imagem = document.querySelector(".top-left p")
     element2.style.opacity = "0.5";
     element3.style.opacity = "0.5";

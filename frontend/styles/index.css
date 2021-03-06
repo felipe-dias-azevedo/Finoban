@@ -366,17 +366,16 @@ body {
 }
 
 .slider img {
-    
     opacity: 0;
     visibility: hidden;
     transition: 0.4s all;
 }
 
-.slider li input:checked ~ img {
+.labels-img input:checked ~ img {
     transition: 0.4s;
     opacity: 1;
     visibility: visible;
-    /* z-index: 10; */
+    /* z-index: -1; */
 }
 .slider ul li #img-carrossel {
 }
