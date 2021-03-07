@@ -67,7 +67,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="images/image 1.png" alt="">
+                            <img src="images/image 1.png" alt="" id="carrossel-image-2">
                         </div>
                     </li>
                     <li>
@@ -141,19 +141,22 @@
             element3.style.opacity = "0.5";
             texto_imagem.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magni, nam repellat" +
                 "laboriosam laborum, nemo culpa molestias ab, voluptatibus dolore quos in labore" +
-                "reiciendis eos tempora est. Voluptas, dolore? Quaerat."
+                "reiciendis eos tempora est. Voluptas, dolore? Quaerat.";
+            document.getElementById("img-carrossel") = "images/index-bg1.png"; 
             // setTimeout(show(2), 2000)
         } else if (number == 2) {
             element2.style.opacity = "1.0";
             element1.style.opacity = "0.5";
             element3.style.opacity = "0.5";
             texto_imagem.innerHTML = "Felipe monstro";
+            document.getElementById("img-carrossel").src = "images/image 1.png"
             // setTimeout(show(3), 2000)
         } else {
             element3.style.opacity = "1.0";
             element1.style.opacity = "0.5";
             element2.style.opacity = "0.5";
-            texto_imagem.innerHTML = "Catarina monstra"
+            texto_imagem.innerHTML = "Catarina monstra";
+            document.getElementById("img-carrossel").src = "images/image 2.png"
             // setTimeout(show(1), 2000)
         }
     }
