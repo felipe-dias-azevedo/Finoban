@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles/login.css">
     <link rel="stylesheet" href="./styles/register.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <title>Finoban - Login</title>
+    <title>Finoban - Cadastro</title>
 </head>
 <body>
     <div class="screen-cadastro">
@@ -33,31 +33,37 @@
                 </div>
                 <div class="head-login"></div>
             </section>
-            <form class="form-cadastro" action="./login.html" method="post">
+            <form onsubmit="return cadastrar()" id="form_cadastro" class="form-cadastro" method="post">
+                <div class="input-login">
+                    <div class="title-input-login">
+                        <h3>Nome completo:</h3>
+                    </div>
+                    <input type="text" name="nome_completo" id="nome_completo_cadastro">
+                </div>
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>CPF/CNPJ:</h3>
                     </div>
-                    <input type="text" name="" id="">
+                    <input type="text" name="cpf" id="cpf_cadastro">
                 </div>
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>E-mail:</h3>
                     </div>
-                    <input type="text" name="" id="" >
+                    <input type="text" name="nome" id="nome_cadastro" >
                 </div>
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>Senha:</h3>
                         <p>Conter no mínimo 6 caracteres</p>
                     </div>
-                    <input type="password" name="" id="" >
+                    <input type="password" name="login" id="login_cadastro" >
                 </div>
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>Confirmar Senha:</h3>
                     </div>
-                    <input type="password" name="" id="" >
+                    <input type="password" name="confirm_login" id="confirmar_senha_cadastro" >
                 </div>
                 <div class="sided-login-input">
                     <div class="side-login-input">
@@ -65,7 +71,7 @@
                             <div class="title-input-login">
                                 <h3>CEP:</h3>
                             </div>
-                            <input type="text" name="" id="" >
+                            <input type="text" name="cep" id="cep_cadastro" >
                         </div>
                     </div>
                     <div class="side-login-input">
@@ -73,7 +79,7 @@
                             <div class="title-input-login">
                                 <h3>Número:</h3>
                             </div>
-                            <input type="text" name="" id="" >
+                            <input type="text" name="numero" id="numero_cadastro" >
                         </div>
                     </div>
                 </div>
@@ -81,17 +87,17 @@
                     <div class="title-input-login">
                         <h3>Endereço:</h3>
                     </div>
-                    <input class="input-disabled" type="text" name="" id="" disabled>
+                    <input class="input-disabled" type="text" name="endereco" id="endereco_cadastro" disabled>
                 </div>
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>Data de Nascimento:</h3>
                     </div>
-                    <input type="text" name="" id="" >
+                    <input type="text" name="datanasc" id="data_nascimento_cadastro" >
                 </div>
                 <div class="input-login-button">
                     <section>
-                        <button type="submit">Entrar</button>
+                        <button id="" type="submit">Entrar</button>
                     </section>
                 </div>
             </form>
@@ -99,3 +105,38 @@
     </div>
 </body>
 </html>
+<script>
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                window.location.href = './login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    //div_erro.innerHTML = resposta;
+                    console.log(resposta);
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+    }
+</script>

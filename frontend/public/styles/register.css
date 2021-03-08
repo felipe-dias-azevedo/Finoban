@@ -127,13 +127,6 @@
     color: var(--text-body-light);
 }
 
-.input-disabled {
-    color: var(--secondary-light);
-}
-
-.input-disabled:hover {
-    border-color: var(--text-body-light);
-}
 .title-input-login {
     width: 490px;
     display: flex;
@@ -141,5 +134,15 @@
     align-items: center;
 }
 .title-input-login p {
+    padding-bottom: 12px;
+    font-weight: 300;
     color: var(--text-body-light);
+}
+
+.input-disabled {
+    background-color: var(--secondary-light);
+}
+
+.input-disabled:hover {
+    border-color: var(--text-body-light);
 }
