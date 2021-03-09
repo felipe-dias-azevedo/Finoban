@@ -33,7 +33,7 @@
                 </div>
                 <div class="head-login"></div>
             </section>
-            <form onsubmit="return cadastrar()" id="form_cadastro" class="form-cadastro" method="post">
+            <form id="form_cadastro" class="form-cadastro" method="POST" onsubmit="return cadastrar()">
                 <div class="input-login">
                     <div class="title-input-login">
                         <h3>Nome completo:</h3>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="input-login-button">
                     <section>
-                        <button id="" type="submit">Entrar</button>
+                        <button id="btn_entrar_login" type="submit">Entrar</button>
                     </section>
                 </div>
             </form>
@@ -108,11 +108,12 @@
 <script>
     function cadastrar() {
         aguardar();
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        var formulario = new URLSearchParams(new FormData(document.getElementById('form_cadastro')));
+        console.log(formulario)
         fetch("/usuarios/cadastrar", {
             method: "POST",
             body: formulario
-        }).then(function (response) {
+        }).then(response => {
 
             if (response.ok) {
 
@@ -133,10 +134,10 @@
     }
 
     function aguardar() {
-        btn_entrar.disabled = true;
+        btn_entrar_login.disabled = true;
     }
 
     function finalizar_aguardar() {
-        btn_entrar.disabled = false;
+        btn_entrar_login.disabled = false;
     }
 </script>

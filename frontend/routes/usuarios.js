@@ -48,15 +48,15 @@ router.post('/autenticar', function(req, res) {
 router.post('/cadastrar', function(req, res) {
 	console.log('Criando um usuário');
 	
-    const login = req.body.login;
-    const senha = req.body.senha;
+    const login = req.body.nome;
+    const senha = req.body.login;
 
     axios.post('http://localhost:5000/user', {
         email: login,
         senha: senha
     }).then(response => {
         console.log(`Registro criado: ${response}`)
-        res.send(response);
+        res.send(true);
     }).catch(err => {
         console.error(err);
 		res.status(500).send(err.message);
