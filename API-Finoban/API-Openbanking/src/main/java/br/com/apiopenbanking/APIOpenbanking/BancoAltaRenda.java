@@ -4,8 +4,8 @@ public class BancoAltaRenda implements Taxavel{
 
     private String nome;
     private Double valorImovel;
-    private Double dfi;
     private Double taxaJuros;
+    private Double dfi;
     private Double mip;
     private Double taxaAdministracao;
 

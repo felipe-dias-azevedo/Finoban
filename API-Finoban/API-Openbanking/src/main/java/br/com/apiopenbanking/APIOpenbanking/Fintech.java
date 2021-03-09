@@ -10,6 +10,7 @@ public class Fintech implements Taxavel{
     private Double taxaAdministracao;
 
 
+
     public Fintech(String nome, Double taxaJuros, Double mip,
                    Double taxaAdministracao, Double valorImovel) {
         this.nome = nome;
