@@ -10,8 +10,9 @@ public class LoginController {
     @Autowired
     private CadastroRepository cadastroRepository;
 
-    @PostMapping(path = "/login/{email}/{senha}")
-    public Object login(@PathVariable String email, @PathVariable String senha) {
+    @PostMapping("/login")
+    public @ResponseBody
+    Object login(@RequestParam String email, @RequestParam String senha) {
 
         Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
 
@@ -22,9 +23,7 @@ public class LoginController {
         if(!verificaEmail.getSenha().equals(senha)) {
             return "Senha incorreta";
         }
-
             return "Login efetuado";
-
     }
 
 }
