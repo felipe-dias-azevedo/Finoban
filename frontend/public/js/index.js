@@ -10,9 +10,7 @@ function show(number) {
         element1.style.opacity = "1.0";
         element2.style.opacity = "0.5";
         element3.style.opacity = "0.5";
-        texto_imagem.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magni, nam repellat" +
-            "laboriosam laborum, nemo culpa molestias ab, voluptatibus dolore quos in labore" +
-            "reiciendis eos tempora est. Voluptas, dolore? Quaerat.";
+        texto_imagem.innerHTML = "Aqui temos a solução! pesquise por um imovel e faça um orçamento online com nos, sem perca de tempo com filas, sem complicações e melhor, tudo online!";
         document.getElementById("img-carrossel").src = "images/index-bg1.png"; 
         // setTimeout(show(2), 2000)
     } else if (number == 2) {
