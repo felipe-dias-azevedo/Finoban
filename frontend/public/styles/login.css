@@ -119,7 +119,6 @@ input[type=password] {
     background-color: transparent;
     color: var(--text-body-light);
     font-weight: 400;
-    width: 140px;
 }
 
 .input-login-button section button:hover {
