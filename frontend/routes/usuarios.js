@@ -8,12 +8,12 @@ let sessoes = [];
 router.post('/autenticar', function(req, res) {
 	console.log('Recuperando usuário por login e senha');
 
-	var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
+	var email = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
 
-    console.log('email: ' + login + ' senha: ' + senha);
+    console.log('email: ' + email + ' senha: ' + senha);
 
-    axios.get('http://localhost:8080/api-finoban/').then(response => {
+    axios.post(`http://localhost:8080/api-finoban/login?email=${email}&senha=${senha}`).then(response => {
         var resultados = response.data;
         var resultado = [];
         for (let i = 0; i < resultados.length; i++) {
@@ -24,8 +24,12 @@ router.post('/autenticar', function(req, res) {
         if (resultado.length == 0) {
             resultado = resultados;
         }
+
+		resultado = [resultado];
+
         console.log(`Encontrados: ${resultado.length}`);
 
+		console.log(resultado);
 
 
 		if (resultado.length == 1) {
@@ -48,13 +52,17 @@ router.post('/autenticar', function(req, res) {
 router.post('/cadastrar', function(req, res) {
 	console.log('Criando um usuário');
 	
-    const login = req.body.nome;
-    const senha = req.body.login;
+	var nome = req.body.nome;
+	var cnpj = req.body.cnpj;
+    var email = req.body.email;
+    var senha = req.body.senha;
+	var cep = req.body.cep;
+	var numeroCasa = req.body.numeroCasa;
 
-    axios.post('http://localhost:8080/api-finoban/', {
-        email: login,
-        senha: senha
-    }).then(response => {
+    axios.post(`http://localhost:8080/api-finoban/cadastro?nome=${nome}&cnpj=${cnpj}&email=${email}&senha=${senha}&cep=${cep}&numeroCasa=${numeroCasa}`,{
+		
+	}
+    ).then(response => {
         console.log(`Registro criado: ${response}`)
         res.send(true);
     }).catch(err => {
