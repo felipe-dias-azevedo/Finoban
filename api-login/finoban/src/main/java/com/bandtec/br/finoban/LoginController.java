@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class LoginController {
 
+    public boolean logado;
+
     @Autowired
     private CadastroRepository cadastroRepository;
 
@@ -23,7 +25,24 @@ public class LoginController {
         if(!verificaEmail.getSenha().equals(senha)) {
             return "Senha incorreta";
         }
+            logado = true;
             return "Login efetuado";
+    }
+
+    @PostMapping("/deslogar")
+    public @ResponseBody String deslogar(@RequestParam String email) {
+
+        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
+        logado = false;
+
+        if(verificaEmail == null) {
+            return "Email não encontrado";
+        }
+
+        else {
+            return "Usuário " + verificaEmail.getNome() + " foi deslogado com sucesso!";
+        }
+
     }
 
 }
