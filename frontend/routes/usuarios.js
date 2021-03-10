@@ -13,7 +13,7 @@ router.post('/autenticar', function(req, res) {
 
     console.log('email: ' + login + ' senha: ' + senha);
 
-    axios.get('http://localhost:5000/users').then(response => {
+    axios.get('http://localhost:8080/api-finoban/').then(response => {
         var resultados = response.data;
         var resultado = [];
         for (let i = 0; i < resultados.length; i++) {
@@ -51,7 +51,7 @@ router.post('/cadastrar', function(req, res) {
     const login = req.body.nome;
     const senha = req.body.login;
 
-    axios.post('http://localhost:5000/user', {
+    axios.post('http://localhost:8080/api-finoban/', {
         email: login,
         senha: senha
     }).then(response => {

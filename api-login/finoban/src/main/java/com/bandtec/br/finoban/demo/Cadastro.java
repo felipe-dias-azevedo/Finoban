@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban;
+package com.bandtec.br.finoban.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

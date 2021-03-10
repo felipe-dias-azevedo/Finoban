@@ -1,10 +1,12 @@
-package com.bandtec.br.finoban;
+package com.bandtec.br.finoban.controller;
 
+import com.bandtec.br.finoban.demo.Cadastro;
+import com.bandtec.br.finoban.demo.CadastroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api-finoban")
 public class CadastroController {
 
     @Autowired
