@@ -1,9 +1,10 @@
 package com.bandtec.br.finoban.controller;
-import com.bandtec.br.finoban.demo.Empresas;
-import com.bandtec.br.finoban.mock.Constantes;
-import org.springframework.http.ResponseEntity;
+import com.bandtec.br.finoban.demo.Taxavel;
+import com.bandtec.br.finoban.models.BancoCifra;
+import com.bandtec.br.finoban.models.BancoDoPresil;
+import com.bandtec.br.finoban.models.BancoS16Bank;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,24 +14,21 @@ import java.util.List;
 public class EmpresasController {
 
     @GetMapping("/{valorImovel}")
-    public List<Empresas> listar(@PathVariable Double valorImovel){
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    public List<Taxavel> listar(@PathVariable Double valorImovel){
 
-        RestTemplate client = new RestTemplate();
+        List<Taxavel> listaBancos = new ArrayList<>();
+        BancoCifra cifra = new BancoCifra();
+        cifra.getValorCet(valorImovel);
+        BancoS16Bank s16bank = new BancoS16Bank();
+        s16bank.getValorCet(valorImovel);
+        BancoDoPresil bancoDoPresil = new BancoDoPresil();
+        bancoDoPresil.getValorCet(valorImovel);
 
-        List<String> listUri = new ArrayList<>();
-        listUri.add(Constantes.URI_S16BANK);
-        listUri.add(Constantes.URI_CIFRA);
-        listUri.add(Constantes.URI_PRESIL);
+        listaBancos.add(cifra);
+        listaBancos.add(s16bank);
+        listaBancos.add(bancoDoPresil);
 
-        List<Empresas> listEmpresas = new ArrayList<>();
-
-        for (String uri: listUri) {
-            ResponseEntity<Empresas> response = client.
-                    getForEntity(uri + valorImovel, Empresas.class);
-            Empresas empresa = response.getBody();
-            listEmpresas.add(empresa);
-        }
-
-        return listEmpresas;
+        return listaBancos;
     }
 }

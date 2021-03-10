@@ -1,5 +1,5 @@
 package com.bandtec.br.finoban.demo;
 
 public interface Taxavel {
-    public double getValorCet();
+    public double getValorCet(Double valorImovel);
 }
