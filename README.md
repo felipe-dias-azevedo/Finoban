@@ -5,7 +5,10 @@ Grupo 09 - 3CCOA
 TBD
 
 ## Arquitetura
-TBD
+<p align="center">
+  <img width="800" src="./.github/architecture.png">
+</p>
+
 
 ## Instalação
 TBD
