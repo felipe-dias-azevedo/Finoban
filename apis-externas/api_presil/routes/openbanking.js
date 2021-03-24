@@ -1,19 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const bd = require("../bd/contas");
+const bd = require('../bd/contas');
+const calc = require('../libraries/calc');
+const validar = require('../libraries/validar');
 
 // Rotas
 router.get('/', (req, res) => {
-  res.send('GET request to the homepage')
+  res.send('API Openbancking');
 })
 
 router.post('/conta', async (req, res) => {
-    const conta = await bd.findClient(req.body.cnpj);
-    let possui_conta = conta.length ? true : false;
+    let cnpj = req.body.cnpj;
+    // validar.cnpj(cnpj);
+    const conta = await bd.findClient(cnpj);
+    let possui_conta = conta.length > 0 ? true : false;
+    let status = conta.length > 0 ? 200 : 404;
 
-    res.status(200).json({
+    res.status(status).json({
         ok: true, 
-        status: 200,
+        status: status,
         data: {
             banco: "Banco do Presil",
             possui_conta: possui_conta
@@ -27,42 +32,19 @@ router.post('/financiamento', async (req, res) => {
     let cliente = await bd.findClient(dados.cnpj);
     let patrimonio = cliente[0].patrimonio;
     let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime())/60000)/525600);
-    let taxa;
-    let taxaA;
+    let txa = calc(patrimonio, idade);
     let dfi = 0.01;
     let mip = 0.003;
-
-    if (patrimonio <= 5000) {
-        taxa = 1.35
-    } else if (patrimonio <= 13000) {
-        taxa = 1.55
-    } else if (patrimonio <= 20000) {
-        taxa = 2.3
-    } else {
-        taxa = 3.0
-    }
-
-    if (idade <= 20) {
-        taxaA = 3.0;
-    } else if (idade <= 24) {
-        taxaA = 2.4;
-    } else if (idade <= 45) {
-        taxaA = 1.8;
-    } else if (idade <= 60) {
-        taxaA = 2.4;
-    } else {
-        taxaA = 3.0;
-    }
 
     res.status(200).json({
         ok: true, 
         status: 200,
         data: {
-            taxa: taxa,
-            taxaAdministracao: taxaA,
+            taxa: txa.taxa,
+            taxaAdministracao: txa.taxaA,
             dfi: dfi,
             mip: mip,
-            taxaTotal: parseFloat((taxa + taxaA + dfi + mip).toFixed(2))
+            taxaTotal: parseFloat((txa.taxa + txa.taxaA + dfi + mip).toFixed(2))
         }
     }); 
 
