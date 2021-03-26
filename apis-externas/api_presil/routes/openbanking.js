@@ -1,52 +1,93 @@
 const express = require('express');
 const router = express.Router();
 const bd = require('../bd/contas');
-const calc = require('../libraries/calc');
-const validar = require('../libraries/validar');
+const calc = require('../services/calc');
+const validar = require('../services/validar');
+const response = require('../services/response');
 
 // Rotas
 router.get('/', (req, res) => {
-  res.send('API Openbancking');
+    res.send('API Openbancking');
 })
 
 router.post('/conta', async (req, res) => {
     let cnpj = req.body.cnpj;
-    // validar.cnpj(cnpj);
-    const conta = await bd.findClient(cnpj);
-    let possui_conta = conta.length > 0 ? true : false;
-    let status = conta.length > 0 ? 200 : 404;
+    let v_body = validar.cnpj(cnpj);
 
-    res.status(status).json({
-        ok: true, 
-        status: status,
-        data: {
+    let status;
+    let data;
+
+    if (v_body) {
+
+        const conta = await bd.findClient(cnpj);
+        let possui_conta = conta.length > 0 ? true : false;
+        status = conta.length > 0 ? 200 : 404;
+        data = {
             banco: "Banco do Presil",
             possui_conta: possui_conta
         }
-    }); 
+
+    } else {
+
+        status = 400;
+        data = {
+            erro: "CNPJ inválido"
+        }
+
+    }
+    
+    res.status(status).json(response(status, data));
 
 });
 
 router.post('/financiamento', async (req, res) => {
     let dados = req.body;
-    let cliente = await bd.findClient(dados.cnpj);
-    let patrimonio = cliente[0].patrimonio;
-    let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime())/60000)/525600);
-    let txa = calc(patrimonio, idade);
+    let v_dados = validar.financiamento(dados);
+
     let dfi = 0.01;
     let mip = 0.003;
+    let data;
+    let status;
+    let erros = [];
 
-    res.status(200).json({
-        ok: true, 
-        status: 200,
-        data: {
-            taxa: txa.taxa,
-            taxaAdministracao: txa.taxaA,
-            dfi: dfi,
-            mip: mip,
-            taxaTotal: parseFloat((txa.taxa + txa.taxaA + dfi + mip).toFixed(2))
+    if (v_dados.valido) {
+
+        let cliente = await bd.findClient(dados.cnpj);
+
+        if (cliente[0]) {
+            status = 200;
+            let patrimonio = cliente[0].patrimonio;
+            let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
+            let txa = calc(patrimonio, idade);
+            data = {
+                taxa: txa.taxa,
+                taxaAdministracao: txa.taxaA,
+                dfi: dfi,
+                mip: mip,
+                taxaTotal: parseFloat((txa.taxa + txa.taxaA + dfi + mip).toFixed(2))
+            }
+        } else {
+            status = 404;
+            data = {
+                erro: "Cliente não encontrado na base de dados"
+            }
         }
-    }); 
+
+
+    } else {
+
+        status = 400;
+        v_dados.erros.forEach(erro => {
+            erros.push(erro);
+        });
+        data = {
+            erro: erros
+        }
+
+    }
+
+
+    res.status(status).json(response(status, data));
 
 });
 
