@@ -56,9 +56,13 @@ router.post('/financiamento', async (req, res) => {
 
         if (cliente[0]) {
             status = 200;
-            let patrimonio = cliente[0].patrimonio;
+            let c = cliente[0];
+            let patrimonio = c.patrimonio;
+            let renda = dados.renda;
+            let tempo_f = dados.tempoFinanciamento;
+            let valor_imovel = dados.valorImovel;
             let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
-            let txa = calc(patrimonio, idade);
+            let txa = calc(patrimonio, idade, renda, tempo_f, valor_imovel);
             let tx_adm = 0.5;
             data = {
                 taxa: parseFloat(txa.toFixed(2)),
