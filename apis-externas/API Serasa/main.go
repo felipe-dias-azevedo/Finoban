@@ -16,18 +16,36 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprint(w, "Homepage Endpoint Hit")
 	var user User
 	var response Response
+	var errorMessage ErrorMessage
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	response.Ok = true
-	response.Status = 200
-	response.Data.Score = selectBancoDeDados(user.CNPJ).Score
-	w.WriteHeader(200)
-	jsonResponse, err := json.Marshal(response)
-	w.Write(jsonResponse)
+	if selectBancoDeDados(user.CNPJ).Score == 0 {
+		errorMessage.Ok = false
+		errorMessage.Status = 400
+		errorMessage.Message = "Cliente não encontrado em nossa base."
+		w.WriteHeader(400)
+		jsonError, err := json.Marshal(errorMessage)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Write(jsonError)
+	} else {
+		response.Ok = true
+		response.Status = 200
+		response.Data.Score = selectBancoDeDados(user.CNPJ).Score
+		w.WriteHeader(200)
+		jsonResponse, err := json.Marshal(response)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Write(jsonResponse)
+	}
 }
 
 func handleRequests() {
@@ -84,4 +102,9 @@ type Response struct {
 }
 type Data struct {
 	Score int
+}
+type ErrorMessage struct {
+	Ok      bool
+	Status  int
+	Message string
 }
