@@ -27,13 +27,6 @@ let calcTxa = (patrimonio, idade, renda, tempo_f, valor_imovel) => {
     
     // Calc Total
     let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa;
-
-    // console.log("Patrimonio: " + taxa_patrimonio);
-    // console.log("Idade: " + taxa_idade);
-    // console.log("Renda: " + taxa_renda);
-    // console.log("Tempo: " + taxa_tempo);
-    // console.log("Imovel: " + taxa_imovel);
-    // console.log("Serasa: " + taxa_serasa);
     
     return taxa_total;
 

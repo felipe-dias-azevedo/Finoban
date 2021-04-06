@@ -4,6 +4,7 @@ const bd = require('../bd/contas');
 const calc = require('../services/calc');
 const validar = require('../services/validar');
 const response = require('../services/response');
+const taxas_fixas = require('../services/taxas_fixas.json');
 
 // Rotas
 router.get('/', (req, res) => {
@@ -44,8 +45,6 @@ router.post('/financiamento', async (req, res) => {
     let dados = req.body;
     let v_dados = validar.financiamento(dados);
 
-    let dfi = 0.01;
-    let mip = 0.003;
     let data;
     let status;
     let erros = [];
@@ -63,13 +62,12 @@ router.post('/financiamento', async (req, res) => {
             let valor_imovel = dados.valorImovel;
             let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
             let txa = calc(patrimonio, idade, renda, tempo_f, valor_imovel);
-            let tx_adm = 0.5;
             data = {
                 taxa: parseFloat(txa.toFixed(2)),
-                taxaAdministracao: tx_adm,
-                dfi: dfi,
-                mip: mip,
-                taxaTotal: parseFloat((txa + tx_adm + dfi + mip).toFixed(2))
+                taxaAdministracao: taxas_fixas.tx_adm,
+                dfi: taxas_fixas.dfi,
+                mip: taxas_fixas.mip,
+                taxaTotal: parseFloat((txa + taxas_fixas.tx_adm + taxas_fixas.dfi + taxas_fixas.mip).toFixed(2))
             }
         } else {
             status = 404;
