@@ -18,7 +18,7 @@ namespace Finoban.Api.Cifra.Dal.SQLite
         public SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqlite_conn;
-            sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True;");
+            sqlite_conn = new SQLiteConnection("Data Source=serasa.db; Version = 3; New = True; Compress = True;");
             try
             {
                 sqlite_conn.Open();
