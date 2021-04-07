@@ -22,6 +22,7 @@
       "launchBrowser": true,
       "launchUrl": "openbanking/v1/teste",
       "environmentVariables": {
+        "ASPNETCORE_URLS": "http://*:8080",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:8080;http://localhost:5000"
