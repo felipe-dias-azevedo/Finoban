@@ -51,11 +51,12 @@ namespace Finoban.Api.Cifra.Dal.SQLite
             while (sqlite_datareader.Read())
             {
                 double patrimonio = sqlite_datareader.GetDouble(2);
-                int date = sqlite_datareader.GetInt32(3);
+                DateTime date = DateTime.Parse(sqlite_datareader.GetString(3));
+                int anoNascimento = date.Year;
                 bool possuiConta = true;
                 cliente = new Cliente
                 {
-                    AnoNascimento = date,
+                    AnoNascimento = anoNascimento,
                     Patrimonio = patrimonio,
                     PossuiConta = possuiConta
                 };

@@ -10,8 +10,9 @@ import (
 type Database struct{}
 
 func (d Database) selectBancoDeDados(cnpjCliente int) Usuario {
+	fmt.Println(cnpjCliente)
 	database, _ := sql.Open("sqlite3", "./serasa.db")
-	var query string = fmt.Sprintf("SELECT * FROM Cliente where cnpj = %d", cnpjCliente)
+	var query string = fmt.Sprintf("SELECT * FROM Cliente where CNPJ = %d", cnpjCliente)
 	rows, _ := database.Query(query)
 	var usuario Usuario
 	var cnpj int
