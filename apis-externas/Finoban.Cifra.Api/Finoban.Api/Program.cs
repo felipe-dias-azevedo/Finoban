@@ -11,6 +11,15 @@ namespace Finoban.Api {
     public class Program {
         public static void Main(string[] args) {
             CreateHostBuilder(args).Build().Run();
+	    var host = new WebHostBuilder()
+		                    .UseUrls("http://0.0.0.0:5000/")
+				                    .UseKestrel()
+						                    .UseContentRoot(Directory.GetCurrentDirectory())
+								                    .UseIISIntegration()
+										                    .UseStartup<Startup>()
+												                    .Build();
+
+	                host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
