@@ -16,6 +16,7 @@ func (c Controllers) homePage(w http.ResponseWriter, r *http.Request) {
 	database := Database{}
 
 	err := json.NewDecoder(r.Body).Decode(&user)
+	defer r.Body.Close()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -30,7 +31,6 @@ func (c Controllers) homePage(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write(jsonError)
@@ -46,6 +46,7 @@ func (c Controllers) homePage(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(jsonResponse)
+
 	}
 }
 
