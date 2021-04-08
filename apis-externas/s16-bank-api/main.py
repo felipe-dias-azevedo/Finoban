@@ -109,7 +109,7 @@ def financiamento():
 
     import calculo_taxa
 
-    score_serasa = calculo_taxa.valor_score_serasa(str(cnpj))
+    score_serasa = calculo_taxa.valor_score_serasa(int(cnpj))
 
     taxas = calculo_taxa.calcular_taxas(
         float(renda),
