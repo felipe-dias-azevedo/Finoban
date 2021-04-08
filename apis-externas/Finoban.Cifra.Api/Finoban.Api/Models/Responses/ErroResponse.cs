@@ -9,6 +9,5 @@ namespace Finoban.Api.Cifra.Models.Responses
     {
         public bool Ok { get; set; }
         public int Status { get; set; }
-        public string Message{ get; set; }
     }
 }

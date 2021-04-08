@@ -31,7 +31,6 @@ namespace Finoban.Api.Controllers
                 {
                     Ok = false,
                     Status = 400,
-                    Message = "Usuário não enviado corretamente"
                 };
 
                 return BadRequest(erroResponse);
@@ -58,7 +57,6 @@ namespace Finoban.Api.Controllers
                     {
                         Ok = false,
                         Status = 400,
-                        Message = "Cliente não encontrado em nossa base."
                     };
                     return BadRequest(erroResponse);
                 }
@@ -110,7 +108,6 @@ namespace Finoban.Api.Controllers
                     {
                         Ok = false,
                         Status = 400,
-                        Message = "Cliente não encontrado em nossa base."
                     };
                     return BadRequest(erroResponse);
                 }
