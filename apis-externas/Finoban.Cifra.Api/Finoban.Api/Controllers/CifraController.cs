@@ -47,14 +47,21 @@ namespace Finoban.Api.Controllers
                 //int dateNow = dataNascimento.Result.Year;
                 //var date = DateTime.Now.AddYears(-dateNow);
                 //int idade = date.Year;
-
                 conexaoSQLite = new ConnectionSQLite(usuario.CNPJ);
-
-
                 var dataNascimento = conexaoSQLite.Cliente.AnoNascimento;
                 var idade = DateTime.Now.AddYears(-dataNascimento).Year;
                 scoreSerasa = new ScoreSerasa();
                 var score = scoreSerasa.GetScore(usuario.CNPJ).Result;
+                if (score == 0)
+                {
+                    var erroResponse = new ErroResponse
+                    {
+                        Ok = false,
+                        Status = 400,
+                        Message = "Cliente não encontrado em nossa base."
+                    };
+                    return BadRequest(erroResponse);
+                }
                 calculoFinanciamento = new CalculoFinanciamento(idade, conexaoSQLite.Cliente.Patrimonio, 
                     usuario.TempoFinanciamento, score);
                 //double taxa = calculoFinanciamento.CalcularTaxa(conexaoSQLite.Cliente.Patrimonio, score, 

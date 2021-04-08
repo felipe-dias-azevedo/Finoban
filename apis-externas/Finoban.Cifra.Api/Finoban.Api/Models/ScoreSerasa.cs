@@ -27,7 +27,10 @@ namespace Finoban.Api.Cifra.Models
             var httpResponseMessage = await httpClient.PostAsync(url, stringContent);
             var content = await httpResponseMessage.Content.ReadAsStringAsync();
             var scoreSerasaResponse = JsonConvert.DeserializeObject<ScoreSerasaResponse>(content);
-
+            if (scoreSerasaResponse.Ok == false)
+            {
+                return 0;
+            }
             return scoreSerasaResponse.Data.Score;
         }
 
