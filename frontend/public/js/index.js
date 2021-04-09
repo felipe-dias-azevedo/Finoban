@@ -12,23 +12,7 @@ function show(number) {
         element3.style.opacity = "0.5";
         texto_imagem.innerHTML = "Aqui temos a solução! pesquise por um imovel e faça um orçamento online com nos, sem perca de tempo com filas, sem complicações e melhor, tudo online!";
         document.getElementById("img-carrossel").src = "images/index-bg1.png"; 
-        // setTimeout(show(2), 2000)
-    } else if (number == 2) {
-        element2.style.opacity = "1.0";
-        element1.style.opacity = "0.5";
-        element3.style.opacity = "0.5";
-        
-        texto_imagem.innerHTML = "Você também pode procuar seu imóvel apartir do nosso site, isso facilita para você já pedir o financiamento com o valor aproximado do imóvel.";
-        document.getElementById("img-carrossel").src = "images/image 1.png"
-        // setTimeout(show(3), 2000)
-    } else {
-        element3.style.opacity = "1.0";
-        element1.style.opacity = "0.5";
-        element2.style.opacity = "0.5";
-        texto_imagem.innerHTML = "Já pensou poder fazer tudo que você precisa dentro do conforto da sua casa e sem burocracia? Se ainda não faz parte da FINOBAN então se cadastra e não perca mais tempo com filas em agências.";
-        document.getElementById("img-carrossel").src = "images/image 2.png"
-        // setTimeout(show(1), 2000)
-    }
+    } 
 }
 
 
