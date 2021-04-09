@@ -4,7 +4,7 @@ const app = express();
 const admin = require('./routes/admin');
 const ob = require('./routes/openbanking');
 const bodyParser = require('body-parser');
-const port = 3000;
+const port = 3333;
 
 // BodyParser
 app.use(bodyParser.urlencoded({extended: false}));
