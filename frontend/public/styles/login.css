@@ -2,9 +2,7 @@
     color: var(--text-body-light);
 }
 
-.button-dark-mode * {
-    color: var(--text-body-light);
-}
+
 
 .login {
     height: calc(100vh - 88px);
@@ -62,18 +60,9 @@
     flex-direction: column;
 }
 
-.input-login-button {
-    width: 100%;
-}
 
-.input-login {
-    width: 80%;
-    height: 115px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
+
 
 .input-login h3 {
     padding-bottom: 12px;
