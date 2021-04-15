@@ -40,6 +40,8 @@ button {
   outline: 0;
   transition: 0.1s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  
+
 }
 
 button:hover {
