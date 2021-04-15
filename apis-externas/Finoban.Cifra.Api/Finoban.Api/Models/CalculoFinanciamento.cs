@@ -13,15 +13,15 @@ namespace Finoban.Api.Models
         public double MIP { get; set; }
         public double TaxaTotal { get; set; }
 
-        public CalculoFinanciamento(int idade, double valorPatrimonio, int tempoFinanciamento, int score)
+        public CalculoFinanciamento(int idade, double valorPatrimonio, int tempoFinanciamento, int score, double valorImovel)
         {
             double taxaIdade = CalcularTaxaIdade(idade, tempoFinanciamento);
             double calcularTaxaScore = CalcularTaxaScore(idade, score);
-            Taxa = 
-            TaxaAdmin = 0.0;
-            DFI = 0.0;
+            TaxaAdmin = 1.4;
+            DFI = CalcularTaxaImovel(valorImovel);
             MIP = CalcularTaxaMip(idade);
-            TaxaTotal = Taxa + DFI + MIP;
+            TaxaTotal = Taxa + DFI + MIP + TaxaAdmin;
+            Taxa = 0.046 + ((calcularTaxaScore * 3 + taxaIdade * 2) / 5);
         }
 
         public double CalcularTaxaIdade(int idade, int tempoFinanciamento)
@@ -43,7 +43,7 @@ namespace Finoban.Api.Models
                 x = 1.4;
             }
 
-            return 3 * Math.Pow(x, 2) + 2.7;
+            return 3 * Math.Pow(x, 2) + 3.3;
         }
 
         public double CalcularTaxaMip(int idade)
@@ -111,6 +111,36 @@ namespace Finoban.Api.Models
                 x = 1.3;
             }
             return -2 * Math.Pow(x,2) + 7;
+        }
+
+        public static double CalcularTaxaImovel(double valorImovel)
+        {
+            double x = 0.0;
+            double y = 0.0;
+            if (valorImovel > 1_500_000)
+            {
+                x = 0.3;
+                y = 0.7;
+                
+            } else if (valorImovel > 1_200_000)
+            {
+                x = 0.6;
+                y = 1.1;
+            } else if (valorImovel > 900_000)
+            {
+                x = 0.9;
+                y = 1.4;
+            } else if (valorImovel > 600_000)
+            {
+                x = 1.2;
+                y = 1.8;
+            } else
+            {
+                x = 1.5;
+                y = 2.2;
+            }
+
+            return -0.3675 * x + y;
         }
     }
 }

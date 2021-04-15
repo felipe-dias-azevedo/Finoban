@@ -61,25 +61,22 @@ namespace Finoban.Api.Controllers
                     return BadRequest(erroResponse);
                 }
                 calculoFinanciamento = new CalculoFinanciamento(idade, conexaoSQLite.Cliente.Patrimonio, 
-                    usuario.TempoFinanciamento, score);
-                //double taxa = calculoFinanciamento.CalcularTaxa(conexaoSQLite.Cliente.Patrimonio, score, 
-                //    usuario.ValorImovel, usuario.TempoFinanciamento);
-                var taxa = 2.0;
+                    usuario.TempoFinanciamento, score, usuario.ValorImovel);
                 FinanciamentoRequest financiamento = new FinanciamentoRequest
                 {
                     Ok = true,
                     Status = 200,
                     Data = new DataFinanciamentoRequest
                     {
-                        Taxa = Math.Round(taxa, 2),
-                        TaxaAdministracao = 0.2,
-                        DFI = 0.01,
-                        MIP = 0.003
+                        Taxa = Math.Round(calculoFinanciamento.Taxa,2),
+                        TaxaAdministracao = Math.Round(calculoFinanciamento.TaxaAdmin,2),
+                        DFI = Math.Round(calculoFinanciamento.DFI,2),
+                        MIP = Math.Round(calculoFinanciamento.MIP,2),
+                        TaxaTotal = Math.Round(calculoFinanciamento.TaxaTotal,2)
                     }
                 };
                 financiamento.Data.TaxaTotal = Math.Round(financiamento.Data.Taxa + financiamento.Data.MIP +
                     financiamento.Data.TaxaAdministracao + financiamento.Data.DFI, 2);
-
                 return Ok(financiamento);
             }
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace Finoban.Api.Models.Responses {
     public class UsuarioResponse {
         public string CNPJ { get; set; }
+        public double Renda { get; set; }
         public int ValorImovel { get; set; }
         public int TempoFinanciamento { get; set; }
     }
