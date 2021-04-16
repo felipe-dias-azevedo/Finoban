@@ -1,11 +1,18 @@
-let calcTxa = (patrimonio, idade, renda, tempo_f, valor_imovel) => {
+const serasa = require('./scoreSerasa');
+
+async function calcTxa(patrimonio, idade, renda, tempo_f, valor_imovel, cnpj) {
     
     let taxa_patrimonio = 0;
     let taxa_idade = 0;
     let taxa_renda = 0;
     let taxa_tempo = 0;
     let taxa_imovel = 0;
-    let taxa_serasa = (100 - parseInt(Math.random() * 100)) * 0.05;
+    let taxa_serasa = serasa(cnpj);
+    let taxa_serasa2 = 1000;
+
+    await taxa_serasa.then(res => {
+        taxa_serasa2 = (taxa_serasa2 - res) * 0.005;
+    })
     
     // Calc Tx Patrimonio 
     taxa_patrimonio = patrimonio * 0.000015;
@@ -26,8 +33,8 @@ let calcTxa = (patrimonio, idade, renda, tempo_f, valor_imovel) => {
     taxa_idade = (2 * Math.abs(1 - coef_idade)) + tx_min - (1 - coef_idade);
     
     // Calc Total
-    let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa;
-    
+    let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa2;
+
     return taxa_total;
 
 };

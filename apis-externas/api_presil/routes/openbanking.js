@@ -61,7 +61,7 @@ router.post('/financiamento', async (req, res) => {
             let tempo_f = dados.tempoFinanciamento;
             let valor_imovel = dados.valorImovel;
             let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
-            let txa = calc(patrimonio, idade, renda, tempo_f, valor_imovel);
+            let txa = await calc(patrimonio, idade, renda, tempo_f, valor_imovel, dados.cnpj);
             data = {
                 taxa: parseFloat(txa.toFixed(2)),
                 taxaAdministracao: taxas_fixas.tx_adm,
