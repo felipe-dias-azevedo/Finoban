@@ -2,58 +2,43 @@ package com.bandtec.br.finoban.models;
 
 public class Banco {
 
-    public String nome;
-    public Double valorImovel;
-    public Double taxaJuros;
-    public Double dfi;
-    public Double mip;
-    public Double taxaAdministracao;
-    public Double valorCet;
+    private Integer cnpj;
+    private Integer renda;
+    private Integer valorImovel;
+    private Integer tempoFinanciamento;
 
-
-    public String getNome() {
-        return nome;
+    public Banco(){
     }
 
-    public Double getValorCet() {
-        return valorCet;
+    public Integer getCnpj() {
+        return cnpj;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCnpj(Integer cnpj) {
+        this.cnpj = cnpj;
     }
 
+    public Integer getRenda() {
+        return renda;
+    }
 
+    public void setRenda(Integer renda) {
+        this.renda = renda;
+    }
 
-    public void setValorImovel(Double valorImovel) {
+    public Integer getValorImovel() {
+        return valorImovel;
+    }
+
+    public void setValorImovel(Integer valorImovel) {
         this.valorImovel = valorImovel;
     }
 
-
-
-    public void setTaxaJuros(Double taxaJuros) {
-        this.taxaJuros = taxaJuros;
+    public Integer getTempoFinanciamento() {
+        return tempoFinanciamento;
     }
 
-
-
-    public void setDfi(Double dfi) {
-        this.dfi = dfi;
-    }
-
-
-    public void setMip(Double mip) {
-        this.mip = mip;
-    }
-
-
-
-    public void setTaxaAdministracao(Double taxaAdministracao) {
-        this.taxaAdministracao = taxaAdministracao;
-    }
-
-
-    public void setValorCet(Double valorCet) {
-        this.valorCet = valorCet;
+    public void setTempoFinanciamento(Integer tempoFinanciamento) {
+        this.tempoFinanciamento = tempoFinanciamento;
     }
 }
