@@ -2,7 +2,7 @@ var fetch = require('cross-fetch');
 
 async function consulta(cnpj) {
 
-    let b = "Data";
+    let valor = "Data";
 
     let body = {
         cnpj: cnpj
@@ -16,13 +16,11 @@ async function consulta(cnpj) {
         body: JSON.stringify(body)
     }
 
-    // Número da porta provisorio
     await fetch("http://localhost:8082/consultas/v1/score", opts).then(async (res) => {
         if (res.ok) {
             await res.json().then(async (resposta) => {
                 if (resposta.ok) {
-                    // console.log(resposta.data.score);
-                    b = resposta.data.score;
+                    valor = resposta.data.score;
                 } else {
                     return 51;
                 }
@@ -30,16 +28,8 @@ async function consulta(cnpj) {
         }
     });
 
-    return b;
+    return valor;
 
 }
-
-// var a = consulta(123);
-
-// console.log(a);
-
-// a.then(res => {
-//     console.log(res);
-// })
 
 module.exports = consulta;
