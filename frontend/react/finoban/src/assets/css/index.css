@@ -1,0 +1,92 @@
+.menu{
+  width: 100%;
+  color:#4c626b;
+}
+.menu h1{
+  font-size: 40px;
+  margin: 10px;
+}
+
+.menu li{
+  list-style: none;
+}
+.menu a{ 
+  text-decoration: none;
+  margin: 10px;
+}
+
+.menu .pt1{
+  width: 100%;
+  height: 70px;
+  background-color: #ecebec;
+}
+
+.menu > .pt2{
+  width: 100%;
+  background-attachment: #ffffff;
+  box-shadow: 0 5px 4px -2px gray;
+}
+
+.menu .pt1 div, .menu .pt2 div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu ul{
+  display: flex;
+}
+
+.menu .pt1 a{
+  padding: 10px;
+  background-color: #385864;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.menu .pt2 a{
+  color: #4c626b;
+}
+
+
+
+.imagem {
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 30px;
+  width: auto;
+  height: 700px;
+  background:url(../images/index.png) no-repeat;
+  
+}
+
+.texto  {
+  position: center;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  color: #FFFFFF;
+  line-height: 10;
+  font-size:10;
+}
+
+
+
+
+.simulacao > .pt3{
+  margin: auto;
+  width: 380px;
+  background-attachment: #ffffff;
+  box-shadow: 0 5px 4px -2px gray;
+}
+
+.simulacao .pt3 div{
+  display: flex;
+}
+
+.simulacao a{ 
+  text-decoration: none;
+  margin: 30px;
+  color: #3A5B62;
+  font-size:30px;
+
+}
