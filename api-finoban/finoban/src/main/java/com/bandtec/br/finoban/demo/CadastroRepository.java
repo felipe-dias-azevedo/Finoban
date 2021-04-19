@@ -6,6 +6,4 @@ import com.bandtec.br.finoban.demo.Cadastro;
 
 public interface CadastroRepository extends CrudRepository <Cadastro, Integer> {
 
-    Cadastro findByEmailContaining(String email);
-
 }

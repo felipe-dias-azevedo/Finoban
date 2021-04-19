@@ -14,37 +14,37 @@ public class LoginController {
     @Autowired
     private CadastroRepository cadastroRepository;
 
-    @PostMapping("/login")
-    public @ResponseBody
-    Object login(@RequestParam String email, @RequestParam String senha) {
+//    @PostMapping("/login")
+//    public @ResponseBody
+//    Object login(@RequestParam String email, @RequestParam String senha) {
+//
+//        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
+//
+//        if(verificaEmail == null) {
+//            return "Email não encontrado";
+//        }
+//
+//        if(!verificaEmail.getSenha().equals(senha)) {
+//            return "Senha incorreta";
+//        }
+//            logado = true;
+//            return verificaEmail;
+//    }
 
-        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
-
-        if(verificaEmail == null) {
-            return "Email não encontrado";
-        }
-
-        if(!verificaEmail.getSenha().equals(senha)) {
-            return "Senha incorreta";
-        }
-            logado = true;
-            return verificaEmail;
-    }
-
-    @PostMapping("/deslogar")
-    public @ResponseBody String deslogar(@RequestParam String email) {
-
-        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
-        logado = false;
-
-        if(verificaEmail == null) {
-            return "Email não encontrado";
-        }
-
-        else {
-            return "Usuário " + verificaEmail.getNome() + " foi deslogado com sucesso!";
-        }
-
-    }
+//    @PostMapping("/deslogar")
+//    public @ResponseBody String deslogar(@RequestParam String email) {
+//
+//        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
+//        logado = false;
+//
+//        if(verificaEmail == null) {
+//            return "Email não encontrado";
+//        }
+//
+//        else {
+//            return "Usuário " + verificaEmail.getNome() + " foi deslogado com sucesso!";
+//        }
+//
+//    }
 
 }
