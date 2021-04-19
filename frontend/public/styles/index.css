@@ -126,7 +126,6 @@ display: flex;
 text-align: left;
 justify-content: space-around;
 
-
 }
 
 .rodape section{
@@ -163,6 +162,44 @@ justify-content: space-around;
   
 }
 
+.imovel{
+  margin: auto;
+  display: flex;
+  width: auto;
+  background-attachment: #ffffff;
+  box-shadow: 0 0px 24px rgba(0,0,0, 0.2);
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 30px;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 0px 24px rgba(0,0,0, 0.2);
+}
+
+.imovel section{
+  margin-top: 4%;
+  display: flex;
+  height: 20px;
+  width: 80%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  }
+
+
+  .voltar{ 
+    margin-top: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+    min-width: 150px;
+
+  }
+
+
+
+
+
+  
 
 
 
