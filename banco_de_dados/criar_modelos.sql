@@ -1,10 +1,11 @@
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255),
     cnpj VARCHAR(255),
+    nome VARCHAR(255),
+    email VARCHAR(255),
+    senha VARCHAR(255),
     cep VARCHAR(255),
     numero INT,
-    renda DOUBLE(14,2),
     data_nasc DATE,
     data_criacao DATETIME
 );
@@ -19,9 +20,14 @@ CREATE TABLE regiao (
 CREATE TABLE acesso (
     id_entrada INT PRIMARY KEY AUTO_INCREMENT,
     data_hora_entrada DATETIME,
-    status_saida INT,
     data_hora_saida DATETIME,
+    status_saida INT,
     pagina_saida INT,
+    renda DECIMAL(14,2),
+    valor_imovel DECIMAL(14,2),
+    tempo_financiamento INT,
+    porcentagem_renda INT,
+    banco_escolhido INT,
     fk_regiao INT,
     fk_cliente INT
     FOREIGN KEY (fk_regiao) REFERENCES regiao (id_regiao),
