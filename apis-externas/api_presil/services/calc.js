@@ -11,30 +11,31 @@ async function calcTxa(patrimonio, idade, renda, tempo_f, valor_imovel, cnpj) {
     let taxa_serasa2 = 1000;
 
     await taxa_serasa.then(res => {
-        taxa_serasa2 = (taxa_serasa2 - res) * 0.005;
+        taxa_serasa2 = (taxa_serasa2 - res) * 0.00005;
+        taxa_serasa = res;
     })
     
-    // Calc Tx Patrimonio 
-    taxa_patrimonio = patrimonio * 0.000015;
+    // Tx Patrimonio 
+    taxa_patrimonio = patrimonio * 0.00000003 + 0.02;
     
-    // Calc Tx Renda 
-    taxa_renda = renda * 0.0001;
+    // Tx Renda 
+    taxa_renda = renda * 0.0000003 + 0.03;
     
-    // Calc Tx Imovel
-    taxa_imovel = valor_imovel * 0.000005;
+    // Tx Imovel
+    taxa_imovel = valor_imovel * 0.000000025;
     
-    // Calc Tx Tempo de financiamento 
-    taxa_tempo = tempo_f * 0.1;
+    // Tx Tempo de financiamento 
+    taxa_tempo = tempo_f * 0.001;
     
     // Calc Tx Idade
     let idade_ideal = 25;
-    let tx_min = 3.0;
+    let tx_min = 0.02;
     let coef_idade = (idade / idade_ideal);
-    taxa_idade = (2 * Math.abs(1 - coef_idade)) + tx_min - (1 - coef_idade);
+    taxa_idade = (Math.abs(1 - coef_idade) * 0.03) + tx_min;
     
     // Calc Total
     let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa2;
-
+    
     return taxa_total;
 
 };
