@@ -35,6 +35,14 @@ async function calcTxa(patrimonio, idade, renda, tempo_f, valor_imovel, cnpj) {
     
     // Calc Total
     let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa2;
+
+    console.log("Tx Patrimonio: " + taxa_patrimonio);
+    console.log("Tx Idade: " + taxa_idade);
+    console.log("Tx Renda: " + taxa_renda);
+    console.log("Tx Tempo: " + taxa_tempo);
+    console.log("Tx Imovel: " + taxa_imovel);
+    console.log("Tx Serasa: " + taxa_serasa2);
+    console.log("Tx Total: " + taxa_total);
     
     return taxa_total;
 

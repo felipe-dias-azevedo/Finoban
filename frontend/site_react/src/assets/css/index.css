@@ -1,0 +1,54 @@
+.imagem {
+  margin-top: 20px;
+  margin-left: 10%;
+  padding: 8% 0% 8% 0%;
+  width: 80%;
+  height: 700px;
+  color: #FFFFFF;
+  background:url(../images/index.png) no-repeat;
+  border-radius: 5px;
+  /* filter: blur(5px); */
+}
+
+.box-texto-simples {
+  margin-left: 35%;
+  width: 30%;
+}
+
+.box-texto-destaque {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.imagem p {
+  font-size: 25px;
+}
+
+.imagem h1 {
+  font-size: 40px;
+  margin-top: 120px;
+  font-weight: 300;
+}
+
+.comecar {
+  margin-top: 150px;
+}
+
+.simulacao > .pt3{
+  margin: auto;
+  width: 380px;
+  background-attachment: #ffffff;
+  box-shadow: 0 5px 4px -2px gray;
+}
+
+.simulacao .pt3 div{
+  display: flex;
+}
+
+.simulacao a{ 
+  text-decoration: none;
+  margin: 30px;
+  color: #3A5B62;
+  font-size:30px;
+
+}
