@@ -11,7 +11,7 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE regiao (
-    id_regiao INT,
+    id_regiao INT PRIMARY KEY AUTO_INCREMENT,
     descricao_regiao VARCHAR(255),
     valor_regiao INT,
     data_craw DATETIME
@@ -29,13 +29,13 @@ CREATE TABLE acesso (
     porcentagem_renda INT,
     banco_escolhido INT,
     fk_regiao INT,
-    fk_cliente INT
+    fk_cliente INT,
     FOREIGN KEY (fk_regiao) REFERENCES regiao (id_regiao),
     FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
 );
 
 CREATE TABLE avaliacao (
-    id_avaliacao INT,
+    id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
     aval_positivo INT,
     feedback_aval VARCHAR(255),
     data_aval DATETIME,
