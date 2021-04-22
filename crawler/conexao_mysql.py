@@ -9,31 +9,43 @@ class ConexaoMySQL:
         self.password = password
         self.database = database
 
-
     def conexao(self):
-        print("Estabelecendo conexão...")
-        mydb = mysql.connector.connect(
-            host = self.host,
-            user = self.user,
-            password = self.password,
-            database = self.database
-        )
-        return mydb
+        print("\nEstabelecendo conexão com o Banco de Dados...")
+        try:
+            mydb = mysql.connector.connect(
+                host = self.host,
+                user = self.user,
+                password = self.password,
+                database = self.database
+            )
+            print("Conexão feita com sucesso!\n")
+            return mydb
+        except Exception as e:
+            print(e)
+            self.fechar_codigo("Erro na conexão com o Banco de Dados...")
 
-    def insercao(self, *valores):
-        contador = 1
+    def insercao(self, valores):
         mydb = ConexaoMySQL.conexao(self)
         insert = mydb.cursor()
-        query = "INSERT INTO regiao VALUES (%s, %s, %s, %s)"
+        query = "INSERT INTO regiao (descricao_regiao, valor_regiao, data_craw) VALUES (%s, %s, %s)"
         data = datetime.now()
-        data_fixa = data
-        for valor in valores:
-            for valor_unico in valor:
-                print(valor_unico)
-                data_fixa = data.strftime("%Y/%m/%d %H:%M:%S")
-                valor_inserir = (contador,valor_unico[0], valor_unico[1], data_fixa)
-                insert.execute(query, valor_inserir)
-                mydb.commit()
-                contador += 1
-                print("Dados inseridos")
+        data = data.strftime("%Y/%m/%d %H:%M:%S")
 
+        if not valores:
+            self.fechar_codigo("Dados vazios...")
+
+        try:
+            for v in valores:
+                print(v)
+                valor_inserir = (v[0], v[1], data)
+                insert.execute(query, valor_inserir)
+            mydb.commit()
+            print("\nDados inseridos com sucesso!\n")
+        except Exception as e:
+            print(e)
+            self.fechar_codigo("Erro na inserção com o Banco de Dados...")
+
+    def fechar_codigo(self, mensagem):
+        print(mensagem)
+        from sys import exit
+        exit(0)

@@ -6,8 +6,10 @@ import time
 
 conexao = conexao.ConexaoMySQL("18.207.233.50","root","urubu100","Finoban")
 imoveis = crawler.Imoveis()
-dados = imoveis.run()
 
 while True:
+    dados = imoveis.run()
     conexao.insercao(dados) #inserir dados no parametro
-    time.sleep(5)
+    print("Esperando 20 segundos para próximo Insert...\n")
+    time.sleep(20)
+    
