@@ -81,12 +81,9 @@
 
         <input class="input-disabled" type="text" name="endereco" id="endereco_cadastro" disabled>
 
-
         <h3>Data de Nascimento:</h3>
 
         <input type="text" name="datanasc" id="data_nascimento_cadastro">
-
-
 
         <button class="bt" type="submit">Cadastrar</button>
     </div>
@@ -123,40 +120,3 @@
 </body>
 </html>
 
-
-<script>
-    function cadastrar() {
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(document.getElementById('form_cadastro')));
-        console.log(formulario)
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(response => {
-
-            if (response.ok) {
-
-                window.location.href = './login.html';
-
-            } else {
-
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    //div_erro.innerHTML = resposta;
-                    console.log(resposta);
-                });
-                finalizar_aguardar();
-            }
-        });
-
-        return false;
-    }
-
-    function aguardar() {
-        btn_entrar_login.disabled = true;
-    }
-
-    function finalizar_aguardar() {
-        btn_entrar_login.disabled = false;
-    }
-</script>
