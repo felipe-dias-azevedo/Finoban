@@ -21,16 +21,19 @@ class ConexaoMySQL:
         return mydb
 
     def insercao(self, *valores):
+        contador = 1
         mydb = ConexaoMySQL.conexao(self)
         insert = mydb.cursor()
-        query = "INSERT INTO regiao VALUES (1, %s, %s, %s)"
+        query = "INSERT INTO regiao VALUES (%s, %s, %s, %s)"
+        data = datetime.now()
+        data_fixa = data
         for valor in valores:
             for valor_unico in valor:
                 print(valor_unico)
-                data = datetime.now()
-                data = data.strftime("%Y/%m/%d %H:%M:%S")
-                valor_inserir = (valor_unico[0], valor_unico[1], data)
+                data_fixa = data.strftime("%Y/%m/%d %H:%M:%S")
+                valor_inserir = (contador,valor_unico[0], valor_unico[1], data_fixa)
                 insert.execute(query, valor_inserir)
                 mydb.commit()
+                contador += 1
                 print("Dados inseridos")
 
