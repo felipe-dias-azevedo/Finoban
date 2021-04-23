@@ -2,8 +2,18 @@ import React from 'react';
 import CampoItem from '../components/CampoItem';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { RangeStepInput } from 'react-range-step-input';
 
 function Dashboard() {
+
+    const anoInicial = 2021;
+    const anoFinal = anoInicial + 30;
+    const [value, setValue] = React.useState((anoInicial + anoFinal) / 2);
+
+    function onChange(e) {
+        const newVal = e.target.value;
+        setValue(newVal);
+    }
 
     return (
         <>
@@ -15,15 +25,14 @@ function Dashboard() {
                 <div className="box box-subtitulo center">
                     <h4>Prazo de pagamento:</h4>
                 </div>
-                {/* <div className="sppiner">
-                    <div className="preenchida">
 
-                    </div>
-                    <div className="bola-marca">
+                <RangeStepInput
+                    min={anoInicial} max={anoFinal}
+                    value={value} step={1}
+                    onChange={onChange.bind(this)}
+                />
+                <span className="anoFin"> {value} </span>
 
-                    </div>
-                </div> */}
-                
                 <div className="box-campos">
                     <div className="box box-label center">
                         <p>Banco:</p>
