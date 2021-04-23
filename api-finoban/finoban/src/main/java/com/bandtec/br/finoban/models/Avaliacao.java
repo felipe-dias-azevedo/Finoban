@@ -22,19 +22,19 @@ public class Avaliacao implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataAval;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cliente", nullable = false)
     private Cadastro cadastro;
 
-    public Avaliacao(Integer id, Integer avalPositivo, String feedbackAval, LocalDateTime dataAval, Cadastro cadastro) {
-        this.id = id;
+    public Avaliacao(Integer avalPositivo, String feedbackAval, LocalDateTime dataAval, Cadastro cadastro) {
         this.avalPositivo = avalPositivo;
         this.feedbackAval = feedbackAval;
         this.dataAval = dataAval;
         this.cadastro = cadastro;
     }
 
-    public Avaliacao(Avaliacao novaAvaliacao, Cadastro cadastro) {
+    public Avaliacao() {
+
     }
 
     public Integer getId() {
@@ -67,13 +67,5 @@ public class Avaliacao implements Serializable {
 
     public void setDataAval(LocalDateTime dataAval) {
         this.dataAval = dataAval;
-    }
-
-    public Cadastro getCadastro() {
-        return cadastro;
-    }
-
-    public void setCadastro(Cadastro cadastro) {
-        this.cadastro = cadastro;
     }
 }

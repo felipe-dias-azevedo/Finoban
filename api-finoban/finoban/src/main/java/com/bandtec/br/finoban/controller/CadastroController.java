@@ -38,8 +38,7 @@ public class CadastroController {
         cadastro = new Cadastro("1", "5555","444","333","4444",4444);
 
         novaAvaliacao.setDataAval(LocalDateTime.now());
-        avaliacaoRepository.save(new Avaliacao(novaAvaliacao, cadastro));
+        avaliacaoRepository.save(new Avaliacao(novaAvaliacao.getAvalPositivo(), novaAvaliacao.getFeedbackAval(), novaAvaliacao.getDataAval(), cadastro));
         return ResponseEntity.status(201).body("Avaliacao cadastrada com sucesso");
     }
-
 }
