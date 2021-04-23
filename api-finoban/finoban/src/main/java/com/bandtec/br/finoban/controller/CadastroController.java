@@ -17,6 +17,8 @@ import java.time.ZonedDateTime;
 @RequestMapping("/api-finoban")
 public class CadastroController {
 
+    private Cadastro cadastro;
+
     @Autowired
     private CadastroRepository cadastroRepository;
 
@@ -25,21 +27,19 @@ public class CadastroController {
 
     @PostMapping("/cadastro")
     public ResponseEntity novoCadastro(@RequestBody Cadastro novoCadastro) {
+        novoCadastro.setDataCriacao(LocalDateTime.now());
         cadastroRepository.save(novoCadastro);
         return ResponseEntity.status(201).body("Cadastro efetuado com sucesso");
     }
 
     @PostMapping("/avaliacao")
     public ResponseEntity novaAvaliacao(@RequestBody Avaliacao novaAvaliacao) {
+
+        cadastro = new Cadastro("1", "5555","444","333","4444",4444);
+
         novaAvaliacao.setDataAval(LocalDateTime.now());
-        avaliacaoRepository.save(novaAvaliacao);
+        avaliacaoRepository.save(new Avaliacao(novaAvaliacao, cadastro));
         return ResponseEntity.status(201).body("Avaliacao cadastrada com sucesso");
-    }
-
-
-    @GetMapping("/listar")
-    public Iterable<Cadastro> obterUsuarios() {
-        return cadastroRepository.findAll();
     }
 
 }

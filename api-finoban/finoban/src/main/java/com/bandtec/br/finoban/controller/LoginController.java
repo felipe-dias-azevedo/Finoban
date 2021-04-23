@@ -2,49 +2,33 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.demo.Cadastro;
 import com.bandtec.br.finoban.demo.CadastroRepository;
+import com.bandtec.br.finoban.demo.Login;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api-finoban")
 public class LoginController {
 
-    public boolean logado;
-
     @Autowired
     private CadastroRepository cadastroRepository;
 
-//    @PostMapping("/login")
-//    public @ResponseBody
-//    Object login(@RequestParam String email, @RequestParam String senha) {
-//
-//        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
-//
-//        if(verificaEmail == null) {
-//            return "Email não encontrado";
-//        }
-//
-//        if(!verificaEmail.getSenha().equals(senha)) {
-//            return "Senha incorreta";
-//        }
-//            logado = true;
-//            return verificaEmail;
-//    }
+    @PostMapping("/login")
+    public ResponseEntity novoLogin(@RequestBody Login novoLogin) {
 
-//    @PostMapping("/deslogar")
-//    public @ResponseBody String deslogar(@RequestParam String email) {
-//
-//        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(email);
-//        logado = false;
-//
-//        if(verificaEmail == null) {
-//            return "Email não encontrado";
-//        }
-//
-//        else {
-//            return "Usuário " + verificaEmail.getNome() + " foi deslogado com sucesso!";
-//        }
-//
-//    }
+        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
+
+        if(verificaEmail == null) {
+            return ResponseEntity.status(204).body("Email não encontrado");
+        }
+
+        if(!verificaEmail.getSenha().equals(novoLogin.senha)) {
+            return ResponseEntity.status(204).body("Senha incorreta");
+        }
+
+        return ResponseEntity.status(200).body("Login efetuado com sucesso");
+
+    }
 
 }

@@ -16,11 +16,11 @@ import java.util.*;
 @Service
 @RestController
 @RequestMapping("/teste")
-public class RestService {
+public class RestServiceController {
 
     private final RestTemplate restTemplate;
 
-    public RestService(RestTemplateBuilder restTemplateBuilder) {
+    public RestServiceController(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
@@ -32,12 +32,8 @@ public class RestService {
         listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento/");
         listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
 
-
-        // create headers
         HttpHeaders headers = new HttpHeaders();
-        // set `content-type` header
         headers.setContentType(MediaType.APPLICATION_JSON);
-        // set `accept` header
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
         Map<String, Object> map = new HashMap<>();
@@ -46,19 +42,14 @@ public class RestService {
         map.put("valorImovel", novaRequisicao.getValorImovel());
         map.put("tempoFinanciamento", novaRequisicao.getTempoFinanciamento());
 
-        // build the request
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(map, headers);
 
         for (int i = 0; i < listUrl.size(); i++){
-            // send POST request
-            response = this.restTemplate.postForEntity(
-                    listUrl.get(i), entity, Resposta.class);
-
+            response = this.restTemplate.postForEntity(listUrl.get(i), entity, Resposta.class);
             Resposta bancoResponse = response.getBody();
-
             listResponse.add(bancoResponse);
-
         }
+
         return listResponse;
 
     }
@@ -69,10 +60,8 @@ public class RestService {
         if (retornaLista(novaRequisicao).isEmpty()) {
             return ResponseEntity.status(400).build();
         } else {
-
             return ResponseEntity.status(200).body(listResponse);
         }
-
 
     }
 

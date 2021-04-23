@@ -1,37 +1,50 @@
 package com.bandtec.br.finoban.demo;
 
+import com.bandtec.br.finoban.models.Avaliacao;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-public class Cadastro {
+public class Cadastro implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name="idCliente")
         private int id;
 
-        private String nome;
         private String cnpj;
+        private String nome;
+        private String email;
+        private String senha;
         private String cep;
         private Integer numero;
-        private Double renda;
+
         @JsonFormat(pattern="yyyy-MM-dd")
         private LocalDate dataNasc;
+        private LocalDateTime dataCriacao;
 
-    public Cadastro(int id, String nome, String cnpj, String cep, Integer numero, Double renda, LocalDate dataNasc) {
-        this.id = id;
-        this.nome = nome;
+        @OneToMany(mappedBy = "cadastro", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+        private Set<Avaliacao> avaliacoes;
+
+        public Cadastro() {
+
+        }
+
+    public Cadastro(String cnpj, String nome, String email, String senha, String cep, Integer numero) {
         this.cnpj = cnpj;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
         this.cep = cep;
         this.numero = numero;
-        this.renda = renda;
-        this.dataNasc = dataNasc;
     }
 
     public int getId() {
@@ -42,6 +55,14 @@ public class Cadastro {
         this.id = id;
     }
 
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -50,12 +71,20 @@ public class Cadastro {
         this.nome = nome;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getCep() {
@@ -74,14 +103,6 @@ public class Cadastro {
         this.numero = numero;
     }
 
-    public Double getRenda() {
-        return renda;
-    }
-
-    public void setRenda(Double renda) {
-        this.renda = renda;
-    }
-
     public LocalDate getDataNasc() {
         return dataNasc;
     }
@@ -90,9 +111,11 @@ public class Cadastro {
         this.dataNasc = dataNasc;
     }
 
-    public Cadastro() {
-
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
-
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
 }

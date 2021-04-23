@@ -1,18 +1,17 @@
 package com.bandtec.br.finoban.models;
 
+import com.bandtec.br.finoban.demo.Cadastro;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.tomcat.jni.Local;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Entity
-public class Avaliacao {
+public class Avaliacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +21,20 @@ public class Avaliacao {
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataAval;
-    private Integer fkAcesso;
 
-    public Avaliacao(Integer id, Integer avalPositivo, String feedbackAval, LocalDateTime dataAval, Integer fkAcesso) {
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "fk_cliente", nullable = false)
+    private Cadastro cadastro;
+
+    public Avaliacao(Integer id, Integer avalPositivo, String feedbackAval, LocalDateTime dataAval, Cadastro cadastro) {
         this.id = id;
         this.avalPositivo = avalPositivo;
         this.feedbackAval = feedbackAval;
         this.dataAval = dataAval;
-        this.fkAcesso = fkAcesso;
+        this.cadastro = cadastro;
+    }
+
+    public Avaliacao(Avaliacao novaAvaliacao, Cadastro cadastro) {
     }
 
     public Integer getId() {
@@ -64,11 +69,11 @@ public class Avaliacao {
         this.dataAval = dataAval;
     }
 
-    public Integer getFkAcesso() {
-        return fkAcesso;
+    public Cadastro getCadastro() {
+        return cadastro;
     }
 
-    public void setFkAcesso(Integer fkAcesso) {
-        this.fkAcesso = fkAcesso;
+    public void setCadastro(Cadastro cadastro) {
+        this.cadastro = cadastro;
     }
 }
