@@ -1,0 +1,55 @@
+.sppiner {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 70%;
+    height: 15px;
+
+    background: #c4c4c4;
+    border: 1px solid #7c7c7c;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 6px #000000;
+    border-radius: 5px;
+}
+
+.preenchida {
+    height: 100%;
+    width: 40%;
+
+    background: #3a5b62;
+    border: 1px solid #7c7c7c;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 6px #000000;
+    border-radius: 5px;
+}
+
+.bola-marca {
+    width: 25px;
+    height: 25px;
+    margin-left: -3px;
+
+    background: #ffffff;
+    border: 2px solid #b1b1b1;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.box-campos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.box-campos select, input {
+    margin-top: 10px;
+    width: 20%;
+    height: 35px;
+    padding: 5px;
+    text-align: left;
+    color: #4B4B4B;
+    border: 2px solid #636363;
+    box-sizing: border-box;
+    border-radius: 5px;
+}

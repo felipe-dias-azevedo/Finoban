@@ -16,13 +16,13 @@ async function calcTxa(patrimonio, idade, renda, tempo_f, valor_imovel, cnpj) {
     })
     
     // Tx Patrimonio 
-    taxa_patrimonio = patrimonio * 0.00000003 + 0.02;
+    taxa_patrimonio = (patrimonio / 100000) * 0.005;
     
     // Tx Renda 
-    taxa_renda = renda * 0.0000003 + 0.03;
+    taxa_renda = (renda / 10000) * 0.0075;
     
     // Tx Imovel
-    taxa_imovel = valor_imovel * 0.000000025;
+    taxa_imovel = (valor_imovel / 500000) * 0.025;
     
     // Tx Tempo de financiamento 
     taxa_tempo = tempo_f * 0.001;
@@ -35,6 +35,14 @@ async function calcTxa(patrimonio, idade, renda, tempo_f, valor_imovel, cnpj) {
     
     // Calc Total
     let taxa_total = taxa_patrimonio + taxa_idade + taxa_renda + taxa_tempo + taxa_imovel + taxa_serasa2;
+
+    console.log("Tx Patrimonio: " + taxa_patrimonio);
+    console.log("Tx Idade: " + taxa_idade);
+    console.log("Tx Renda: " + taxa_renda);
+    console.log("Tx Tempo: " + taxa_tempo);
+    console.log("Tx Imovel: " + taxa_imovel);
+    console.log("Tx Serasa: " + taxa_serasa2);
+    console.log("Tx Total: " + taxa_total);
     
     return taxa_total;
 

@@ -1,130 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/variables.css">
     <link rel="stylesheet" href="./styles/global.css">
-    <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/login.css">
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <title>Finoban - Login</title>
-    <script type="text/javascript" src="./js/funcoes.js"></script>
+    <title>Login</title>
 </head>
-<body>
-    <div class="screen1">
-        <header>
-            <h1>Finoban</h1>
-            <button class="button-dark-mode">
-                <span class="iconify" data-icon="emojione-monotone:last-quarter-moon" data-inline="false"></span>
-            </button>
-        </header>
-        <div class="login">
-            <section>
-                <div class="head-login">
-                    <a href="./index.html">
-                        <span class="iconify" data-icon="akar-icons:arrow-left" data-inline="false"></span>
-                    </a>
-                </div>
-                <div class="head-login">
-                    <h2>Login</h2>
-                </div>
-                <div class="head-login"></div>
-            </section>
 
-            <form onsubmit="return entrar()" id="form_login" class="form-login" method="POST">
-                <div class="input-login">
-                    <div class="title-input-login">
-                        <h3>E-mail:</h3>
-                    </div>
-                    <input type="email" name="email" id="txtEmail">
+<body>
+
+    <header class="menu">
+        <div class="pt1">
+            <div class="container">
+                <h1>Finoban</h1>
+                <div class="botoes">
+                    <ul>
+                        <li><a href="#Cadastro">Cadastro</a></li>
+                        <li><a href="#login">Login</a></li>
+                    </ul>
                 </div>
-                <div class="input-login">
-                    <div class="title-input-login">
-                        <h3>Senha:</h3>
-                    </div>
-                    <input type="password" name="senha" id="txtSenha">
-                </div>
-                <div class="input-login-button">
-                    <section>
-                        <button id="btn_entrar" type="submit">Entrar</button>
-                    </section>
-                </div>
-            </form>
+            </div>
         </div>
+
+        <div class="pt2">
+            <div class="container">
+                <a href="">Home</a>
+                <div class="links">
+                    <ul>
+                        <li><a href="">CONTATOS</a></li>
+                        <li><a href="">PARCEIROS</a></li>
+                        <li><a href="">OPENBANKING</a></li>
+                        <li><a href="">SOBRE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="login">
+        <h3>Login</h3>
     </div>
+
+
+    <div class="entrar">
+       
+            <h3>E-mail:</h3>
+
+            <input type="email" name="email">
+        
+            <h3>Senha:</h3>
+
+            <input type="password" name="senha">
+      
+
+        <button class="bt">Entrar</button>
+    </div>
+
+
+    <div class="rodape">
+        <section>
+          <h3>Possíveis dúvidas?</h3>
+          <p>O que é o Open Banking?</p>
+          <p>O que é o Financiamento Imboliario?</p>
+          <p>Quais são as taxas?</p>
+        </section>
+        <section>
+          <h3>Navegação</h3>
+          <a href="">Inicio</a>
+          <a href="">Sobre nós</a>
+          <a href="">Contato</a>
+        </section>
+        <section>
+          <h3>Parceiros</h3>
+          <p>Bandtec Digital School</p>
+          <p>Banco Safra S.A.</p>
+        </section>
+        <section>
+          <h3>Nossas redes socias</h3>
+        </section>
+        <section class="logo">
+          <h1>Finoban © - Copyright</h1>
+          <p>Todos os direitos reservados</p>
+        </section>
+      </div>
+
 </body>
 </html>
-<script>
-    function entrar() {
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(document.getElementById('form_login')));
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            body: formulario
-        }).then(resposta => {
-    
-            if (resposta.ok) {
-    
-                resposta.json().then(json => {
-    
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
-                    window.location.href = './dashboard.html';
-                });
-    
-            } else {
-    
-                console.log('Erro de login!');
-    
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizar_aguardar(texto);
-                });
-            }
-        });
-    
-        return false;
-    }
-    
-    function aguardar() {
-        btn_entrar.disabled = true;
-    }
-    
-    function finalizar_aguardar(resposta) {
-        btn_entrar.disabled = false;
-    }
-</script>
-
-
-
-
-// RODAPÉEEEEEE
-<div class="screen2">
-    <footer>
-      <section>
-        <h3>Possíveis dúvidas?</h3>
-        <p>O que é o Open Banking?</p>
-        <p>O que é o Financiamento Imboliario?</p>
-        <p>Quais são as taxas?</p>
-      </section>
-      <section>
-        <h3>Navegação</h3>
-        <a href="">Inicio</a>
-        <a href="">Sobre nós</a>
-        <a href="">Contato</a>
-      </section>
-      <section>
-        <h3>Parceiros</h3>
-        <p>Bandtec Digital School</p>
-        <p>Banco Safra S.A.</p>
-      </section>
-      <section></section>
-      <section>
-        <h1>Finoban © - Copyright</h1>
-        <p>Todos os direitos reservados</p>
-      </section>
-    </footer>
-  </div>

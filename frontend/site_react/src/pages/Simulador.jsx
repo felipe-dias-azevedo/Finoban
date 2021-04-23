@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
 import BankCard from '../components/BankCard';
+import Footer from '../components/Footer';
 
 function Simulador() {
     return (
         <>
             <Header />
-            <div className="content center">
+            <div className="center">
                 <div className="box box-titulo center">
                     <h1>Simulador</h1>
                 </div>
@@ -19,6 +20,7 @@ function Simulador() {
                     <BankCard banco="Banco Cifra" taxa_t ="7" primeira_p="3000,00" valor_f="1.200.000,00" valor_s="0.92" />
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
