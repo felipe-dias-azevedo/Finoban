@@ -33,3 +33,23 @@
     border-radius: 25px;
     box-sizing: border-box;
 }
+
+.box-campos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.box-campos select, input {
+    margin-top: 10px;
+    width: 20%;
+    height: 35px;
+    padding: 5px;
+    text-align: left;
+    color: #4B4B4B;
+    border: 2px solid #636363;
+    box-sizing: border-box;
+    border-radius: 5px;
+}

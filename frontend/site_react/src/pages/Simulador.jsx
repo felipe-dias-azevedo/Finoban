@@ -7,7 +7,7 @@ function Simulador() {
     return (
         <>
             <Header />
-            <div className="content center">
+            <div className="center">
                 <div className="box box-titulo center">
                     <h1>Simulador</h1>
                 </div>
