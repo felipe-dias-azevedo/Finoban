@@ -89,3 +89,18 @@
     line-height: 10px;
     justify-content: center;
   }
+
+  .rodape .icons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rodape .icons h3 {
+    width: 100%;
+  }
+
+  .rodape .icons div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

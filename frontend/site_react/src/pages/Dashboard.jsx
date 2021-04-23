@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function Dashboard() {
+
     return (
         <>
             <Header />
@@ -14,14 +15,15 @@ function Dashboard() {
                 <div className="box box-subtitulo center">
                     <h4>Prazo de pagamento:</h4>
                 </div>
-                <div className="sppiner">
+                {/* <div className="sppiner">
                     <div className="preenchida">
 
                     </div>
                     <div className="bola-marca">
 
                     </div>
-                </div>
+                </div> */}
+                
                 <div className="box-campos">
                     <div className="box box-label center">
                         <p>Banco:</p>

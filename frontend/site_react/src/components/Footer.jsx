@@ -1,4 +1,7 @@
 import React from 'react';
+import { AiFillFacebook } from 'react-icons/ai';
+import { AiFillTwitterSquare } from 'react-icons/ai';
+import { AiFillInstagram } from 'react-icons/ai';
 
 function Footer() {
     return (
@@ -21,11 +24,16 @@ function Footer() {
                     <p>Bandtec Digital School</p>
                     <p>Banco Safra S.A.</p>
                 </section>
-                <section>
+                <section className="icons">
                     <h3>Nossas redes socias</h3>
+                    <div>
+                        <AiFillTwitterSquare style={{ height: 72, width: 72 }} />
+                        <AiFillFacebook style={{ height: 72, width: 72 }} />
+                        <AiFillInstagram style={{ height: 72, width: 72 }} />
+                    </div>
                 </section>
                 <section className="logo">
-                    <h1>Finoban © - Copyright</h1>
+                    <h1> <strong>Finoban</strong> - Copyright ©</h1>
                     <p>Todos os direitos reservados</p>
                 </section>
             </div>
