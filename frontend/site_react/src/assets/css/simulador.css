@@ -44,12 +44,3 @@
     float: right;
     margin-right: 0px;
 }
-
-.btn {
-    width: 80%;
-    height: 40px;
-    background-color: var(--text-header-light);
-    color: white;
-    border: 0px;
-    border-radius: 5px;
-}

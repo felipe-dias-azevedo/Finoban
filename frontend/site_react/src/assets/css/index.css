@@ -105,8 +105,18 @@
 }
 
 .voltar{ 
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   margin-top: 20px;
   margin-right: 10px;
   text-decoration: none;
   min-width: 150px;
+}
+
+.voltar div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #3A5B62;
 }

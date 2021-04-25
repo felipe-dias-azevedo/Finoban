@@ -3,6 +3,7 @@ import CampoItem from '../components/CampoItem';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { RangeStepInput } from 'react-range-step-input';
+import GoogleChart from '../components/GoogleChart';
 
 function Dashboard() {
 
@@ -55,6 +56,16 @@ function Dashboard() {
                     <CampoItem label="Parcela Anterior" valor="R$ 2.500,00" />
                     <CampoItem label="Próxima Parcela" valor="R$ 2.000,00" />
                     <CampoItem label="Parcela 2027" valor="R$ 2.200,00" />
+                </div>
+                <div className="box-campos">
+                    <CampoItem label="Valor Total do Imóvel" valor="R$ 1.050.000,00" />
+                    <div className="grafico">
+                        <GoogleChart />
+                    </div>
+                </div>
+                <div className="box-campos">
+                    <button className="botao">Salvar e Baixar PDF</button>
+                    <button className="botao">Gostei, quero contratar</button>
                 </div>
             </div>
             <Footer />

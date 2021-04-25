@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { BiChevronDownCircle } from 'react-icons/bi';
+import { IoChevronBack } from 'react-icons/io5';
 
 function PaginaInicial() {
 
@@ -38,7 +39,10 @@ function PaginaInicial() {
                         <div id="teste">
                             <div className="imovel">
                                 <div className="voltar">
-                                    <a id="voltar">Voltar opção</a>
+                                    <div>
+                                        <IoChevronBack size={46} />
+                                        <span> Voltar </span>
+                                    </div>
                                 </div>
                                 <section>
                                     <p>CNPJ</p>
@@ -49,11 +53,17 @@ function PaginaInicial() {
                                     <input type="text" placeholder="ex: 5000,00" />
                                 </section>
                                 <section>
-                                    <p id="mudar">Valor do imóvel</p>
                                     {
                                         sabeValorImovel ?
-                                            (<input id="valor" type="text" placeholder="ex:600000,00" />)
-                                            : (<input id="regiao" type="text" placeholder="ex:Vila Madalena" />)
+                                            <>
+                                                <p id="mudar">Valor do imóvel</p>
+                                                <input id="valor" type="text" placeholder="ex:600000,00" />
+                                            </>
+                                            :
+                                            <>
+                                                <p id="mudar">Região</p>
+                                                <input id="regiao" type="text" placeholder="ex:Vila Madalena" />
+                                            </>
                                     }
 
 
@@ -68,25 +78,22 @@ function PaginaInicial() {
                                 </section>
                             </div>
                         </div>
-
-                        : (
-                            <div id="teste2">
-                                <div className="pt4">
-                                    <div className="container">
-                                        <h3>Já sabe o valor do imóvel?</h3>
-                                        <button className="bt" onClick={(e) => {
-                                            setSabeValorImovel(true);
-                                            setRespondeuBotao(true)
-                                        }} id="sim"> Sim</button>
-                                        <button className="bt" onClick={(e) => {
-                                            setSabeValorImovel(false);
-                                            setRespondeuBotao(true)
-                                        }} id="nao"> Não</button>
-                                    </div>
+                        :
+                        <div id="teste2">
+                            <div className="pt4">
+                                <div className="container">
+                                    <h3>Já sabe o valor do imóvel?</h3>
+                                    <button className="bt" onClick={(e) => {
+                                        setSabeValorImovel(true);
+                                        setRespondeuBotao(true)
+                                    }} id="sim"> Sim</button>
+                                    <button className="bt" onClick={(e) => {
+                                        setSabeValorImovel(false);
+                                        setRespondeuBotao(true)
+                                    }} id="nao"> Não</button>
                                 </div>
                             </div>
-                        )
-
+                        </div>
                 }
 
             </div>
