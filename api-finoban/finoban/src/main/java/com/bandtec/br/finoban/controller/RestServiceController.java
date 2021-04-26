@@ -24,11 +24,13 @@ public class RestServiceController {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public List<String> listUrl = new ArrayList<>();
-    public List<Resposta> listResponse = new ArrayList<>();
     private ResponseEntity<Resposta> response;
 
     public List<Resposta> retornaLista(Requisicao novaRequisicao){
+
+        List<String> listUrl = new ArrayList<>();
+        List<Resposta> listResponse = new ArrayList<>();
+        
         listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento/");
         listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
         listUrl.add("http://18.207.233.50:8000/openbanking/v1/financiamento");
@@ -61,7 +63,7 @@ public class RestServiceController {
         if (retornaLista(novaRequisicao).isEmpty()) {
             return ResponseEntity.status(400).build();
         } else {
-            return ResponseEntity.status(200).body(listResponse);
+            return ResponseEntity.status(200).body(retornaLista(novaRequisicao));
         }
 
     }
