@@ -10,7 +10,7 @@ function Footer() {
                 <section>
                     <h3>Possíveis dúvidas?</h3>
                     <p>O que é o Open Banking?</p>
-                    <p>O que é o Financiamento Imboliario?</p>
+                    <p>O que é o Financiamento Imobiliário?</p>
                     <p>Quais são as taxas?</p>
                 </section>
                 <section>
