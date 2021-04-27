@@ -4,15 +4,33 @@ import Header from '../components/Header';
 import { BiChevronDownCircle } from 'react-icons/bi';
 import { IoChevronBack } from 'react-icons/io5';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function PaginaInicial() {
+
     const history = useHistory();
 
     const [sabeValorImovel, setSabeValorImovel] = useState(null);
     const [respondeuBotao, setRespondeuBotao] = useState(false);
 
+    const [cnpj, setCnpj] = useState("")
+    const [renda, setRenda] = useState("")
+    const [valorImovel, setValorImovel] = useState("")
+    const [tempoFinanciamento, setTempoFinanciamento] = useState("")
+
+
     function irParaSimulador() {
-        history.push("/login");
+        const dataSimulador = {
+            cnpj,
+            renda,
+            valorImovel,
+            tempoFinanciamento
+        };
+
+        history.push({
+            pathname:'/login', 
+            state: {data: dataSimulador}
+        });
     }
 
     return (
@@ -27,8 +45,8 @@ function PaginaInicial() {
                 </div>
                 <div className="comecar center">
                     <a id="bt-comecar" href="#simulacao">
-                    <BiChevronDownCircle size={64} />
-                    <p> Começar</p>
+                        <BiChevronDownCircle size={64} />
+                        <p> Começar</p>
                     </a>
                 </div>
             </div>
@@ -38,7 +56,7 @@ function PaginaInicial() {
                 </div>
 
                 {
-                    respondeuBotao ? 
+                    respondeuBotao ?
                         (<div id="teste">
                             <div className="imovel">
                                 <div className="voltar">
@@ -49,29 +67,50 @@ function PaginaInicial() {
                                 </div>
                                 <section>
                                     <p>CNPJ</p>
-                                    <input type="text" placeholder="00.000.000/0000-00" />
+                                    <input
+                                        type="text"
+                                        placeholder="00.000.000/0000-00"
+                                        onChange={(e => setCnpj(e.target.value))}
+                                    />
                                 </section>
                                 <section>
                                     <p>Renda</p>
-                                    <input type="text" placeholder="ex: 5000,00" />
+                                    <input
+                                        type="text"
+                                        placeholder="ex: 5000,00"
+                                        onChange={(e => setRenda(e.target.value))}
+                                    />
                                 </section>
                                 <section>
                                     {
                                         sabeValorImovel ?
                                             <>
                                                 <p id="mudar">Valor do imóvel</p>
-                                                <input id="valor" type="text" placeholder="ex:600000,00" />
+                                                <input
+                                                    id="valor"
+                                                    type="text"
+                                                    placeholder="ex:600000,00"
+                                                    onChange={(e => setValorImovel(e.target.value))}
+                                                />
                                             </>
                                             :
                                             <>
                                                 <p id="mudar">Região</p>
-                                                <input id="regiao" type="text" placeholder="ex:Vila Madalena" />
+                                                <input
+                                                    id="regiao"
+                                                    type="text"
+                                                    placeholder="ex:Vila Madalena"
+                                                />
                                             </>
                                     }
                                 </section>
                                 <section>
                                     <p>Tempo do financiamento (anos)</p>
-                                    <input type="text" placeholder="ex:30" />
+                                    <input t
+                                        ype="text"
+                                        placeholder="ex:30"
+                                        onChange={(e => setTempoFinanciamento(e.target.value))}
+                                    />
                                 </section>
                                 <section>
                                     <p>Porcentagem de Renda (max:20)</p>
