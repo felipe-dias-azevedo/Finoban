@@ -1,6 +1,8 @@
-package com.bandtec.br.finoban.models;
+package com.bandtec.br.finoban.resposta;
 
-public class Resposta {
+import com.bandtec.br.finoban.models.Data;
+
+public class RespostaApi {
 
     private boolean ok;
     private Integer status;
