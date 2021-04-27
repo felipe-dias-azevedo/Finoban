@@ -1,13 +1,17 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.models.Banco;
-import com.bandtec.br.finoban.models.Requisicao;
-import com.bandtec.br.finoban.models.Resposta;
-import org.aspectj.weaver.ast.Test;
+import com.bandtec.br.finoban.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.resposta.RespostaApi;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -24,12 +28,13 @@ public class RestServiceController {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    private ResponseEntity<Resposta> response;
 
-    public List<Resposta> retornaLista(Requisicao novaRequisicao){
+    private ResponseEntity<RespostaApi> response;
+
+    public List<RespostaApi> retornaLista(BancoRequisicao novaRequisicao){
 
         List<String> listUrl = new ArrayList<>();
-        List<Resposta> listResponse = new ArrayList<>();
+        List<RespostaApi> listResponse = new ArrayList<>();
 
         listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento/");
         listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
@@ -48,8 +53,8 @@ public class RestServiceController {
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(map, headers);
 
         for (int i = 0; i < listUrl.size(); i++){
-            response = this.restTemplate.postForEntity(listUrl.get(i), entity, Resposta.class);
-            Resposta bancoResponse = response.getBody();
+            response = this.restTemplate.postForEntity(listUrl.get(i), entity, RespostaApi.class);
+            RespostaApi bancoResponse = response.getBody();
             listResponse.add(bancoResponse);
         }
 
@@ -58,7 +63,7 @@ public class RestServiceController {
     }
 
     @PostMapping
-    public ResponseEntity createPost(@RequestBody Requisicao novaRequisicao) {
+    public ResponseEntity createPost(@RequestBody BancoRequisicao novaRequisicao) {
 
         if (retornaLista(novaRequisicao).isEmpty()) {
             return ResponseEntity.status(400).build();

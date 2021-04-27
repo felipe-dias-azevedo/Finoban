@@ -1,13 +1,13 @@
-package com.bandtec.br.finoban.models;
+package com.bandtec.br.finoban.requisicao;
 
-public class Requisicao {
+public class BancoRequisicao {
 
     private String cnpj;
     private Integer renda;
     private Integer valorImovel;
     private Integer tempoFinanciamento;
 
-    public Requisicao(String cnpj, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
+    public BancoRequisicao(String cnpj, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
         this.cnpj = cnpj;
         this.renda = renda;
         this.valorImovel = valorImovel;
