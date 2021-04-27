@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-
 @Service
 @RestController
 @RequestMapping("/teste")

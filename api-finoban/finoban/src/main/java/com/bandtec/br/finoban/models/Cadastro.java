@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.demo;
+package com.bandtec.br.finoban.models;
 
 import com.bandtec.br.finoban.models.Avaliacao;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "cliente")
 public class Cadastro implements Serializable {
 
         @Id
@@ -30,9 +31,9 @@ public class Cadastro implements Serializable {
         private LocalDate dataNasc;
         private LocalDateTime dataCriacao;
 
-        @OneToMany(mappedBy = "cadastro", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-        private Set<Avaliacao> avaliacoes;
+//        @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL)
+//        private Set<Avaliacao> avaliacoes;
 
         public Cadastro() {
 

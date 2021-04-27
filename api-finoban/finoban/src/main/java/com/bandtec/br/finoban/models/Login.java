@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.demo;
+package com.bandtec.br.finoban.models;
 
 public class Login {
 
