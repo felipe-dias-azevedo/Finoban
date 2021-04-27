@@ -1,14 +1,10 @@
 package com.bandtec.br.finoban.models;
 
-import com.bandtec.br.finoban.demo.Cadastro;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Entity
 public class Avaliacao implements Serializable {
@@ -22,15 +18,14 @@ public class Avaliacao implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataAval;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_cliente", nullable = false)
-    private Cadastro cadastro;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "fk_cliente", nullable = false)
+//    private Cadastro cadastro;
 
-    public Avaliacao(Integer avalPositivo, String feedbackAval, LocalDateTime dataAval, Cadastro cadastro) {
+    public Avaliacao(Integer avalPositivo, String feedbackAval, LocalDateTime dataAval) {
         this.avalPositivo = avalPositivo;
         this.feedbackAval = feedbackAval;
         this.dataAval = dataAval;
-        this.cadastro = cadastro;
     }
 
     public Avaliacao() {
