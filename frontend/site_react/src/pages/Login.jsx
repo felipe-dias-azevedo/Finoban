@@ -13,20 +13,13 @@ export default function Login() {
     const [senha, setSenha] = useState("");
 
     const [errorLogin, setErrorLogin] = useState(false);
-
-   
-
-    
-    const [respostaSimulacao, setRespostaSimulacao] = useState("")
-    
-    
     
     async function validarLogin() {
         
         let dataSimulacao = window.history.state.state.data;
         console.log(dataSimulacao);
         
-        let testeRola;
+        let respostaSimulacao;
         if (email.trim() === "" || senha.trim() === "") {
             return;
         }
@@ -46,8 +39,8 @@ export default function Login() {
             'Accept': 'application/json'
         }).then(e => {
             console.log(e.data)
-            testeRola = e.data;
-            console.log(testeRola);
+            respostaSimulacao = e.data;
+            console.log(respostaSimulacao);
         }).catch(e => {
             console.error(e)
         });
@@ -61,7 +54,7 @@ export default function Login() {
             if (e.status === 200) {
                 history.push({
                     pathname:'/simulador', 
-                    state: {data: testeRola}
+                    state: {data: respostaSimulacao}
                 });
             } else {
                 setErrorLogin(true);
