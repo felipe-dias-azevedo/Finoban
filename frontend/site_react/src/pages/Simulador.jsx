@@ -27,14 +27,14 @@ function Simulador() {
                         taxa_t ={data[0].data.taxaTotal} 
                         primeira_p="3000,00" 
                         valor_f="1.200.000,00" 
-                        valor_s={(data[0].data.dfi) + (data[0].data.mip)} 
+                        valor_s={((data[0].data.dfi) + (data[0].data.mip)*10).toFixed(2)} 
                     />
                     <BankCard 
                         banco="S16 Bank" 
-                        taxa_t ={data[1].data.taxaTotal} 
+                        taxa_t ={(data[1].data.taxaTotal*100).toFixed(2)} 
                         primeira_p="2000,00" 
                         valor_f="800.000,00" 
-                        valor_s={(data[1].data.dfi) + (data[1].data.mip)} 
+                        valor_s={(((data[1].data.dfi) + (data[1].data.mip)*100).toFixed(2))} 
                     />
                     <BankCard 
                         banco="Banco Cifra" 
