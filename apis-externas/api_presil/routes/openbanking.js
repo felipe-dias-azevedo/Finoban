@@ -44,6 +44,7 @@ router.post('/conta', async (req, res) => {
 router.post('/financiamento', async (req, res) => {
     let dados = req.body;
     let v_dados = validar.financiamento(dados);
+    dados.cnpj = Number(dados.cnpj);
 
     let data;
     let status;
