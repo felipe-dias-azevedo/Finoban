@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-@RequestMapping("/api-finoban")
+@RequestMapping("/api-finoban/download")
 @RestController
 public class DownloadController {
 
-    @GetMapping(value = "/download-txt")
+    @GetMapping(value = "/txt")
     public HttpEntity<byte[]> download() throws IOException {
 
         byte[] arquivo = Files.readAllBytes( Paths.get("target\\classes\\static\\financiamento.txt") );
@@ -27,7 +27,7 @@ public class DownloadController {
         return entity;
     }
 
-    @GetMapping(value = "/download-csv")
+    @GetMapping(value = "/csv")
     public HttpEntity<byte[]> downloadCsv() throws IOException {
 
         byte[] arquivo = Files.readAllBytes( Paths.get("target\\classes\\static\\financiamento.csv") );
