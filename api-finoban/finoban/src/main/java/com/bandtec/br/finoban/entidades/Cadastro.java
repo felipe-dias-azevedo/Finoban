@@ -1,15 +1,11 @@
-package com.bandtec.br.finoban.models;
+package com.bandtec.br.finoban.entidades;
 
-import com.bandtec.br.finoban.models.Avaliacao;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "cliente")

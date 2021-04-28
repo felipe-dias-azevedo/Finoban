@@ -1,6 +1,11 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.models.DocumentoLayout;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -9,7 +14,17 @@ import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
+
+@RestController
+@RequestMapping("/api-finoban/gravar")
 public class GravaArquivoController {
+
+
+    @PostMapping("/txt")
+    public ResponseEntity postRegistro(@RequestBody DocumentoLayout documentoLayout) {
+        gravarResgistrorApi(documentoLayout);
+        return ResponseEntity.status(201).build();
+    }
 
     public static void gravaRegistro (String nomeArq, String registro) {
         BufferedWriter saida = null;
@@ -28,10 +43,8 @@ public class GravaArquivoController {
         }
     }
 
-    public static void main(String[] args) {
 
-        DocumentoLayout docLayout = new DocumentoLayout("Presil", "Maria José",
-                600000, "São Paulo", 30);
+    public static void gravarResgistrorApi(DocumentoLayout documentoLayout) {
 
         String nomeArq = "financiamento.txt";
         String header = "";
@@ -50,11 +63,11 @@ public class GravaArquivoController {
 
         corpo = "02 ";
         corpo += "Banco ";
-        corpo += String.format("%-11s", docLayout.getNomeBanco());
-        corpo += String.format("%-90s", docLayout.getNomeCliente());
-        corpo += String.format("%12d", docLayout.getValorFinanciamento());
-        corpo += String.format("%-20s", docLayout.getRegiao());
-        corpo += String.format("%2d", docLayout.getTempoFinanciamento());
+        corpo += String.format("%-11s", documentoLayout.getNomeBanco());
+        corpo += String.format("%-90s", documentoLayout.getNomeCliente());
+        corpo += String.format("%12d", documentoLayout.getValorFinanciamento());
+        corpo += String.format("%-20s", documentoLayout.getRegiao());
+        corpo += String.format("%2d", documentoLayout.getTempoFinanciamento());
         contRegDados++;
         gravaRegistro(nomeArq,corpo);
 
@@ -62,5 +75,4 @@ public class GravaArquivoController {
         trailer += String.format("%010d", contRegDados);
         gravaRegistro(nomeArq,trailer);
     }
-
 }

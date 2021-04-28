@@ -6,40 +6,65 @@ import '../assets/css/login.css';
 import { useHistory } from 'react-router';
 
 export default function Login() {
-    const history = useHistory();
 
+    const history = useHistory();
+    
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    
+    const[errorLogin, setErrorLogin] = useState(false)
 
-    const [errorLogin, setErrorLogin] = useState(false);
-
-    function validarLogin() {
+    async function validarLogin() {
         
+        let dataSimulacao = window.history.state.state.data;
+        console.log(dataSimulacao);
+        
+        let respostaSimulacao;
         if (email.trim() === "" || senha.trim() === "") {
             return;
         }
-
+        
+        
         const data = {
             email,
             senha,
         }
-
+        
         console.log(data);
-
-        api.post('/login', data, {
+        
+        await api.post('/financiamento', dataSimulacao, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+            'Accept': 'application/json'
+        }).then(e => {
+            console.log(e.data)
+            respostaSimulacao = e.data;
+            console.log(respostaSimulacao);
+        }).catch(e => {
+            console.error(e)
+        });
+        
+        await api.post('/login', data, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             console.log(e.data);
+            console.log(e.status);
             if (e.status === 200) {
-                history.push('/simulador');
+                history.push({
+                    pathname:'/simulador', 
+                    state: {data: respostaSimulacao}
+                });
             } else {
                 setErrorLogin(true);
             }
         }).catch(e => {
             console.error(e);
         });
+        
+        
     }
     
     return (
@@ -58,20 +83,16 @@ export default function Login() {
                     name="email"
                     onChange={(e) => setEmail(e.target.value)}
                 />
-
                 <h3>Senha:</h3>
                 <input
                     type="password"
                     name="senha"
                     onChange={(e) => setSenha(e.target.value)}
                 />
-                
                 <button className="bt" onClick={validarLogin}>
                     Entrar
                 </button>
-
             </div>
-
             <Footer />
     </>
     );

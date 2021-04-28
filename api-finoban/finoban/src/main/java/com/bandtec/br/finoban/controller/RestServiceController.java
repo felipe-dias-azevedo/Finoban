@@ -18,7 +18,7 @@ import java.util.*;
 
 @Service
 @RestController
-@RequestMapping("/teste")
+@RequestMapping("/api-finoban")
 public class RestServiceController {
 
     private final RestTemplate restTemplate;
@@ -30,12 +30,13 @@ public class RestServiceController {
 
     private ResponseEntity<RespostaApi> response;
 
-    public List<RespostaApi> retornaLista(BancoRequisicao novaRequisicao){
+    @PostMapping("/financiamento")
+    public List<RespostaApi> retornaLista(@RequestBody BancoRequisicao novaRequisicao){
 
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
-        listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento/");
+        listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento");
         listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
         listUrl.add("http://18.207.233.50:8000/openbanking/v1/financiamento");
 

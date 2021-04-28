@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.models;
+package com.bandtec.br.finoban.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
