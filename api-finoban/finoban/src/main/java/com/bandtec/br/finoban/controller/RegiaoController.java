@@ -19,7 +19,7 @@ public class RegiaoController {
     }
 
     @PostMapping
-    public ResponseEntity postRegioes(@RequestParam("token") String token, @RequestBody Regiao regiao) {
+    public ResponseEntity postRegiao(@RequestParam("token") String token, @RequestBody Regiao regiao) {
         System.out.println(token);
         if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
             return ResponseEntity.status(400).build();
