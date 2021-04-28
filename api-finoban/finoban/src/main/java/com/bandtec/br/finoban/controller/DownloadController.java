@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 public class DownloadController {
 
     @GetMapping(value = "/download-txt")
-    public HttpEntity<byte[]> download() throws IOException {
+    public HttpEntity<byte[]> downloadTxt() throws IOException {
 
         byte[] arquivo = Files.readAllBytes( Paths.get("target\\classes\\static\\financiamento.txt") );
 
