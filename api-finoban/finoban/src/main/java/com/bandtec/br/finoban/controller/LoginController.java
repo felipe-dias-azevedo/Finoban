@@ -1,7 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.models.Cadastro;
-import com.bandtec.br.finoban.models.DocumentoLayout;
+import com.bandtec.br.finoban.entidades.Cadastro;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.models.Login;
 import org.springframework.beans.factory.annotation.Autowired;

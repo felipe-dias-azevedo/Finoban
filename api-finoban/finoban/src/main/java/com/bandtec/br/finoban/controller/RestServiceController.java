@@ -36,7 +36,7 @@ public class RestServiceController {
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
-        listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento/");
+        listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento");
         listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
         listUrl.add("http://18.207.233.50:8000/openbanking/v1/financiamento");
 

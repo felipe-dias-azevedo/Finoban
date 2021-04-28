@@ -7,7 +7,7 @@ import api from '../services/api';
 
 export default function Cadastro() {
     const history = useHistory();
-
+    
     const [nome, setNome] = useState("");
     const [cnpj, setCnpj] = useState("");
     const [email, setEmail] = useState("");
@@ -16,20 +16,20 @@ export default function Cadastro() {
     const [cep, setCep] = useState("");
     const [numero, setNumero] = useState("");
     const [dataNasc, setDataNasc] = useState(new Date());
-
+    
     const [endereco, setEndereco] = useState("");
     const [dadosCep, setDadosCep] = useState({});
-
+    
     const [errorLogin, setErrorLogin] = useState(false);
-
+    
     function validarCep(event) {
         const cepDigitado = event.target.value
         setCep(cepDigitado);
-
+        
         if (cep.length !== 7) {
             return;
         }
-
+        
         axios.get(`https://viacep.com.br/ws/${cepDigitado}/json/`, {}, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -42,9 +42,9 @@ export default function Cadastro() {
             console.error(e);
         });
     }
-
+    
     function validarCadastro() {
-
+        
         if (
             nome.trim() === "" ||
             cnpj.trim() === "" ||
@@ -54,38 +54,38 @@ export default function Cadastro() {
             cep.trim() === "" ||
             numero.trim() === "" ||
             dataNasc.trim() === ""
-        ) { return; }
-
-        if (senha !== senhaConfirma) {
-            return;
-        }
-        
-        const data = {
-            nome,
-            cnpj,
-            email,
-            senha,
-            cep,
-            numero,
-            dataNasc,
-        }
-        
-        console.log(data);
-
-        api.post('/login', data, {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }).then(e => {
-            console.log(e.data);
-            if (e.status === 200) {
-                history.push('/login');
-            } else {
-                setErrorLogin(true);
+            ) { return; }
+            
+            if (senha !== senhaConfirma) {
+                return;
             }
-        }).catch(e => {
-            console.error(e);
-        });
+            
+            const data = {
+                nome,
+                cnpj,
+                email,
+                senha,
+                cep,
+                numero,
+                dataNasc,
+            }
+            
+            console.log(data);
+            
+            api.post('/cadastro', data, {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+            }).then(e => {
+                console.log(e.data);
+                if (e.status === 201) {
+                    history.push('/login');
+                } else {
+                    setErrorLogin(true);
+                }
+            }).catch(e => {
+                console.error(e);
+            });
     }
 
     return (
@@ -105,7 +105,7 @@ export default function Cadastro() {
                     onChange={(e) => setNome(e.target.value)}
                 />
 
-                <h3>CPF/CNPJ:</h3>
+                <h3>CNPJ:</h3>
                 <input
                     type="text"
                     name="cnpj"

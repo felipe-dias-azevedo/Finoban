@@ -11,9 +11,9 @@ export default function Login() {
     
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-
-    const [errorLogin, setErrorLogin] = useState(false);
     
+    const[errorLogin, setErrorLogin] = useState(false)
+
     async function validarLogin() {
         
         let dataSimulacao = window.history.state.state.data;
@@ -44,13 +44,14 @@ export default function Login() {
         }).catch(e => {
             console.error(e)
         });
-
+        
         await api.post('/login', data, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             console.log(e.data);
+            console.log(e.status);
             if (e.status === 200) {
                 history.push({
                     pathname:'/simulador', 

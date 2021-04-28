@@ -2,13 +2,29 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.models.DocumentoLayout;
 import com.bandtec.br.finoban.models.ListaObj;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
 
+@RestController
+@RequestMapping("/api-finoban/gravar")
 public class GravaCsvController {
+
+    @PostMapping("/csv")
+    public ResponseEntity postRegistro(@RequestBody DocumentoLayout documentoLayout) {
+        ListaObj<DocumentoLayout> lista = new ListaObj<DocumentoLayout>(1);
+        lista.adiciona(documentoLayout);
+        gravaLista(lista,"financiamento");
+        return ResponseEntity.status(201).build();
+    }
+
 
     public static void gravaLista(ListaObj<DocumentoLayout> lista, String nomeArquivo) {
         FileWriter arq = null;
@@ -51,20 +67,4 @@ public class GravaCsvController {
             }
         }
     }
-
-    public static void main(String[] args) {
-        ListaObj<DocumentoLayout> lista = new ListaObj<DocumentoLayout>(5);
-        lista.adiciona (new DocumentoLayout("Presil", "Maria José",
-                600000, "São Paulo", 30));
-        lista.adiciona (new DocumentoLayout("S16Bank", "Ricardo Silva",
-                400000, "Lapa", 20));
-        lista.adiciona (new DocumentoLayout("Sifra", "Rogério Nunes",
-                300000, "Jardins", 10));
-        lista.adiciona (new DocumentoLayout("Presil", "Ricardo Perez",
-                70000, "Tatuapé", 05));
-
-        gravaLista(lista,"target\\classes\\static\\financiamento");
-
-    }
-
 }

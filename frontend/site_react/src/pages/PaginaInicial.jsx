@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { BiChevronDownCircle } from 'react-icons/bi';
 import { IoChevronBack } from 'react-icons/io5';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import api from '../services/api';
 
 function PaginaInicial() {
 
@@ -17,15 +17,36 @@ function PaginaInicial() {
     const [renda, setRenda] = useState("")
     const [valorImovel, setValorImovel] = useState("")
     const [tempoFinanciamento, setTempoFinanciamento] = useState("")
+    const [imoveisList, setImoveisList] = useState([]);
 
+    useEffect(() => {
+        api.get('/regioes').then(e => {
+            const imoveis = e.data;
+            if (e.status === 200) {
+                setImoveisList(imoveis);
+            }
+        }).catch(e => {
+            console.error(e);
+        })
+    }, [])
 
     function irParaSimulador() {
+        
+        if (
+            cnpj.trim() === "" ||
+            renda.trim() === "" ||
+            valorImovel.trim() === "" ||
+            tempoFinanciamento.trim() === ""
+        ) { return; }
+
         const dataSimulador = {
             cnpj,
             renda,
             valorImovel,
             tempoFinanciamento
         };
+
+        console.log(dataSimulador);
 
         history.push({
             pathname:'/login', 
@@ -96,11 +117,23 @@ function PaginaInicial() {
                                             :
                                             <>
                                                 <p id="mudar">Região</p>
-                                                <input
-                                                    id="regiao"
-                                                    type="text"
-                                                    placeholder="ex:Vila Madalena"
-                                                />
+                                                <select
+                                                    id="select-imoveis"
+                                                    onChange={(e) => {setValorImovel(e.target.value)}}
+                                                >
+                                                    <option value="">--Selecione--</option>
+
+                                                    {imoveisList.map(imovel => {
+                                                        return (
+                                                            <option
+                                                                key={imovel.idRegiao}
+                                                                value={imovel.valorRegiao}
+                                                            >
+                                                                {imovel.descricaoRegiao}
+                                                            </option>
+                                                        )
+                                                    })}
+                                                </select>
                                             </>
                                     }
                                 </section>

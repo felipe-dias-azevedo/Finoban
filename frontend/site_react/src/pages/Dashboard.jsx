@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CampoItem from '../components/CampoItem';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { RangeStepInput } from 'react-range-step-input';
 import GoogleChart from '../components/GoogleChart';
+import { useHistory } from 'react-router';
 
 function Dashboard() {
+    const history = useHistory();
 
     const anoInicial = 2021;
-    const anoFinal = anoInicial + 30;
-    const [value, setValue] = React.useState((anoInicial + anoFinal) / 2);
-
-    function onChange(e) {
-        const newVal = e.target.value;
-        setValue(newVal);
-    }
+    const anoFinal = anoInicial + 35;
+    const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
     return (
         <>
@@ -30,7 +27,9 @@ function Dashboard() {
                 <RangeStepInput
                     min={anoInicial} max={anoFinal}
                     value={value} step={1}
-                    onChange={onChange.bind(this)}
+                    onChange={(e) => {
+                        setValue(e.target.value);
+                    }}
                 />
                 <span className="anoFin"> {value} </span>
 
@@ -64,7 +63,9 @@ function Dashboard() {
                     </div>
                 </div>
                 <div className="box-campos">
-                    <button className="botao">Salvar e Baixar PDF</button>
+                    <a href="http://localhost:8080/api-finoban/download/txt" className="botao">
+                        Salvar e Baixar TXT
+                    </a>
                     <button className="botao">Gostei, quero contratar</button>
                 </div>
             </div>
