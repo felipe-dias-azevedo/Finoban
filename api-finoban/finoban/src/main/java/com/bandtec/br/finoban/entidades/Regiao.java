@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Regiao {
@@ -16,7 +17,7 @@ public class Regiao {
 
     private Integer valorRegiao;
 
-    private LocalDate dataCraw;
+    private LocalDateTime dataCraw;
 
     public Integer getIdRegiao() {
         return idRegiao;
@@ -42,11 +43,11 @@ public class Regiao {
         this.valorRegiao = valorRegiao;
     }
 
-    public LocalDate getDataCraw() {
+    public LocalDateTime getDataCraw() {
         return dataCraw;
     }
 
-    public void setDataCraw(LocalDate dataCraw) {
+    public void setDataCraw(LocalDateTime dataCraw) {
         this.dataCraw = dataCraw;
     }
 }

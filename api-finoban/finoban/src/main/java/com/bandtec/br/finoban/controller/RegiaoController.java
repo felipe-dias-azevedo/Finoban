@@ -15,7 +15,7 @@ public class RegiaoController {
 
     @GetMapping
     public ResponseEntity getRegioes() {
-        return ResponseEntity.status(200).body(repository.findAllByOrderByIdRegiao());
+        return ResponseEntity.status(200).body(repository.findAllRegiaoLatest());
     }
 
     @PostMapping
