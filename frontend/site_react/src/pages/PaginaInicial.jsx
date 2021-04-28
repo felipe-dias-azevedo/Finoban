@@ -17,25 +17,36 @@ function PaginaInicial() {
     const [renda, setRenda] = useState("")
     const [valorImovel, setValorImovel] = useState("")
     const [tempoFinanciamento, setTempoFinanciamento] = useState("")
+    const [imoveisList, setImoveisList] = useState([]);
 
-    // useEffect(() => {
-    //     api.get('/regioes').then(e => {
-    //         if (e.status === 200) {
-
-    //         }
-    //         descricaoRegiao
-    //     }).catch(e => {
-    //         console.error(e);
-    //     })
-    // }, [])
+    useEffect(() => {
+        api.get('/regioes').then(e => {
+            const imoveis = e.data;
+            if (e.status === 200) {
+                setImoveisList(imoveis);
+            }
+        }).catch(e => {
+            console.error(e);
+        })
+    }, [])
 
     function irParaSimulador() {
+        
+        if (
+            cnpj.trim() === "" ||
+            renda.trim() === "" ||
+            valorImovel.trim() === "" ||
+            tempoFinanciamento.trim() === ""
+        ) { return; }
+
         const dataSimulador = {
             cnpj,
             renda,
             valorImovel,
             tempoFinanciamento
         };
+
+        console.log(dataSimulador);
 
         history.push({
             pathname:'/login', 
@@ -106,9 +117,22 @@ function PaginaInicial() {
                                             :
                                             <>
                                                 <p id="mudar">Região</p>
-                                                <select name="" id="mudar">
-                                                    <option value="">Selecione</option>
-                                                    
+                                                <select
+                                                    id="select-imoveis"
+                                                    onChange={(e) => {setValorImovel(e.target.value)}}
+                                                >
+                                                    <option value="">--Selecione--</option>
+
+                                                    {imoveisList.map(imovel => {
+                                                        return (
+                                                            <option
+                                                                key={imovel.idRegiao}
+                                                                value={imovel.valorRegiao}
+                                                            >
+                                                                {imovel.descricaoRegiao}
+                                                            </option>
+                                                        )
+                                                    })}
                                                 </select>
                                             </>
                                     }

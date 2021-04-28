@@ -16,7 +16,7 @@ public class DownloadController {
     @GetMapping(value = "/txt")
     public HttpEntity<byte[]> download() throws IOException {
 
-        byte[] arquivo = Files.readAllBytes( Paths.get("target\\classes\\static\\financiamento.txt") );
+        byte[] arquivo = Files.readAllBytes( Paths.get("financiamento.txt") );
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -30,7 +30,7 @@ public class DownloadController {
     @GetMapping(value = "/csv")
     public HttpEntity<byte[]> downloadCsv() throws IOException {
 
-        byte[] arquivo = Files.readAllBytes( Paths.get("target\\classes\\static\\financiamento.csv") );
+        byte[] arquivo = Files.readAllBytes( Paths.get("financiamento.csv") );
 
         HttpHeaders httpHeaders = new HttpHeaders();
 

@@ -21,7 +21,7 @@ public class GravaCsvController {
     public ResponseEntity postRegistro(@RequestBody DocumentoLayout documentoLayout) {
         ListaObj<DocumentoLayout> lista = new ListaObj<DocumentoLayout>(1);
         lista.adiciona(documentoLayout);
-        gravaLista(lista,"target\\classes\\static\\financiamento");
+        gravaLista(lista,"financiamento");
         return ResponseEntity.status(201).build();
     }
 
