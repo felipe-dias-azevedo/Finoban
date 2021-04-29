@@ -120,9 +120,10 @@ export default function Cadastro() {
                     id="nome_cadastro"
                     onChange={(e) => setEmail(e.target.value)}
                 />
-
-                <h3>Senha:</h3>
-                <p>Conter no mínimo 6 caracteres</p>
+                <div className="parent-label-login">
+                    <h3>Senha:</h3>
+                    <p>Conter no mínimo 6 caracteres</p>
+                </div>
                 <input
                     type="password"
                     name="senha"
