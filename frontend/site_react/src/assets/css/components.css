@@ -47,6 +47,7 @@
   
   .menu .pt2 a{
     color: #4c626b;
+    font-weight: bold;
   }
 
   /* Footer */
@@ -82,6 +83,10 @@
   }
   .rodape section h3{
     margin-top: 10px;
+  }
+
+  .rodape section h1 {
+    line-height: 1em;
   }
   
   .logo {

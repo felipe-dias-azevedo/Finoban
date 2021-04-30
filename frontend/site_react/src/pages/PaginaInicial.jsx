@@ -110,7 +110,7 @@ function PaginaInicial() {
                                                 <input
                                                     id="valor"
                                                     type="text"
-                                                    placeholder="ex:600000,00"
+                                                    placeholder="ex: 600000,00"
                                                     onChange={(e => setValorImovel(e.target.value))}
                                                 />
                                             </>
@@ -138,16 +138,16 @@ function PaginaInicial() {
                                     }
                                 </section>
                                 <section>
-                                    <p>Tempo do financiamento (anos)</p>
+                                    <p>Tempo do financiamento</p>
                                     <input t
                                         ype="text"
-                                        placeholder="ex:30"
+                                        placeholder="ex: 30"
                                         onChange={(e => setTempoFinanciamento(e.target.value))}
                                     />
                                 </section>
                                 <section>
-                                    <p>Porcentagem de Renda (max:20)</p>
-                                    <input type="ex:15" placeholder="ex:15" />
+                                    <p>Porcentagem de Renda</p>
+                                    <input type="text" placeholder="ex: 15" />
                                 </section>
                                 <section>
                                 </section>

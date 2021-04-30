@@ -5,8 +5,34 @@ import Footer from '../components/Footer';
 
 function Simulador() {
 
-    let data = window.history.state.state.data;
-    console.log(data);
+    let data = window.history;
+    if (!data.state) {
+        data = [
+            data = {
+                data: {
+                    taxaTotal: 0.19,
+                    dfi: 0.0008,
+                    mip: 0.0012,
+                }
+            },
+            data = {
+                data: {
+                    taxaTotal: 0.07,
+                    dfi: 0.0008,
+                    mip: 0.0012,
+                }
+            },
+            data = {
+                data: {
+                    taxaTotal: 7,
+                    dfi: 0.008,
+                    mip: 0.012,
+                }
+            }
+        ];
+    } else {
+        data = data.state.state.data;
+    }
     
     return (
         <>
