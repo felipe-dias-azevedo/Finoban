@@ -1,0 +1,83 @@
+import React from 'react';
+import Chart from './components/Chart';
+import DraggableChart from './components/DraggableChart';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { Chart as ChartGoogle } from "react-google-charts";
+
+function App() {
+    
+
+    return (
+        <div id="app">
+            <DndProvider backend={HTML5Backend}>
+                TEXTO
+            </DndProvider>
+            <div className="chart-holder">
+                <Chart giant>
+                    <DraggableChart id="chart1">
+                        <h2>Grafico X</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart giant>
+                    <DraggableChart id="chart2">
+                        <h2>Grafico Y</h2>
+                    </DraggableChart>
+                </Chart>
+            </div>
+            <div className="chart-holder">
+                <Chart>
+                    <DraggableChart id="chart3">
+                        <h2>Grafico Z</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart4">
+                        <h2>Grafico A</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart5">
+                        <h2>Grafico B</h2>
+                    </DraggableChart>
+                </Chart>
+            </div>
+            <div className="chart-holder">
+                <Chart>
+                    <DraggableChart id="chart6">
+                        <h2>Grafico C</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart7">
+                        <h2>Grafico D</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart8">
+                        <h2>Grafico E</h2>
+                    </DraggableChart>
+                </Chart>
+            </div>
+            <div className="chart-holder">
+                <Chart>
+                    <DraggableChart id="chart9">
+                        <h2>Grafico F</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart10">
+                        <h2>Grafico G</h2>
+                    </DraggableChart>
+                </Chart>
+                <Chart>
+                    <DraggableChart id="chart11">
+                        <h2>Grafico H</h2>
+                    </DraggableChart>
+                </Chart>
+            </div>
+        </div>
+    );
+}
+
+export default App;
