@@ -161,10 +161,7 @@ for(i in 1:n){
 
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r)
-
-
-
+df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida)
 
 df
 ```
@@ -184,27 +181,19 @@ barplot(table(avaliacao.r),
 
 
 ```{r}
-#tm <- as.POSIXct("25072013 08:32:07", format = "%d%m%Y %H:%M:%S")
-#tm <- Sys.time()
-#tm <- sample(seq(Sys.Time('2021/01/01 00:00:00 -03'), Sys.time(), by="day"), 10)
-#tm <- sample(seq(as.Date('2021/01/01'), as.Date('2021/06/01'), by="day"), 10)
-tm
-# tm <- rdate <- function(x,
-#                   min = paste0(format(Sys.Date(), '%Y'), '-01-01'),
-#                   max = paste0(format(Sys.Date(), '%Y'), '-12-31'),
-#                   sort = TRUE) {
-# 
-#   dates <- sample(seq(as.Date(min), as.Date(max), by = "day"), x, replace = TRUE)
-#   if (sort == TRUE) {
-#     sort(dates)
-#   } else {
-#     dates
-#   }
-# 
-# }
-# rdate(12)
-
-#random_datetime(10, st = "2015/01/01", et = "2015/12/31")
+set.seed(123)
+varianciaTempoAcesso <-round(rnorm(n,180,120))
+dataHoraEntrada <- c()
+dataHoraSaida <- c()
+now <- Sys.time()
+now
+for(i in 1:n){
+  dataHoraEntrada[i] <- as.character(now)
+  dataHoraSaida[i] <- as.character(now + varianciaTempoAcesso[i])
+}
+varianciaTempoAcesso
+dataHoraEntrada
+dataHoraSaida
 
 ```
 
