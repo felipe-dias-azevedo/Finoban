@@ -9,7 +9,6 @@ img {
 #app {
     height: auto;
     width: auto;
-    display: grid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,13 +20,12 @@ img {
     height: 16rem;
     width: 90%;
     border-radius: 16px;
-    /* background-color: rgba(55, 195, 255, 0.9); */
 }
 
 .chart-holder {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .chart {
@@ -49,9 +47,9 @@ img {
 }
 
 .giant-chart {
-    width: 45%;
+    width: 48%;
 }
 
 .tiny-chart {
-    width: 30%;
+    width: 32%;
 }
