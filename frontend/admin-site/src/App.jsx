@@ -3,16 +3,29 @@ import ChartHolder from './components/ChartHolder';
 import MovableItem from './components/MovableItem';
 import chartsPreset from './chartsPreset';
 import Chart from './components/Chart';
+import Switch from "react-switch";
 
 function App() {
 
     const [charts, setCharts] = useState(chartsPreset);
+    const [chartsVisible, setChartsVisible] = useState([
+        true,true,true,true,true,true,true,true,true,true,true
+    ]);
+
+    function handleSwitch(index) {
+        setChartsVisible( prevState => {
+            const coppyChartsVisible = [...prevState];
+            coppyChartsVisible[index] = !coppyChartsVisible[index];
+            return coppyChartsVisible;
+        });
+        console.log(chartsVisible);
+    }
 
     function returnChart(index) {
         let chart = charts[index];
         return (
             <MovableItem id={chart.id} name={chart.name} setCharts={setCharts} moveCard={moveCardHandler}>
-                <Chart id={chart.id} />
+                <Chart id={chart.graphic} />
             </MovableItem>
         )
     }
@@ -23,57 +36,64 @@ function App() {
 
         if (dragItem) {
             setCharts((prevState => {
-                const coppiedStateArray = [...prevState];
+                const coppyChart = [...prevState];
 
-                const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragItem);
+                // const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragItem);
+                // coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
+                const oldChart = coppyChart[hoverIndex];
+                coppyChart[hoverIndex] = coppyChart[dragIndex];
+                coppyChart[dragIndex] = oldChart;
 
-                coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
-
-                return coppiedStateArray;
+                return coppyChart;
             }));
         }
     }
 
     return (
         <div id="app">
+
+            <Switch onChange={() => {handleSwitch(0)}} checked={chartsVisible[0]} />
+
             <div className="chart-holder">
-                <ChartHolder giant id={charts[0].id} moveCard={moveCardHandler}>
-                    {returnChart(0)}
-                </ChartHolder>
-                <ChartHolder giant id={charts[1].id} moveCard={moveCardHandler}>
+                {chartsVisible[0] && (
+                    <ChartHolder giant id={0} moveCard={moveCardHandler}>
+                        {returnChart(0)}
+                    </ChartHolder>
+                )}
+                <ChartHolder giant id={1} moveCard={moveCardHandler}>
                     {returnChart(1)}
                 </ChartHolder>
             </div>
             <div className="chart-holder">
-                <ChartHolder id={charts[2].id} moveCard={moveCardHandler}>
+                <ChartHolder id={2} moveCard={moveCardHandler}>
                     {returnChart(2)}
                 </ChartHolder>
-                <ChartHolder id={charts[3].id} moveCard={moveCardHandler}>
+                <ChartHolder id={3} moveCard={moveCardHandler}>
                     {returnChart(3)}
                 </ChartHolder>
-                <ChartHolder id={charts[4].id} moveCard={moveCardHandler}>
+                <ChartHolder id={4} moveCard={moveCardHandler}>
                     {returnChart(4)}
                 </ChartHolder>
             </div>
             <div className="chart-holder">
-                <ChartHolder id={charts[5].id} moveCard={moveCardHandler}>
+                <ChartHolder id={5} moveCard={moveCardHandler}>
                     {returnChart(5)}
                 </ChartHolder>
-                <ChartHolder id={charts[6].id} moveCard={moveCardHandler}>
+                <ChartHolder id={6} moveCard={moveCardHandler}>
                     {returnChart(6)}
                 </ChartHolder>
-                <ChartHolder id={charts[7].id} moveCard={moveCardHandler}>
+                <ChartHolder id={7} moveCard={moveCardHandler}>
                     {returnChart(7)}
                 </ChartHolder>
             </div>
             <div className="chart-holder">
-                <ChartHolder id={charts[8].id} moveCard={moveCardHandler}>
+                <ChartHolder id={8} moveCard={moveCardHandler}>
                     {returnChart(8)}
                 </ChartHolder>
-                <ChartHolder id={charts[9].id} moveCard={moveCardHandler}>
+                <ChartHolder id={9} moveCard={moveCardHandler}>
                     {returnChart(9)}
                 </ChartHolder>
-                <ChartHolder id={charts[10].id} moveCard={moveCardHandler}>
+                <ChartHolder id={10} moveCard={moveCardHandler}>
                     {returnChart(10)}
                 </ChartHolder>
             </div>

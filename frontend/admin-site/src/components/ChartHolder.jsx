@@ -6,7 +6,7 @@ function ChartHolder({children, id, giant, moveCard}) {
     const [, dropRef] = useDrop({
         accept: "CHART",
         drop: (item) => {
-            moveCard(item.id-1, id-1);
+            moveCard(item.id, id);
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
