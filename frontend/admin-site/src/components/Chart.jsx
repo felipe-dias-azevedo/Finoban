@@ -8,14 +8,14 @@ function Chart({id}) {
                 <GoogleChart
                     chartType="ScatterChart"
                     data={[["Age", "Weight"], [4, 5.5], [8, 12]]}
-                    height={'100%'}
+                    width={'100%'}
                     legendToggle
                 />
             );
         case 2:
             return (
                 <GoogleChart
-                    height={'100%'}
+                    width={'100%'}
                     chartType="Histogram"
                     loader={<div>Loading Chart</div>}
                     data={[

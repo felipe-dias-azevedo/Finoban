@@ -15,11 +15,64 @@ img {
     flex-direction: column;
 }
 
+.title-site {
+    margin-top: 1rem;
+    width: 90%;
+    height: 8rem;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle-site {
+    margin: 0.4rem;
+    height: 12rem;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #app > div {
     margin: 0.4rem;
     height: 16rem;
     width: 90%;
     border-radius: 16px;
+}
+
+.title-holder {
+    height: 8rem;
+    width: 32%;
+    padding: 0.2rem;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.switches {
+    margin-top: 1.2rem;
+    display: flex;
+}
+
+.switch-holder {
+    margin-right: 6px;
+    margin-left: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.switch-holder > h3 {
+    font-size: 12px;
+    margin-bottom: 8px;
 }
 
 .chart-holder {
@@ -47,7 +100,7 @@ img {
 }
 
 .giant-chart {
-    width: 48%;
+    width: 49%;
 }
 
 .tiny-chart {
