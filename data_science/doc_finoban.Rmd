@@ -124,7 +124,7 @@ valorImovel
 
 ```{r}
 set.seed(123)
-renda <- round(rnorm(n,6000,1000),2)
+renda <- round(rnorm(n,5000,1000),2)
 renda
 ```
 
@@ -142,10 +142,11 @@ banco.r
 set.seed(123)
 avaliacao <-round(runif(n,1,3))
 avaliacao.r <- factor(avaliacao,
-                    levels = c(0,1,2),
-                    labels = c("positiva","negativa","n/ avaliado")
+                    levels = c(1,2,3),
+                    labels = c("negativa","positiva","n/ avaliado")
                     )
 avaliacao.r
+plot( as.factor( avaliacao.r )) 
 ```
 
 ```{r}
@@ -161,7 +162,28 @@ for(i in 1:n){
 
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida)
+set.seed(123)
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+varianciaTempoAvaliacao <-round(rnorm(n,60,30))
+dataHoraEntrada <- c()
+dataHoraSaida <- c()
+dataHoraAvaliacao <- c()
+now <- Sys.time()
+for(i in 1:n){
+  dataHoraEntrada[i] <- as.character(now)
+  dataHoraSaida[i] <- as.character(now + varianciaTempoAcesso[i])
+  dataHoraAvaliacao[i] <- as.character((now + varianciaTempoAcesso[i]) -    varianciaTempoAvaliacao[i])
+}
+varianciaTempoAcesso
+dataHoraEntrada
+dataHoraSaida
+dataHoraAvaliacao
+
+```
+
+
+```{r}
+df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao)
 
 df
 ```
@@ -181,19 +203,15 @@ barplot(table(avaliacao.r),
 
 
 ```{r}
-set.seed(123)
-varianciaTempoAcesso <-round(rnorm(n,180,120))
-dataHoraEntrada <- c()
-dataHoraSaida <- c()
-now <- Sys.time()
-now
-for(i in 1:n){
-  dataHoraEntrada[i] <- as.character(now)
-  dataHoraSaida[i] <- as.character(now + varianciaTempoAcesso[i])
-}
-varianciaTempoAcesso
-dataHoraEntrada
-dataHoraSaida
+#install.packages(c("tm", "SnowballC", "wordcloud", "RColorBrewer", "RCurl", #"XML"))
 
+
+#source('http://www.sthda.com/upload/rquery_wordcloud.r')
+filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
+
+res<-rquery.wordcloud(filePath, type ="file", lang = "english",
+                      colorPalette = "RdBu")
 ```
+
+
 
