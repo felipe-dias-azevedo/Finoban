@@ -23,7 +23,7 @@ const MovableItem = ({children, id, name}) => {
             id={id}
             style={{ opacity, cursor }}
         >
-            <h2>{name}</h2>
+            <h3>{name}</h3>
             <div>
                 {children}
             </div>
