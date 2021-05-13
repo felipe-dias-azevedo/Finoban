@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.entidades.Cadastro;
+import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.models.Login;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity novoLogin(@RequestBody Login novoLogin) {
 
-        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
+        Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
 
         if (verificaEmail == null) {
             return ResponseEntity.status(204).body("Email não encontrado");
@@ -53,7 +53,7 @@ public class LoginController {
             }
         }
 
-        Cadastro verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
+        Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
 
         String resultado = String.format("%s, você foi deslogado com sucesso!", verificaEmail.getNome());
 

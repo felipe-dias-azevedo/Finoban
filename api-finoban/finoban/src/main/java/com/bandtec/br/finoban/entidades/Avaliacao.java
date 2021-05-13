@@ -1,51 +1,52 @@
 package com.bandtec.br.finoban.entidades;
 
+import com.bandtec.br.finoban.enums.AvalPositivoEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "avaliacao")
 public class Avaliacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer avalPositivo;
+    private Integer idAvaliacao;
+    private AvalPositivoEnum avalPositivo; // enum
+
     private String feedbackAval;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataAval;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "fk_cliente", nullable = false)
-//    private Cadastro cadastro;
+    @OneToOne
+    @JoinColumn(name = "fk_acesso")
+    private Acesso fkAcesso;
 
-    public Avaliacao(Integer avalPositivo, String feedbackAval, LocalDateTime dataAval) {
-        this.avalPositivo = avalPositivo;
-        this.feedbackAval = feedbackAval;
-        this.dataAval = dataAval;
+    public Integer getIdAvaliacao() {
+        return idAvaliacao;
     }
 
-    public Avaliacao() {
-
+    public void setIdAvaliacao(Integer idAvaliacao) {
+        this.idAvaliacao = idAvaliacao;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getAvalPositivo() {
+    public AvalPositivoEnum getAvalPositivo() {
         return avalPositivo;
     }
 
-    public void setAvalPositivo(Integer avalPositivo) {
-        this.avalPositivo = avalPositivo;
+    public void setAvalPositivo(Object avalPositivo) {
+        if (avalPositivo.getClass().equals(String.class)) {
+            this.avalPositivo = AvalPositivoEnum.getAvaliacaoEnum((String) avalPositivo);
+        } else {
+            this.avalPositivo = AvalPositivoEnum.getAvaliacaoEnum((int) avalPositivo);
+        }
     }
 
     public String getFeedbackAval() {
@@ -63,4 +64,13 @@ public class Avaliacao implements Serializable {
     public void setDataAval(LocalDateTime dataAval) {
         this.dataAval = dataAval;
     }
+
+    public Acesso getFkAcesso() {
+        return fkAcesso;
+    }
+
+    public void setFkAcesso(Acesso fkAcesso) {
+        this.fkAcesso = fkAcesso;
+    }
+
 }
