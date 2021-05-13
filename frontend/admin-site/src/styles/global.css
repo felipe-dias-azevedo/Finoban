@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #181818;
+    background: #f0f0f0;
+}
+
+body, input, button, textarea {
+    text-align: center;
+    font-weight: 300;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: 300;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    font-size: 1.05em;
+    font-weight: 300;
+}
