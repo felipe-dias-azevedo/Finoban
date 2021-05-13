@@ -143,7 +143,7 @@ set.seed(123)
 avaliacao <-round(runif(n,1,3))
 avaliacao.r <- factor(avaliacao,
                     levels = c(1,2,3),
-                    labels = c("negativa","positiva","n/ avaliado")
+                    labels = c("positiva","negativa","n/ avaliado")
                     )
 avaliacao.r
 plot( as.factor( avaliacao.r )) 
@@ -181,9 +181,34 @@ dataHoraAvaliacao
 
 ```
 
+```{r}
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("dash","hub","cadastro","login","home")
+)
+paginaSaida.r
+plot( as.factor( paginaSaida.r )) 
+```
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao)
+
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+statusSaida <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("100%","80%","40%","60%","20%")
+)
+statusSaida
+plot( as.factor( statusSaida )) 
+
+
+```
+
+
+```{r}
+df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,paginaSaida.r,statusSaida)
 
 df
 ```
@@ -211,7 +236,7 @@ filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-
 
 res<-rquery.wordcloud(filePath, type ="file", lang = "english",
                       colorPalette = "RdBu")
-```
+
 
 
 
