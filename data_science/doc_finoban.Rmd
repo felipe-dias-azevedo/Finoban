@@ -219,7 +219,7 @@ plot( as.factor( statusSaida ))
 
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,paginaSaida.r,statusSaida)
+df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,paginaSaida.r,statusSaida,paginaSaida)
 
 df
 ```
@@ -247,6 +247,43 @@ filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-
 
 res<-rquery.wordcloud(filePath, type ="file", lang = "english",
                       colorPalette = "RdBu")
+
+
+```
+
+```{r}
+write.table(df,"C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\teste.csv", row.names = FALSE)
+```
+
+```{r}
+##valor de imovel/renda
+
+plot(renda,valorImovel,main = "imovel/renda", xlab = "valor do imovel",ylab = "renda", pch=1)
+
+cor.test(renda,valorImovel)
+
+
+```
+
+```{r}
+plot(valorImovel,idade,
+     main = "Diagrama de Dispersão",
+     xlab = "valor do imovel",
+     ylab = "idade",
+     pch = 20,
+     col = "green")
+
+
+
+hist(renda,valorImovel, breaks = 10, col = "orange", main = "Histogram of Tree heights", xlab = "Height Bin")
+```
+
+
+
+
+
+
+
 
 
 
