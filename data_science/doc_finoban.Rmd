@@ -139,7 +139,7 @@ banco.r
 ```
 
 ```{r}
-set.seed(123)
+set.seed(124)
 avaliacao <-round(runif(n,1,3))
 avaliacao.r <- factor(avaliacao,
                     levels = c(1,2,3),
@@ -198,12 +198,23 @@ set.seed(123)
 paginaSaida <-round(runif(n,1,5))
 statusSaida <- factor(paginaSaida,
                         levels = c(1,2,3,4,5),
-                        labels = c("100%","80%","40%","60%","20%")
+                        labels = c("1","0","0","0","0")
 )
 statusSaida
 plot( as.factor( statusSaida )) 
 
 
+```
+
+```{r}
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+statusSaida <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("100%","80%","60%","40%","20%")
+)
+statusSaida
+plot( as.factor( statusSaida )) 
 ```
 
 
@@ -228,10 +239,10 @@ barplot(table(avaliacao.r),
 
 
 ```{r}
-#install.packages(c("tm", "SnowballC", "wordcloud", "RColorBrewer", "RCurl", #"XML"))
+install.packages(c("tm", "SnowballC", "wordcloud", "RColorBrewer", "RCurl", #"XML"))
 
 
-#source('http://www.sthda.com/upload/rquery_wordcloud.r')
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
 filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
 
 res<-rquery.wordcloud(filePath, type ="file", lang = "english",
