@@ -48,8 +48,9 @@ public class CadastroController {
                 avaliacaoRepository.save(novaAvaliacao);
                 return ResponseEntity.status(201).build();
             } else {
-                return ResponseEntity.status(404).body(new ResponseGeneric("Requisição não conluída",
-                        Collections.singletonList("Não encontramos nenhum acesso com este Id")));
+                return ResponseEntity.status(404)
+                        .body(new ResponseGeneric("Não encontramos nenhum acesso com este Id",
+                        null));
             }
         } else if(novaAvaliacao.getAvalPositivo() != null && novaAvaliacao.getFeedbackAval() == null) {
             return ResponseEntity.status(400).body(new ResponseGeneric("feedbackAval não pode ser nulo",
