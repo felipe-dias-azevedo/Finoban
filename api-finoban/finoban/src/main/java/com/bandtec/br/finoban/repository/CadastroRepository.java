@@ -1,10 +1,10 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Cadastro;
+import com.bandtec.br.finoban.entidades.Usuario;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CadastroRepository extends CrudRepository <Cadastro, Integer> {
+public interface CadastroRepository extends CrudRepository <Usuario, Integer> {
 
-    Cadastro findByEmailContaining(String email);
+    Usuario findByEmailContaining(String email);
 
 }

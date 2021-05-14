@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cliente")
-public class Cadastro implements Serializable {
+public class Usuario implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +31,11 @@ public class Cadastro implements Serializable {
 //            cascade = CascadeType.ALL)
 //        private Set<Avaliacao> avaliacoes;
 
-        public Cadastro() {
+        public Usuario() {
 
         }
 
-    public Cadastro(String cnpj, String nome, String email, String senha, String cep, Integer numero) {
+    public Usuario(String cnpj, String nome, String email, String senha, String cep, Integer numero) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.email = email;
