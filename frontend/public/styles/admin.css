@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content > .modal-tittle-admin {
+    width: 60%;
+    height: 101px;
+    margin-top: 2%;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.content > .modal-tittle-admin > h1 {
+    text-align: center;
+    justify-content: center;
+    font-weight: 400;
+    margin-top: 3%;
+    color: #3A5B62;
+}
+
+.content > .modal-content-admin{
+    margin-top: 2%;
+    border-radius: 12px;
+    float: left;
+    width: 93%;
+    height: 1185px;
+    background-color: white;
+    box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+}
+.content > .modal-content-admin > .welcome-admin {
+    background-color: #3A5B62;
+    padding: 10px 0;
+    border-radius: 12px 12px 0 0;
+    text-indent: 12px;
+}
+.content > .modal-content-admin > .welcome-admin h3{
+    color:  white;
+    font-weight: 300;
+    font-size: 30px;
+}
+.content > .modal-content-admin > .welcome-admin > h3 > span {
+    font-weight: bold;
+}
+
+.content > .modal-content-admin > .content-dates {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.content > .modal-content-admin > .content-dates > .menu {
+    height: 100%;
+    width: 96%;
+    margin-left: 2%;
+    text-align: center;
+}
+.content > .modal-content-admin > .content-dates > .menu > ul {
+    margin-top: 6%;
+    list-style: none;
+}
+
+.content > .modal-content-admin > .content-dates > .menu > ul > li {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+    margin-bottom: 4%;
+    border-radius: 12px;
+    color: #3A5B62;
+    font-size: 24px;
+}
+
+.content > .modal-content-admin > .content-dates > .menu > ul > #selected {
+    background-color: #3A5B62 !important;
+    color: white;
+}
+
+.content > .modal-content-admin > .content-dates > .dates {
+    width: 100%;
+    height: 100%;
+    border-left: #000000 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .quantity-clients {
+    margin-top: 2%;
+    border-radius: 12px;
+    text-align: center;
+    width: 95%;
+    height: 83px;
+    background-color: white;
+    box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .quantity-clients > h1{
+    text-indent: 10px;
+    margin-top: 2%;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .quantity-clients > h1 > span {
+    border-left: 1px solid black;
+    margin-right: 4%;
+    float: right;
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .clients {
+    width: 95%;
+    height: 851px;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 2%;
+    box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .clients > .client a{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid black;
+    /* border-bottom-width: ; */
+    padding-bottom: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.content > .modal-content-admin > .content-dates > .dates > .clients > .client > a h3 {
+    font-weight: 400;
+    text-indent: 7%;
+    margin-top: 6%;
+    font-size: 26px;
+}
+.content > .modal-content-admin > .content-dates > .dates > .button-insert-client {
+    margin-left: 70%;
+    margin-top: 2%;
+    padding: 12px 40px;
+    border-radius: 12px;
+    font-size: 20px;
+    background-color: #3A5B62;
+    color: white;
+    font-weight: 500;
+    border: none;
+    transition: 0.5s all;
+}
+.content > .modal-content-admin > .content-dates > .dates > .button-insert-client:hover {
+    background-color: white;
+    color: #3A5B62;
+    border: #3A5B62 1px solid;
+}
+
