@@ -42,6 +42,8 @@ body {
     height: 1185px;
     background-color: white;
     box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
+    height: 100% !important;
+    margin-bottom: 2%;
 }
 .content > .modal-content-admin > .welcome-admin {
     background-color: #3A5B62;
@@ -104,7 +106,7 @@ body {
     border-radius: 12px;
     text-align: center;
     width: 95%;
-    height: 83px;
+    height: 63px;
     background-color: white;
     box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.3);
 }
@@ -113,7 +115,7 @@ body {
     text-indent: 10px;
     margin-top: 2%;
     text-align: left;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
 }
 
@@ -148,12 +150,13 @@ body {
     font-weight: 400;
     text-indent: 7%;
     margin-top: 6%;
-    font-size: 26px;
+    font-size: 22px;
 }
-.content > .modal-content-admin > .content-dates > .dates > .button-insert-client {
-    margin-left: 70%;
+.content > .modal-content-admin > .content-dates > .dates > #button-insert-client {
+    margin-left: 60%;
     margin-top: 2%;
-    padding: 12px 40px;
+    margin-bottom: 2%;
+    padding: 10px 50px;
     border-radius: 12px;
     font-size: 20px;
     background-color: #3A5B62;
@@ -162,9 +165,108 @@ body {
     border: none;
     transition: 0.5s all;
 }
-.content > .modal-content-admin > .content-dates > .dates > .button-insert-client:hover {
+.content > .modal-content-admin > .content-dates > .dates > #button-insert-client:hover {
     background-color: white;
     color: #3A5B62;
     border: #3A5B62 1px solid;
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    margin-top: 15%;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: 300;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-body {padding: 2px 16px;}
+
+  .modal-content > .modal-body > .parts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .modal-content .modal-body .parts h3 {
+      font-weight: 400;
+  }
+
+  .modal-content .modal-body .parts #dado {
+    font-weight: bold;
+}
+.modal-content .modal-body .parts::after {
+    margin-top: 2%;
+    width:200%;
+    border-top:solid 0.5px #000;
+    content: "";
+    display: block;
+    padding-top: 10px;
+    margin-bottom: 6%;
+}
+
+  #button-edit-client {
+    margin-top: -3%;
+    margin-right: 1%;
+    float: right;
+    padding: 10px 80px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3A5B62;
+    color: white;
+    font-weight: 500;
+    border: none;
+    transition: 0.5s all;
+  }
+
+  #button-edit-client:hover {
+    background-color: white;
+    color: #3A5B62;
+    border: #3A5B62 1px solid;
+  }
 

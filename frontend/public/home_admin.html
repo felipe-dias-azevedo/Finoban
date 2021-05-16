@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/admin.css">
     <title>Document</title>
 </head>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="clients">
                         <div class="client">
-                            <a href="">
+                            <a id="to-client" href="#">
                                 <h3>CNPJ: <span>123</span></h3>
                                 <h3>Nome: <span>Silvio Santos</span></h3>
                                 <h3>E-mail: <span>silvio@santos.com</span></h3>
@@ -99,7 +99,7 @@
                             </a>
                         </div>
                         <div class="client">
-                            <a href="">
+                            <a id="to-client" href="">
                                 <h3>CNPJ: <span>123</span></h3>
                                 <h3>Nome: <span>Silvio Santos</span></h3>
                                 <h3>E-mail: <span>silvio@santos.com</span></h3>
@@ -148,11 +148,48 @@
                             </a>
                         </div>
                     </div>
-                    <button onclick="" class="button-insert-client">Inserir novo cliente</button>
+                    <button id="button-insert-client">Inserir novo cliente</button>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span class="close">&times;</span>
+                    <br>
+                    <div class="parts">
+                        <div class="part-one-client">
+                            <h3>Nome:   <span id="dado">Silvio Santos</span></h3>
+                            <h3>E-mail:   <span id="dado">silvio@santos.com</span></h3>
+                            <h3>CEP: <span id="dado">01414001</span></h3>
+                        </div>
+                        <div class="part-two-client">
+                            <h3>CNPJ:   <span id="dado">123</span></h3>
+                            <h3>Data de nascimento:   <span id="dado">01/01/1970</span></h3>
+                            <h3>Número:   <span id="dado">591</span></h3>
+                        </div>
+                    </div>
+                    <button id="button-edit-client">Editar</button>
+                </div>
+            </div>
 
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+        var cliente = document.getElementById("to-client");
+        var span = document.getElementsByClassName("close")[0];
+        cliente.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
 </html>
