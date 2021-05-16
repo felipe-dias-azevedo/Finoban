@@ -23,7 +23,12 @@ function Dashboard() {
     function returnChart(index) {
         let chart = charts[index];
         return (
-            <MovableItem id={index} name={chart.name} setCharts={setCharts} moveCard={moveCardHandler}>
+            <MovableItem
+                id={index}
+                name={chart.name}
+                setCharts={setCharts}
+                moveCard={moveCardHandler}
+            >
                 <Chart id={chart.graphic} />
             </MovableItem>
         )
@@ -112,7 +117,7 @@ function Dashboard() {
                     </div>
                 </div>
             </section>
-            <div className="chart-holder">
+            <div className="chart-holder giant-holder">
                 {chartsVisible[charts[0].id] && (
                     <ChartHolder giant id={0} moveCard={moveCardHandler}>
                         {returnChart(0)}
@@ -124,7 +129,7 @@ function Dashboard() {
                     </ChartHolder>
                 )}
             </div>
-            <div className="chart-holder">
+            <div className="chart-holder tiny-holder">
                 {chartsVisible[charts[2].id] && (
                     <ChartHolder id={2} moveCard={moveCardHandler}>
                         {returnChart(2)}
@@ -140,8 +145,6 @@ function Dashboard() {
                         {returnChart(4)}
                     </ChartHolder>
                 )}
-            </div>
-            <div className="chart-holder">
                 {chartsVisible[charts[5].id] && (
                     <ChartHolder id={5} moveCard={moveCardHandler}>
                         {returnChart(5)}
@@ -157,8 +160,6 @@ function Dashboard() {
                         {returnChart(7)}
                     </ChartHolder>
                 )}
-            </div>
-            <div className="chart-holder">
                 {chartsVisible[charts[8].id] && (
                     <ChartHolder id={8} moveCard={moveCardHandler}>
                         {returnChart(8)}
