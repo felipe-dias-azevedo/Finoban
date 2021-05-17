@@ -10,6 +10,27 @@ public enum AvalPositivoEnum {
 
 
     AvalPositivoEnum(int indice, String avaliacao) {
+        this.indice = indice;
+        this.avaliacao = avaliacao;
+    }
+
+    private Integer indice;
+    private String avaliacao;
+
+    public Integer getIndice() {
+        return indice;
+    }
+
+    public void setIndice(Integer indice) {
+        this.indice = indice;
+    }
+
+    public String getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(String avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public static AvalPositivoEnum getAvaliacaoEnum(int indice) {
