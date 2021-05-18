@@ -217,15 +217,31 @@ statusSaida
 plot( as.factor( statusSaida )) 
 ```
 
+```{r}
+set.seed(123)
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
+
+tempoAcesso
+
+```
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,paginaSaida.r,statusSaida,paginaSaida)
+df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,tempoAcesso,paginaSaida.r,statusSaida,paginaSaida)
 
 df
 ```
 
 
 ```{r}
+##AVALIAÇÃO DO SITE
+
 head(table(valorImovel))
 
  
@@ -239,33 +255,31 @@ barplot(table(avaliacao.r),
 
 
 ```{r}
-install.packages(c("tm", "SnowballC", "wordcloud", "RColorBrewer", "RCurl", #"XML"))
-
-
-source('http://www.sthda.com/upload/rquery_wordcloud.r')
-filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
-
-res<-rquery.wordcloud(filePath, type ="file", lang = "english",
-                      colorPalette = "RdBu")
-
-
-```
-
-```{r}
 write.table(df,"C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\teste.csv", row.names = FALSE)
 ```
 
 ```{r}
-##valor de imovel/renda
+##REGIÕES ESCOLHIDAS
 
-plot(renda,valorImovel,main = "imovel/renda", xlab = "valor do imovel",ylab = "renda", pch=1)
-
-cor.test(renda,valorImovel)
-
+barplot(table(regiao.r),
+        col=c("#972838", "#278284","#364837","#274698","#987573","#873520"),
+        main = "Avaliação")
 
 ```
 
 ```{r}
+##TEMPO DE PERMANENCIA
+##TERMINAR
+
+tempoAcesso.r <- round((tempoAcesso/60),1)
+
+barplot(table (tempoAcesso.r))
+
+```
+
+```{r}
+##TERMINAR
+
 plot(valorImovel,idade,
      main = "Diagrama de Dispersão",
      xlab = "valor do imovel",
@@ -273,9 +287,6 @@ plot(valorImovel,idade,
      pch = 20,
      col = "green")
 
-
-
-hist(renda,valorImovel, breaks = 10, col = "orange", main = "Histogram of Tree heights", xlab = "Height Bin")
 ```
 
 
