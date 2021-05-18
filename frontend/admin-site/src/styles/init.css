@@ -17,7 +17,7 @@ img {
 
 .title-site {
     margin-top: 1rem;
-    width: 90%;
+    width: 60%;
     height: 8rem;
     border-radius: 16px;
     background-color: white;
@@ -28,25 +28,31 @@ img {
 }
 
 .subtitle-site {
-    margin: 0.4rem;
-    height: 12rem;
-    width: 90%;
+    /* margin: 0.4rem; */
+    height: 14rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
 }
 
 #app > div {
-    margin: 0.4rem;
-    height: 16rem;
-    width: 90%;
+    /* margin: 0.4rem; */
+    /* height: 16rem; */
+    height: auto;
+    /* width: 90%; */
     border-radius: 16px;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
 }
 
 .title-holder {
     height: 8rem;
-    width: 32%;
-    padding: 0.2rem;
+    width: 32.6%;
+    /* padding: 1.2rem; */
+    /* margin: 1.2rem; */
     border-radius: 16px;
     background-color: white;
     box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
@@ -76,14 +82,25 @@ img {
 }
 
 .chart-holder {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 100%;
+    display: grid;
+    grid-gap: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.giant-holder {
+    height: 8rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.tiny-holder {
+    height: 24rem;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .chart {
     position: relative;
-    height: 95%;
+    height: 100%;
     padding: 0.2rem;
     border-radius: 16px;
     background-color: white;
@@ -100,9 +117,11 @@ img {
 }
 
 .giant-chart {
-    width: 49%;
+    /* width: 49%; */
+    width: 100%;
 }
 
 .tiny-chart {
-    width: 32%;
+    /* width: 32%; */
+    width: 100%;
 }

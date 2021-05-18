@@ -8,7 +8,27 @@ public enum BancoEscolhidoEnum {
     BANCO_DO_PRESIL(2,"Banco do Presil");
 
     BancoEscolhidoEnum(int indice, String nomebanco) {
+        this.indice = indice;
+        this.nomebanco = nomebanco;
+    }
 
+    private Integer indice;
+    private String nomebanco;
+
+    public Integer getIndice() {
+        return indice;
+    }
+
+    public void setIndice(Integer indice) {
+        this.indice = indice;
+    }
+
+    public String getNomebanco() {
+        return nomebanco;
+    }
+
+    public void setNomebanco(String nomebanco) {
+        this.nomebanco = nomebanco;
     }
 
     public static BancoEscolhidoEnum getBancoEscolhido(String bancoEscolhido) {

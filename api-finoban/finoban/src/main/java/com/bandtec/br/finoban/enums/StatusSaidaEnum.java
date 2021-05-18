@@ -1,7 +1,5 @@
 package com.bandtec.br.finoban.enums;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import java.text.Normalizer;
 import java.util.Locale;
 
@@ -11,6 +9,27 @@ public enum StatusSaidaEnum {
 
 
     StatusSaidaEnum(int indice, String status) {
+        this.indice = indice;
+        this.status = status;
+    }
+
+    private Integer indice;
+    private String status;
+
+    public Integer getIndice() {
+        return indice;
+    }
+
+    public void setIndice(Integer indice) {
+        this.indice = indice;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public static StatusSaidaEnum getConfirmouContratacao(int indice) {

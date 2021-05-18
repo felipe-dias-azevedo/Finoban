@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd";
 
-const MovableItem = ({children, id, name}) => {
+function MovableItem({children, id, name}) {
 
     const [{ isDragging }, drag] = useDrag({
         item: {
