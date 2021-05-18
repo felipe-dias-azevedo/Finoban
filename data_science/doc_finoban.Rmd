@@ -233,7 +233,8 @@ tempoAcesso
 ```
 
 ```{r}
-df <- data.frame(idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,tempoAcesso,paginaSaida.r,statusSaida,paginaSaida)
+id <- c(1:n)
+df <- data.frame(id, idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,tempoAcesso,paginaSaida.r,statusSaida,paginaSaida)
 
 df
 #Mude o caminho para salvar de acordo com sua máquina
