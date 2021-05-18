@@ -58,4 +58,14 @@ public class CadastroController {
         }
         return ResponseEntity.status(404).build();
     }
+
+    @DeleteMapping("/usuarios/{id}")
+    public ResponseEntity deleteUsuario(@PathVariable int id) {
+        if (cadastroRepository.existsById(id)) {
+            cadastroRepository.deleteById(id);
+            return ResponseEntity.status(204).build();
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
 }

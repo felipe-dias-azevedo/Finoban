@@ -7,17 +7,14 @@ import com.bandtec.br.finoban.repository.RegiaoRepository;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api-finoban")
+@RequestMapping("/api-finoban/acessos")
 public class AcessoController {
 
     @Autowired
@@ -29,7 +26,7 @@ public class AcessoController {
     @Autowired
     private RegiaoRepository regiaoRepository;
 
-    @PostMapping("/acesso")
+    @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso acesso) {
         if (cadastroRepository.existsById(acesso.getFkCliente().getId())) {
             if (regiaoRepository.existsById(acesso.getFkRegiao().getIdRegiao())) {
@@ -44,6 +41,27 @@ public class AcessoController {
             list.add("Não foi encontrado região para este Id");
             list.add("Não foi encontrado Cliente para este Id");
             return ResponseEntity.status(404).body(new ResponseGeneric("Erro ao fazer a requisição", list));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteAcesso(@PathVariable int id) {
+        if (acessoRepository.existsById(id)) {
+            acessoRepository.deleteById(id);
+            return ResponseEntity.status(204).build();
+        } else {
+            return ResponseEntity.status(404).body(new ResponseGeneric<>("Não foi encontrado acesso para este Id",
+                    null));
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity getAcessos() {
+        List<Acesso> acessoList = acessoRepository.findAll();
+        if (acessoList.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        } else {
+            return ResponseEntity.status(200).body(acessoRepository.findAll());
         }
     }
 }
