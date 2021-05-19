@@ -26,9 +26,11 @@ select aval_positivo, count(*) from avaliacao group by aval_positivo;
 
 -- CORRELAÇÃO (REGIAO / RENDA) -> grafico scatter?
 -- ???
+select descricao_regiao as 'descricaoRegiao', renda from acesso, regiao where fk_regiao = id_regiao;
 
 -- CORRELAÇÃO (VALOR IMOVEL / IDADE) -> grafico scatter?
 -- ???
+SELECT data_nasc as 'dataNasc', renda FROM cliente, acesso where id_cliente = fk_cliente;
 
 -- HISTOGRAMA REGIOES ESCOLHIDAS
 -- retornar os valores da coluna da direita (utilizar enum do tipo string para identificar regiao)
@@ -36,9 +38,11 @@ select fk_regiao, count(*) from acesso group by fk_regiao;
 
 -- CORRELAÇÃO (VALOR IMOVEL / RENDA) -> grafico scatter?
 -- ???
+SELECT valor_imovel as 'valorImovel', renda from acesso;
 
 -- GEOMAP (CEP / REGIAO ESCOLHIDA)
 -- TBD
+SELECT cep, descricao_regiao  FROM acesso, cliente, regiao where fk_cliente =id_cliente and fk_regiao = id_regiao;
 
 -- HISTOGRAMA BANCOS ESCOLHIDOS
 -- retornar os valores da coluna da direita (utilizar enum do tipo string para identificar bancos)
