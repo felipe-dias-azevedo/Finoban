@@ -8,6 +8,7 @@ import './assets/css/index.css';
 import './assets/css/comum.css';
 import './assets/css/simulador.css';
 import './assets/css/dashboard.css';
+import './assets/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

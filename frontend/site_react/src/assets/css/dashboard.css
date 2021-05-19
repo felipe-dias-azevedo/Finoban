@@ -88,3 +88,64 @@ input[type="range"]::-webkit-slider-thumb {
     border: 0px;
     border-radius: 5px;
 }
+
+.alert-avaliacao {
+    background-color: #3A5B62;
+    box-shadow: 8px 8px 0px 1px #000000;
+    border-radius: 12px;
+    color: white;
+    width: 300px;
+    height: 130px;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 25%;
+    right: 28px;
+  }
+
+  .btn-close {
+    width: 20px;
+    margin-top: 5px;
+    position: fixed;
+    right: 50px;
+    cursor: pointer;
+  }
+
+  .titulo-avaliacao {
+      font-size: 20px;
+      text-align: center;
+      margin-top: 10%;
+  }
+
+  .btn-avaliacao {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+
+  .btn-avaliacao img {
+      margin-top: 1%;
+      width: 50px;
+      cursor: pointer;
+  }
+
+  .btn-avaliacao-cancelar {
+    background-color:#474646;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 208px;
+    height: 42px;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  .btn-avaliacao-enviar {
+      background-color: #3A5B62;
+      color: white;
+      font-weight: 600;
+      border-radius: 5px;
+      width: 208px;
+      height: 42px;
+      border: none;
+      box-sizing: border-box;
+  }
