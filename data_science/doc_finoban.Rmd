@@ -94,8 +94,9 @@ cpf_validar <- function(x){
 
 ```{r}
 set.seed(123)
-idade <-round(rnorm(n,40,5))
-idade
+dataNasc <-sample(seq(as.Date('1970/01/01'), as.Date('2000/01/01'), by="day"), n)
+dataNasc
+
 ```
 
 ```{r}
@@ -130,8 +131,8 @@ renda
 
 ```{r}
 set.seed(123)
-banco <- round(runif(n,1,3))
-banco.r <- factor(banco,
+bancoEscolhido <- round(runif(n,1,3))
+banco.r <- factor(bancoEscolhido,
                   levels= c(1,2,3),
                   labels = c("Banco do Presil","S16 Bank","Banco Cifra")
                   ) 
@@ -139,7 +140,7 @@ banco.r
 ```
 
 ```{r}
-set.seed(124)
+set.seed(123)
 avaliacao <-round(runif(n,1,3))
 avaliacao.r <- factor(avaliacao,
                     levels = c(1,2,3),
@@ -151,12 +152,12 @@ plot( as.factor( avaliacao.r ))
 
 ```{r}
 #Calculo para % de renda
-`%rendaFinanciamento` <- c()
+porcentagemRenda <- c()
 for(i in 1:n){
-  `%rendaFinanciamento`[i] <- 
-    round(((valorImovel[i]/(tempoFinanciamento[i]*12))*100/renda[i]),2)
+  porcentagemRenda[i] <- 
+    round(((valorImovel[i]/(tempoFinanciamento[i]*12))*100/renda[i]),0)
 }
-`%rendaFinanciamento`
+porcentagemRenda
 
 ```
 
@@ -198,8 +199,9 @@ set.seed(123)
 paginaSaida <-round(runif(n,1,5))
 statusSaida <- factor(paginaSaida,
                         levels = c(1,2,3,4,5),
-                        labels = c("1","0","0","0","0")
+                        labels = c(1,0,0,0,0)
 )
+paginaSaida
 statusSaida
 plot( as.factor( statusSaida )) 
 
@@ -208,13 +210,13 @@ plot( as.factor( statusSaida ))
 
 ```{r}
 set.seed(123)
-paginaSaida <-round(runif(n,1,5))
-statusSaida <- factor(paginaSaida,
-                        levels = c(1,2,3,4,5),
-                        labels = c("100%","80%","60%","40%","20%")
-)
-statusSaida
-plot( as.factor( statusSaida )) 
+#paginaSaida <-round(runif(n,1,5))
+#statusSaida <- factor(paginaSaida,
+#                        levels = c(1,2,3,4,5),
+##                        labels = c("100%","80%","60%","40%","20%")
+#)
+#statusSaida
+#plot( as.factor( statusSaida )) 
 ```
 
 ```{r}
@@ -234,11 +236,37 @@ tempoAcesso
 
 ```{r}
 id <- c(1:n)
-df <- data.frame(id, idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,tempoAcesso,paginaSaida.r,statusSaida,paginaSaida)
+df <- data.frame(id,idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaFinanciamento`, banco.r,avaliacao.r, dataHoraEntrada, dataHoraSaida, dataHoraAvaliacao,tempoAcesso,paginaSaida.r,statusSaida,paginaSaida)
 
 df
 #Mude o caminho para salvar de acordo com sua máquina
 write.csv(df, file = "C:/Users/VINIBAS/Desktop/Finoban/data_science/dataframeFinoban.csv", row.names = FALSE)
+```
+
+```{r}
+set.seed(123)
+#fkCliente
+fkCliente <- c(1:n)
+```
+
+```{r}
+set.seed(123)
+#fkRegiao
+fkRegiao <- c(round(runif(n,2448,2453),0))
+fkRegiao
+```
+
+
+```{r}
+# DATAFRAME DA TABELA ACESSO ACESSO
+set.seed(123)
+idEntrada <- c(1:n)
+
+dfAcesso <- data.frame(idEntrada,dataHoraEntrada, dataHoraSaida, statusSaida, paginaSaida, statusSaida, paginaSaida, renda, valorImovel, tempoFinanciamento, porcentagemRenda, bancoEscolhido, fkCliente, fkRegiao)
+dfAcesso
+
+#write.csv(dfAcesso, file #="C:/Users/VINIBAS/Desktop/Finoban/data_science/dataframeAcesso.csv",
+#row.names = FALSE)
 ```
 
 
@@ -279,6 +307,7 @@ tempoAcesso.r <- round((tempoAcesso/60),1)
 barplot(table (tempoAcesso.r))
 
 ```
+
 
 ```{r}
 ##TERMINAR
