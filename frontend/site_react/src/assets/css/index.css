@@ -76,6 +76,12 @@
   border-radius: 8px;
 }
 
+.btn-valor-imovel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .bt {
   border:1px solid #3A5B62;
   border-radius:4px;

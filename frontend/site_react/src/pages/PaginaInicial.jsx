@@ -161,6 +161,7 @@ function PaginaInicial() {
                             <div className="pt4">
                                 <div className="container">
                                     <h3>Já sabe o valor do imóvel?</h3>
+                                    <div className="btn-valor-imovel">
                                     <button className="bt" onClick={(e) => {
                                         setSabeValorImovel(true);
                                         setRespondeuBotao(true)
@@ -169,6 +170,7 @@ function PaginaInicial() {
                                         setSabeValorImovel(false);
                                         setRespondeuBotao(true)
                                     }} id="nao"> Não</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>)
