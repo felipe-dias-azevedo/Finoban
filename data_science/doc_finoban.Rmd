@@ -144,7 +144,7 @@ set.seed(123)
 avaliacao <-round(runif(n,1,3))
 avaliacao.r <- factor(avaliacao,
                     levels = c(1,2,3),
-                    labels = c("positiva","negativa","n/ avaliado")
+                    labels = c("negativa","positiva","n/ avaliado")
                     )
 avaliacao.r
 plot( as.factor( avaliacao.r )) 
