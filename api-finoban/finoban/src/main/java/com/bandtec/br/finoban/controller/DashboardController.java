@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/finoban/dashboard")
@@ -68,18 +69,31 @@ public class DashboardController {
             }
             objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
         }
-        return objetoRendimentoMensal;
+//        return objetoRendimentoMensal;
+        return null;
     }
 
     // GRAFICO 1
     public static PorcentualPerdas tratarPorcentualPerdas
             (List<PorcentualPerdasDatabaseView> perdas)
     {
-        System.out.println("\nPORCENTUAL PERDAS");
+        Double confirmado = 0.0;
+        Double naoConfirmado = 0.0;
+
         for (PorcentualPerdasDatabaseView p : perdas) {
-            System.out.println(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()).getStatus() + " " + p.getContagem());
+            if (Objects.equals(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()),
+                    StatusSaidaEnum.CONFIRMOU_CONTRATACAO))
+            {
+                confirmado = p.getContagem().doubleValue();
+            }
+            else if (Objects.equals(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()),
+                    StatusSaidaEnum.NAO_CONFIRMOU))
+            {
+                naoConfirmado = p.getContagem().doubleValue();
+            }
         }
-        return null;
+
+        return new PorcentualPerdas(confirmado, naoConfirmado);
     }
 
     // GRAFICO 2
@@ -87,10 +101,13 @@ public class DashboardController {
             (RendimentoMensal rendimentoMensal)
     {
 
+        if (rendimentoMensal == null) {
+            return null;
+        }
+
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
 
         List<Double> dias = new ArrayList<Double>();
-        List<Double> valores = new ArrayList<Double>();
 
         for (int i = 1; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
             dias.add((double) i);
@@ -122,11 +139,27 @@ public class DashboardController {
     public static AvaliacaoSite tratarAvaliacaoSite
             (List<AvaliacaoSiteDatabaseView> avaliacao)
     {
-        System.out.println("\nAVALIACAO SITE");
+        AvaliacaoSite avaliacaoSite = new AvaliacaoSite();
+
         for (AvaliacaoSiteDatabaseView a : avaliacao) {
-            System.out.println(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()).getAvaliacao() + " " + a.getContagem());
+            if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.GOSTOU))
+            {
+                avaliacaoSite.setGostou(a.getContagem());
+            }
+            else if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.NAO_GOSTOU))
+            {
+                avaliacaoSite.setNaoGostou(a.getContagem());
+            }
+            else if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.NAO_DEU_FEEDBACK))
+            {
+                avaliacaoSite.setSemFeedback(a.getContagem());
+            }
         }
-        return null;
+
+        return avaliacaoSite;
     }
 
     // GRAFICO 5
@@ -155,11 +188,42 @@ public class DashboardController {
     public static RegioesEscolhidas tratarRegioesEscolhidas
             (List<RegioesEscolhidasDatabaseView> regioes)
     {
-        System.out.println("\nREGIOES ESCOLHIDAS");
+        RegioesEscolhidas regioesEscolhidas = new RegioesEscolhidas();
+
         for (RegioesEscolhidasDatabaseView r : regioes) {
-            System.out.println(r.getDescricaoRegiao() + " " + r.getContagem());
+            if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.CENTRO))
+            {
+                regioesEscolhidas.setCentro(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.CONSOLACAO))
+            {
+                regioesEscolhidas.setConsolacao(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.BROOKLIN))
+            {
+                regioesEscolhidas.setBrooklin(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.MOOCA))
+            {
+                regioesEscolhidas.setMooca(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.SANTO_AMARO))
+            {
+                regioesEscolhidas.setSantoAmaro(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.INTERLAGOS))
+            {
+                regioesEscolhidas.setInterlagos(r.getContagem());
+            }
         }
-        return null;
+
+        return regioesEscolhidas;
     }
 
     // GRAFICO 8
@@ -188,10 +252,26 @@ public class DashboardController {
     public static BancosEscolhidos tratarBancosEscolhidos
             (List<BancosEscolhidosDatabaseView> bancos)
     {
-        System.out.println("\nBANCOS ESCOLHIDOS");
+        BancosEscolhidos bancosEscolhidos = new BancosEscolhidos();
+
         for (BancosEscolhidosDatabaseView b : bancos) {
-            System.out.println(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()).getNomebanco() + " " + b.getContagem());
+            if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_CIFRA))
+            {
+                bancosEscolhidos.setCifra(b.getContagem());
+            }
+            else if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_S16_BANK))
+            {
+                bancosEscolhidos.setS16(b.getContagem());
+            }
+            else if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_DO_PRESIL))
+            {
+                bancosEscolhidos.setPresil(b.getContagem());
+            }
         }
-        return null;
+
+        return bancosEscolhidos;
     }
 }
