@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api-finoban/acessos")
@@ -41,6 +42,17 @@ public class AcessoController {
             list.add("Não foi encontrado região para este Id");
             list.add("Não foi encontrado Cliente para este Id");
             return ResponseEntity.status(404).body(new ResponseGeneric("Erro ao fazer a requisição", list));
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getAcesso(@PathVariable int id) {
+        Optional<Acesso> acesso = acessoRepository.findById(id);
+        if (acesso.isPresent()) {
+            return ResponseEntity.status(200).body(acesso);
+        } else {
+            return ResponseEntity.status(404).body(new ResponseGeneric<>("Não foi encontrado acesso para este Id",
+                    null));
         }
     }
 

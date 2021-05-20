@@ -6,7 +6,7 @@ import api from "../services/api";
 
 function MainAdminAcesso() {
 
-    const [acessom, setAcesso]= useState([]);
+    const [acesso, setAcesso]= useState([]);
 
     useEffect(() => {
         api.get("/acessos").then(e =>{
@@ -35,10 +35,14 @@ function MainAdminAcesso() {
                     </div>
                     <div className="dates">
                         <div className="quantity-clients">
-                            <h1>Quantidade de acessos esta semana <span>2456</span></h1>
+                            <h1>Quantidade de acessos esta semana <span>{acesso.length}</span></h1>
                         </div>
                         <div className="clients">
-                            <Acesso id="1" nome="Testando esta beleza" cnpj="00000" email="testando.beleza@beleza.com"/>
+                        {acesso.map(e => {
+                                return (
+                                    <Acesso id={e.idEntrada} nome={e.fkCliente.nome} valor={e.valorImovel} data={e.dataHoraEntrada} />
+                                )
+                            })}
                         </div>
                         <button id="button-insert-client">
                             <Link to="/admin/register/acesso">Inserir novo acesso</Link>

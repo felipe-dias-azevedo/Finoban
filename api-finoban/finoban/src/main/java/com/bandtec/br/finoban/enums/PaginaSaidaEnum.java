@@ -7,7 +7,7 @@ public enum PaginaSaidaEnum {
     LOGIN(1, "Login"),
     CADASTRO(2,"Cadastro"),
     SIMULADOR(3,"Simulador"),
-    VISUALIZAO(4, "Visualização dos dados");
+    VISUALIZACAO(4, "Visualização dos dados");
 
 
     PaginaSaidaEnum(int indice, String pagina) {
@@ -24,7 +24,7 @@ public enum PaginaSaidaEnum {
             case "simulador":
                 return SIMULADOR;
             case "visualização dos dados":
-                return VISUALIZAO;
+                return VISUALIZACAO;
             default:
                 return null;
         }
@@ -40,7 +40,7 @@ public enum PaginaSaidaEnum {
             case 3:
                 return SIMULADOR;
             case 4:
-                return VISUALIZAO;
+                return VISUALIZACAO;
             default:
                 return null;
         }
