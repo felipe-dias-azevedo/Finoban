@@ -114,12 +114,12 @@ function CadastroAcesso() {
 
                 <div className="input-holder">
                     <h3>Data Hora Entrada:</h3>
-                    <input type="datetime-local" onChange={(e) => setDataHoraEntrada(e.target.value.replace('T', ' ') + ':00')}/>
+                    <input type="datetime-local" onChange={(e) => setDataHoraEntrada(e.target.value)}/>
                 </div>
 
                 <div className="input-holder">
                     <h3>Data Hora Saida:</h3>
-                    <input type="datetime-local"  onChange={(e) => setDataHoraSaida(e.target.value.replace('T', ' ') + ':00')}/>
+                    <input type="datetime-local"  onChange={(e) => setDataHoraSaida(e.target.value)}/>
                 </div>
 
                 <div className="input-holder">

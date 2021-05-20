@@ -16,11 +16,7 @@ public class Acesso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEntrada;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataHoraEntrada;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataHoraSaida;
     private StatusSaidaEnum statusSaida;
     private PaginaSaidaEnum paginaSaida;
