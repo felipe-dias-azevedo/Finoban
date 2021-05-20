@@ -55,8 +55,9 @@ body {
 }
 .content > .modal-content-admin > .welcome-admin h3{
     color:  white;
+    text-align: left;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 20px;
 }
 .content > .modal-content-admin > .welcome-admin > h3 > span {
     font-weight: bold;
@@ -117,12 +118,13 @@ body {
     text-indent: 10px;
     text-align: left;
     line-height: 64px;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 400;
 }
 
 .content > .modal-content-admin > .content-dates > .dates > .quantity-clients > h1 > span {
     margin-right: 4%;
+    font-size: 26px;
     float: right;
     border-left: 1px solid black;
 }

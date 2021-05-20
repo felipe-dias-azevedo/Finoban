@@ -1,12 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../services/api";
 import Cliente from "../components/Admin/Cliente";
 
 export default function MainAdminCliente() {    
 
-    useEffect(() => {
+    const [usuarios, setUsuarios] = useState([]);
+    const [updateSite, setUpdateSite] = useState(0);
 
-    }, [])
+    // setInterval(() => {
+    //     setUpdateSite(updateSite+1);
+    // }, 6000);
+
+    useEffect(() => {
+        api.get("/usuarios").then(e => {
+            setUsuarios(e.data)
+            // for (let i = 0; i < e.data.length; i++) {
+            //     console.log("id: " + e.data[i].id + ", cnpj: " + e.data[i].cnpj + ", nome: " + e.data[i].nome + ", email: " + e.data[i].email);
+            // }
+        }).catch(e => {
+            console.error(e)
+        }) 
+    }, [updateSite]);
+
+
 
     return (
         <div class="content">
@@ -27,10 +44,14 @@ export default function MainAdminCliente() {
                     </div>
                     <div className="dates">
                         <div className="quantity-clients">
-                            <h1>Quantidade de clientes cadastrados <span>1352</span></h1>
+                            <h1>Quantidade de clientes cadastrados <span>{usuarios.length}</span></h1>
                         </div>
                         <div className="clients">
-                            <Cliente id="1" cnpj="123" nome="Silvio Santos" email="silvio@santos.com" />
+                            {usuarios.map(e => {
+                                return (
+                                    <Cliente id={e.id} cnpj={e.cnpj} nome={e.nome} email={e.email} />
+                                )
+                            })}
                         </div>
                         <button id="button-insert-client">
                             <Link to="/admin/register/cliente">Inserir novo usuário</Link>

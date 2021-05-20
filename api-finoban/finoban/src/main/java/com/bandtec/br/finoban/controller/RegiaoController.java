@@ -1,10 +1,13 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.entidades.Regiao;
+import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api-finoban/regioes")
@@ -18,21 +21,33 @@ public class RegiaoController {
         return ResponseEntity.status(200).body(repository.findAllRegiaoLatest());
     }
 
-    @PostMapping
-    public ResponseEntity postRegiao(@RequestParam("token") String token, @RequestBody Regiao regiao) {
-        System.out.println(token);
-        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
-            return ResponseEntity.status(400).build();
+    @GetMapping("/{id}")
+    public ResponseEntity getRegiao(@PathVariable Integer id) {
+        Optional<Regiao> regiao = repository.findById(id);
+
+        if (regiao.isPresent()) {
+            return ResponseEntity.status(200).body(regiao);
+        } else {
+            return ResponseEntity.status(404).build();
         }
+    }
+
+
+    @PostMapping
+    public ResponseEntity postRegiao(@RequestBody Regiao regiao) {
+//        System.out.println(token);
+//        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
+//            return ResponseEntity.status(400).build();
+//        }
         repository.save(regiao);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteRegiao(@RequestParam(value = "token")String token, @PathVariable int id) {
-        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
-            return ResponseEntity.status(400).build();
-        }
+    public ResponseEntity deleteRegiao(@PathVariable int id) {
+//        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
+//            return ResponseEntity.status(400).build();
+//        }
         if (!repository.existsById(id)) {
             return ResponseEntity.status(404).build();
         }
@@ -41,10 +56,10 @@ public class RegiaoController {
     }
 
     @PutMapping
-    public ResponseEntity atualizarRegiao(@RequestBody Regiao regiao, @RequestParam("token")String token) {
-        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
-            return ResponseEntity.status(400).build();
-        }
+    public ResponseEntity atualizarRegiao(@RequestBody Regiao regiao) {
+//        if (!token.equals("Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==")) {
+//            return ResponseEntity.status(400).build();
+//        }
         if(!repository.existsById(regiao.getIdRegiao())) {
             return ResponseEntity.status(404).build();
         }

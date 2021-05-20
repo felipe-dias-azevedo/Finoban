@@ -1,20 +1,55 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import api from '../services/api';
 import MainAdminCliente from "./MainAdminCliente";
 
 function DetailCliente() {
-
+    
+    const history = useHistory();
     const params = useParams();
-    const [dadosUsuario, setDadosUsuario] = useState({
-        cnpj: "",
-        nome: "",
-        email: "",
-        cep: "",
-        numero: "",
-        dataNasc: ""
-    });
+
+    const [cnpj, setCnpj] = useState("");
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [cep, setCep] = useState("");
+    const [numero, setNumero] = useState(0);
+    const [dataNasc, setDataNasc] = useState("");
+
+    function excluirUsuario() {
+        api.delete(`/usuarios/${params.id}`, {}, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        }).then(e => {
+            if (e.status === 200 || e.status === 204) {
+                history.push("/admin/cliente/");
+            } else {
+                console.log("ERRO NO DELETE")
+            }
+        }).catch(e => {
+            console.error(e);
+        });
+    }
+
+    useEffect(() => {
+        api.get(`/usuarios/${params.id}`, {}, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        }).then(e => {
+
+            setCnpj(e.data.cnpj);
+            setNome(e.data.nome);
+            setEmail(e.data.email);
+            setCep(e.data.cep);
+            setNumero(e.data.numero);
+            setDataNasc(e.data.dataNasc);
+
+        }).catch(e => {
+            console.error(e);
+        });
+    }, [params.id])
+
+
 
     return (
         <>
@@ -27,16 +62,16 @@ function DetailCliente() {
                             <br />
                             <div className="parts">
                                 <div className="part-one-client">
-                                    <h3>Nome:   <span id="dado">Silvio Santos</span></h3>
-                                    <h3>E-mail:   <span id="dado">silvio@santos.com</span></h3>
-                                    <h3>CEP: <span id="dado">01414001</span></h3>
+                                    <h3>Nome:   <span id="dado">{nome}</span></h3>
+                                    <h3>E-mail:   <span id="dado">{email}</span></h3>
+                                    <h3>CEP: <span id="dado">{cep}</span></h3>
                                 </div>
                                 <div className="part-two-client">
-                                    <h3>CNPJ:   <span id="dado">123</span></h3>
-                                    <h3>Data de nascimento:   <span id="dado">01/01/1970</span></h3>
-                                    <h3>Número:   <span id="dado">591</span></h3>
+                                    <h3>CNPJ:   <span id="dado">{cnpj}</span></h3>
+                                    <h3>Data de nascimento:   <span id="dado">{dataNasc}</span></h3>
+                                    <h3>Número:   <span id="dado">{numero}</span></h3>
                                 </div>
-                                <button id="button-edit-client">
+                                <button onClick={excluirUsuario} id="button-edit-client">
                                     Excluir
                                 </button>
                             </div>

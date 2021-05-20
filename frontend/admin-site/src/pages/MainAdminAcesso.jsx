@@ -1,11 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Acesso from "../components/Admin/Acesso";
+import api from "../services/api";
 
 
 function MainAdminAcesso() {
-    useEffect(() => {
 
+    const [acessom, setAcesso]= useState([]);
+
+    useEffect(() => {
+        api.get("/acessos").then(e =>{
+            setAcesso(e.data)
+        }).catch(e => {
+            console.error(e)
+        })
     }, [])
 
     return (

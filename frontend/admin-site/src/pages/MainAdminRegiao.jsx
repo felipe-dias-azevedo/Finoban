@@ -1,11 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Regiao from "../components/Admin/Regiao";
+import api from '../services/api'
 
 function MainAdminRegiao() {
+
+    const [regioes, setRegioes] = useState([])
+
     useEffect(() => {
 
+        async function getRegioes() {
+            const res = await api.get("/regioes");
+            setRegioes(res.data);
+        }
+        getRegioes();
+        
     }, [])
+
 
     return (
         <div class="content">
@@ -26,10 +37,16 @@ function MainAdminRegiao() {
                     </div>
                     <div className="dates">
                         <div className="quantity-clients">
-                            <h1>Quantidade de regiões cadastradas <span>122</span></h1>
+                            <h1>Quantidade de regiões cadastradas <span>{regioes.length}</span></h1>
                         </div>
                         <div className="clients">
-                            <Regiao id="1" nome="Regiao legal" valor="100.00" data="18/05/2021"/>
+                            {
+                                
+                                regioes.map((regiao) => (
+                                    <Regiao id={regiao.idRegiao} nome={regiao.descricaoRegiao} valor={regiao.valorRegiao} data={regiao.dataCraw} />
+                                ))
+
+                            }
                         </div>
                         <button id="button-insert-client">
                             <Link to="/admin/register/regiao">Inserir nova região</Link>

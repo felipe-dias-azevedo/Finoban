@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api-finoban")
@@ -39,6 +40,18 @@ public class CadastroController {
     @GetMapping("/usuarios")
     public ResponseEntity listarUsuarios() {
         return ResponseEntity.status(200).body(cadastroRepository.findAll());
+    }
+
+    @GetMapping("/usuarios/{id}")
+    public ResponseEntity getUsuario(@PathVariable Integer id) {
+
+        Optional<Usuario> usuario = cadastroRepository.findById(id);
+
+        if (usuario.isPresent()) {
+            return ResponseEntity.status(200).body(usuario);
+        } else {
+            return ResponseEntity.status(404).build();
+        }
     }
 
     @PostMapping("/avaliacao")

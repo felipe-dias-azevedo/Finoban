@@ -39,6 +39,33 @@ public interface DashboardRepository extends JpaRepository<Acesso, Integer> {
     List<AvaliacaoSiteDatabaseView> getAvaliacaoSiteData();
 
     @Query(
+            value = "select descricao_regiao as 'descricaoRegiao', renda " +
+                    "from acesso, regiao where fk_regiao = id_regiao",
+            nativeQuery = true
+    )
+    List<RegiaoRendaDatabaseView> getRegiaoRendaData();
+
+    @Query(
+            value = "select data_nasc as 'dataNasc', renda " +
+                    "from cliente, acesso where id_cliente = fk_cliente",
+            nativeQuery = true
+    )
+    List<ValorImovelIdadeDatabaseView> getValorImovelIdadeData();
+
+    @Query(
+            value = "select valor_imovel as 'valorImovel', renda from acesso",
+            nativeQuery = true
+    )
+    List<ValorImovelRendaDatabaseView> getValorImovelRendaData();
+
+    @Query(
+            value = "select cep, descricao_regiao as 'descricaoRegiao' " +
+                    "from acesso, cliente, regiao where fk_cliente = id_cliente and fk_regiao = id_regiao",
+            nativeQuery = true
+    )
+    List<CepRegiaoEscolhidaDatabaseView> getCepRegiaoData();
+
+    @Query(
             value = "select descricao_regiao as 'descricaoRegiao', count(*) as 'contagem' " +
                     "from acesso, regiao where fk_regiao = id_regiao group by descricao_regiao;",
             nativeQuery = true
