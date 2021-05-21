@@ -275,7 +275,6 @@ dfAcesso
 
 head(table(valorImovel))
 
- 
 head(idade)
 
 barplot(table(avaliacao.r),
@@ -320,6 +319,7 @@ plot(valorImovel,idade,
      col = "green")
 
 ```
+
 
 
 
