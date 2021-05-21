@@ -9,9 +9,6 @@ public class ProjecaoRendimento extends RendimentoMensal {
 
     public void gerarRegressaoLinear(List<Double> x, List<Double> y) {
 
-        double b;
-        double a;
-
         double totalX = 0.0;
         double totalY = 0.0;
         double totalX2 = 0.0;
@@ -26,12 +23,16 @@ public class ProjecaoRendimento extends RendimentoMensal {
             totalXy += x.get(i) * y.get(i);
         }
 
-        a = (((totalY * totalX2) - (totalX * totalXy)) / ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))));
-        b = (((TEMPO_LIMITE * totalXy) - (totalX * totalY)) / ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))));
-//        print("Linha de melhor ajuste: ");
-//        print("y = "+ str(b) +"x + "+ str(a));
-//        Integer valor_para_calcular = int(input("Insira um valor para calcular: "));
-//        print("y =", valor_para_calcular * b + a);
+        a = (
+                (totalY * totalX2) - (totalX * totalXy))
+                /
+                ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))
+        );
+        b = (
+                (TEMPO_LIMITE * totalXy) - (totalX * totalY))
+                /
+                ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))
+        );
     }
     
     public double calculoRegressaoLinear(Double valorCalculo) {

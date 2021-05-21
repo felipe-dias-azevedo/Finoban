@@ -5,7 +5,6 @@ import com.bandtec.br.finoban.repository.DashboardRepository;
 import com.bandtec.br.finoban.views.DashboardResponse;
 import com.bandtec.br.finoban.views.charts.*;
 import com.bandtec.br.finoban.views.database.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -55,8 +55,8 @@ public class DashboardController {
         LocalDateTime dataInicio = LocalDateTime.now().minusDays(RendimentoMensal.TEMPO_LIMITE);
 
         RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
-        Double mediaDiaria = 0.0;
-        Integer tamanho = 1;
+        Double mediaDiaria;
+        Integer tamanho;
 
         for (int i = 0; i < RendimentoMensal.TEMPO_LIMITE; i++) {
             mediaDiaria = 0.0;
@@ -69,8 +69,7 @@ public class DashboardController {
             }
             objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
         }
-//        return objetoRendimentoMensal;
-        return null;
+        return objetoRendimentoMensal;
     }
 
     // GRAFICO 1
@@ -107,32 +106,60 @@ public class DashboardController {
 
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
 
-        List<Double> dias = new ArrayList<Double>();
+        List<Double> dias = new ArrayList<>();
 
-        for (int i = 1; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
-            dias.add((double) i);
+        for (double i = 1.0; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
+            dias.add(i);
         }
 
-        projecaoRendimento.gerarRegressaoLinear(rendimentoMensal.getValores(), dias);
+        projecaoRendimento.gerarRegressaoLinear(dias, rendimentoMensal.getValores());
 
-        for (int i = ProjecaoRendimento.TEMPO_LIMITE+1; i <= ProjecaoRendimento.TEMPO_LIMITE*2; i++) {
+//        for (double i = ProjecaoRendimento.TEMPO_LIMITE+1; i <= ProjecaoRendimento.TEMPO_LIMITE*2; i++) {
+        for (double i = 1; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
             projecaoRendimento.adicionarValor(
-                    LocalDate.now().plusDays(i - ProjecaoRendimento.TEMPO_LIMITE),
-                    projecaoRendimento.calculoRegressaoLinear((double) i));
+                    LocalDate.now().plusDays((long) i),
+                    projecaoRendimento.calculoRegressaoLinear(i));
         }
-//        return projecaoRendimento;
-        return null;
+        return projecaoRendimento;
     }
 
     // GRAFICO 3
     public static TempoPermanencia tratarTempoPermanencia
             (List<TempoPermanenciaDatabaseView> tempoPermanencia)
     {
-        System.out.println("\nTEMPO DE PERMANENCIA");
-        for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-            System.out.println(p.getDataHoraEntrada() + " " + p.getDataHoraSaida());
+        TempoPermanencia permanencia = new TempoPermanencia();
+
+        LocalTime timeMinimo = LocalTime.of(0, 0, 0);
+        Integer segundosAcrescentar = 0;
+
+        LocalTime timeAtual;
+        Integer quantidade = 0;
+
+        while (timeMinimo.getMinute() < TempoPermanencia.LIMITE_TEMPO.getMinute()) {
+            for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
+                timeAtual = permanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+
+                if (timeAtual.getSecond() < (timeMinimo.getSecond() + segundosAcrescentar)
+                        && timeAtual.getMinute() == timeMinimo.getMinute()) {
+                    quantidade++;
+                }
+            }
+            segundosAcrescentar += TempoPermanencia.INTERVALO_TEMPO;
+            timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
+            permanencia.adicionarValor(timeMinimo, quantidade);
+            quantidade = 0;
         }
-        return null;
+
+        for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
+            timeAtual = permanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+            if (timeAtual.getMinute() >= timeMinimo.getMinute()) {
+                quantidade++;
+            }
+        }
+        timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
+        permanencia.adicionarValor(timeMinimo, quantidade);
+
+        return permanencia;
     }
 
     // GRAFICO 4
