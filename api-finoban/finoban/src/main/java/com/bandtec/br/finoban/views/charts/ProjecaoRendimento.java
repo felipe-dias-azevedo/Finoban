@@ -2,7 +2,7 @@ package com.bandtec.br.finoban.views.charts;
 
 import java.util.List;
 
-public class ProjecaoRendimento extends RendimentoMensal {
+public class ProjecaoRendimento {
 
     private double a;
     private double b;
@@ -15,7 +15,7 @@ public class ProjecaoRendimento extends RendimentoMensal {
         double totalY2 = 0.0;
         double totalXy = 0.0;
 
-        for (int i = 0; i < TEMPO_LIMITE; i++) {
+        for (int i = 0; i < RendimentoMensal.TEMPO_LIMITE; i++) {
             totalX += x.get(i);
             totalY += y.get(i);
             totalX2 += Math.pow(x.get(i), 2);
@@ -23,16 +23,15 @@ public class ProjecaoRendimento extends RendimentoMensal {
             totalXy += x.get(i) * y.get(i);
         }
 
+        double segundaParteConta = (RendimentoMensal.TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2));
         a = (
                 (totalY * totalX2) - (totalX * totalXy))
                 /
-                ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))
-        );
+                segundaParteConta;
         b = (
-                (TEMPO_LIMITE * totalXy) - (totalX * totalY))
+                (RendimentoMensal.TEMPO_LIMITE * totalXy) - (totalX * totalY))
                 /
-                ((TEMPO_LIMITE * totalX2) - (Math.pow(totalX, 2))
-        );
+                segundaParteConta;
     }
     
     public double calculoRegressaoLinear(Double valorCalculo) {

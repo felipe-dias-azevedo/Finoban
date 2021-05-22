@@ -7,33 +7,58 @@ import java.util.List;
 public class RendimentoMensal {
 
     public static final Integer TEMPO_LIMITE = 30;
-    private List<LocalDate> datas;
-    private List<Double> valores;
 
-    public RendimentoMensal() {
-        this.datas = new ArrayList<LocalDate>();
-        this.valores = new ArrayList<Double>();
+    private LocalDate data;
+    private Double valor;
+
+    public RendimentoMensal(LocalDate data, Double valor) {
+        this.data = data;
+        this.valor = valor;
     }
 
-    public void adicionarValor(LocalDate dia, Double valor) {
-        datas.add(dia);
-        valores.add(valor);
+    public LocalDate getData() {
+        return data;
     }
 
-
-    public List<LocalDate> getDatas() {
-        return datas;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
-    public void setDatas(List<LocalDate> datas) {
-        this.datas = datas;
+    public Double getValor() {
+        return valor;
     }
 
-    public List<Double> getValores() {
-        return valores;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    public void setValores(List<Double> valores) {
-        this.valores = valores;
-    }
+    //    private List<LocalDate> datas;
+//    private List<Double> valores;
+//
+//    public RendimentoMensal() {
+//        this.datas = new ArrayList<LocalDate>();
+//        this.valores = new ArrayList<Double>();
+//    }
+//
+//    public void adicionarValor(LocalDate dia, Double valor) {
+//        datas.add(dia);
+//        valores.add(valor);
+//    }
+//
+//
+//    public List<LocalDate> getDatas() {
+//        return datas;
+//    }
+//
+//    public void setDatas(List<LocalDate> datas) {
+//        this.datas = datas;
+//    }
+//
+//    public List<Double> getValores() {
+//        return valores;
+//    }
+//
+//    public void setValores(List<Double> valores) {
+//        this.valores = valores;
+//    }
 }

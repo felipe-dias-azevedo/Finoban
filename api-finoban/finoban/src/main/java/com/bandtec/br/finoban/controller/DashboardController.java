@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,16 +29,16 @@ public class DashboardController {
     @GetMapping
     public ResponseEntity getDataDashboard() {
 
-        RendimentoMensal rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
-        PorcentualPerdas porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());
-        ProjecaoRendimento projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
-        TempoPermanencia tempoPermanencia = tratarTempoPermanencia(repository.getTempoPermanenciaData());
+        List<RendimentoMensal> rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
+        Double porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());
+        List<RendimentoMensal> projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
+        List<TempoPermanencia> tempoPermanencia = tratarTempoPermanencia(repository.getTempoPermanenciaData());
         AvaliacaoSite avaliacaoSite = tratarAvaliacaoSite(repository.getAvaliacaoSiteData());
-        RegiaoRenda regiaoRenda = tratarRegiaoRenda(repository.getRegiaoRendaData());
-        ValorImovelIdade valorImovelIdade = tratarValorImovelIdade(repository.getValorImovelIdadeData());
+        List<RegiaoRenda> regiaoRenda = tratarRegiaoRenda(repository.getRegiaoRendaData());
+        List<ValorImovelIdade> valorImovelIdade = tratarValorImovelIdade(repository.getValorImovelIdadeData());
         RegioesEscolhidas regioesEscolhidas = tratarRegioesEscolhidas(repository.getRegioesEscolhidasData());
-        ValorImovelRenda valorImovelRenda = tratarValorImovelRenda(repository.getValorImovelRendaData());
-        CepRegiaoEscolhida cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
+        List<ValorImovelRenda> valorImovelRenda = tratarValorImovelRenda(repository.getValorImovelRendaData());
+        List<CepRegiaoEscolhida> cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
         BancosEscolhidos bancosEscolhidos = tratarBancosEscolhidos(repository.getBancosEscolhidosData());
 
         DashboardResponse dataDashboard = new DashboardResponse(
@@ -49,12 +50,13 @@ public class DashboardController {
     }
 
     // GRAFICO 0
-    public static RendimentoMensal tratarRendimentoMensal
+    public static List<RendimentoMensal> tratarRendimentoMensal
             (List<RendimentoMensalDatabaseView> rendimentoData)
     {
         LocalDateTime dataInicio = LocalDateTime.now().minusDays(RendimentoMensal.TEMPO_LIMITE);
 
-        RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
+        List<RendimentoMensal> rendimentoMensals = new ArrayList<RendimentoMensal>();
+//        RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
         Double mediaDiaria;
         Integer tamanho;
 
@@ -67,13 +69,15 @@ public class DashboardController {
                     tamanho++;
                 }
             }
-            objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
+            rendimentoMensals.add(new RendimentoMensal(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho)));
+//            objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
         }
-        return objetoRendimentoMensal;
+//        return objetoRendimentoMensal;
+        return rendimentoMensals;
     }
 
     // GRAFICO 1
-    public static PorcentualPerdas tratarPorcentualPerdas
+    public static Double tratarPorcentualPerdas
             (List<PorcentualPerdasDatabaseView> perdas)
     {
         Double confirmado = 0.0;
@@ -92,42 +96,47 @@ public class DashboardController {
             }
         }
 
-        return new PorcentualPerdas(confirmado, naoConfirmado);
+        return new PorcentualPerdas(confirmado, naoConfirmado).getPorcentual();
     }
 
     // GRAFICO 2
-    public static ProjecaoRendimento tratarProjecaoRendimento
-            (RendimentoMensal rendimentoMensal)
+    public static List<RendimentoMensal> tratarProjecaoRendimento
+            (List<RendimentoMensal> rendimentoMensal)
     {
-
         if (rendimentoMensal == null) {
             return null;
         }
 
+        List<RendimentoMensal> projecao = new ArrayList<RendimentoMensal>();
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
+        List<Double> valoresRendimento = new ArrayList<Double>();
+
+        for (RendimentoMensal rm : rendimentoMensal) {
+            valoresRendimento.add(rm.getValor());
+        }
 
         List<Double> dias = new ArrayList<>();
 
-        for (double i = 1.0; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
+        for (double i = 1.0; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
             dias.add(i);
         }
 
-        projecaoRendimento.gerarRegressaoLinear(dias, rendimentoMensal.getValores());
+        projecaoRendimento.gerarRegressaoLinear(dias, valoresRendimento);
 
-//        for (double i = ProjecaoRendimento.TEMPO_LIMITE+1; i <= ProjecaoRendimento.TEMPO_LIMITE*2; i++) {
-        for (double i = 1; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
-            projecaoRendimento.adicionarValor(
+        for (double i = 1; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
+            projecao.add(new RendimentoMensal(
                     LocalDate.now().plusDays((long) i),
-                    projecaoRendimento.calculoRegressaoLinear(i));
+                    projecaoRendimento.calculoRegressaoLinear(i)));
         }
-        return projecaoRendimento;
+        return projecao;
     }
 
     // GRAFICO 3
-    public static TempoPermanencia tratarTempoPermanencia
+    public static List<TempoPermanencia> tratarTempoPermanencia
             (List<TempoPermanenciaDatabaseView> tempoPermanencia)
     {
-        TempoPermanencia permanencia = new TempoPermanencia();
+//        TempoPermanencia permanencia = new TempoPermanencia();
+        List<TempoPermanencia> permanencia = new ArrayList<TempoPermanencia>();
 
         LocalTime timeMinimo = LocalTime.of(0, 0, 0);
         Integer segundosAcrescentar = 0;
@@ -137,7 +146,7 @@ public class DashboardController {
 
         while (timeMinimo.getMinute() < TempoPermanencia.LIMITE_TEMPO.getMinute()) {
             for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-                timeAtual = permanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+                timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
 
                 if (timeAtual.getSecond() < (timeMinimo.getSecond() + segundosAcrescentar)
                         && timeAtual.getMinute() == timeMinimo.getMinute()) {
@@ -146,18 +155,20 @@ public class DashboardController {
             }
             segundosAcrescentar += TempoPermanencia.INTERVALO_TEMPO;
             timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
-            permanencia.adicionarValor(timeMinimo, quantidade);
+//            permanencia.adicionarValor(timeMinimo, quantidade);
+            permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
             quantidade = 0;
         }
 
         for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-            timeAtual = permanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+            timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
             if (timeAtual.getMinute() >= timeMinimo.getMinute()) {
                 quantidade++;
             }
         }
         timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
-        permanencia.adicionarValor(timeMinimo, quantidade);
+//        permanencia.adicionarValor(timeMinimo, quantidade);
+        permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
 
         return permanencia;
     }
@@ -190,25 +201,33 @@ public class DashboardController {
     }
 
     // GRAFICO 5
-    public static RegiaoRenda tratarRegiaoRenda
+    public static List<RegiaoRenda> tratarRegiaoRenda
             (List<RegiaoRendaDatabaseView> regiaoRenda)
     {
-        System.out.println("\nREGIOES / RENDA");
+        List<RegiaoRenda> valoresRegiaoRenda = new ArrayList<RegiaoRenda>();
+
         for (RegiaoRendaDatabaseView r : regiaoRenda) {
-            System.out.println(r.getDescricaoRegiao() + " " + r.getRenda());
+            valoresRegiaoRenda.add(new RegiaoRenda(r.getDescricaoRegiao(), r.getValorRegiao(), r.getRenda()));
         }
-        return null;
+
+        return valoresRegiaoRenda;
     }
 
     // GRAFICO 6
-    public static ValorImovelIdade tratarValorImovelIdade
+    public static List<ValorImovelIdade> tratarValorImovelIdade
             (List<ValorImovelIdadeDatabaseView> imovelIdade)
     {
-        System.out.println("\nIDADE / VALOR IMOVEL");
-        for (ValorImovelIdadeDatabaseView i : imovelIdade) {
-            System.out.println(ValorImovelIdade.converterDataParaIdade(i.getDataNasc()) + "anos " + i.getRenda());
+        List<ValorImovelIdade> valorImovelIdades = new ArrayList<ValorImovelIdade>();
+
+        for (ValorImovelIdadeDatabaseView i : imovelIdade)
+        {
+            valorImovelIdades.add(
+                    new ValorImovelIdade(
+                            ValorImovelIdade.converterDataParaIdade(i.getDataNasc()),
+                            i.getValorImovel()));
         }
-        return null;
+
+        return valorImovelIdades;
     }
 
     // GRAFICO 7
@@ -254,25 +273,33 @@ public class DashboardController {
     }
 
     // GRAFICO 8
-    public static ValorImovelRenda tratarValorImovelRenda
+    public static List<ValorImovelRenda> tratarValorImovelRenda
             (List<ValorImovelRendaDatabaseView> imovelRenda)
     {
-        System.out.println("\nVALOR IMOVEL / RENDA");
-        for (ValorImovelRendaDatabaseView i : imovelRenda) {
-            System.out.println(i.getValorImovel() + " " + i.getRenda());
+        List<ValorImovelRenda> valorImovelRendas = new ArrayList<ValorImovelRenda>();
+
+        for (ValorImovelRendaDatabaseView i : imovelRenda)
+        {
+            valorImovelRendas.add(
+                    new ValorImovelRenda(
+                            i.getValorImovel(),
+                            i.getRenda()));
         }
-        return null;
+
+        return valorImovelRendas;
     }
 
     // GRAFICO 9
-    public static CepRegiaoEscolhida tratarCepRegiaoEscolhida
+    public static List<CepRegiaoEscolhida> tratarCepRegiaoEscolhida
             (List<CepRegiaoEscolhidaDatabaseView> cepRegiao)
     {
-        System.out.println("\nCEP / REGIAO");
+        List<CepRegiaoEscolhida> cepRegiaoEscolhidas = new ArrayList<CepRegiaoEscolhida>();
+
         for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
-            System.out.println(c.getCep() + " " + c.getDescricaoRegiao());
+            cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(c.getCep(), c.getDescricaoRegiao()));
         }
-        return null;
+
+        return cepRegiaoEscolhidas;
     }
 
     // GRAFICO 10

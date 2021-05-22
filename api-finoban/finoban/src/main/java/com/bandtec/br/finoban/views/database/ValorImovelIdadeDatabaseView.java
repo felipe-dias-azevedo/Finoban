@@ -4,6 +4,6 @@ import java.time.LocalDate;
 
 public interface ValorImovelIdadeDatabaseView {
 
+    Double getValorImovel();
     LocalDate getDataNasc();
-    Double getRenda();
 }
