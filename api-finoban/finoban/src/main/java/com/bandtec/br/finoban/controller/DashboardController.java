@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/finoban/dashboard")
+@RequestMapping("/api-finoban/dashboard")
 public class DashboardController {
 
     @Autowired

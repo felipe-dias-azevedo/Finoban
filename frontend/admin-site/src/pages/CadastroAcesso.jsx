@@ -63,7 +63,7 @@ function CadastroAcesso() {
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             console.log(e);
-            if (e.status == 201) {
+            if (e.status === 201) {
                 console.log("Acesso cadastrado");
                 history.push('/admin/acesso')
             } else {
