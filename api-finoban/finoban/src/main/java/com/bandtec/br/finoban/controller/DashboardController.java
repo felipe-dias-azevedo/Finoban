@@ -5,20 +5,22 @@ import com.bandtec.br.finoban.repository.DashboardRepository;
 import com.bandtec.br.finoban.views.DashboardResponse;
 import com.bandtec.br.finoban.views.charts.*;
 import com.bandtec.br.finoban.views.database.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
-@RequestMapping("/finoban/dashboard")
+@RequestMapping("/api-finoban/dashboard")
 public class DashboardController {
 
     @Autowired
@@ -27,16 +29,16 @@ public class DashboardController {
     @GetMapping
     public ResponseEntity getDataDashboard() {
 
-        RendimentoMensal rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
-        PorcentualPerdas porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());
-        ProjecaoRendimento projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
-        TempoPermanencia tempoPermanencia = tratarTempoPermanencia(repository.getTempoPermanenciaData());
+        List<RendimentoMensal> rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
+        Double porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());
+        List<RendimentoMensal> projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
+        List<TempoPermanencia> tempoPermanencia = tratarTempoPermanencia(repository.getTempoPermanenciaData());
         AvaliacaoSite avaliacaoSite = tratarAvaliacaoSite(repository.getAvaliacaoSiteData());
-        RegiaoRenda regiaoRenda = tratarRegiaoRenda(repository.getRegiaoRendaData());
-        ValorImovelIdade valorImovelIdade = tratarValorImovelIdade(repository.getValorImovelIdadeData());
+        List<RegiaoRenda> regiaoRenda = tratarRegiaoRenda(repository.getRegiaoRendaData());
+        List<ValorImovelIdade> valorImovelIdade = tratarValorImovelIdade(repository.getValorImovelIdadeData());
         RegioesEscolhidas regioesEscolhidas = tratarRegioesEscolhidas(repository.getRegioesEscolhidasData());
-        ValorImovelRenda valorImovelRenda = tratarValorImovelRenda(repository.getValorImovelRendaData());
-        CepRegiaoEscolhida cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
+        List<ValorImovelRenda> valorImovelRenda = tratarValorImovelRenda(repository.getValorImovelRendaData());
+        List<CepRegiaoEscolhida> cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
         BancosEscolhidos bancosEscolhidos = tratarBancosEscolhidos(repository.getBancosEscolhidosData());
 
         DashboardResponse dataDashboard = new DashboardResponse(
@@ -48,14 +50,15 @@ public class DashboardController {
     }
 
     // GRAFICO 0
-    public static RendimentoMensal tratarRendimentoMensal
+    public static List<RendimentoMensal> tratarRendimentoMensal
             (List<RendimentoMensalDatabaseView> rendimentoData)
     {
         LocalDateTime dataInicio = LocalDateTime.now().minusDays(RendimentoMensal.TEMPO_LIMITE);
 
-        RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
-        Double mediaDiaria = 0.0;
-        Integer tamanho = 1;
+        List<RendimentoMensal> rendimentoMensals = new ArrayList<RendimentoMensal>();
+//        RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
+        Double mediaDiaria;
+        Integer tamanho;
 
         for (int i = 0; i < RendimentoMensal.TEMPO_LIMITE; i++) {
             mediaDiaria = 0.0;
@@ -66,132 +69,263 @@ public class DashboardController {
                     tamanho++;
                 }
             }
-            objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
+            rendimentoMensals.add(new RendimentoMensal(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho)));
+//            objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
         }
-        return objetoRendimentoMensal;
+//        return objetoRendimentoMensal;
+        return rendimentoMensals;
     }
 
     // GRAFICO 1
-    public static PorcentualPerdas tratarPorcentualPerdas
+    public static Double tratarPorcentualPerdas
             (List<PorcentualPerdasDatabaseView> perdas)
     {
-        System.out.println("\nPORCENTUAL PERDAS");
+        Double confirmado = 0.0;
+        Double naoConfirmado = 0.0;
+
         for (PorcentualPerdasDatabaseView p : perdas) {
-            System.out.println(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()).getStatus() + " " + p.getContagem());
+            if (Objects.equals(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()),
+                    StatusSaidaEnum.CONFIRMOU_CONTRATACAO))
+            {
+                confirmado = p.getContagem().doubleValue();
+            }
+            else if (Objects.equals(StatusSaidaEnum.getConfirmouContratacao(p.getStatusSaida()),
+                    StatusSaidaEnum.NAO_CONFIRMOU))
+            {
+                naoConfirmado = p.getContagem().doubleValue();
+            }
         }
-        return null;
+
+        return new PorcentualPerdas(confirmado, naoConfirmado).getPorcentual();
     }
 
     // GRAFICO 2
-    public static ProjecaoRendimento tratarProjecaoRendimento
-            (RendimentoMensal rendimentoMensal)
+    public static List<RendimentoMensal> tratarProjecaoRendimento
+            (List<RendimentoMensal> rendimentoMensal)
     {
+        if (rendimentoMensal == null) {
+            return null;
+        }
 
+        List<RendimentoMensal> projecao = new ArrayList<RendimentoMensal>();
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
+        List<Double> valoresRendimento = new ArrayList<Double>();
 
-        List<Double> dias = new ArrayList<Double>();
-        List<Double> valores = new ArrayList<Double>();
-
-        for (int i = 1; i <= ProjecaoRendimento.TEMPO_LIMITE; i++) {
-            dias.add((double) i);
+        for (RendimentoMensal rm : rendimentoMensal) {
+            valoresRendimento.add(rm.getValor());
         }
 
-        projecaoRendimento.gerarRegressaoLinear(rendimentoMensal.getValores(), dias);
+        List<Double> dias = new ArrayList<>();
 
-        for (int i = ProjecaoRendimento.TEMPO_LIMITE+1; i <= ProjecaoRendimento.TEMPO_LIMITE*2; i++) {
-            projecaoRendimento.adicionarValor(
-                    LocalDate.now().plusDays(i - ProjecaoRendimento.TEMPO_LIMITE),
-                    projecaoRendimento.calculoRegressaoLinear((double) i));
+        for (double i = 1.0; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
+            dias.add(i);
         }
-//        return projecaoRendimento;
-        return null;
+
+        projecaoRendimento.gerarRegressaoLinear(dias, valoresRendimento);
+
+        for (double i = 1; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
+            projecao.add(new RendimentoMensal(
+                    LocalDate.now().plusDays((long) i),
+                    projecaoRendimento.calculoRegressaoLinear(i)));
+        }
+        return projecao;
     }
 
     // GRAFICO 3
-    public static TempoPermanencia tratarTempoPermanencia
+    public static List<TempoPermanencia> tratarTempoPermanencia
             (List<TempoPermanenciaDatabaseView> tempoPermanencia)
     {
-        System.out.println("\nTEMPO DE PERMANENCIA");
-        for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-            System.out.println(p.getDataHoraEntrada() + " " + p.getDataHoraSaida());
+//        TempoPermanencia permanencia = new TempoPermanencia();
+        List<TempoPermanencia> permanencia = new ArrayList<TempoPermanencia>();
+
+        LocalTime timeMinimo = LocalTime.of(0, 0, 0);
+        Integer segundosAcrescentar = 0;
+
+        LocalTime timeAtual;
+        Integer quantidade = 0;
+
+        while (timeMinimo.getMinute() < TempoPermanencia.LIMITE_TEMPO.getMinute()) {
+            for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
+                timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+
+                if (timeAtual.getSecond() < (timeMinimo.getSecond() + segundosAcrescentar)
+                        && timeAtual.getMinute() == timeMinimo.getMinute()) {
+                    quantidade++;
+                }
+            }
+            segundosAcrescentar += TempoPermanencia.INTERVALO_TEMPO;
+            timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
+//            permanencia.adicionarValor(timeMinimo, quantidade);
+            permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
+            quantidade = 0;
         }
-        return null;
+
+        for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
+            timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+            if (timeAtual.getMinute() >= timeMinimo.getMinute()) {
+                quantidade++;
+            }
+        }
+        timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
+//        permanencia.adicionarValor(timeMinimo, quantidade);
+        permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
+
+        return permanencia;
     }
 
     // GRAFICO 4
     public static AvaliacaoSite tratarAvaliacaoSite
             (List<AvaliacaoSiteDatabaseView> avaliacao)
     {
-        System.out.println("\nAVALIACAO SITE");
+        AvaliacaoSite avaliacaoSite = new AvaliacaoSite();
+
         for (AvaliacaoSiteDatabaseView a : avaliacao) {
-            System.out.println(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()).getAvaliacao() + " " + a.getContagem());
+            if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.GOSTOU))
+            {
+                avaliacaoSite.setGostou(a.getContagem());
+            }
+            else if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.NAO_GOSTOU))
+            {
+                avaliacaoSite.setNaoGostou(a.getContagem());
+            }
+            else if (Objects.equals(AvalPositivoEnum.getAvaliacaoEnum(a.getAvalPositivo()),
+                    AvalPositivoEnum.NAO_DEU_FEEDBACK))
+            {
+                avaliacaoSite.setSemFeedback(a.getContagem());
+            }
         }
-        return null;
+
+        return avaliacaoSite;
     }
 
     // GRAFICO 5
-    public static RegiaoRenda tratarRegiaoRenda
+    public static List<RegiaoRenda> tratarRegiaoRenda
             (List<RegiaoRendaDatabaseView> regiaoRenda)
     {
-        System.out.println("\nREGIOES / RENDA");
+        List<RegiaoRenda> valoresRegiaoRenda = new ArrayList<RegiaoRenda>();
+
         for (RegiaoRendaDatabaseView r : regiaoRenda) {
-            System.out.println(r.getDescricaoRegiao() + " " + r.getRenda());
+            valoresRegiaoRenda.add(new RegiaoRenda(r.getDescricaoRegiao(), r.getValorRegiao(), r.getRenda()));
         }
-        return null;
+
+        return valoresRegiaoRenda;
     }
 
     // GRAFICO 6
-    public static ValorImovelIdade tratarValorImovelIdade
+    public static List<ValorImovelIdade> tratarValorImovelIdade
             (List<ValorImovelIdadeDatabaseView> imovelIdade)
     {
-        System.out.println("\nIDADE / VALOR IMOVEL");
-        for (ValorImovelIdadeDatabaseView i : imovelIdade) {
-            System.out.println(ValorImovelIdade.converterDataParaIdade(i.getDataNasc()) + "anos " + i.getRenda());
+        List<ValorImovelIdade> valorImovelIdades = new ArrayList<ValorImovelIdade>();
+
+        for (ValorImovelIdadeDatabaseView i : imovelIdade)
+        {
+            valorImovelIdades.add(
+                    new ValorImovelIdade(
+                            ValorImovelIdade.converterDataParaIdade(i.getDataNasc()),
+                            i.getValorImovel()));
         }
-        return null;
+
+        return valorImovelIdades;
     }
 
     // GRAFICO 7
     public static RegioesEscolhidas tratarRegioesEscolhidas
             (List<RegioesEscolhidasDatabaseView> regioes)
     {
-        System.out.println("\nREGIOES ESCOLHIDAS");
+        RegioesEscolhidas regioesEscolhidas = new RegioesEscolhidas();
+
         for (RegioesEscolhidasDatabaseView r : regioes) {
-            System.out.println(r.getDescricaoRegiao() + " " + r.getContagem());
+            if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.CENTRO))
+            {
+                regioesEscolhidas.setCentro(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.CONSOLACAO))
+            {
+                regioesEscolhidas.setConsolacao(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.BROOKLIN))
+            {
+                regioesEscolhidas.setBrooklin(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.MOOCA))
+            {
+                regioesEscolhidas.setMooca(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.SANTO_AMARO))
+            {
+                regioesEscolhidas.setSantoAmaro(r.getContagem());
+            }
+            else if (Objects.equals(RegioesEnum.getAvaliacaoEnum(r.getDescricaoRegiao()),
+                    RegioesEnum.INTERLAGOS))
+            {
+                regioesEscolhidas.setInterlagos(r.getContagem());
+            }
         }
-        return null;
+
+        return regioesEscolhidas;
     }
 
     // GRAFICO 8
-    public static ValorImovelRenda tratarValorImovelRenda
+    public static List<ValorImovelRenda> tratarValorImovelRenda
             (List<ValorImovelRendaDatabaseView> imovelRenda)
     {
-        System.out.println("\nVALOR IMOVEL / RENDA");
-        for (ValorImovelRendaDatabaseView i : imovelRenda) {
-            System.out.println(i.getValorImovel() + " " + i.getRenda());
+        List<ValorImovelRenda> valorImovelRendas = new ArrayList<ValorImovelRenda>();
+
+        for (ValorImovelRendaDatabaseView i : imovelRenda)
+        {
+            valorImovelRendas.add(
+                    new ValorImovelRenda(
+                            i.getValorImovel(),
+                            i.getRenda()));
         }
-        return null;
+
+        return valorImovelRendas;
     }
 
     // GRAFICO 9
-    public static CepRegiaoEscolhida tratarCepRegiaoEscolhida
+    public static List<CepRegiaoEscolhida> tratarCepRegiaoEscolhida
             (List<CepRegiaoEscolhidaDatabaseView> cepRegiao)
     {
-        System.out.println("\nCEP / REGIAO");
+        List<CepRegiaoEscolhida> cepRegiaoEscolhidas = new ArrayList<CepRegiaoEscolhida>();
+
         for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
-            System.out.println(c.getCep() + " " + c.getDescricaoRegiao());
+            cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(c.getCep(), c.getDescricaoRegiao()));
         }
-        return null;
+
+        return cepRegiaoEscolhidas;
     }
 
     // GRAFICO 10
     public static BancosEscolhidos tratarBancosEscolhidos
             (List<BancosEscolhidosDatabaseView> bancos)
     {
-        System.out.println("\nBANCOS ESCOLHIDOS");
+        BancosEscolhidos bancosEscolhidos = new BancosEscolhidos();
+
         for (BancosEscolhidosDatabaseView b : bancos) {
-            System.out.println(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()).getNomebanco() + " " + b.getContagem());
+            if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_CIFRA))
+            {
+                bancosEscolhidos.setCifra(b.getContagem());
+            }
+            else if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_S16_BANK))
+            {
+                bancosEscolhidos.setS16(b.getContagem());
+            }
+            else if (Objects.equals(BancoEscolhidoEnum.getBancoEscolhido(b.getBancoEscolhido()),
+                    BancoEscolhidoEnum.BANCO_DO_PRESIL))
+            {
+                bancosEscolhidos.setPresil(b.getContagem());
+            }
         }
-        return null;
+
+        return bancosEscolhidos;
     }
 }

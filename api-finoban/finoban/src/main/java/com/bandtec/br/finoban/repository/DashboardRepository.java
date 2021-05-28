@@ -39,14 +39,14 @@ public interface DashboardRepository extends JpaRepository<Acesso, Integer> {
     List<AvaliacaoSiteDatabaseView> getAvaliacaoSiteData();
 
     @Query(
-            value = "select descricao_regiao as 'descricaoRegiao', renda " +
+            value = "select descricao_regiao as 'descricaoRegiao', valor_regiao as 'valorRegiao', renda " +
                     "from acesso, regiao where fk_regiao = id_regiao",
             nativeQuery = true
     )
     List<RegiaoRendaDatabaseView> getRegiaoRendaData();
 
     @Query(
-            value = "select data_nasc as 'dataNasc', renda " +
+            value = "select valor_imovel as 'valorImovel', data_nasc as 'dataNasc' " +
                     "from cliente, acesso where id_cliente = fk_cliente",
             nativeQuery = true
     )

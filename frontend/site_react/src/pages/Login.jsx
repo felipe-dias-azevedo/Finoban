@@ -8,30 +8,30 @@ import '../assets/css/login.css';
 export default function Login() {
 
     const history = useHistory();
-    
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    
-    const[errorLogin, setErrorLogin] = useState(false)
+
+    const [errorLogin, setErrorLogin] = useState(false)
 
     async function validarLogin() {
-        
+
         let dataSimulacao = window.history.state.state.data;
         console.log(dataSimulacao);
-        
+
         let respostaSimulacao;
         if (email.trim() === "" || senha.trim() === "") {
             return;
         }
-        
-        
+
+
         const data = {
             email,
             senha,
         }
-        
+
         console.log(data);
-        
+
         await api.post('/financiamento', dataSimulacao, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -44,7 +44,7 @@ export default function Login() {
         }).catch(e => {
             console.error(e)
         });
-        
+
         await api.post('/login', data, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -54,8 +54,8 @@ export default function Login() {
             console.log(e.status);
             if (e.status === 200) {
                 history.push({
-                    pathname:'/simulador', 
-                    state: {data: respostaSimulacao}
+                    pathname: '/simulador',
+                    state: { data: respostaSimulacao }
                 });
             } else {
                 setErrorLogin(true);
@@ -63,10 +63,10 @@ export default function Login() {
         }).catch(e => {
             console.error(e);
         });
-        
-        
+
+
     }
-    
+
     return (
         <>
             <Header />
@@ -75,9 +75,8 @@ export default function Login() {
                 <h3>Login</h3>
             </div>
 
-            <div className="entrar">
-                
-                <h3>E-mail:</h3>
+            <form onSubmit={validarLogin} className="entrar">
+            <h3>E-mail:</h3>
                 <input
                     type="email"
                     name="email"
@@ -89,11 +88,11 @@ export default function Login() {
                     name="senha"
                     onChange={(e) => setSenha(e.target.value)}
                 />
-                <button className="bt" onClick={validarLogin}>
+                <button className="bt" type="submit">
                     Entrar
-                </button>
-            </div>
+                    </button>
+            </form>
             <Footer />
-    </>
+        </>
     );
 }

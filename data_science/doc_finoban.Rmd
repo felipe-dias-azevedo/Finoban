@@ -269,13 +269,26 @@ dfAcesso
 #row.names = FALSE)
 ```
 
+```{r}
+set.seed(123)
+id_cliente <-c(1:n)
+
+dfAvaliacao <-data.frame(id_cliente,avaliacao,dataHoraAvaliacao)
+
+dfAvaliacao
+
+dfcliente
+
+write.csv(dfcliente, file="C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\dfCliente.csv",
+row.names = FALSE)
+
+```
 
 ```{r}
 ##AVALIAÇÃO DO SITE
 
 head(table(valorImovel))
 
- 
 head(idade)
 
 barplot(table(avaliacao.r),
@@ -320,6 +333,7 @@ plot(valorImovel,idade,
      col = "green")
 
 ```
+
 
 
 

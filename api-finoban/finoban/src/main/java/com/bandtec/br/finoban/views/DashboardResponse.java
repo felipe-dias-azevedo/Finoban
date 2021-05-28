@@ -2,31 +2,33 @@ package com.bandtec.br.finoban.views;
 
 import com.bandtec.br.finoban.views.charts.*;
 
+import java.util.List;
+
 public class DashboardResponse {
 
-    private RendimentoMensal rendimentoMensal;
-    private PorcentualPerdas porcentualPerdas;
-    private ProjecaoRendimento projecaoRendimento;
-    private TempoPermanencia tempoPermanencia;
+    private List<RendimentoMensal> rendimentoMensal;
+    private Double porcentualPerdas;
+    private List<RendimentoMensal> projecaoRendimento;
+    private List<TempoPermanencia> tempoPermanencia;
     private AvaliacaoSite avaliacaoSite;
-    private RegiaoRenda regiaoRenda;
-    private ValorImovelIdade valorImovelIdade;
+    private List<RegiaoRenda> regiaoRenda;
+    private List<ValorImovelIdade> valorImovelIdade;
     private RegioesEscolhidas regioesEscolhidas;
-    private ValorImovelRenda valorImovelRenda;
-    private CepRegiaoEscolhida cepRegiaoEscolhida;
+    private List<ValorImovelRenda> valorImovelRenda;
+    private List<CepRegiaoEscolhida> cepRegiaoEscolhida;
     private BancosEscolhidos bancosEscolhidos;
 
     public DashboardResponse(
-            RendimentoMensal rendimentoMensal,
-            PorcentualPerdas porcentualPerdas,
-            ProjecaoRendimento projecaoRendimento,
-            TempoPermanencia tempoPermanencia,
+            List<RendimentoMensal> rendimentoMensal,
+            Double porcentualPerdas,
+            List<RendimentoMensal> projecaoRendimento,
+            List<TempoPermanencia> tempoPermanencia,
             AvaliacaoSite avaliacaoSite,
-            RegiaoRenda regiaoRenda,
-            ValorImovelIdade valorImovelIdade,
+            List<RegiaoRenda> regiaoRenda,
+            List<ValorImovelIdade> valorImovelIdade,
             RegioesEscolhidas regioesEscolhidas,
-            ValorImovelRenda valorImovelRenda,
-            CepRegiaoEscolhida cepRegiaoEscolhida,
+            List<ValorImovelRenda> valorImovelRenda,
+            List<CepRegiaoEscolhida> cepRegiaoEscolhida,
             BancosEscolhidos bancosEscolhidos)
     {
         this.rendimentoMensal = rendimentoMensal;
@@ -42,19 +44,19 @@ public class DashboardResponse {
         this.bancosEscolhidos = bancosEscolhidos;
     }
 
-    public RendimentoMensal getRendimentoMensal() {
+    public List<RendimentoMensal> getRendimentoMensal() {
         return rendimentoMensal;
     }
 
-    public PorcentualPerdas getPorcentualPerdas() {
+    public Double getPorcentualPerdas() {
         return porcentualPerdas;
     }
 
-    public ProjecaoRendimento getProjecaoRendimento() {
+    public List<RendimentoMensal> getProjecaoRendimento() {
         return projecaoRendimento;
     }
 
-    public TempoPermanencia getTempoPermanencia() {
+    public List<TempoPermanencia> getTempoPermanencia() {
         return tempoPermanencia;
     }
 
@@ -62,11 +64,11 @@ public class DashboardResponse {
         return avaliacaoSite;
     }
 
-    public RegiaoRenda getRegiaoRenda() {
+    public List<RegiaoRenda> getRegiaoRenda() {
         return regiaoRenda;
     }
 
-    public ValorImovelIdade getValorImovelIdade() {
+    public List<ValorImovelIdade> getValorImovelIdade() {
         return valorImovelIdade;
     }
 
@@ -74,11 +76,11 @@ public class DashboardResponse {
         return regioesEscolhidas;
     }
 
-    public ValorImovelRenda getValorImovelRenda() {
+    public List<ValorImovelRenda> getValorImovelRenda() {
         return valorImovelRenda;
     }
 
-    public CepRegiaoEscolhida getCepRegiaoEscolhida() {
+    public List<CepRegiaoEscolhida> getCepRegiaoEscolhida() {
         return cepRegiaoEscolhida;
     }
 

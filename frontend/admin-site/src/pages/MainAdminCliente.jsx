@@ -6,23 +6,14 @@ import Cliente from "../components/Admin/Cliente";
 export default function MainAdminCliente() {    
 
     const [usuarios, setUsuarios] = useState([]);
-    const [updateSite, setUpdateSite] = useState(0);
-
-    // setInterval(() => {
-    //     setUpdateSite(updateSite+1);
-    // }, 6000);
 
     useEffect(() => {
         api.get("/usuarios").then(e => {
             setUsuarios(e.data)
-            // for (let i = 0; i < e.data.length; i++) {
-            //     console.log("id: " + e.data[i].id + ", cnpj: " + e.data[i].cnpj + ", nome: " + e.data[i].nome + ", email: " + e.data[i].email);
-            // }
         }).catch(e => {
             console.error(e)
         }) 
-    }, [updateSite]);
-
+    }, []);
 
 
     return (

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Switch from "react-switch";
 import ChartHolder from '../components/ChartHolder';
 import MovableItem from '../components/MovableItem';
 import chartsPreset from '../utils/chartsPreset';
 import Chart from '../components/Chart';
+import api from '../services/api';
+import Loading from '../images/Loading.gif';
 
 function Dashboard() {
 
@@ -11,6 +13,43 @@ function Dashboard() {
     const [chartsVisible, setChartsVisible] = useState([
         true,true,true,true,true,true,true,true,true,true,true
     ]);
+    const [dataDashboard, setDataDashboard] = useState();
+    //     {
+    //     rendimentoMensal: [],
+    //     porcentualPerdas: 0.0,
+    //     projecaoRendimento: [],
+    //     tempoPermanencia: [],
+    //     avaliacaoSite: {},
+    //     regiaoRenda: [],
+    //     valorImovelIdade: [],
+    //     regioesEscolhidas: {},
+    //     valorImovelRenda: [],
+    //     cepRegiaoEscolhida: [],
+    //     bancosEscolhidos: {}
+    // });
+
+    useEffect(() => {
+        api.get("/dashboard", {}, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        }).then(e => {
+            const data = e.data;
+            console.log(data.rendimentoMensal);
+            console.log(data.porcentualPerdas);
+            console.log(data.avaliacaoSite);
+            setDataDashboard(data);
+        }).catch(e => {
+            console.error(e);
+        });
+    }, []);
+
+    if (!dataDashboard) {
+        return (
+            <div id="app-loading">
+                <img src={Loading} alt="loading" className="loading" />
+            </div>
+        );
+    }
 
     function handleSwitch(index) {
         setChartsVisible(prevState => {
@@ -117,7 +156,11 @@ function Dashboard() {
                     </div>
                 </div>
             </section>
-            <div className="chart-holder giant-holder">
+            <div className={`chart-holder 
+                ${((chartsVisible[charts[0].id] && !chartsVisible[charts[1].id]) 
+                || (!chartsVisible[charts[0].id] && chartsVisible[charts[1].id])) 
+                ? "giant-holder-one" : "giant-holder"}`}
+            >
                 {chartsVisible[charts[0].id] && (
                     <ChartHolder giant id={0} moveCard={moveCardHandler}>
                         {returnChart(0)}

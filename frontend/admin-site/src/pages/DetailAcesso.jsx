@@ -3,7 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import api from "../services/api";
 import MainAdminAcesso from "./MainAdminAcesso";
 
-function DetailAcesso({ }) {
+function DetailAcesso() {
 
     const history = useHistory();
     const params = useParams();
@@ -85,7 +85,7 @@ function DetailAcesso({ }) {
                                     <h3>Status de Saida:   <span id="dado">{statusaida}</span></h3>
                                     <h3>Pagina de Saida:   <span id="dado">{paginaSaida}</span></h3>
                                 </div>
-                                <button id="button-edit-client">
+                                <button onClick={excluirAcesso} id="button-edit-client">
                                     Excluir
                                 </button>
                             </div>

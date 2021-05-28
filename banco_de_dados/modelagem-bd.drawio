@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="cDdLw2rSKDqUq0j_kSJk" name="Page-1">
-        <mxGraphModel dx="657" dy="571" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="620" dy="420" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -23,8 +23,8 @@
                 <mxCell id="xgvbz5kUbs7I0Mx6iPHN-2" value="Acesso" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;fillColor=#2E2E2E;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="351" y="227" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="xgvbz5kUbs7I0Mx6iPHN-4" value="idCliente &lt;int&gt;&#10;cnpj &lt;varchar&gt;&#10;nome &lt;varchar&gt;&#10;email &lt;varchar&gt;&#10;senha &lt;varchar&gt;&#10;cep &lt;varchar&gt;&#10;numero &lt;int&gt;&#10;dataNasc &lt;date&gt;&#10;dataCriacao &lt;datetime&gt;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
-                    <mxGeometry x="136" y="287" width="140" height="150" as="geometry"/>
+                <mxCell id="xgvbz5kUbs7I0Mx6iPHN-4" value="idCliente &lt;int&gt;&#10;cnpj &lt;varchar&gt;&#10;nome &lt;varchar&gt;&#10;email &lt;varchar&gt;&#10;senha &lt;varchar&gt;&#10;cep &lt;varchar&gt;&#10;bairro &lt;varchar&gt;&#10;numero &lt;int&gt;&#10;dataNasc &lt;date&gt;&#10;dataCriacao &lt;datetime&gt;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="136" y="287" width="140" height="171" as="geometry"/>
                 </mxCell>
                 <mxCell id="xgvbz5kUbs7I0Mx6iPHN-6" value="idEntrada &lt;int&gt;&#10;dataHoraEntrada &lt;datetime&gt;&#10;dataHoraSaida &lt;datetime&gt;&#10;statusSaida &lt;int&gt;&#10;paginaSaida &lt;int&gt;&#10;renda &lt;double&gt;&#10;valorImovel &lt;double&gt;&#10;tempoFinanciamento &lt;int&gt;&#10;porcentagemRenda &lt;int&gt;&#10;bancoEscolhido &lt;int&gt;&#10;fkRegiao &lt;int&gt;&#10;fkCliente &lt;int&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
                     <mxGeometry x="343" y="287" width="172" height="179" as="geometry"/>

@@ -41,7 +41,7 @@ function CadastroCliente() {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
-            if(e.status == 201) {
+            if(e.status === 201) {
                 console.log(dataCliente)
                 console.log("cadastrado");
                 history.push("/admin/cliente/");    
