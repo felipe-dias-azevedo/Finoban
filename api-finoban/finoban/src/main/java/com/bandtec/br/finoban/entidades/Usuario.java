@@ -11,29 +11,27 @@ import java.time.LocalDateTime;
 @Table(name = "cliente")
 public class Usuario implements Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="idCliente")
-        private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCliente")
+    private int id;
 
-        private String cnpj;
-        private String nome;
-        private String email;
-        private String senha;
-        private String cep;
-        private Integer numero;
+    private String cnpj;
+    private String nome;
+    private String email;
+    private String senha;
+    private String cep;
+    private String bairro;
+    private Integer numero;
 
-        @JsonFormat(pattern="yyyy-MM-dd")
-        private LocalDate dataNasc;
-        private LocalDateTime dataCriacao;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataNasc;
+    private LocalDateTime dataCriacao;
 
-//        @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL)
-//        private Set<Avaliacao> avaliacoes;
 
-        public Usuario() {
+    public Usuario() {
 
-        }
+    }
 
     public Usuario(String cnpj, String nome, String email, String senha, String cep, Integer numero) {
         this.cnpj = cnpj;
@@ -82,6 +80,14 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getCep() {

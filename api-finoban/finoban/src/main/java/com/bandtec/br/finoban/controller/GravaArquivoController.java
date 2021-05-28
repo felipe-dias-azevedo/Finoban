@@ -22,8 +22,12 @@ public class GravaArquivoController {
 
     @PostMapping("/txt")
     public ResponseEntity postRegistro(@RequestBody DocumentoLayout documentoLayout) {
-        gravarResgistrorApi(documentoLayout);
-        return ResponseEntity.status(201).build();
+        try {
+            gravarResgistrorApi(documentoLayout);
+            return ResponseEntity.status(201).build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(400).body(ex.getMessage());
+        }
     }
 
     public static void gravaRegistro (String nomeArq, String registro) {

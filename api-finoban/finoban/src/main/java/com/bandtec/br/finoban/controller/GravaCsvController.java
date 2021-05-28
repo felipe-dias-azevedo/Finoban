@@ -19,10 +19,14 @@ public class GravaCsvController {
 
     @PostMapping("/csv")
     public ResponseEntity postRegistro(@RequestBody DocumentoLayout documentoLayout) {
-        ListaObj<DocumentoLayout> lista = new ListaObj<DocumentoLayout>(1);
-        lista.adiciona(documentoLayout);
-        gravaLista(lista,"financiamento");
-        return ResponseEntity.status(201).build();
+        try {
+            ListaObj<DocumentoLayout> lista = new ListaObj<DocumentoLayout>(1);
+            lista.adiciona(documentoLayout);
+            gravaLista(lista,"financiamento");
+            return ResponseEntity.status(201).build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(400).body(ex.getMessage());
+        }
     }
 
 
