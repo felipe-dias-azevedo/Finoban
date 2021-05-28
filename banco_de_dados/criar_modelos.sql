@@ -5,6 +5,7 @@ CREATE TABLE cliente (
     email VARCHAR(255),
     senha VARCHAR(255),
     cep VARCHAR(255),
+    bairro VARCHAR(255),
     numero INT,
     data_nasc DATE,
     data_criacao DATETIME
