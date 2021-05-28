@@ -14,7 +14,8 @@ export default function Login() {
 
     const [errorLogin, setErrorLogin] = useState(false)
 
-    async function validarLogin() {
+    async function validarLogin(e) {
+        e.preventDefault();
 
         let dataSimulacao = window.history.state.state.data;
         console.log(dataSimulacao);
@@ -23,7 +24,6 @@ export default function Login() {
         if (email.trim() === "" || senha.trim() === "") {
             return;
         }
-
 
         const data = {
             email,
