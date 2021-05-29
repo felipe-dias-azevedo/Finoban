@@ -6,6 +6,7 @@ import chartsPreset from '../utils/chartsPreset';
 import Chart from '../components/Chart';
 import api from '../services/api';
 import Loading from '../images/Loading.gif';
+import DataChartHandler from '../utils/dataChartHandler';
 
 function Dashboard() {
 
@@ -14,19 +15,6 @@ function Dashboard() {
         true,true,true,true,true,true,true,true,true,true,true
     ]);
     const [dataDashboard, setDataDashboard] = useState();
-    //     {
-    //     rendimentoMensal: [],
-    //     porcentualPerdas: 0.0,
-    //     projecaoRendimento: [],
-    //     tempoPermanencia: [],
-    //     avaliacaoSite: {},
-    //     regiaoRenda: [],
-    //     valorImovelIdade: [],
-    //     regioesEscolhidas: {},
-    //     valorImovelRenda: [],
-    //     cepRegiaoEscolhida: [],
-    //     bancosEscolhidos: {}
-    // });
 
     useEffect(() => {
         api.get("/dashboard", {}, {
@@ -34,9 +22,6 @@ function Dashboard() {
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         }).then(e => {
             const data = e.data;
-            console.log(data.rendimentoMensal);
-            console.log(data.porcentualPerdas);
-            console.log(data.avaliacaoSite);
             setDataDashboard(data);
         }).catch(e => {
             console.error(e);
@@ -61,6 +46,7 @@ function Dashboard() {
 
     function returnChart(index) {
         let chart = charts[index];
+        console.log(DataChartHandler(chart.graphic, chart.id, dataDashboard));
         return (
             <MovableItem
                 id={index}
@@ -68,13 +54,17 @@ function Dashboard() {
                 setCharts={setCharts}
                 moveCard={moveCardHandler}
             >
-                <Chart id={chart.graphic} />
+                <Chart 
+                    id={chart.graphic}
+                    data={
+                        DataChartHandler(chart.graphic, chart.id, dataDashboard)
+                    } 
+                />
             </MovableItem>
         )
     }
 
     const moveCardHandler = (dragIndex, hoverIndex) => {
-        console.log(dragIndex, hoverIndex);
         const dragItem = charts[dragIndex];
 
         if (dragItem) {
