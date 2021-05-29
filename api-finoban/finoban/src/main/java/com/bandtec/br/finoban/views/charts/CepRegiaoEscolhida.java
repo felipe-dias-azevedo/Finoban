@@ -2,27 +2,37 @@ package com.bandtec.br.finoban.views.charts;
 
 public class CepRegiaoEscolhida {
 
-    private String cep;
-    private String nomeRegiao;
+    private String bairroCliente;
+    private String regiaoEscolhida;
+    private Integer contagem;
 
-    public CepRegiaoEscolhida(String cep, String nomeRegiao) {
-        this.cep = cep;
-        this.nomeRegiao = nomeRegiao;
+    public CepRegiaoEscolhida(String bairroCliente, String regiaoEscolhida, Integer contagem) {
+        this.bairroCliente = bairroCliente;
+        this.regiaoEscolhida = regiaoEscolhida;
+        this.contagem = contagem;
     }
 
-    public String getCep() {
-        return cep;
+    public String getBairroCliente() {
+        return bairroCliente;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setBairroCliente(String bairroCliente) {
+        this.bairroCliente = bairroCliente;
     }
 
-    public String getNomeRegiao() {
-        return nomeRegiao;
+    public String getRegiaoEscolhida() {
+        return regiaoEscolhida;
     }
 
-    public void setNomeRegiao(String nomeRegiao) {
-        this.nomeRegiao = nomeRegiao;
+    public void setRegiaoEscolhida(String regiaoEscolhida) {
+        this.regiaoEscolhida = regiaoEscolhida;
+    }
+
+    public Integer getContagem() {
+        return contagem;
+    }
+
+    public void setContagem(Integer contagem) {
+        this.contagem = contagem;
     }
 }

@@ -59,7 +59,7 @@ public interface DashboardRepository extends JpaRepository<Acesso, Integer> {
     List<ValorImovelRendaDatabaseView> getValorImovelRendaData();
 
     @Query(
-            value = "select cep, descricao_regiao as 'descricaoRegiao' " +
+            value = "select bairro as 'bairroCliente', descricao_regiao as 'regiaoEscolhida' " +
                     "from acesso, cliente, regiao where fk_cliente = id_cliente and fk_regiao = id_regiao",
             nativeQuery = true
     )

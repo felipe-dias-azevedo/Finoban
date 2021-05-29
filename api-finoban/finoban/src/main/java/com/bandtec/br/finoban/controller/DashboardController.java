@@ -15,9 +15,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api-finoban/dashboard")
@@ -295,8 +293,32 @@ public class DashboardController {
     {
         List<CepRegiaoEscolhida> cepRegiaoEscolhidas = new ArrayList<CepRegiaoEscolhida>();
 
-        for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
-            cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(c.getCep(), c.getDescricaoRegiao()));
+        List<BairrosRegioes> bairrosRegioesInseridos = new ArrayList<BairrosRegioes>();
+        String regiaoAtual;
+        String bairroAtual;
+        Integer iteradorRegiao;
+        Boolean isIn;
+
+        for (CepRegiaoEscolhidaDatabaseView cr : cepRegiao) {
+            bairroAtual = cr.getBairroCliente();
+            regiaoAtual = cr.getRegiaoEscolhida();
+            iteradorRegiao = 0;
+            isIn = false;
+            for (BairrosRegioes br : bairrosRegioesInseridos) {
+                if (bairroAtual.equals(br.getBairro()) && regiaoAtual.equals(br.getRegiao())) {
+                    isIn = true;
+                }
+            }
+            if (!isIn) {
+                for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
+                    if (bairroAtual.equals(c.getBairroCliente())
+                            && regiaoAtual.equals(c.getRegiaoEscolhida())) {
+                        iteradorRegiao += 1;
+                    }
+                }
+                cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(bairroAtual, regiaoAtual, iteradorRegiao));
+                bairrosRegioesInseridos.add(new BairrosRegioes(bairroAtual, regiaoAtual));
+            }
         }
 
         return cepRegiaoEscolhidas;
