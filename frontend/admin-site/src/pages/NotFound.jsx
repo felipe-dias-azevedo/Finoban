@@ -7,7 +7,7 @@ function NotFound() {
   const history = useHistory();
 
   useEffect(() => {
-    history.push('/login');
+    history.push('/');
   }, [history]);
 
   return (
