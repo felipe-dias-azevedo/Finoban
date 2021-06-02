@@ -34,8 +34,8 @@ public class AcessoController {
                 acessoRepository.save(acesso);
                 return ResponseEntity.status(201).build();
             } else {
-                return ResponseEntity.status(404).body(new ResponseGeneric(null,
-                        Collections.singletonList("Não foi encontrado região para este Id")));
+                return ResponseEntity.status(404).body(new ResponseGeneric("Não foi encontrado região para " +
+                        "este Id", null));
             }
         } else {
             List<String> list = new ArrayList<>();
