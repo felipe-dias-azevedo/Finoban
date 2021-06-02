@@ -16,6 +16,10 @@ public class ResponseGeneric<T> {
         this.messages = messages;
     }
 
+    public ResponseGeneric(T data) {
+        this.data = data;
+    }
+
     public T getData() {
         return data;
     }

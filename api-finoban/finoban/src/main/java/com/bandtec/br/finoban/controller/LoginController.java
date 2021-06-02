@@ -3,11 +3,13 @@ package com.bandtec.br.finoban.controller;
 import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.models.Login;
+import com.bandtec.br.finoban.resposta.ResponseGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -40,7 +42,7 @@ public class LoginController {
             }
         }
 
-        return ResponseEntity.status(200).body("Login efetuado com sucesso");
+        return ResponseEntity.status(200).body(new ResponseGeneric(verificaEmail));
 
     }
 
