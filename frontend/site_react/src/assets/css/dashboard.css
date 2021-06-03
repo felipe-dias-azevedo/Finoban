@@ -87,6 +87,7 @@ input[type="range"]::-webkit-slider-thumb {
     color: white;
     border: 0px;
     border-radius: 5px;
+    font-weight: 500;
 }
 
 .alert-avaliacao {

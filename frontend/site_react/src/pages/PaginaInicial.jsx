@@ -5,6 +5,7 @@ import { BiChevronDownCircle } from 'react-icons/bi';
 import { IoChevronBack } from 'react-icons/io5';
 import { useHistory } from 'react-router';
 import api from '../services/api';
+import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 
 function PaginaInicial() {
 
@@ -13,10 +14,11 @@ function PaginaInicial() {
     const [sabeValorImovel, setSabeValorImovel] = useState(null);
     const [respondeuBotao, setRespondeuBotao] = useState(false);
 
-    const [cnpj, setCnpj] = useState("")
-    const [renda, setRenda] = useState("")
-    const [valorImovel, setValorImovel] = useState("")
-    const [tempoFinanciamento, setTempoFinanciamento] = useState("")
+    const [cnpj, setCnpj] = useState("");
+    const [mask, setMask] = useState("");
+    const [renda, setRenda] = useState("");
+    const [valorImovel, setValorImovel] = useState("");
+    const [tempoFinanciamento, setTempoFinanciamento] = useState("");
     const [imoveisList, setImoveisList] = useState([]);
 
     useEffect(() => {
@@ -31,7 +33,7 @@ function PaginaInicial() {
     }, [])
 
     function irParaSimulador() {
-        
+
         if (
             cnpj.trim() === "" ||
             renda.trim() === "" ||
@@ -46,11 +48,13 @@ function PaginaInicial() {
             tempoFinanciamento
         };
 
-        console.log(dataSimulador);
+        const testeMsg = dataSimulador;
+
+        var testando = localStorage.setItem("testeChave", JSON.stringify(testeMsg));
 
         history.push({
-            pathname:'/login', 
-            state: {data: dataSimulador}
+            pathname: '/login',
+            state: { data: dataSimulador }
         });
     }
 
@@ -88,10 +92,14 @@ function PaginaInicial() {
                                 </div>
                                 <section>
                                     <p>CNPJ</p>
-                                    <input
-                                        type="text"
+                                    <CpfCnpj
                                         placeholder="00.000.000/0000-00"
-                                        onChange={(e => setCnpj(e.target.value))}
+                                        type="tel"
+                                        value={cnpj}
+                                        onChange={(e, type) => {
+                                        setCnpj(e.target.value);
+                                        setMask(type === "CNPJ");
+                                        }}
                                     />
                                 </section>
                                 <section>
@@ -119,7 +127,7 @@ function PaginaInicial() {
                                                 <p id="mudar">Região</p>
                                                 <select
                                                     id="select-imoveis"
-                                                    onChange={(e) => {setValorImovel(e.target.value)}}
+                                                    onChange={(e) => { setValorImovel(e.target.value) }}
                                                 >
                                                     <option value="">--Selecione--</option>
 
@@ -162,14 +170,14 @@ function PaginaInicial() {
                                 <div className="container">
                                     <h3>Já sabe o valor do imóvel?</h3>
                                     <div className="btn-valor-imovel">
-                                    <button className="bt" onClick={(e) => {
-                                        setSabeValorImovel(true);
-                                        setRespondeuBotao(true)
-                                    }} id="sim"> Sim</button>
-                                    <button className="bt" onClick={(e) => {
-                                        setSabeValorImovel(false);
-                                        setRespondeuBotao(true)
-                                    }} id="nao"> Não</button>
+                                        <button className="bt" onClick={(e) => {
+                                            setSabeValorImovel(true);
+                                            setRespondeuBotao(true)
+                                        }} id="sim"> Sim</button>
+                                        <button className="bt" onClick={(e) => {
+                                            setSabeValorImovel(false);
+                                            setRespondeuBotao(true)
+                                        }} id="nao"> Não</button>
                                     </div>
                                 </div>
                             </div>

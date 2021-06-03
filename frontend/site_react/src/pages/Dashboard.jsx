@@ -14,35 +14,33 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
 
+    function MyVerticallyCenteredModal(props) {
+        return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+            Nos dê um feedback
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Digite sua mensagem</Form.Label>
+        <Form.Control as="textarea" rows={2} />
+    </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+                <button onClick={props.onHide} className="btn-avaliacao-cancelar">Fechar</button>
+                <button onclick={props.avaliacaoPositivo} className="btn-avaliacao-enviar">Enviar</button>
 
-function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-          Nos dê um feedback
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Digite sua mensagem</Form.Label>
-    <Form.Control as="textarea" rows={2} />
-  </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-            <button onClick={props.onHide} className="btn-avaliacao-cancelar">Fechar</button>
-            <button className="btn-avaliacao-enviar">Enviar</button>
-
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
+            </Modal.Footer>
+        </Modal>
+        );
+    }
 
 function Dashboard() {
     const history = useHistory();
