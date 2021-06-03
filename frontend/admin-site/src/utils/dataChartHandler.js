@@ -143,11 +143,12 @@ function DataChartHandler ( chartEnum, chartId, data ) {
                 }
                 if (!regiaoEmRegioesLidas) {
                     cepRegiao.push([regiaoAtual,0,0,0,0,0,0]);
+                    console.log(cepRegiao);
                     for (let h = 0; h < cepRegiaoEscolhidaData.length; h++) {
                         if (regiaoAtual === cepRegiaoEscolhidaData[h].bairroCliente) {
                             for (let k = 0; k < cepRegiao[0].length-1; k++) {
                                 if (cepRegiaoEscolhidaData[h].regiaoEscolhida === cepRegiao[0][k+1]) {
-                                    cepRegiao[i+1][k+1] = cepRegiaoEscolhidaData[h].contagem;
+                                    cepRegiao[cepRegiao.length-1][k+1] = cepRegiaoEscolhidaData[h].contagem;
                                 }
                             }
                         }
