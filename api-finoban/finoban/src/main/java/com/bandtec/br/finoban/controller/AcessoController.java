@@ -1,6 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.entidades.Acesso;
+import com.bandtec.br.finoban.models.Pilha;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
@@ -26,6 +27,8 @@ public class AcessoController {
 
     @Autowired
     private RegiaoRepository regiaoRepository;
+
+    Pilha<Integer> pilhaUltimos = new Pilha<>(5);
 
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso acesso) {
@@ -76,4 +79,24 @@ public class AcessoController {
             return ResponseEntity.status(200).body(acessoRepository.findAll());
         }
     }
+
+    @DeleteMapping("/ultimos")
+    public ResponseEntity getUltimosAcessos() {
+
+        if (pilhaUltimos.isEmpty()) {
+            List<Acesso> acessoList = acessoRepository.findTop5ByOrderByDataHoraSaidaDesc();
+            if (acessoList.isEmpty()) {
+                return ResponseEntity.status(404).build();
+            }
+            for (int i = acessoList.size() - 1; i >= 0; i--) {
+                pilhaUltimos.push(acessoList.get(i).getIdEntrada());
+            }
+            acessoRepository.deleteById(pilhaUltimos.pop());
+            return ResponseEntity.status(200).build();
+        }
+        acessoRepository.deleteById(pilhaUltimos.pop());
+        return ResponseEntity.status(200).build();
+    }
+
+
 }

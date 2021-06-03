@@ -5,6 +5,12 @@ import Footer from '../components/Footer';
 
 function Simulador() {
 
+    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
+    console.log(respostaSimulacao[0].data);
+    console.log(respostaSimulacao[0].data.taxa);
+    console.log(respostaSimulacao[1].data);
+    console.log(respostaSimulacao[2].data);
+
     let data = window.history;
     if (!data.state) {
         data = [
@@ -47,24 +53,26 @@ function Simulador() {
                 <div className="bancos center">
                     <BankCard 
                         banco="Banco do Presil" 
-                        taxa_t ={(data[0].data.taxaTotal*100).toFixed(2) - 12} 
+                        taxa_t ={(respostaSimulacao[0].data.taxa)} 
                         primeira_p="3000,00" 
                         valor_f="1.200.000,00" 
-                        valor_s={(((data[0].data.dfi) + (data[0].data.mip))*100).toFixed(2)} 
+                        valor_s={(((respostaSimulacao[0].data.dfi) + (respostaSimulacao[0].data.mip))*100).toFixed(2)} 
+                    
                     />
                     <BankCard 
-                        banco="S16 Bank" 
-                        taxa_t ={(data[1].data.taxaTotal*100).toFixed(2)} 
+                        banco="S16 Bank"
+                        taxa_t ={(respostaSimulacao[1].data.taxa)} 
                         primeira_p="2000,00" 
                         valor_f="800.000,00" 
-                        valor_s={((((data[1].data.dfi) + (data[1].data.mip))*100).toFixed(2))} 
+                        valor_s={(((respostaSimulacao[1].data.dfi) + (respostaSimulacao[1].data.mip))*100).toFixed(2)} 
+                         
                     />
                     <BankCard 
                         banco="Banco Cifra" 
-                        taxa_t ={data[2].data.taxaTotal} 
+                        taxa_t ={(respostaSimulacao[2].data.taxa)} 
                         primeira_p="3000,00" 
                         valor_f="1.200.000,00" 
-                        valor_s={(data[2].data.dfi) + (data[2].data.mip)} 
+                        valor_s={(((respostaSimulacao[2].data.dfi) + (respostaSimulacao[2].data.mip))*100).toFixed(2)} 
                     />
                 </div>
             </div>
