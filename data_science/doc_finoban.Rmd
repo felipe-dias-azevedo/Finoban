@@ -118,13 +118,13 @@ regiao.r
 ```
 
 ```{r}
-set.seed(123)
+set.seed(124)
 valorImovel <- round(rnorm(n,100000,25000),2)
 valorImovel
 ```
 
 ```{r}
-set.seed(123)
+set.seed(125)
 renda <- round(rnorm(n,5000,1000),2)
 renda
 ```
@@ -140,8 +140,8 @@ banco.r
 ```
 
 ```{r}
-set.seed(123)
-avaliacao <-round(runif(n,1,3))
+set.seed(129)
+avaliacao <-round(rnorm(n,1,1))
 avaliacao.r <- factor(avaliacao,
                     levels = c(1,2,3),
                     labels = c("negativa","positiva","n/ avaliado")
@@ -240,7 +240,7 @@ df <- data.frame(id,idade,regiao.r,valorImovel,renda,tempoFinanciamento,`%rendaF
 
 df
 #Mude o caminho para salvar de acordo com sua máquina
-write.csv(df, file = "C:/Users/VINIBAS/Desktop/Finoban/data_science/dataframeFinoban.csv", row.names = FALSE)
+#write.csv(df, file = "C:/Users/VINIBAS/Desktop/Finoban/data_science/dataframeFinoban.csv", row.names = #FALSE)
 ```
 
 ```{r}
@@ -279,8 +279,9 @@ dfAvaliacao
 
 dfcliente
 
-write.csv(dfcliente, file="C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\dfCliente.csv",
+write.csv(dfcliente, file ="C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\dfCliente.csv",
 row.names = FALSE)
+
 
 ```
 
@@ -291,7 +292,7 @@ head(table(valorImovel))
 
 head(idade)
 
-barplot(table(avaliacao.r),
+barplot(table(valorImovel,renda),
         col=c("#972838", "#278284"),
         main = "Avaliação")
 
@@ -328,13 +329,21 @@ barplot(table (tempoAcesso.r))
 plot(valorImovel,idade,
      main = "Diagrama de Dispersão",
      xlab = "valor do imovel",
-     ylab = "idade",
+     ylab = "renda",
      pch = 20,
-     col = "green")
+     col = "blue")
 
 ```
 
 
+```{r}
+plot(valorImovel,idade,
+     main = "Diagrama de Dispersão",
+     xlab = "valor do imovel",
+     ylab = "idade",
+     pch = 20,
+     col = "blue")
+```
 
 
 
