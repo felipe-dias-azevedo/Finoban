@@ -46,7 +46,6 @@ function Dashboard() {
 
     function returnChart(index) {
         let chart = charts[index];
-        console.log(DataChartHandler(chart.graphic, chart.id, dataDashboard));
         return (
             <MovableItem
                 id={index}

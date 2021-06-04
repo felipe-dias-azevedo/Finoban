@@ -273,13 +273,13 @@ dfAcesso
 set.seed(123)
 id_cliente <-c(1:n)
 
-dfAvaliacao <-data.frame(id_cliente,avaliacao,dataHoraAvaliacao)
+dfcliente <-data.frame(id_cliente,data_nasc)
 
 dfAvaliacao
 
-dfcliente
 
-write.csv(dfcliente, file ="C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\dfCliente.csv",
+
+write.csv(dfcliente, file ="C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\dfClientee.csv",
 row.names = FALSE)
 
 
@@ -290,14 +290,12 @@ row.names = FALSE)
 
 head(table(valorImovel))
 
-head(idade)
 
 barplot(table(valorImovel,renda),
         col=c("#972838", "#278284"),
         main = "Avaliação")
 
 ```
-
 
 ```{r}
 write.table(df,"C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\teste.csv", row.names = FALSE)
@@ -314,7 +312,7 @@ barplot(table(regiao.r),
 
 ```{r}
 ##TEMPO DE PERMANENCIA
-##TERMINAR
+
 
 tempoAcesso.r <- round((tempoAcesso/60),1)
 
