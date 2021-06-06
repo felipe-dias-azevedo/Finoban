@@ -30,7 +30,7 @@ public class GravaArquivoController {
         }
     }
 
-    public static void gravaRegistro (String nomeArq, String registro) {
+    private static void gravaRegistro (String nomeArq, String registro) {
         BufferedWriter saida = null;
         try {
             saida = new BufferedWriter(new FileWriter(nomeArq, true));
@@ -48,7 +48,7 @@ public class GravaArquivoController {
     }
 
 
-    public static void gravarResgistrorApi(DocumentoLayout documentoLayout) {
+    private static void gravarResgistrorApi(DocumentoLayout documentoLayout) {
 
         String nomeArq = "financiamento.txt";
         String header = "";

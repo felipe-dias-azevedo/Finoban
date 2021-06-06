@@ -1,3 +1,15 @@
 00FINANCIAMENTO27-04-2021 22:22:3901
 02 Banco Cifra      Silvio Santos                                                                                   250000Mooca               30
 010000000001
+00FINANCIAMENTO06-06-2021 00:54:2901
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO06-06-2021 00:55:3301
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO06-06-2021 00:59:2601
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO06-06-2021 01:12:0901
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
