@@ -31,8 +31,7 @@ public class RestServiceController {
     private ResponseEntity<RespostaApi> response;
 
     @PostMapping("/financiamento")
-    public List<RespostaApi> retornaLista(@RequestBody BancoRequisicao novaRequisicao){
-
+    public ResponseEntity retornaLista(@RequestBody BancoRequisicao novaRequisicao){
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
@@ -57,20 +56,18 @@ public class RestServiceController {
             RespostaApi bancoResponse = response.getBody();
             listResponse.add(bancoResponse);
         }
-
-        return listResponse;
-
+        return ResponseEntity.status(200).body(listResponse);
     }
 
-    @PostMapping
-    public ResponseEntity createPost(@RequestBody BancoRequisicao novaRequisicao) {
-
-        if (retornaLista(novaRequisicao).isEmpty()) {
-            return ResponseEntity.status(400).build();
-        } else {
-            return ResponseEntity.status(200).body(retornaLista(novaRequisicao));
-        }
-
-    }
+//    @PostMapping
+//    public ResponseEntity createPost(@RequestBody BancoRequisicao novaRequisicao) {
+//
+//        if (retornaLista(novaRequisicao).isEmpty()) {
+//            return ResponseEntity.status(400).build();
+//        } else {
+//            return ResponseEntity.status(200).body(retornaLista(novaRequisicao));
+//        }
+//
+//    }
 
 }

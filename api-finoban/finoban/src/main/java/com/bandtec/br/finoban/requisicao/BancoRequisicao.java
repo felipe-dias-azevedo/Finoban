@@ -14,6 +14,10 @@ public class BancoRequisicao {
         this.tempoFinanciamento = tempoFinanciamento;
     }
 
+    public BancoRequisicao() {
+
+    }
+
     public String getCnpj() {
         return cnpj;
     }
