@@ -31,7 +31,7 @@ public class RestServiceController {
     private ResponseEntity<RespostaApi> response;
 
     @PostMapping("/financiamento")
-    public ResponseEntity retornaLista(@RequestBody BancoRequisicao novaRequisicao){
+    public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicao novaRequisicao){
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 

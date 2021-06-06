@@ -7,10 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
-
-import javax.xml.ws.Response;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ class RestServiceControllerTest {
     void retornaLista() {
         RestServiceBuilder restServiceBuilder = new RestServiceBuilder();
         BancoRequisicao bancoRequisicao = restServiceBuilder.criarRequisicao().getBancoRequisicao();
-        ResponseEntity<List<RespostaApi>> resposta =  controller.retornaLista(bancoRequisicao);
+        ResponseEntity<List<RespostaApi>> resposta =  controller.realizarFinaciamento(bancoRequisicao);
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().size());
     }
