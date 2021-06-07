@@ -1,0 +1,237 @@
+
+
+```{r}
+set.seed(143)
+tempoFinanciamento <-round(rnorm(n,25,5))
+tempoFinanciamento
+```
+
+
+```{r}
+
+regiao <- round(runif(n,1,6))
+regiao.r <-factor(regiao,
+                  levels = c(1,2,3,4,5,6),
+                  labels = c("centro","consolação","brooklin",
+                             "mooca","santo-amaro","interlagos")
+                  )
+regiao.r
+```
+
+```{r}
+valorImovel <- round(rnorm(n,100000,25000),2)
+valorImovel
+```
+
+```{r}
+renda <- round(rnorm(n,5000,1000),2)
+renda
+```
+
+```{r}
+
+bancoEscolhido <- round(runif(n,0,2))
+bancoEscolhido
+banco.s <- factor(bancoEscolhido,
+                  levels= c(1,2,0),
+                  labels = c("Banco do Presil","S16 Bank","Banco Cifra")
+                  ) 
+banco.r
+```
+
+```{r}
+avaliacao <-round(runif(n,0,2))
+avaliacao.r <- factor(avaliacao,
+                    levels = c(1,2,0),
+                    labels = c("negativa","positiva","n/ avaliado")
+                    )
+avaliacao.r
+plot( as.factor( avaliacao.r )) 
+```
+
+```{r}
+#Calculo para % de renda
+porcentagemRenda <- c()
+for(i in 1:n){
+  porcentagemRenda[i] <- 
+    round(((valorImovel[i]/(tempoFinanciamento[i]*12))*100/renda[i]),0)
+}
+porcentagemRenda
+
+```
+
+```{r}
+
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+varianciaTempoAvaliacao <-round(rnorm(n,60,30))
+dataHoraEntrada <- c()
+dataHoraSaida <- c()
+dataHoraAvaliacao <- c()
+now <- Sys.time()
+for(i in 1:n){
+  dataHoraEntrada[i] <- as.character(now)
+  dataHoraSaida[i] <- as.character(now + varianciaTempoAcesso[i])
+  dataHoraAvaliacao[i] <- as.character((now + varianciaTempoAcesso[i]) -    varianciaTempoAvaliacao[i])
+}
+varianciaTempoAcesso
+dataHoraEntrada
+dataHoraSaida
+dataHoraAvaliacao
+
+```
+
+```{r}
+
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("dash","hub","cadastro","login","home")
+)
+paginaSaida.r
+
+```
+
+```{r}
+
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
+
+tempoAcesso
+
+```
+
+```{r}
+write.table(df,"C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\teste.csv", row.names = FALSE)
+```
+
+
+```{r}
+##REGIÕES ESCOLHIDAS
+
+barplot(table(regiao.r),
+        col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7", "#3A5B62"),
+        main = "Avaliação")
+
+
+plot(banco.r,regiao,
+     main = "Diagrama de Dispersão",
+     xlab = "pagina saida",
+     ylab = "tempo de acesso",
+     pch = 20,
+     col = "#39ADC7")
+
+
+
+
+```
+```{r}
+
+#BANCO
+#FAZER A DISPERSÃO DE IDADE
+plot(banco.r,idade,
+     main = "Diagrama de Dispersão",
+     xlab = "pagina saida",
+     ylab = "tempo de acesso",
+     pch = 20,
+     col = "#39ADC7")
+
+```
+
+```{r}
+##TEMPO DE PERMANENCIA
+
+tempoAcesso.r <- round((tempoAcesso/60),1)
+
+barplot(table (tempoAcesso.r), col = "#39ADC7")
+
+plot(paginaSaida.r,tempoAcesso.r,
+     main = "Diagrama de Dispersão",
+     xlab = "pagina saida",
+     ylab = "tempo de acesso",
+     pch = 20,
+     col = "#39ADC7")
+
+plot(paginaSaida,tempoAcesso.r,
+     main = "Diagrama de Dispersão",
+     xlab = "pagina saida",
+     ylab = "tempo de acesso",
+     pch = 20,
+     col = "#39ADC7")
+
+plot(avaliacao.r,tempoAcesso.r,
+     main = "Diagrama de Dispersão",
+     xlab = "pagina saida",
+     ylab = "tempo de acesso",
+     pch = 20,
+     col = "#39ADC7")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+##TERMINAR
+
+plot(valorImovel,idade,
+     main = "Diagrama de Dispersão",
+     xlab = "valor do imovel",
+     ylab = "renda",
+     pch = 20,
+     col = "blue")
+
+```
+
+
+```{r}
+plot(valorImovel,idade,
+     main = "Diagrama de Dispersão",
+     xlab = "valor do imovel",
+     ylab = "idade",
+     pch = 20,
+     col = "blue")
+```
+
+
+```{r}
+
+barplot(table(paginaSaida.r),
+        col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7"),
+        main = "Avaliação")
+```
+
+
