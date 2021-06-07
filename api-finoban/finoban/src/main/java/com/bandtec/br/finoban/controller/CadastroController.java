@@ -67,6 +67,7 @@ public class CadastroController {
         if (novaAvaliacao.getAvalPositivo().ordinal() == 2 || novaAvaliacao.getAvalPositivo().ordinal() == 1
         || novaAvaliacao.getAvalPositivo().ordinal() == 0) {
             if (acessoRepository.existsById(novaAvaliacao.getFkAcesso().getIdEntrada())) {
+                novaAvaliacao.setDataAval(LocalDateTime.now());
                 avaliacaoRepository.save(novaAvaliacao);
                 return ResponseEntity.status(201).build();
             } else {
