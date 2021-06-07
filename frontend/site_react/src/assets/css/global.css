@@ -18,7 +18,7 @@ body {
 body, input, button, textarea {
   color: var(--text-body-bold-light);
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -27,7 +27,7 @@ function BankCard(props) {
                     <span> {props.valor_s}% </span>
                 </div>
 
-                <Button valor="Ver mais" />
+                <Button />
             </div>
         </>
     );

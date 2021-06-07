@@ -30,7 +30,7 @@ public class GravaCsvController {
     }
 
 
-    public static void gravaLista(ListaObj<DocumentoLayout> lista, String nomeArquivo) {
+    private static void gravaLista(ListaObj<DocumentoLayout> lista, String nomeArquivo) {
         FileWriter arq = null;
         Formatter saida = null;
         boolean deuRuim = false;

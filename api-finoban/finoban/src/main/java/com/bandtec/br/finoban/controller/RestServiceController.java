@@ -1,7 +1,13 @@
 package com.bandtec.br.finoban.controller;
 
+import com.bandtec.br.finoban.entidades.Regiao;
 import com.bandtec.br.finoban.requisicao.BancoRequisicao;
 import com.bandtec.br.finoban.resposta.RespostaApi;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -30,9 +36,18 @@ public class RestServiceController {
 
     private ResponseEntity<RespostaApi> response;
 
+    @ApiResponses( value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Requisição de financiamento realizado com sucesso",
+                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = RespostaApi.class)))
+            ),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "500", description = "Não foi possível obter dados das apis.")
+    })
+//            content = @Content(schema = @Schema(implementation = RespostaApi.class)))
     @PostMapping("/financiamento")
-    public List<RespostaApi> retornaLista(@RequestBody BancoRequisicao novaRequisicao){
-
+    public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicao novaRequisicao){
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
@@ -57,20 +72,18 @@ public class RestServiceController {
             RespostaApi bancoResponse = response.getBody();
             listResponse.add(bancoResponse);
         }
-
-        return listResponse;
-
+        return ResponseEntity.status(200).body(listResponse);
     }
 
-    @PostMapping
-    public ResponseEntity createPost(@RequestBody BancoRequisicao novaRequisicao) {
-
-        if (retornaLista(novaRequisicao).isEmpty()) {
-            return ResponseEntity.status(400).build();
-        } else {
-            return ResponseEntity.status(200).body(retornaLista(novaRequisicao));
-        }
-
-    }
+//    @PostMapping
+//    public ResponseEntity createPost(@RequestBody BancoRequisicao novaRequisicao) {
+//
+//        if (retornaLista(novaRequisicao).isEmpty()) {
+//            return ResponseEntity.status(400).build();
+//        } else {
+//            return ResponseEntity.status(200).body(retornaLista(novaRequisicao));
+//        }
+//
+//    }
 
 }

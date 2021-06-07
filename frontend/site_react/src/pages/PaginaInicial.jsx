@@ -32,7 +32,7 @@ function PaginaInicial() {
         })
     }, [])
 
-    function irParaSimulador() {
+    async function irParaSimulador() {
 
         if (
             cnpj.trim() === "" ||
@@ -42,18 +42,30 @@ function PaginaInicial() {
         ) { return; }
 
         const dataSimulador = {
-            cnpj,
-            renda,
-            valorImovel,
-            tempoFinanciamento
+            cnpj: "123",
+            renda: parseInt(renda),
+            valorImovel: parseFloat(valorImovel),
+            tempoFinanciamento: parseInt(tempoFinanciamento)
         };
 
-        const testeMsg = dataSimulador;
+        console.log(dataSimulador);
 
-        var testando = localStorage.setItem("testeChave", JSON.stringify(testeMsg));
+        await api.post('/financiamento', dataSimulador, {
+        }).then(e => {
+          console.log(e.data);
+          var respostaSimulacao = e.data;
+          console.log(respostaSimulacao);
+          var respostaFinanciamento = localStorage.setItem("respostaFinanciamento", JSON.stringify(respostaSimulacao));
+        }).catch(e => {
+          console.error(e)
+        });
 
+        const dados = dataSimulador;
+
+        var dadosSimulador = localStorage.setItem("testeChave", JSON.stringify(dados));
+        
         history.push({
-            pathname: '/login',
+            pathname: '/simulador',
             state: { data: dataSimulador }
         });
     }
@@ -66,7 +78,7 @@ function PaginaInicial() {
                     <p>Dúvidas sobre qual a melhor opção de financiamento pra você?</p>
                 </div>
                 <div className="box-texto-destaque">
-                    <h1>Com simples passos, você terá acesso as <span> melhores opções </span> de financiamento! </h1>
+                    <h1>Com simples passos, você terá acesso as <span className="fw-600"> melhores opções </span> de financiamento! </h1>
                 </div>
                 <div className="comecar center">
                     <a id="bt-comecar" href="#simulacao">
@@ -129,7 +141,7 @@ function PaginaInicial() {
                                                     id="select-imoveis"
                                                     onChange={(e) => { setValorImovel(e.target.value) }}
                                                 >
-                                                    <option value="">--Selecione--</option>
+                                                    <option value="">-- Selecione --</option>
 
                                                     {imoveisList.map(imovel => {
                                                         return (
@@ -146,16 +158,19 @@ function PaginaInicial() {
                                     }
                                 </section>
                                 <section>
-                                    <p>Tempo do financiamento</p>
+                                    <p>Tempo financiamento</p>
                                     <input t
                                         ype="text"
                                         placeholder="ex: 30"
+                                        maxLength="2"
                                         onChange={(e => setTempoFinanciamento(e.target.value))}
                                     />
                                 </section>
                                 <section>
                                     <p>Porcentagem de Renda</p>
-                                    <input type="text" placeholder="ex: 15" />
+                                    <input type="text"
+                                     placeholder="ex: 15"
+                                     maxLength="3" />
                                 </section>
                                 <section>
                                 </section>

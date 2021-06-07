@@ -6,6 +6,11 @@ import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.resposta.RespostaApi;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +27,17 @@ public class AcessoController {
     @Autowired
     private AcessoRepository acessoRepository;
 
+    @GetMapping("/{id}")
+    public ResponseEntity getAcesso(@PathVariable int id) {
+        Optional<Acesso> acesso = acessoRepository.findById(id);
+        if (acesso.isPresent()) {
+            return ResponseEntity.status(200).body(acesso);
+        } else {
+            return ResponseEntity.status(404).body(new ResponseGeneric<>("Não foi encontrado acesso para este Id",
+                    null));
+        }
+    }
+
     @Autowired
     private CadastroRepository cadastroRepository;
 
@@ -30,6 +46,11 @@ public class AcessoController {
 
     Pilha<Integer> pilhaUltimos = new Pilha<>(5);
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Registro concluido com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "404", description = "Falha ao concluir requisição")
+    })
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso acesso) {
         if (cadastroRepository.existsById(acesso.getFkCliente().getId())) {
@@ -45,17 +66,6 @@ public class AcessoController {
             list.add("Não foi encontrado região para este Id");
             list.add("Não foi encontrado Cliente para este Id");
             return ResponseEntity.status(404).body(new ResponseGeneric("Erro ao fazer a requisição", list));
-        }
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity getAcesso(@PathVariable int id) {
-        Optional<Acesso> acesso = acessoRepository.findById(id);
-        if (acesso.isPresent()) {
-            return ResponseEntity.status(200).body(acesso);
-        } else {
-            return ResponseEntity.status(404).body(new ResponseGeneric<>("Não foi encontrado acesso para este Id",
-                    null));
         }
     }
 

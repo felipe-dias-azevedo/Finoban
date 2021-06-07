@@ -37,7 +37,7 @@ public class DownloadController {
         httpHeaders.add("Content-Disposition", "attachment;filename=\"financiamento.csv\"");
 
         HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
-
+        String banana = "banana";
         return entity;
     }
 

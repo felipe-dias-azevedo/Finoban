@@ -43,4 +43,5 @@
 .cx-info :nth-child(2) {
     float: right;
     margin-right: 0px;
+    font-weight: 500;
 }

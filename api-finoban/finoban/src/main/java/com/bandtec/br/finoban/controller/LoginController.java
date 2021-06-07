@@ -27,40 +27,36 @@ public class LoginController {
         Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
 
         if (verificaEmail == null) {
-            return ResponseEntity.status(204).body("Email não encontrado");
+            return ResponseEntity.status(204).body(new ResponseGeneric("Email não encontrado"));
         }
 
         if (!verificaEmail.getSenha().equals(novoLogin.senha)) {
-            return ResponseEntity.status(204).body("Senha incorreta");
+            return ResponseEntity.status(204).body(new ResponseGeneric("Senha incorreta"));
         }
 
         String emailLogado = novoLogin.getEmail();
 
-        for (int i=0; i<usuariosLogados.size(); i++) {
+        for (int i=0; i <= usuariosLogados.size(); i++) {
             if (!usuariosLogados.contains(emailLogado)) {
                 usuariosLogados.add(emailLogado);
+                return ResponseEntity.status(200).body(new ResponseGeneric(verificaEmail, null));
             }
         }
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(verificaEmail));
+        return ResponseEntity.status(404).body(new ResponseGeneric("Usuário já logado."));
 
     }
 
     @PostMapping("/logoff")
     public ResponseEntity efetuarLogoff(@RequestBody Login novoLogin) {
-
         for (int i=0; i<usuariosLogados.size(); i++) {
             if (usuariosLogados.contains(novoLogin.getEmail())) {
                 usuariosLogados.remove(novoLogin.getEmail());
+                Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
+                String resultado = String.format("%s, você foi deslogado com sucesso!", verificaEmail.getNome());
+                return ResponseEntity.status(200).body(new ResponseGeneric(resultado));
             }
         }
-
-        Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
-
-        String resultado = String.format("%s, você foi deslogado com sucesso!", verificaEmail.getNome());
-
-        return ResponseEntity.status(200).body(resultado);
-
+        return ResponseEntity.status(404).body(new ResponseGeneric("Usuário não logado."));
     }
-
 }

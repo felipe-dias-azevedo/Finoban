@@ -16,6 +16,8 @@ public class DocumentoLayout {
         this.tempoFinanciamento = tempoFinanciamento;
     }
 
+    public DocumentoLayout() { }
+
     public String getNomeBanco() {
         return nomeBanco;
     }

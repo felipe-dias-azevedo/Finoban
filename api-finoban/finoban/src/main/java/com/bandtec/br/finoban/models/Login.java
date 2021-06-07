@@ -11,6 +11,10 @@ public class Login {
         this.senha = senha;
     }
 
+    public Login() {
+
+    }
+
     public String getEmail() {
         return email;
     }
