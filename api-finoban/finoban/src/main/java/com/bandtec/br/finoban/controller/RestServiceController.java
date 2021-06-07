@@ -1,7 +1,13 @@
 package com.bandtec.br.finoban.controller;
 
+import com.bandtec.br.finoban.entidades.Regiao;
 import com.bandtec.br.finoban.requisicao.BancoRequisicao;
 import com.bandtec.br.finoban.resposta.RespostaApi;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +36,16 @@ public class RestServiceController {
 
     private ResponseEntity<RespostaApi> response;
 
+    @ApiResponses( value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Requisição de financiamento realizado com sucesso",
+                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = RespostaApi.class)))
+            ),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "500", description = "Não foi possível obter dados das apis.")
+    })
+//            content = @Content(schema = @Schema(implementation = RespostaApi.class)))
     @PostMapping("/financiamento")
     public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicao novaRequisicao){
         List<String> listUrl = new ArrayList<>();
