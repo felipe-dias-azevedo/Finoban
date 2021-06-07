@@ -6,6 +6,8 @@ import com.bandtec.br.finoban.repository.AvaliacaoRepository;
 import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +60,11 @@ public class CadastroController {
         }
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Avaliação cadastrada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "404", description = "Falha ao relacionar avaliação com Entrada")
+    })
     @PostMapping("/avaliacao")
     public ResponseEntity novaAvaliacao(@Valid @RequestBody Avaliacao novaAvaliacao) {
         if(novaAvaliacao.getAvalPositivo() != null && novaAvaliacao.getFeedbackAval() == null) {
@@ -79,6 +86,9 @@ public class CadastroController {
         return ResponseEntity.status(404).build();
     }
 
+    @ApiResponses(value = {
+
+    })
     @GetMapping("/avaliacoes")
     public ResponseEntity getAvaliacoes() {
         List<Avaliacao> avaliacaoList = (List<Avaliacao>) avaliacaoRepository.findAll();
