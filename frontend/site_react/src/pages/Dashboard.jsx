@@ -13,9 +13,36 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
+import { mockComponent } from 'react-dom/test-utils';
 
-    function MyVerticallyCenteredModal(props) {
-        return (
+function ModalFeedback(props) {
+
+    const [feedback, setFeedback] = useState("");
+    
+    function avaliacaoLike() {
+
+        const dataAvaliacao = {
+            avalPositivo: 0,
+            feedbackAval: feedback,
+            fkAcesso: {
+                idEntrada: 13
+            }
+        };
+
+        Api.post('/avaliacao', dataAvaliacao, {
+        }).then(e => {
+            console.log(e.data);
+            if (e.status === 201) {
+                console.log("ok");
+                props.onHide();
+            } 
+        }).catch(e => {
+            console.error(e);
+        });
+
+    }
+
+    return (
         <Modal
             {...props}
             size="lg"
@@ -23,52 +50,87 @@ import FormGroup from 'react-bootstrap/FormGroup';
             centered
         >
             <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-            Nos dê um feedback
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Nos dê um feedback
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Digite sua mensagem</Form.Label>
-        <Form.Control as="textarea" rows={2} />
-    </Form.Group>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Label name="feedback" v>Digite sua mensagem</Form.Label>
+                    <Form.Control as="textarea" rows={2} name="feedback" onChange={(e) => setFeedback(e.target.value)} />
+                </Form.Group>
             </Modal.Body>
             <Modal.Footer>
                 <button onClick={props.onHide} className="btn-avaliacao-cancelar">Fechar</button>
-                <button onclick={props.avaliacaoPositivo} className="btn-avaliacao-enviar">Enviar</button>
+                <button onClick={avaliacaoLike} className="btn-avaliacao-enviar">Enviar</button>
 
             </Modal.Footer>
         </Modal>
-        );
-    }
+    );
+}
+
+function ModalContratar(props) {
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    <p className="cor-verde">De que forma você gostaria de entrar em contato?</p>
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <div className="d-flex justify-content-center">
+                    <Form.Label className="cor-verde">
+                        Gostaria de agendar um horário?
+                        </Form.Label>
+                    </div>
+                    <br />
+                    
+                    <div className="d-flex flex-row">
+                    <button className="btn-contratar">Telefone</button>
+                    <button className="btn-contratar">WhatsApp</button>
+                    <button className="btn-contratar">E-mail</button>
+                    <button className="btn-contratar">Visita na Agência</button>
+                    </div>
+
+                </Form.Group>
+            </Modal.Body>
+        </Modal>
+    );
+}
+
 
 function Dashboard() {
     const history = useHistory();
 
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
+    const [modalShowContratar, setModalShowContratar] = React.useState(false);
 
-    const anoInicial = 2021;
-    const anoFinal = anoInicial + 35;
+    var testeRecebido = localStorage.getItem("testeChave");
+    let dataSimulacao = JSON.parse(testeRecebido);
+    var tempoFinanciamentoRecebido = parseInt(dataSimulacao.tempoFinanciamento);
+    var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
+
+    const anoInicial = new Date().getFullYear();
+    const anoFinal = anoInicial + tempoFinanciamentoRecebido;
     const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
-    function avaliacaoPositivo() {
+    function avaliacaoDeslike() {
 
-        // Mock
         const dataAvaliacao = {
-            avalPositivo: "like",
-            feedbackAval: "a",
-            dataAval: "2021-09-20 09:00:00",
+            avalPositivo: 1,
+            feedbackAval: "Deslike",
             fkAcesso: {
                 idEntrada: 13
             }
         };
 
-        console.log(dataAvaliacao);
-
         Api.post('/avaliacao', dataAvaliacao, {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             console.log(e.data);
             if (e.status === 201) {
@@ -81,7 +143,7 @@ function Dashboard() {
         });
 
     }
-
+    
     return (
         <>
             <Header />
@@ -116,7 +178,7 @@ function Dashboard() {
                         <option value="1">Banco do Presil</option>
                         <option value="1">S16 Bank</option>
                     </select>
-                    <input type="text" name="" id="" />
+                    <input type="text" value={valorImovelRecebido} disabled />
                 </div>
                 <div className="box-campos">
                     <CampoItem label="Taxa" valor="7% a.a." />
@@ -132,10 +194,10 @@ function Dashboard() {
                     </div>
                 </div>
                 <div className="box-campos">
-                    <a href="http://localhost:8080/api-finoban/download/txt" className="botao">
-                        Salvar e Baixar TXT
+                    <a href="http://localhost:8080/api-finoban/download/csv" className="botao">
+                        Salvar e Baixar CSV
                     </a>
-                    <button className="botao">Gostei, quero contratar</button>
+                    <button className="botao" onClick={() => setModalShowContratar(true)}>Gostei, quero contratar</button>
                 </div>
             </div>
 
@@ -143,15 +205,21 @@ function Dashboard() {
                 <img src={BtnClose} className="btn-close" />
                 <h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
                 <div className="btn-avaliacao">
-                    <img src={Like} alt="" onClick={() => setModalShow(true)}/>
-                    <img src={Deslike} alt="" />
+                    <img src={Like} alt="" onClick={() => setModalShowFeedback(true)} />
+                    <img src={Deslike} alt="" onClick={avaliacaoDeslike} />
                 </div>
             </div>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+            <ModalFeedback
+                show={modalShowFeedback}
+                onHide={() => setModalShowFeedback(false)}
+            />
+
+            <ModalContratar
+                show={modalShowContratar}
+                onHide={() => setModalShowContratar(false)}
+            />
+
 
             <Footer />
         </>

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 function ModalLoginSucesso(props) {
 
-  var nomeUsuario = localStorage.getItem("testeUsuario");
+  var nomeUsuario = localStorage.getItem("nomeUsuario");
   var idUsuario = localStorage.getItem("idUsuario");
 
   return (
@@ -59,14 +59,14 @@ export default function Login() {
 
   const [errorLogin, setErrorLogin] = useState(false);
 
-  var testeRecebido = localStorage.getItem("testeChave");
+  var dadosRecebido = localStorage.getItem("testeChave");
 
-  let dataSimulacao = JSON.parse(testeRecebido);
+  let dataSimulacao = JSON.parse(dadosRecebido);
 
-  async function validarLogin(e) {
+  console.log(dataSimulacao);
+
+  function validarLogin(e) {
     e.preventDefault();
-
-    // let dataSimulacao = window.history.state.state.data;
 
     let respostaSimulacao;
     if (email.trim() === "" || senha.trim() === "") {
@@ -78,42 +78,20 @@ export default function Login() {
       senha,
     }
 
-    var cnpjRecebido = dataSimulacao.cnpj;
-    var rendaRecebido = parseFloat(dataSimulacao.renda);
-    var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
-    var tempoFinanciamentoRecebido = parseInt(dataSimulacao.tempoFinanciamento);
-
-    const req = {
-      cnpj: "123",
-      renda: rendaRecebido,
-      valorImovel: valorImovelRecebido,
-      tempoFinanciamento: tempoFinanciamentoRecebido
-    }
-
-    console.log(req);
-
-    await api.post('/financiamento', req, {
-    }).then(e => {
-      console.log(e.data)
-      respostaSimulacao = e.data;
-      console.log(respostaSimulacao);
-      var respostaFinanciamento = localStorage.setItem("respostaFinanciamento", JSON.stringify(respostaSimulacao));
-    }).catch(e => {
-      console.error(e)
-    });
-
-    await api.post('/login', data, {
+    api.post('/login', data, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
     }).then(e => {
       console.log(e.data);
       if (e.status === 200) {
-        var nomeUsuarioLogado = localStorage.setItem("testeUsuario", e.data.data.nome);
+        var nomeUsuarioLogado = localStorage.setItem("nomeUsuario", e.data.data.nome);
         var idUsuarioLogado = localStorage.setItem("idUsuario", e.data.data.id);
         setModalLoginShow(true);
         setTimeout(() => {
           setModalLoginShow(false);
           history.push({
-            pathname: '/simulador',
-            state: { data: respostaSimulacao }
+            pathname: '/dashboard'
           });
         }, 3000);
       } else {

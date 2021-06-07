@@ -22,6 +22,7 @@ export default function Cadastro() {
 
     const [endereco, setEndereco] = useState("");
     const [dadosCep, setDadosCep] = useState({});
+    const [bairro, setBairro] = useState("");
 
     const [errorLogin, setErrorLogin] = useState(false);
 
@@ -40,6 +41,7 @@ export default function Cadastro() {
             .then(e => {
                 const dadosCepRes = e.data;
                 setDadosCep(dadosCepRes);
+                setBairro(dadosCep.bairro);
                 setEndereco(`${dadosCepRes.logradouro} ${numero ? `, ${numero}` : ''}, ${dadosCepRes.bairro}, ${dadosCepRes.localidade} - ${dadosCepRes.uf}`);
             }).catch(e => {
                 console.error(e);
@@ -71,14 +73,12 @@ export default function Cadastro() {
             cep,
             numero,
             dataNasc,
+            bairro
         }
 
         console.log(data);
 
         api.post('/cadastro', data, {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             console.log(e.data);
             if (e.status === 201) {
