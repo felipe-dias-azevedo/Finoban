@@ -1,15 +1,13 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.models.DocumentoLayout;
+import com.bandtec.br.finoban.repository.ArquivoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
@@ -30,7 +28,7 @@ public class GravaArquivoController {
         }
     }
 
-    private static void gravaRegistro (String nomeArq, String registro) {
+    private static void gravaRegistro(String nomeArq, String registro) {
         BufferedWriter saida = null;
         try {
             saida = new BufferedWriter(new FileWriter(nomeArq, true));
@@ -73,10 +71,12 @@ public class GravaArquivoController {
         corpo += String.format("%-20s", documentoLayout.getRegiao());
         corpo += String.format("%2d", documentoLayout.getTempoFinanciamento());
         contRegDados++;
-        gravaRegistro(nomeArq,corpo);
+        gravaRegistro(nomeArq, corpo);
 
         trailer += "01";
         trailer += String.format("%010d", contRegDados);
-        gravaRegistro(nomeArq,trailer);
+        gravaRegistro(nomeArq, trailer);
     }
+
+
 }
