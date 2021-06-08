@@ -28,17 +28,21 @@ head(table(valorImovel))
 
 
 df <- data.frame(idade,regiao.r,valorImovel,renda,banco.r,avaliacao.r)
- 
-head(idade)
 
 barplot(table(avaliacao.r),
         col=c("#972838", "#278284"),
         main = "Avaliação")
 
+barplot(table(banco.r),
+        main= "Bancos escolhidos")
+
+barplot(table(regiao.r),
+        main= "Região")
+
+plot(table(idade,valorImovel))
 
 
-
-
+head(valorImovel)
 
 
 
