@@ -23,8 +23,8 @@ class DownloadControllerTest {
     void downloadTxt() throws IOException {
         HttpEntity<byte[]> resposta = controller.downloadTxt();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Disposition", "attachment;filename=\"financiamento.csv\"");
-//        assertEquals(httpHeaders, resposta.getHeaders().getFirst()
+        httpHeaders.add("Content-Disposition", "attachment;filename=\"financiamento.txt\"");
+        assertTrue(resposta.getHeaders().equals(httpHeaders));
     }
 
     @Test
@@ -33,6 +33,6 @@ class DownloadControllerTest {
         HttpEntity<byte[]> resposta = controller.downloadCsv();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\"financiamento.csv\"");
-//        assertEquals(httpHeaders, resposta.getHeaders().get(httpHeaders));
+        assertTrue(resposta.getHeaders().equals(httpHeaders));
     }
 }

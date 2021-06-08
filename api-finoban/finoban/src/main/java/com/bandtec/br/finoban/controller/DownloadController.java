@@ -22,7 +22,7 @@ public class DownloadController {
 
         httpHeaders.add("Content-Disposition", "attachment;filename=\"financiamento.txt\"");
 
-        HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
+        HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo, httpHeaders);
 
         return entity;
     }

@@ -1,8 +1,11 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.entidades.Acesso;
+import com.bandtec.br.finoban.entidades.Avaliacao;
+import com.bandtec.br.finoban.models.FilaObj;
 import com.bandtec.br.finoban.models.Pilha;
 import com.bandtec.br.finoban.repository.AcessoRepository;
+import com.bandtec.br.finoban.repository.AvaliacaoRepository;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
@@ -27,6 +30,9 @@ public class AcessoController {
     @Autowired
     private AcessoRepository acessoRepository;
 
+    @Autowired
+    private AvaliacaoRepository avaliacaoRepository;
+
     @GetMapping("/{id}")
     public ResponseEntity getAcesso(@PathVariable int id) {
         Optional<Acesso> acesso = acessoRepository.findById(id);
@@ -44,7 +50,7 @@ public class AcessoController {
     @Autowired
     private RegiaoRepository regiaoRepository;
 
-    Pilha<Integer> pilhaUltimos = new Pilha<>(5);
+    FilaObj<Integer> filaUltimos = new FilaObj<>(5);
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Registro concluido com sucesso"),
@@ -93,18 +99,54 @@ public class AcessoController {
     @DeleteMapping("/ultimos")
     public ResponseEntity getUltimosAcessos() {
 
-        if (pilhaUltimos.isEmpty()) {
+        if (filaUltimos.isEmpty()) {
             List<Acesso> acessoList = acessoRepository.findTop5ByOrderByDataHoraSaidaDesc();
+
             if (acessoList.isEmpty()) {
                 return ResponseEntity.status(404).build();
             }
-            for (int i = acessoList.size() - 1; i >= 0; i--) {
-                pilhaUltimos.push(acessoList.get(i).getIdEntrada());
+
+            for (int i = 0; i < acessoList.size(); i++) {
+                filaUltimos.insert(acessoList.get(i).getIdEntrada());
             }
-            acessoRepository.deleteById(pilhaUltimos.pop());
+
+            Acesso a = new Acesso();
+            a.setIdEntrada(filaUltimos.peek());
+            List<Avaliacao> avaliacaoList = avaliacaoRepository.findByFkAcessoEquals(a);
+
+            Pilha<Integer> pilhaAvaliacoes = new Pilha<>(avaliacaoList.size());
+
+            for (Avaliacao avaliacao:avaliacaoList) {
+                pilhaAvaliacoes.push(avaliacao.getIdAvaliacao());
+            }
+
+            while (!pilhaAvaliacoes.isEmpty()) {
+                avaliacaoRepository.deleteById(pilhaAvaliacoes.pop());
+            }
+
+            System.out.println("Deletando o acesso de id = " + filaUltimos.peek());
+            acessoRepository.deleteById(filaUltimos.poll());
+
             return ResponseEntity.status(200).build();
         }
-        acessoRepository.deleteById(pilhaUltimos.pop());
+
+        Acesso a = new Acesso();
+        a.setIdEntrada(filaUltimos.peek());
+        List<Avaliacao> avaliacaoList = avaliacaoRepository.findByFkAcessoEquals(a);
+
+        Pilha<Integer> pilhaAvaliacoes = new Pilha<>(avaliacaoList.size());
+
+        for (Avaliacao avaliacao:avaliacaoList) {
+            pilhaAvaliacoes.push(avaliacao.getIdAvaliacao());
+        }
+
+        while (!pilhaAvaliacoes.isEmpty()) {
+            avaliacaoRepository.deleteById(pilhaAvaliacoes.pop());
+        }
+
+        System.out.println("Deletando o acesso de id = " + filaUltimos.peek());
+        acessoRepository.deleteById(filaUltimos.poll());
+
         return ResponseEntity.status(200).build();
     }
 

@@ -13,3 +13,18 @@
 00FINANCIAMENTO06-06-2021 01:12:0901
 02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
 010000000001
+00FINANCIAMENTO07-06-2021 19:20:0101
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO07-06-2021 19:21:2601
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO07-06-2021 19:24:0801
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO07-06-2021 19:56:4601
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
+00FINANCIAMENTO07-06-2021 19:58:2701
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001
