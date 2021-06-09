@@ -25,11 +25,11 @@ import java.util.*;
 @Service
 @RestController
 @RequestMapping("/api-finoban")
-public class RestServiceController {
+public class FinanciamentoApisExternasController {
 
     private final RestTemplate restTemplate;
 
-    public RestServiceController(RestTemplateBuilder restTemplateBuilder) {
+    public FinanciamentoApisExternasController(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 

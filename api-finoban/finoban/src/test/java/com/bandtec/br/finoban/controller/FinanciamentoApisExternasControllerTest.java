@@ -14,10 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class RestServiceControllerTest {
+class FinanciamentoApisExternasControllerTest {
 
     @Autowired
-    RestServiceController controller;
+    FinanciamentoApisExternasController controller;
 
 
     @Test
