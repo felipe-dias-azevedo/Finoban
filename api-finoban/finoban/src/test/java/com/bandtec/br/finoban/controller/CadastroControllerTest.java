@@ -133,7 +133,7 @@ class CadastroControllerTest {
     @Test
     @DisplayName("/GET - Listar todos as avaliações, STATUS 200")
     void getAvaliacoesOk() {
-        Iterable<Avaliacao> avaliacaos = Arrays.asList(new Avaliacao(), new Avaliacao());
+        List<Avaliacao> avaliacaos = Arrays.asList(new Avaliacao(), new Avaliacao());
         Mockito.when(avaliacaoRepository.findAll()).thenReturn(avaliacaos);
         ResponseEntity<List<Avaliacao>> resposta = cadastroController.getAvaliacoes();
         assertEquals(200, resposta.getStatusCodeValue());

@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.models.DocumentoLayout;
-import com.bandtec.br.finoban.repository.ArquivoRepository;
+//import com.bandtec.br.finoban.repository.ArquivoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

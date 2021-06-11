@@ -91,7 +91,7 @@ public class CadastroController {
     })
     @GetMapping("/avaliacoes")
     public ResponseEntity getAvaliacoes() {
-        List<Avaliacao> avaliacaoList = (List<Avaliacao>) avaliacaoRepository.findAll();
+        List<Avaliacao> avaliacaoList = avaliacaoRepository.findAllByIdAvaliacao();
         if (avaliacaoList.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
