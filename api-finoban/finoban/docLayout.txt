@@ -1,0 +1,6 @@
+00FINANCIAMENTO12-06-2021 23:03:3601
+02Lua              0015000000
+02Sol              0002000000
+0312345678901234                                                                               ClienteNovo                       cliente@email.com                                               1230515862000222  2001-12-05              Sol
+0378945612307894                                                                               ClienteDois                            cli@mail.com                                             123450518495000014  1978-05-23              Lua
+0100000004

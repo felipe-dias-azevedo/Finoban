@@ -50,4 +50,15 @@ public class Regiao {
     public void setDataCraw(LocalDateTime dataCraw) {
         this.dataCraw = dataCraw;
     }
+
+    @Override
+    public String toString() {
+        return "Regiao{" +
+                "idRegiao=" + idRegiao +
+                ", descricaoRegiao='" + descricaoRegiao + '\'' +
+                ", valorRegiao=" + valorRegiao +
+                ", dataCraw=" + dataCraw +
+                '}';
+    }
+
 }

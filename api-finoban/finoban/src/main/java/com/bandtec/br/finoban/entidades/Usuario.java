@@ -121,4 +121,21 @@ public class Usuario implements Serializable {
     public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", cnpj='" + cnpj + '\'' +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", numero=" + numero +
+                ", dataNasc=" + dataNasc +
+                ", dataCriacao=" + dataCriacao +
+                '}';
+    }
+
 }
