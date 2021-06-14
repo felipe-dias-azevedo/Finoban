@@ -93,6 +93,61 @@ cpf_validar <- function(x){
 ```
 
 ```{r}
+fa <- function(x) iconv(x, to = "ASCII//TRANSLIT")
+```
+
+
+```{r}
+rm_accent <- function(str,pattern="all") {
+  # Rotinas e funções úteis V 1.0
+  # rm.accent - REMOVE ACENTOS DE PALAVRAS
+  # Função que tira todos os acentos e pontuações de um vetor de strings.
+  # Parâmetros:
+  # str - vetor de strings que terão seus acentos retirados.
+  # patterns - vetor de strings com um ou mais elementos indicando quais acentos deverão ser retirados.
+  #            Para indicar quais acentos deverão ser retirados, um vetor com os símbolos deverão ser passados.
+  #            Exemplo: pattern = c("´", "^") retirará os acentos agudos e circunflexos apenas.
+  #            Outras palavras aceitas: "all" (retira todos os acentos, que são "´", "`", "^", "~", "¨", "ç")
+  if(!is.character(str))
+    str <- as.character(str)
+
+  pattern <- unique(pattern)
+
+  if(any(pattern=="Ç"))
+    pattern[pattern=="Ç"] <- "ç"
+
+  symbols <- c(
+    acute = "áéíóúÁÉÍÓÚýÝ",
+    grave = "àèìòùÀÈÌÒÙ",
+    circunflex = "âêîôûÂÊÎÔÛ",
+    tilde = "ãõÃÕñÑ",
+    umlaut = "äëïöüÄËÏÖÜÿ",
+    cedil = "çÇ"
+  )
+
+  nudeSymbols <- c(
+    acute = "aeiouAEIOUyY",
+    grave = "aeiouAEIOU",
+    circunflex = "aeiouAEIOU",
+    tilde = "aoAOnN",
+    umlaut = "aeiouAEIOUy",
+    cedil = "cC"
+  )
+
+  accentTypes <- c("´","`","^","~","¨","ç")
+
+  if(any(c("all","al","a","todos","t","to","tod","todo")%in%pattern)) # opcao retirar todos
+    return(chartr(paste(symbols, collapse=""), paste(nudeSymbols, collapse=""), str))
+
+  for(i in which(accentTypes%in%pattern))
+    str <- chartr(symbols[i],nudeSymbols[i], str)
+
+  return(str)
+}
+```
+
+
+```{r}
 set.seed(123)
 dataNasc <-sample(seq(as.Date('1970/01/01'), as.Date('2000/01/01'), by="day"), n)
 dataNasc
@@ -120,7 +175,7 @@ regiao.r
 ```{r}
 set.seed(124)
 valorImovel <- round(rnorm(n,100000,25000),2)
-valorImovel
+#valorImovel
 ```
 
 ```{r}
@@ -344,11 +399,129 @@ plot(valorImovel,idade,
 ```
 
 
+```{r}
+#PAGINA DE SAIDA
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+
+#PARA CSV
+text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\dataframeFinoban.csv"), header=TRUE)
+
+objSaida <- Corpus(VectorSource(text$paginaSaida.r))
+
+dtm <- TermDocumentMatrix(objSaida)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+png("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\paginaSaidaPlot.png", width = 3000, height = 3000,units="px",res=400, bg="white")
+
+barplot(d[1:10,]$freq, las = 2, names.arg = d[1:10,]$word,
+        col ="lightblue", main ="Páginas de saida mais frequêntes",
+        ylab = "Frequência")
+
+dev.off()
+```
+
+
+```{r}
+#WORD CLOUD FEEDBACK
+# Install
+#install.packages("tm")  # for text mining
+#install.packages("SnowballC") # for text stemming
+#install.packages("wordcloud") # word-cloud generator 
+#install.packages("RColorBrewer") # color palettes
+#install.packages("stringr")
+
+# CARREGAR LIBS
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+library("stringr")
+
+#PARA TXT
+text <- readLines("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\teste.txt")
+
+docs <- Corpus(VectorSource(text))
+
+#PARA CSV
+#text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\#\dataframeFinoban.csv"), header=TRUE)
+
+#docs <- Corpus(VectorSource(text$regiao.r))
+
+inspect(docs)
+
+#LIMPANDO O ARQUIVO
+semAcento <- content_transformer(function (x , pattern ) gsub(pattern, "consolacao", x))
+docs <- tm_map(docs, semAcento, "consolação")
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeNumbers)
+docs <- tm_map(docs, removeWords, stopwords("en"))
+docs <- tm_map(docs, removePunctuation)
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+head(d, 10)
+
+barplot(d[1:10,]$freq, las = 2, names.arg = d[1:10,]$word,
+        col ="lightblue", main ="Most frequent words",
+        ylab = "Word frequencies")
+
+set.seed(1234)
+dev.new(width = 1000, height = 1000, unit = "px")
+
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+
+```{r}
+library(tm)
+#PARA CSV
+text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\feedback.csv"), header=TRUE)
+
+str(words)
+
+fa <- function(x) iconv(x, to = "ASCII//TRANSLIT")
+
+docs <- Corpus(VectorSource(text$oQuePoderiaMelhorar))
+
+docsSemAcento <- fa(docs)
+
+docsSemAcento
+
+#inspect(docsSemAcento)
+```
 
 
 
+```{r}
+library("tm")
 
+#Avaliação do Finoban por Usuarios
+text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\gosta_web_sites.csv"), header=TRUE)
 
+docs <- Corpus(VectorSource(text$opiniaoWebSites))
 
+docsSemAcento <- rm_accent(docs)
 
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+head(d, 10)
 
+png("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\avaliacaoPlot.png", width = 3000, height = 3000,units="px",res=400, bg="white")
+
+barplot(d[1:10,]$freq, las = 2, names.arg = d[1:10,]$word, horiz=TRUE,
+        col ="lightblue", main ="Gostou do nosso serviço?",
+        ylab = "Quantidade de avaliações")
+
+dev.off()
+```
