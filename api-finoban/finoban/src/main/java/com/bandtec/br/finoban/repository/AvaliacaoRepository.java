@@ -10,8 +10,7 @@ import java.util.List;
 public interface AvaliacaoRepository extends CrudRepository <Avaliacao, Integer> {
     List<Avaliacao> findByFkAcessoEquals(Acesso fkAcesso);
 
-
-    @Query(value = "select * FROM avaliacao order by id_avaliacao desc limit 50",
+    @Query(value = "select * FROM avaliacao order by id_avaliacao asc limit 50",
             nativeQuery = true)
     List<Avaliacao>  findAllByIdAvaliacao();
 }
