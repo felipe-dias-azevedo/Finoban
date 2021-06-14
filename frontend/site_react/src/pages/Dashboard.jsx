@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CampoItem from '../components/CampoItem';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Header from '../components/HeaderDashboard';
 import { RangeStepInput } from 'react-range-step-input';
 import GoogleChart from '../components/GoogleChart';
 import { useHistory } from 'react-router';
@@ -14,6 +14,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
 import { mockComponent } from 'react-dom/test-utils';
+import NumberFormat from 'react-number-format';
 
 function ModalFeedback(props) {
 
@@ -70,6 +71,18 @@ function ModalFeedback(props) {
 }
 
 function ModalContratar(props) {
+
+    const [modalShowSucesso, setModalShowSucesso] = React.useState(false);
+    const [modalShowContratar, setModalShowContratar] = React.useState(false);
+
+    function IrWhatsapp() {
+        window.location.href = "https://wa.me/551131758248";
+    }
+
+    function IrEmail() {
+        window.location.href = "mailto: safra@safra.com.br";
+    }
+
     return (
         <Modal
             {...props}
@@ -86,17 +99,27 @@ function ModalContratar(props) {
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <div className="d-flex justify-content-center">
                     <Form.Label className="cor-verde">
-                        Gostaria de agendar um horário?
+                     Gostaria de agendar um horário? <input type="checkbox" id="agendar-horario"></input>
+                        <br />
+
+                        <div className="mt-3" />
+                        <input type="date" className="input-data"></input>
+                        <input type="time" id="input-hora"></input>
                         </Form.Label>
                     </div>
                     <br />
                     
                     <div className="d-flex flex-row">
-                    <button className="btn-contratar">Telefone</button>
-                    <button className="btn-contratar">WhatsApp</button>
-                    <button className="btn-contratar">E-mail</button>
+                    <button className="btn-contratar" onClick={() => {}} >Telefone</button>
+                    <button className="btn-contratar" onClick={() => IrWhatsapp()}>WhatsApp</button>
+                    <button className="btn-contratar" onClick={() => IrEmail()}>E-mail</button>
                     <button className="btn-contratar">Visita na Agência</button>
                     </div>
+
+                    <ModalSucesso
+                show={modalShowSucesso}
+                onHide={() => setModalShowSucesso(false)}
+            />
 
                 </Form.Group>
             </Modal.Body>
@@ -104,21 +127,148 @@ function ModalContratar(props) {
     );
 }
 
+function ModalSucesso(props) {
+
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    <p className="cor-verde">Parabéns!!</p>
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <div className="d-flex justify-content-center">
+                    <Form.Label className="cor-verde">
+                    O Banco Cifra irá entrar em contato com você!
+                        <br />
+
+                        </Form.Label>
+                    </div>
+                    <br />
+                
+                </Form.Group>
+            </Modal.Body>
+        </Modal>
+    );
+}
 
 function Dashboard() {
-    const history = useHistory();
 
+    window.onbeforeunload = confirmExit;
+    function confirmExit(){
+      reqAcesso(1);
+      return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+    }
+
+    const history = useHistory();
     const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
     const [modalShowContratar, setModalShowContratar] = React.useState(false);
 
     var testeRecebido = localStorage.getItem("testeChave");
     let dataSimulacao = JSON.parse(testeRecebido);
-    var tempoFinanciamentoRecebido = parseInt(dataSimulacao.tempoFinanciamento);
+
+    var tempoFinanciamento = parseInt(dataSimulacao.tempoFinanciamento);
     var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
 
+    console.log(dataSimulacao);
+
+    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
+    console.log(respostaSimulacao);
+    var valorTaxa = respostaSimulacao[0].data.taxa;
+
+    var imovel;
+    var taxa_juros;
+    var taxa_juros_mensal;
+    var valor_a_pagar;
+    var anos_pagos;
+    var prestacoes;
+    var prestacao = {};
+
+        imovel = valorImovelRecebido;
+        taxa_juros = valorTaxa;
+        taxa_juros_mensal = valorTaxa;
+        valor_a_pagar = 0;
+        anos_pagos = 0;
+        prestacoes = [];
+        
+        while (anos_pagos < tempoFinanciamento) {
+            anos_pagos++;
+            var prestacao_sem_taxa = imovel / tempoFinanciamento;
+            var prestacao_com_taxa = imovel * taxa_juros_mensal;
+            if (anos_pagos == 1) {
+                var primeira_prestacao = (prestacao_com_taxa / 12) + (prestacao_sem_taxa / 12);
+            }
+            imovel = imovel - (prestacao_sem_taxa);
+            valor_a_pagar += (prestacao_sem_taxa + prestacao_com_taxa);
+            prestacoes.push(prestacao_sem_taxa.toFixed(2) + prestacao_com_taxa.toFixed(2));
+        }
+        console.log(prestacoes);
+
+    var taxaSimulacao = respostaSimulacao[2].data.taxa + "% a.a.";
+
     const anoInicial = new Date().getFullYear();
-    const anoFinal = anoInicial + tempoFinanciamentoRecebido;
+    const anoFinal = anoInicial + tempoFinanciamento;
     const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
+
+    var horarioEntrada = sessionStorage.getItem("horarioEntrada");
+    var idUsuario = localStorage.getItem("idUsuario");
+    
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+
+    var hora = data.getHours();
+    var minutos = data.getMinutes();
+    if(minutos < 10) {
+        minutos = '0' + minutos;
+    }
+    var segundos = data.getUTCSeconds();
+    if(segundos < 10) {
+        segundos = '0' + segundos;
+    }
+    var milisegundos = data.getMilliseconds();
+
+    var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
+
+    console.log(dataSaida);
+
+    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+
+    function reqAcesso(confirmouContratacao) {
+    var acesso = {
+        dataHoraEntrada: horarioEntrada,
+        dataHoraSaida: dataSaida,
+        paginaSaida: 4,
+        statusSaida: confirmouContratacao,
+        renda: dataSimulacao.renda,
+        valorImovel: dataSimulacao.valorImovel,
+        tempoFinanciamento: dataSimulacao.tempoFinanciamento,
+        porcentagemRenda: parseInt(porcentagemRenda),
+        bancoEscolhido: 2,
+        fkRegiao: {
+            idRegiao: 2000
+        },
+        fkCliente: {
+            id: parseInt(idUsuario)
+        },
+    }
+
+    console.log(acesso);
+
+    Api.post('/acessos', acesso, {
+    }).then(e => {
+      console.log(e.data);
+    }).catch(e => {
+      console.error(e)
+    });
+}       
 
     function avaliacaoDeslike() {
 
@@ -135,11 +285,13 @@ function Dashboard() {
             console.log(e.data);
             if (e.status === 201) {
                 console.log("ok");
+                alert("Recebemos a sua avaliação, obrigado!")
             } else {
                 console.log("erro");
             }
         }).catch(e => {
             console.error(e);
+            alert("Ocorreu um erro")
         });
 
     }
@@ -166,38 +318,45 @@ function Dashboard() {
 
                 <div className="box-campos">
                     <div className="box box-label center">
-                        <p>Banco:</p>
+                        <p className="fw-500">Banco:</p>
                     </div>
                     <div className="box box-label center">
-                        <p>Valor Imóvel:</p>
+                        <p class="fw-500">Valor Imóvel:</p>
                     </div>
                 </div>
                 <div className="box-campos">
-                    <select name="" id="">
+                    <select>
                         <option value="1">Banco Cifra</option>
-                        <option value="1">Banco do Presil</option>
-                        <option value="1">S16 Bank</option>
+                        <option value="2">Banco do Presil</option>
+                        <option value="3">S16 Bank</option>
                     </select>
-                    <input type="text" value={valorImovelRecebido} disabled />
+                    <input type="text" value={valorImovelRecebido.toFixed(2)} disabled />
                 </div>
                 <div className="box-campos">
-                    <CampoItem label="Taxa" valor="7% a.a." />
+                    <CampoItem label="Taxa" valor={taxaSimulacao} />
                     <CampoItem label="Primeira Parcela" valor="R$ 3.200,00" />
                     <CampoItem label="Parcela Anterior" valor="R$ 2.500,00" />
                     <CampoItem label="Próxima Parcela" valor="R$ 2.000,00" />
-                    <CampoItem label="Parcela 2027" valor="R$ 2.200,00" />
+                    <CampoItem label="Última Parcela" valor="R$ 2.200,00" />
                 </div>
                 <div className="box-campos">
-                    <CampoItem label="Valor Total do Imóvel" valor="R$ 1.050.000,00" />
+                <div className="box box-item center">
+                    <p>Valor final do imóvel</p>
+                    <br />
+                    <NumberFormat value={valor_a_pagar.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
+
+                    </div>
                     <div className="grafico">
                         <GoogleChart />
                     </div>
+
+                    
                 </div>
                 <div className="box-campos">
                     <a href="http://localhost:8080/api-finoban/download/csv" className="botao">
                         Salvar e Baixar CSV
                     </a>
-                    <button className="botao" onClick={() => setModalShowContratar(true)}>Gostei, quero contratar</button>
+                    <button className="botao" onClick={() => { reqAcesso(0); setModalShowContratar(true);}}>Gostei, quero contratar</button>
                 </div>
             </div>
 

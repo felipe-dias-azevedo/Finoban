@@ -68,6 +68,7 @@ input[type="range"]::-webkit-slider-thumb {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    color: white !important;
 }
 
 .grafico {
@@ -166,6 +167,10 @@ input[type="range"]::-webkit-slider-thumb {
       color: #3A5B62;
   }
 
+  .btn-contratar a {
+      color: #3A5B62;
+  }
+
   .btn-proposta {  
     margin: 0 20px;
     width: 35%;
@@ -185,4 +190,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 .w-40 {
     width: 40%;
+}
+
+.input-data {
+    margin: 0 10px;
 }

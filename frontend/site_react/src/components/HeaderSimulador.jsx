@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import LinkMaterial from '@material-ui/core/Link';
 
 function Header() {
     return (
@@ -18,7 +20,14 @@ function Header() {
                 </div>
                 <div className="pt2">
                     <div className="container">
-                        <Link to="/">Home</Link>
+                        <Breadcrumbs aria-label="breadcrumb">
+                            <Link to="/" className="fw-500">
+                                Home
+                            </Link>
+                            <Link to="/simulador" aria-current="page">
+                                Simulador
+                        </Link>
+                        </Breadcrumbs>
                         <div className="links">
                             <ul>
                                 <li><Link to="/">CONTATO</Link></li>

@@ -11,6 +11,11 @@ function GoogleChart() {
         // lineWidth: 25
     };
 
+    var testeRecebido = localStorage.getItem("testeChave");
+    let dataSimulacao = JSON.parse(testeRecebido);
+
+    console.log(dataSimulacao);
+
     const data = [
         ['Ano', 'Gasto'],
         ['2021', 10],
