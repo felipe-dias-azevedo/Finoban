@@ -1,0 +1,35 @@
+```{r}
+
+#Evasão por pagina
+
+barplot(table(paginaSaida.r),
+ col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7"),
+ ylab   = "Quantidade de usuários",
+ xlab = "página saída",
+main = "Evasão por página")
+
+
+#Tempo por pagina
+
+plot(paginaSaida.r,tempoAcesso.r,
+                              main = "Diagrama",
+                              xlab = "pagina saida",
+                              ylab = "tempo de acesso",
+                              pch = 20,
+                              col = "#39ADC7")
+
+
+#Clusters pagina de Cadastro
+
+s <- 220
+
+set.seed(1)
+pagina <-round(runif(s,1,10))
+
+barplot(table (pagina),
+         main = "Tempo de acesso Cadastro",
+        ylab = "usuarios",
+        xlab = "tempo de acesso",
+        col = "#39ADC7")
+```
+
