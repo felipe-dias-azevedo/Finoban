@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import { BiChevronDownCircle } from 'react-icons/bi';
 import { IoChevronBack } from 'react-icons/io5';
+import { IoIosArrowDropdown } from 'react-icons/io';
 import { useHistory } from 'react-router';
 import api from '../services/api';
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
@@ -19,7 +19,28 @@ function PaginaInicial() {
     const [renda, setRenda] = useState("");
     const [valorImovel, setValorImovel] = useState("");
     const [tempoFinanciamento, setTempoFinanciamento] = useState("");
+    const [porcentagemRenda, setPorcentagemRenda] = useState("");
     const [imoveisList, setImoveisList] = useState([]);
+
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+
+    var hora = data.getHours();
+    var minutos = data.getMinutes();
+    if(minutos < 10) {
+        minutos = '0' + minutos;
+    }
+    var segundos = data.getUTCSeconds();
+    if(segundos < 10) {
+        segundos = '0' + segundos;
+    }
+    var milisegundos = data.getMilliseconds();
+
+    var dataAtual = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
+
+    var horarioEntrada = sessionStorage.setItem("horarioEntrada", dataAtual);
 
     useEffect(() => {
         api.get('/regioes').then(e => {
@@ -49,25 +70,27 @@ function PaginaInicial() {
         };
 
         console.log(dataSimulador);
+        var porcentagemRecebida = localStorage.setItem("porcentagemRenda", porcentagemRenda);
 
         await api.post('/financiamento', dataSimulador, {
         }).then(e => {
-          console.log(e.data);
-          var respostaSimulacao = e.data;
-          console.log(respostaSimulacao);
-          var respostaFinanciamento = localStorage.setItem("respostaFinanciamento", JSON.stringify(respostaSimulacao));
+            console.log(e.data);
+            var respostaSimulacao = e.data;
+            if(e.status == 200) {
+            var respostaFinanciamento = localStorage.setItem("respostaFinanciamento", JSON.stringify(respostaSimulacao));
+            history.push({
+                pathname: '/simulador',
+                state: { data: dataSimulador }
+            });
+        }
         }).catch(e => {
-          console.error(e)
+            console.error(e)
+            alert("Ocorreu um erro!")
         });
 
         const dados = dataSimulador;
 
         var dadosSimulador = localStorage.setItem("testeChave", JSON.stringify(dados));
-        
-        history.push({
-            pathname: '/simulador',
-            state: { data: dataSimulador }
-        });
     }
 
     return (
@@ -82,7 +105,7 @@ function PaginaInicial() {
                 </div>
                 <div className="comecar center">
                     <a id="bt-comecar" href="#simulacao">
-                        <BiChevronDownCircle size={64} />
+                    <IoIosArrowDropdown size={46} className="ml-30"/>
                         <p> Começar</p>
                     </a>
                 </div>
@@ -109,8 +132,8 @@ function PaginaInicial() {
                                         type="tel"
                                         value={cnpj}
                                         onChange={(e, type) => {
-                                        setCnpj(e.target.value);
-                                        setMask(type === "CNPJ");
+                                            setCnpj(e.target.value);
+                                            setMask(type === "CNPJ");
                                         }}
                                     />
                                 </section>
@@ -169,13 +192,15 @@ function PaginaInicial() {
                                 <section>
                                     <p>Porcentagem de Renda</p>
                                     <input type="text"
-                                     placeholder="ex: 15"
-                                     maxLength="3" />
+                                        placeholder="ex: 15"
+                                        maxLength="3" 
+                                        onChange={(e => setPorcentagemRenda(e.target.value))}
+                                        />
                                 </section>
                                 <section>
                                 </section>
                             </div>
-                            <button className="bt-simular" onClick={irParaSimulador}>
+                            <button className="bt-simular" onClick={irParaSimulador} required>
                                 Simular
                             </button>
                         </div>)

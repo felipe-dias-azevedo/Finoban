@@ -25,11 +25,11 @@ import java.util.*;
 @Service
 @RestController
 @RequestMapping("/api-finoban")
-public class RestServiceController {
+public class FinanciamentoApisExternasController {
 
     private final RestTemplate restTemplate;
 
-    public RestServiceController(RestTemplateBuilder restTemplateBuilder) {
+    public FinanciamentoApisExternasController(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
@@ -51,9 +51,9 @@ public class RestServiceController {
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
-        listUrl.add("http://18.207.233.50:3333/openbanking/v1/financiamento");
-        listUrl.add("http://18.207.233.50:5000/openbanking/v1/financiamento");
-        listUrl.add("http://18.207.233.50:8000/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:3333/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:5000/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:8000/openbanking/v1/financiamento");
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

@@ -88,11 +88,11 @@ public class AcessoController {
 
     @GetMapping
     public ResponseEntity getAcessos() {
-        List<Acesso> acessoList = acessoRepository.findAll();
+        List<Acesso> acessoList = acessoRepository.findAllByIdEntrada();
         if (acessoList.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
-            return ResponseEntity.status(200).body(acessoRepository.findAll());
+            return ResponseEntity.status(200).body(acessoList);
         }
     }
 

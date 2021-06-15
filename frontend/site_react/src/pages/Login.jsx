@@ -5,8 +5,6 @@ import api from '../services/api';
 import { useHistory } from 'react-router';
 import '../assets/css/login.css';
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import ModalHeader from 'react-bootstrap/ModalHeader';
 import { Link } from 'react-router-dom';
 
 function ModalLoginSucesso(props) {
@@ -57,10 +55,8 @@ export default function Login() {
   const [modalLoginShow, setModalLoginShow] = React.useState(false);
   const [modalLoginErroShow, setModalLoginErroShow] = React.useState(false);
 
-  const [errorLogin, setErrorLogin] = useState(false);
-
   var dadosRecebido = localStorage.getItem("testeChave");
-
+  
   let dataSimulacao = JSON.parse(dadosRecebido);
 
   console.log(dataSimulacao);
@@ -87,6 +83,8 @@ export default function Login() {
       if (e.status === 200) {
         var nomeUsuarioLogado = localStorage.setItem("nomeUsuario", e.data.data.nome);
         var idUsuarioLogado = localStorage.setItem("idUsuario", e.data.data.id);
+        var emailUsuarioLogado = localStorage.setItem("emailUsuario", e.data.data.email);
+        console.log(e);
         setModalLoginShow(true);
         setTimeout(() => {
           setModalLoginShow(false);

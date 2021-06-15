@@ -1,7 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/HeaderSimulador';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
+import Api from '../services/api';
 
 function Simulador() {
 
@@ -16,19 +17,82 @@ function Simulador() {
     console.log(respostaSimulacao[1].data);
     console.log(respostaSimulacao[2].data);
 
-    var taxa1 = respostaSimulacao[0].data.taxa * tempoFinanciamentoRecebido * 12;
-    var taxa2 = respostaSimulacao[1].data.taxa * tempoFinanciamentoRecebido * 12;
-    var taxa3 = respostaSimulacao[2].data.taxa * tempoFinanciamentoRecebido * 12;
+    var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
+    console.log(tempoFinanciamento);
+
+    var taxa1 = (respostaSimulacao[0].data.taxa * tempoFinanciamento);
+    var taxa2 = (respostaSimulacao[1].data.taxa * tempoFinanciamento);
+    var taxa3 = (respostaSimulacao[2].data.taxa * tempoFinanciamento);
+
+    var horarioEntrada = sessionStorage.getItem("horarioEntrada");
+    var idUsuario = localStorage.getItem("idUsuario");
+    
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+
+    var hora = data.getHours();
+    var minutos = data.getMinutes();
+    if(minutos < 10) {
+        minutos = '0' + minutos;
+    }
+    var segundos = data.getUTCSeconds();
+    if(segundos < 10) {
+        segundos = '0' + segundos;
+    }
+
+    var milisegundos = data.getMilliseconds();
+
+    var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
+
+    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+
+    window.onbeforeunload = confirmExit;
+    function confirmExit(){
+      reqAcesso();
+      return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+    }
+
+    var acesso = {
+        dataHoraEntrada: horarioEntrada,
+        dataHoraSaida: dataSaida,
+        paginaSaida: 3,
+        statusSaida: 0,
+        renda: dataSimulacao.renda,
+        valorImovel: dataSimulacao.valorImovel,
+        tempoFinanciamento: dataSimulacao.tempoFinanciamento,
+        porcentagemRenda: parseInt(porcentagemRenda),
+        bancoEscolhido: 2,
+        fkRegiao: {
+            idRegiao: 2000
+        },
+        fkCliente: {
+            id: parseInt(idUsuario)
+        },
+    }
+
+    console.log(acesso);
+
+    function reqAcesso() {
+    Api.post('/acessos', acesso, {
+    }).then(e => {
+      console.log(e.data);
+    }).catch(e => {
+      console.error(e)
+    });
+}      
     
     return (
         <>
             <Header />
+            
             <div className="center">
                 <div className="box box-titulo center">
                     <h1>Simulador</h1>
                 </div>
                 <div className="box box-subtitulo center">
-                    <h4>Valores dos Bancos Referente aos Dados Mencionados</h4>
+                    <h4>Valores dos Bancos referente aos dados mencionados</h4>
                 </div>
                 <div className="bancos center">
                     <BankCard 
@@ -36,9 +100,11 @@ function Simulador() {
                         taxa_t ={(respostaSimulacao[0].data.taxa)} 
                         primeira_p="3000,00" 
                         valor_f={(valorImovelRecebido + taxa1)}
-                        valor_s={(((respostaSimulacao[0].data.dfi) + (respostaSimulacao[0].data.mip))*100).toFixed(2)} 
-                    
+                        valor_s={(((respostaSimulacao[0].data.dfi) + (respostaSimulacao[0].data.mip))*100).toFixed(2)
+                        }     
+                        
                     />
+
                     <BankCard 
                         banco="S16 Bank"
                         taxa_t ={(respostaSimulacao[1].data.taxa)} 

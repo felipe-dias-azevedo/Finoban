@@ -7,6 +7,7 @@ import PaginaInicial from './pages/PaginaInicial';
 import Simulador from './pages/Simulador';
 
 function Routes() {
+
     return (
         <Router>
             <Switch>
