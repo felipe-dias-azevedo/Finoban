@@ -4,12 +4,12 @@ const chartsEnum = {
     RENDIMENTO_MENSAL: {
         id: 0,
         graphicId: graphicEnum.LINHA,
-        name: "Rendimento Mensal"
+        name: "Renda Média dos Usuários deste Mês"
     },
     PORCENTUAL_PERDAS: {
         id: 1,
         graphicId: graphicEnum.GAUGE,
-        name: "Porcentual de Perdas de Clientes"
+        name: "Nível de Desistência dos Usuários"
     },
     PROJECAO_RENDIMENTO: {
         id: 2,
@@ -24,32 +24,32 @@ const chartsEnum = {
     AVALIACAO_SITE: {
         id: 4,
         graphicId: graphicEnum.HISTOGRAMA,
-        name: "Avaliações Site"
+        name: "Avaliações do Site"
     },
     REGIAO_RENDA: {
         id: 5,
         graphicId: graphicEnum.DISPERSAO,
-        name: "Regiões por Renda"
+        name: "Regiões X Renda"
     },
     VALOR_IMOVEL_IDADE: {
         id: 6,
         graphicId: graphicEnum.DISPERSAO,
-        name: "Valor Imóvel por Idade"
+        name: "Valor Imóvel X Idade"
     },
     REGIOES_ESCOLHIDAS: {
         id: 7,
         graphicId: graphicEnum.HISTOGRAMA,
-        name: "Regiões Escolhidas"
+        name: "Bairros Escolhidos"
     },
     VALOR_IMOVEL_RENDA: {
         id: 8,
         graphicId: graphicEnum.DISPERSAO,
-        name: "Valor Imóvel por Renda"
+        name: "Valor Imóvel X Renda"
     },
     CEP_REGIAO_ESCOLHIDA: {
         id: 9,
         graphicId: graphicEnum.MAPA,
-        name: "Cep Usuário por Região Escolhida"
+        name: "Bairro Usuário X Bairro Escolhido"
     },
     BANCOS_ESCOLHIDOS: {
         id: 10,

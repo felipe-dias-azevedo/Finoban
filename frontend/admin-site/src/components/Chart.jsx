@@ -15,12 +15,6 @@ function Chart({ id, data }) {
                     }
                     data={data}
                     options={{
-                        hAxis: {
-                            title: 'Time',
-                          },
-                          vAxis: {
-                            title: 'Popularity',
-                          },
                         legend: { position: 'none' },
                     }}
                     legendToggle
@@ -51,12 +45,6 @@ function Chart({ id, data }) {
                     }
                     data={data}
                     options={{
-                        hAxis: {
-                          title: 'Time',
-                        },
-                        vAxis: {
-                          title: 'Popularity',
-                        },
                         legend: { position: 'none' },
                     }}
                     rootProps={{ 'data-testid': '1' }}
@@ -72,8 +60,6 @@ function Chart({ id, data }) {
                     }
                     data={data}
                     options={{
-                        hAxis: { title: 'Diameter' },
-                        vAxis: { title: 'Age' },
                         legend: 'none',
                         trendlines: { 0: {} },
                     }}
