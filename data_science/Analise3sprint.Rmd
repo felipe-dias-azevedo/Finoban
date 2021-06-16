@@ -4,11 +4,9 @@ install.packages("SnowballC") # for text stemming
 install.packages("wordcloud") # word-cloud generator 
 install.packages("RColorBrewer") # color palettes
 install.packages("stringr")
-install.packages("ggplot2")
-install.packages("scales")
+
+
 ```
-
-
 
 ```{r}
 # CARREGAR LIBS
@@ -17,8 +15,7 @@ library("SnowballC")
 library("wordcloud")
 library("RColorBrewer")
 library("stringr")
-library("ggplot2")
-library("scales")
+
 
 set.seed(123)
 paginaSaida <-round(runif(n,1,5))
@@ -29,6 +26,34 @@ paginaSaida.r <- factor(paginaSaida,
 
 tempoAcesso.r <- round((tempoAcesso/60),1)
 ```
+
+```{r}
+#Carregar dados
+
+#tempo
+set.seed(123)
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
+
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("login","hub","cadastro","dash","home")
+)
+
+set.seed()
+
+```
+
+
+
 
 ```{r}
 #Evasão por pagina
@@ -60,10 +85,12 @@ barplot(table (pagina),
         xlab = "tempo de acesso",
         col = "#39ADC7")
 
+
+
 library("tm")
 
 #Avaliação do Finoban por Usuarios
-text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\ppt\\gosta_web_sites.csv"), header=TRUE)
+text <- read.csv(file.path("C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\ppt\\gosta_web_sites.csv"), header=TRUE)
 
 docs <- Corpus(VectorSource(text$opiniaoWebSites))
 
@@ -81,31 +108,9 @@ df <- data.frame(
   )
 
 
-# Barplot
-bp<- ggplot(df, aes(x="", y=Quantidade_de_avaliacoes, fill=Avaliacoes ))+
-geom_bar(width = 1, stat = "identity")
-
-
-pie <- bp + coord_polar("y", start=0)
-
-blank_theme <- theme_minimal()+
-  theme(
-  axis.title.x = element_blank(),
-  axis.title.y = element_blank(),
-  panel.border = element_blank(),
-  panel.grid=element_blank(),
-  axis.ticks = element_blank(),
-  plot.title=element_text(size=14, face="bold")
-  )
-
-pie  + blank_theme + scale_fill_brewer("Blues") +
-  theme(axis.text.x=element_blank())+
-  geom_text(aes(y = Quantidade_de_avaliacoes/2 + c(0, cumsum(Quantidade_de_avaliacoes)[-length(Quantidade_de_avaliacoes)]), label = ""), size=5)
-
-
 #WORD CLOUD FEEDBACK
 
-text <- readLines("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\ppt\\nuvem.txt")
+text <- readLines("C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\ppt\\nuvem.txt")
 
 docs <- Corpus(VectorSource(text))
 
@@ -124,6 +129,9 @@ d <- data.frame(word = names(v),freq=v)
 wordcloud(words = d$word, freq = d$freq, min.freq = 1,
           max.words=200, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(8, "Dark2"))
+
+
+
 ```
 
 
