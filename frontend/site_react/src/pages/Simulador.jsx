@@ -82,6 +82,9 @@ function Simulador() {
 
     console.log(financiamentoCifra.prestacoes);
 
+    var listaFinanciamentoCifra = localStorage.setItem("financiamentoCifra", financiamentoCifra.prestacoes);
+
+    console.log("Lista: " + listaFinanciamentoCifra);
 
     var valorImovelPresil = localStorage.setItem("valorImovelPresil", financiamentoPresil.valor_a_pagar);
     var valorImovelS16 = localStorage.setItem("valorImovelS16", financiamentoS16.valor_a_pagar);
@@ -100,6 +103,7 @@ function Simulador() {
     var valoPrimeiraPrestacaoS16 = localStorage.setItem("valoPrimeiraPrestacaoS16", primeiraPrestacaoS16Formatado);
     var valorPrimeiraPrestacaoCifra = localStorage.setItem("valorPrimeiraPrestacaoCifra", primeiraPrestacaoCifraFormatado);
 
+    var primeiraPrestacaoCifraChart = localStorage.setItem("primeiraPrestacaoCifraChart", valorPrimeiraPrestacaoCifra);
 
     var vPresil = financiamentoPresil.valor_a_pagar;
     var vS16 = financiamentoS16.valor_a_pagar;
@@ -112,7 +116,7 @@ function Simulador() {
     var valorImovelCifraFormatado = localStorage.setItem("valorCifraFormatado", valorCifraFormatado);
 
     function confirmExit(){
-      reqAcesso();
+    //   reqAcesso();
       return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
     }
 

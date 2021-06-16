@@ -58,12 +58,9 @@ function Header() {
                       pathname: '/'
                     });
                   }, 3000);
-            } else {
-                alert("Ocorreu um erro!")
-            }
+            } 
         }).catch(e => {
             console.error(e)
-            alert("Ocorreu um erro!")
         });
     }
 
