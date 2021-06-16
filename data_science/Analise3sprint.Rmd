@@ -1,7 +1,37 @@
 ```{r}
+install.packages("tm")  # for text mining
+install.packages("SnowballC") # for text stemming
+install.packages("wordcloud") # word-cloud generator 
+install.packages("RColorBrewer") # color palettes
+install.packages("stringr")
+install.packages("ggplot2")
+install.packages("scales")
+```
 
+
+
+```{r}
+# CARREGAR LIBS
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+library("stringr")
+library("ggplot2")
+library("scales")
+
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("dash","hub","cadastro","login","home")
+)
+
+tempoAcesso.r <- round((tempoAcesso/60),1)
+```
+
+```{r}
 #Evasão por pagina
-
 barplot(table(paginaSaida.r),
  col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7"),
  ylab   = "Quantidade de usuários",
@@ -10,7 +40,6 @@ main = "Evasão por página")
 
 
 #Tempo por pagina
-
 plot(paginaSaida.r,tempoAcesso.r,
                               main = "Diagrama",
                               xlab = "pagina saida",
@@ -20,7 +49,6 @@ plot(paginaSaida.r,tempoAcesso.r,
 
 
 #Clusters pagina de Cadastro
-
 s <- 220
 
 set.seed(1)
@@ -31,5 +59,71 @@ barplot(table (pagina),
         ylab = "usuarios",
         xlab = "tempo de acesso",
         col = "#39ADC7")
+
+library("tm")
+
+#Avaliação do Finoban por Usuarios
+text <- read.csv(file.path("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\ppt\\gosta_web_sites.csv"), header=TRUE)
+
+docs <- Corpus(VectorSource(text$opiniaoWebSites))
+
+
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+#Grafico de torta
+df <- data.frame(
+  Avaliacoes = c("Negativo", "Positivo"),
+  Quantidade_de_avaliacoes = c(26.4, 73.6)
+  )
+
+
+# Barplot
+bp<- ggplot(df, aes(x="", y=Quantidade_de_avaliacoes, fill=Avaliacoes ))+
+geom_bar(width = 1, stat = "identity")
+
+
+pie <- bp + coord_polar("y", start=0)
+
+blank_theme <- theme_minimal()+
+  theme(
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  panel.border = element_blank(),
+  panel.grid=element_blank(),
+  axis.ticks = element_blank(),
+  plot.title=element_text(size=14, face="bold")
+  )
+
+pie  + blank_theme + scale_fill_brewer("Blues") +
+  theme(axis.text.x=element_blank())+
+  geom_text(aes(y = Quantidade_de_avaliacoes/2 + c(0, cumsum(Quantidade_de_avaliacoes)[-length(Quantidade_de_avaliacoes)]), label = ""), size=5)
+
+
+#WORD CLOUD FEEDBACK
+
+text <- readLines("C:\\Users\\Admin\\Desktop\\Finoban\\data_science\\ppt\\nuvem.txt")
+
+docs <- Corpus(VectorSource(text))
+
+#LIMPANDO O ARQUIVO
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeNumbers)
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
+docs <- tm_map(docs, removePunctuation)
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
 ```
+
 
