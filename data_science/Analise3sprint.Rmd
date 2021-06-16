@@ -1,14 +1,14 @@
-```{r}
-install.packages("tm")  # for text mining
-install.packages("SnowballC") # for text stemming
-install.packages("wordcloud") # word-cloud generator 
-install.packages("RColorBrewer") # color palettes
-install.packages("stringr")
+```{r,warning=FALSE}
+#install.packages("tm")  # for text mining
+#install.packages("SnowballC") # for text stemming
+#install.packages("wordcloud") # word-cloud generator 
+#install.packages("RColorBrewer") # color palettes
+#install.packages("stringr")
 
 
 ```
-
-```{r}
+# Gráficos
+```{r,warning=FALSE}
 # CARREGAR LIBS
 library("tm")
 library("SnowballC")
@@ -16,7 +16,14 @@ library("wordcloud")
 library("RColorBrewer")
 library("stringr")
 
-
+n<-1000
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
 set.seed(123)
 paginaSaida <-round(runif(n,1,5))
 paginaSaida.r <- factor(paginaSaida,
@@ -27,11 +34,9 @@ paginaSaida.r <- factor(paginaSaida,
 tempoAcesso.r <- round((tempoAcesso/60),1)
 ```
 
-```{r}
+```{r,warning=FALSE}
 #Carregar dados
 
-#tempo
-set.seed(123)
 varianciaTempoAcesso <-round(rnorm(n,4*60,120))
 
 tempoAcesso <- c()
@@ -48,14 +53,13 @@ paginaSaida.r <- factor(paginaSaida,
                         labels = c("login","hub","cadastro","dash","home")
 )
 
-set.seed()
 
 ```
 
 
 
 
-```{r}
+```{r,warning=FALSE}
 #Evasão por pagina
 barplot(table(paginaSaida.r),
  col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7"),
@@ -90,7 +94,7 @@ barplot(table (pagina),
 library("tm")
 
 #Avaliação do Finoban por Usuarios
-text <- read.csv(file.path("C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\ppt\\gosta_web_sites.csv"), header=TRUE)
+text <- read.csv(file.path("//Users//felipe//GITHUB//Finoban//data_science//ppt//gosta_web_sites.csv"), header=TRUE)
 
 docs <- Corpus(VectorSource(text$opiniaoWebSites))
 
@@ -110,7 +114,7 @@ df <- data.frame(
 
 #WORD CLOUD FEEDBACK
 
-text <- readLines("C:\\Users\\catarina\\Desktop\\Finoban\\data_science\\ppt\\nuvem.txt")
+text <- readLines("//Users//felipe//GITHUB//Finoban//data_science//ppt//nuvem.txt")
 
 docs <- Corpus(VectorSource(text))
 
