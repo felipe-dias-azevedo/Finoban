@@ -11,12 +11,12 @@ Se nao dosados podem ser toxicos	Maior seguranca
 Interessante 	Tecnologia 
 Bonito	Design	
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -51,13 +51,13 @@ O incentivo ao avanco tecnologico, assim como a constante divulgacao das informa
 Legal	Acessibilidade
 Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
 doidera	doidera
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Melhorar o  demora para carregar
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -95,12 +95,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -138,12 +138,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -181,12 +181,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -224,12 +224,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -267,12 +267,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -310,12 +310,13 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	financiamento
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+util	Reduzir o de dependencias para um
+a simples pagina
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -353,12 +354,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -396,12 +397,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -439,12 +440,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -482,12 +483,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -525,12 +526,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -568,12 +569,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -611,12 +612,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -654,12 +655,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -697,12 +698,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -740,12 +741,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -783,12 +784,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -826,12 +827,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -869,12 +870,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -911,12 +912,12 @@ Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao
 doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -954,12 +955,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -998,12 +999,12 @@ doidera	doidera
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1041,12 +1042,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1083,12 +1084,12 @@ Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao
 doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1126,12 +1127,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1169,12 +1170,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1210,99 +1211,12 @@ Legal	Acessibilidade
 Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
 doidera	doidera
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1340,98 +1254,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1470,12 +1298,12 @@ doidera	doidera
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1513,12 +1341,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1556,12 +1384,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -1599,442 +1427,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
-Util	Compatibilidade 
-delicia	o tamanho
-Legais	Navcao
-Acho uma tecnologia bem legal e util	Responsicadastrode
-Essencial para um negocio	Compatibilidade com aparelhos antigos
-Acho legal, mas depende do dia 	
-bonitos 	fluidez 
-Interessante	Tornar mais atraente
-bons para obter informacoes e para entretenimento 	otima ideia
-Achei genial a ideia	 otima ideia
-otima ideia	Lentidao
-contato lentidao a cadastro	Esta perfeito
-Pouco intuitivo 	
-Exelente	Security
-boring	cores
-Sociavel 	Otimizacao
-Fonte de Conhecimento	Interaticadastrode
-Legal	Tudo
-contato	Tirar aquelas propagandas em cima do
-otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
-Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
- login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
-Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
-Informativo	checagem de veracidade do conteudo apresentado 
-Informativos	A experiencia do o conteudo.
- acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
-Uma boa ferramenta de informcao	acessibilidade
-contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
-Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
-Batata	Cores
-O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
-Legal	Acessibilidade
-Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
-doidera	doidera
- contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
-lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
-Melhorar o desempenho, demora para carregar
-Legal	Garotas
-Sao otimos, funcional e com um layout otimo para as vistas	Performance
-contato	Nada
-Eles cumprem a sua funcao	 sei
-util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2073,12 +1471,12 @@ doidera	doidera
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2116,12 +1514,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2159,12 +1557,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2202,12 +1600,442 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2246,12 +2074,12 @@ doidera	doidera
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2289,12 +2117,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2332,12 +2160,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2375,12 +2203,56 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2418,12 +2290,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2461,12 +2333,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2504,12 +2376,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2547,12 +2419,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2590,12 +2462,12 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
@@ -2633,12 +2505,141 @@ doidera	doidera
  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
 lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
 Melhorar o desempenho, demora para carregar
-Legal	Garotas
+Legal	
 Sao otimos, funcional e com um layout otimo para as vistas	Performance
 contato	Nada
 Eles cumprem a sua funcao	 sei
 util	Reduzir o de dependencias para uma simples pagina
-Legal	Garotas
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
+Util	Compatibilidade 
+delicia	o tamanho
+Legais	Navcao
+Acho uma tecnologia bem legal e util	Responsicadastrode
+Essencial para um negocio	Compatibilidade com aparelhos antigos
+Acho legal, mas depende do dia 	
+bonitos 	fluidez 
+Interessante	Tornar mais atraente
+bons para obter informacoes e para entretenimento 	otima ideia
+Achei genial a ideia	 otima ideia
+otima ideia	Lentidao
+contato lentidao a cadastro	Esta perfeito
+Pouco intuitivo 	
+Exelente	Security
+boring	cores
+Sociavel 	Otimizacao
+Fonte de Conhecimento	Interaticadastrode
+Legal	Tudo
+contato	Tirar aquelas propagandas em cima do
+otima ideia, funcional, reduz o tempo, lentidao, imobiliario, login, login,login, login, financiamento, financiamento 	otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao login, login,login, login, financiamento, financiamento otima ideia, funcional, reduz o tempo, lentidao, , login, login,login, login,
+Essencial para um negocio	lentidao lentidao lentidao lentidao, login login, login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login  login, s16bank bank presil login do login, login ,  login, s16bank bank presil login do login,  login, s16bank bank presil login do login,presil
+ login, s16bank bank presil login do login login, s16bank bank presil login do login  	Esta perfeito Esta perfeito Esta perfeito Esta perfeitoEsta perfeito Esta perfeito Esta perfeitoEsta perfeitoEsta perfeito
+Gosto muito do site tecmundo, la acho bastante coisas sobre tecnologia etc.	
+Informativo	checagem de veracidade do conteudo apresentado 
+Informativos	A experiencia do o conteudo.
+ acho nada	depende do site  modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno modo noturno 
+Uma boa ferramenta de informcao	acessibilidade
+contato	 Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade  Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade Acessibilidade 
+Gosto dos que conseguem apresentar um site limpo e direto, sem necessidade de ficar  no site escondidas	 propagandas, vulgo ads, e click baits falsos
+Batata	Cores
+O incentivo ao avanco tecnologico, assim como a constante divulgacao das informacoes lentidao a criacao das condicoes inegavelmente apropriadas.	acessibilidade
+Legal	Acessibilidade
+Rapidos, intuitivos e com design bonito 	Pop-up opcional para ajuda na navegacao do site
+doidera	doidera
+ contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro  contato lentidao a cadastro	velocidade
+lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao lentidao 
+Melhorar o desempenho, demora para carregar
+Legal	
+Sao otimos, funcional e com um layout otimo para as vistas	Performance
+contato	Nada
+Eles cumprem a sua funcao	 sei
+util	Reduzir o de dependencias para uma simples pagina
+Legal	
 Util	Compatibilidade 
 delicia	o tamanho
 Legais	Navcao
