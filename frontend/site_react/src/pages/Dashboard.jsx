@@ -46,7 +46,7 @@ function ModalFeedback(props) {
     return (
         <Modal
             {...props}
-            size="lg"
+            size="xs"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -162,8 +162,31 @@ function Dashboard() {
 
     window.onbeforeunload = confirmExit;
     function confirmExit(){
+      efetuarLogoff();
       reqAcesso(1);
       return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+    }
+
+    function teste() {
+        alert("alo");
+    }
+    function efetuarLogoff() {
+        var emailUsuario = localStorage.getItem("emailUsuario");
+        console.log(emailUsuario);
+
+        const req = {
+            email: emailUsuario
+        }
+
+        Api.post('/logoff', req, {
+        }).then(e => {
+            console.log(e.data);
+            if(e.status == 200) {
+            } 
+        }).catch(e => {
+            console.error(e)
+            alert("Ocorreu um erro!")
+        });
     }
 
     const history = useHistory();
@@ -177,44 +200,58 @@ function Dashboard() {
     var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
 
     console.log(dataSimulacao);
-
+    
     var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
     console.log(respostaSimulacao);
-    var valorTaxa = respostaSimulacao[0].data.taxa;
 
-    var imovel;
-    var taxa_juros;
-    var taxa_juros_mensal;
-    var valor_a_pagar;
-    var anos_pagos;
-    var prestacoes;
-    var prestacao = {};
-
-        imovel = valorImovelRecebido;
-        taxa_juros = valorTaxa;
-        taxa_juros_mensal = valorTaxa;
-        valor_a_pagar = 0;
-        anos_pagos = 0;
-        prestacoes = [];
-        
-        while (anos_pagos < tempoFinanciamento) {
-            anos_pagos++;
-            var prestacao_sem_taxa = imovel / tempoFinanciamento;
-            var prestacao_com_taxa = imovel * taxa_juros_mensal;
-            if (anos_pagos == 1) {
-                var primeira_prestacao = (prestacao_com_taxa / 12) + (prestacao_sem_taxa / 12);
-            }
-            imovel = imovel - (prestacao_sem_taxa);
-            valor_a_pagar += (prestacao_sem_taxa + prestacao_com_taxa);
-            prestacoes.push(prestacao_sem_taxa.toFixed(2) + prestacao_com_taxa.toFixed(2));
-        }
-        console.log(prestacoes);
-
-    var taxaSimulacao = respostaSimulacao[2].data.taxa + "% a.a.";
+    let dataFinanciamento = financiar(valorImovelRecebido, dataSimulacao, tempoFinanciamento)
 
     const anoInicial = new Date().getFullYear();
     const anoFinal = anoInicial + tempoFinanciamento;
     const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
+
+    var taxaPresil = localStorage.getItem("taxaPresil");
+    var taxaS16 = localStorage.getItem("taxaS16");
+    var taxaCifra = localStorage.getItem("taxaCifra");
+
+    var taxaSimulacao = taxaCifra + "% a.a.";
+
+    let financiamentoPresil = financiar(valorImovelRecebido, taxaPresil/35, tempoFinanciamento);
+    let financiamentoS16 = financiar(valorImovelRecebido, taxaS16/30, tempoFinanciamento);
+    let financiamentoCifra = financiar(valorImovelRecebido, taxaCifra/25, tempoFinanciamento);
+
+    function financiar(valor_imovel, valor_taxa_juros, anos_a_serem_pagos) {
+        var imovel = valor_imovel;
+        var taxa_juros = valor_taxa_juros;
+        var valor_a_pagar = 0;
+        var anos_pagos = 0;
+        var prestacoes = [];
+        var prestacao_sem_taxa;
+        var prestacao_com_taxa;
+        var primeira_prestacao;
+    
+        while (anos_pagos < anos_a_serem_pagos) {
+            anos_pagos++;
+            prestacao_sem_taxa = imovel / anos_a_serem_pagos;
+            prestacao_com_taxa = imovel * taxa_juros;
+            if (anos_pagos == 1) {
+                primeira_prestacao = (prestacao_com_taxa / 12) + (prestacao_sem_taxa / 12);
+            }
+            imovel = imovel - (prestacao_sem_taxa);
+            valor_a_pagar += (prestacao_sem_taxa + prestacao_com_taxa);
+            prestacoes.push(prestacao_sem_taxa + prestacao_com_taxa);          
+        }
+        const data_financiamento = {prestacoes:prestacoes}
+
+        return data_financiamento;
+    }
+
+    console.log(financiamentoCifra.prestacoes);
+
+    var proximaParcela = financiamentoCifra.prestacoes[1] / 12;
+    var proximaParcelaFormatado = proximaParcela.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var ultimaParcela = financiamentoCifra.prestacoes.pop() / 12;
+    var ultimaParcelaFormatado = ultimaParcela.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
     var horarioEntrada = sessionStorage.getItem("horarioEntrada");
     var idUsuario = localStorage.getItem("idUsuario");
@@ -240,6 +277,22 @@ function Dashboard() {
     console.log(dataSaida);
 
     var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+;
+    // taxaCifra = parseFloat(taxaCifra).toFixed(2) + "% a.a.";
+
+    var valorImovelPresil = localStorage.getItem("valorImovelPresil");
+    var valorImovelS16 = localStorage.getItem("valorImovelS16");
+    var valorImovelCifra = localStorage.getItem("valorImovelCifra");
+
+    valorImovelPresil = parseFloat(valorImovelPresil).toFixed(); 
+    valorImovelS16 =  parseFloat(valorImovelS16).toFixed();
+    valorImovelCifra = parseFloat(valorImovelCifra).toFixed();
+
+    var valorPrimeiraPrestacaoPresil = localStorage.getItem("valorPrimeiraPrestacaoPresil");
+    var valorPrimeiraPrestacaoS16 = localStorage.getItem("valorPrimeiraPrestacaoS16");
+    var valorPrimeiraPrestacaoCifra = localStorage.getItem("valorPrimeiraPrestacaoCifra");
+
+    var valorImovelCifraFormatado = localStorage.getItem("valorCifraFormatado");
 
     function reqAcesso(confirmouContratacao) {
     var acesso = {
@@ -253,7 +306,7 @@ function Dashboard() {
         porcentagemRenda: parseInt(porcentagemRenda),
         bancoEscolhido: 2,
         fkRegiao: {
-            idRegiao: 2000
+            idRegiao: 15
         },
         fkCliente: {
             id: parseInt(idUsuario)
@@ -276,7 +329,7 @@ function Dashboard() {
             avalPositivo: 1,
             feedbackAval: "Deslike",
             fkAcesso: {
-                idEntrada: 13
+                idEntrada: 6
             }
         };
 
@@ -325,25 +378,24 @@ function Dashboard() {
                     </div>
                 </div>
                 <div className="box-campos">
-                    <select>
+                    <select disabled>
                         <option value="1">Banco Cifra</option>
                         <option value="2">Banco do Presil</option>
                         <option value="3">S16 Bank</option>
                     </select>
-                    <input type="text" value={valorImovelRecebido.toFixed(2)} disabled />
+                    <input type="text" value={valorImovelRecebido} disabled />
                 </div>
                 <div className="box-campos">
                     <CampoItem label="Taxa" valor={taxaSimulacao} />
-                    <CampoItem label="Primeira Parcela" valor="R$ 3.200,00" />
-                    <CampoItem label="Parcela Anterior" valor="R$ 2.500,00" />
-                    <CampoItem label="Próxima Parcela" valor="R$ 2.000,00" />
-                    <CampoItem label="Última Parcela" valor="R$ 2.200,00" />
+                    <CampoItem label="Primeira Parcela" valor={valorPrimeiraPrestacaoCifra} />
+                    <CampoItem label="Próxima Parcela" valor={proximaParcelaFormatado} />
+                    <CampoItem label="Última Parcela" valor={ultimaParcelaFormatado} />
                 </div>
                 <div className="box-campos">
                 <div className="box box-item center">
                     <p>Valor final do imóvel</p>
                     <br />
-                    <NumberFormat value={valor_a_pagar.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'R$'} />
+                    <p className="fw-600">{valorImovelCifraFormatado}</p>
 
                     </div>
                     <div className="grafico">

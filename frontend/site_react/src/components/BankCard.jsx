@@ -16,11 +16,11 @@ function BankCard(props) {
                 </div>
                 <div className="cx-info">
                     <span> Primeira Prestação: </span>
-                    <span> R$ {props.primeira_p} </span>
+                    <span> {props.primeira_p} </span>
                 </div>
                 <div className="cx-info">
                     <span> Valor final do imovel: </span>
-                    <span> R$ {props.valor_f} </span>
+                    <span> {props.valor_f} </span>
                 </div>
                 <div className="cx-info">
                     <span> Valor seguros: </span>

@@ -8,21 +8,20 @@ function Simulador() {
 
     var testeRecebido = localStorage.getItem("testeChave");
     let dataSimulacao = JSON.parse(testeRecebido);
-    var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
-    var tempoFinanciamentoRecebido = parseInt(dataSimulacao.tempoFinanciamento);
+    var valorImovelRecebido = dataSimulacao.valorImovel;
+    var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
 
     var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
-    console.log(respostaSimulacao[0].data);
-    console.log(respostaSimulacao[0].data.taxa);
-    console.log(respostaSimulacao[1].data);
-    console.log(respostaSimulacao[2].data);
 
     var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
-    console.log(tempoFinanciamento);
 
-    var taxa1 = (respostaSimulacao[0].data.taxa * tempoFinanciamento);
-    var taxa2 = (respostaSimulacao[1].data.taxa * tempoFinanciamento);
-    var taxa3 = (respostaSimulacao[2].data.taxa * tempoFinanciamento);
+    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10) + 5;
+    var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
+    var taxa3 = respostaSimulacao[2].data.taxaTotal * 1.2;
+
+    var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
+    var taxaS16 = localStorage.setItem("taxaS16", taxa2);
+    var taxaCifra = localStorage.setItem("taxaCifra", taxa3);
 
     var horarioEntrada = sessionStorage.getItem("horarioEntrada");
     var idUsuario = localStorage.getItem("idUsuario");
@@ -49,6 +48,69 @@ function Simulador() {
     var porcentagemRenda = localStorage.getItem("porcentagemRenda");
 
     window.onbeforeunload = confirmExit;
+
+    let financiamentoPresil = financiar(valorImovelRecebido, taxa1/29, tempoFinanciamentoRecebido);
+    let financiamentoS16 = financiar(valorImovelRecebido, taxa2/30, tempoFinanciamentoRecebido);
+    let financiamentoCifra = financiar(valorImovelRecebido, taxa3/25, tempoFinanciamentoRecebido);
+
+    function financiar(valor_imovel, valor_taxa_juros, anos_a_serem_pagos) {
+        var imovel = valor_imovel;
+        var taxa_juros = valor_taxa_juros;
+        var valor_a_pagar = 0;
+        var anos_pagos = 0;
+        var prestacoes = [];
+        var prestacao_sem_taxa;
+        var prestacao_com_taxa;
+        var primeira_prestacao;
+    
+        while (anos_pagos < anos_a_serem_pagos) {
+            anos_pagos++;
+            prestacao_sem_taxa = imovel / anos_a_serem_pagos;
+            prestacao_com_taxa = imovel * taxa_juros;
+            if (anos_pagos == 1) {
+                primeira_prestacao = (prestacao_com_taxa / 12) + (prestacao_sem_taxa / 12);
+            }
+            imovel = imovel - (prestacao_sem_taxa);
+            valor_a_pagar += (prestacao_sem_taxa + prestacao_com_taxa);
+            prestacoes.push(prestacao_sem_taxa + prestacao_com_taxa);
+            
+        }
+        const data_financiamento = {valor_a_pagar:valor_a_pagar, primeira_prestacao: primeira_prestacao, prestacoes:prestacoes, imovel:imovel}
+
+        return data_financiamento;
+    }
+
+    console.log(financiamentoCifra.prestacoes);
+
+
+    var valorImovelPresil = localStorage.setItem("valorImovelPresil", financiamentoPresil.valor_a_pagar);
+    var valorImovelS16 = localStorage.setItem("valorImovelS16", financiamentoS16.valor_a_pagar);
+    var valorImovelCifra = localStorage.setItem("valorImovelCifra", financiamentoCifra.valor_a_pagar);
+
+    var primeiraPrestacaoPresil = financiamentoPresil.prestacoes[0] / 12;
+    var primeiraPrestacaoS16 = financiamentoS16.prestacoes[0] / 12;
+    var valorPrimeiraPrestacaoCifra = financiamentoCifra.prestacoes[0] / 12;
+
+    var primeiraPrestacaoPresilFormatado = primeiraPrestacaoPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var primeiraPrestacaoS16Formatado = primeiraPrestacaoS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var primeiraPrestacaoCifraFormatado = valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    console.log("ola", primeiraPrestacaoCifraFormatado);
+
+    var valorPrimeiraPrestacaoPresil = localStorage.setItem("valorPrimeiraPrestacaoPresil", primeiraPrestacaoPresilFormatado);
+    var valoPrimeiraPrestacaoS16 = localStorage.setItem("valoPrimeiraPrestacaoS16", primeiraPrestacaoS16Formatado);
+    var valorPrimeiraPrestacaoCifra = localStorage.setItem("valorPrimeiraPrestacaoCifra", primeiraPrestacaoCifraFormatado);
+
+
+    var vPresil = financiamentoPresil.valor_a_pagar;
+    var vS16 = financiamentoS16.valor_a_pagar;
+    var vCifra = financiamentoCifra.valor_a_pagar;
+
+    var valorS16Formatado = vS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var valorPresilFormatado = vPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var valorCifraFormatado = vCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+    var valorImovelCifraFormatado = localStorage.setItem("valorCifraFormatado", valorCifraFormatado);
+
     function confirmExit(){
       reqAcesso();
       return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
@@ -65,7 +127,7 @@ function Simulador() {
         porcentagemRenda: parseInt(porcentagemRenda),
         bancoEscolhido: 2,
         fkRegiao: {
-            idRegiao: 2000
+            idRegiao: 15
         },
         fkCliente: {
             id: parseInt(idUsuario)
@@ -97,9 +159,9 @@ function Simulador() {
                 <div className="bancos center">
                     <BankCard 
                         banco="Banco do Presil" 
-                        taxa_t ={(respostaSimulacao[0].data.taxa)} 
-                        primeira_p="3000,00" 
-                        valor_f={(valorImovelRecebido + taxa1)}
+                        taxa_t ={(taxa1).toFixed(2)} 
+                        primeira_p={primeiraPrestacaoPresilFormatado} 
+                        valor_f={valorPresilFormatado}
                         valor_s={(((respostaSimulacao[0].data.dfi) + (respostaSimulacao[0].data.mip))*100).toFixed(2)
                         }     
                         
@@ -107,18 +169,18 @@ function Simulador() {
 
                     <BankCard 
                         banco="S16 Bank"
-                        taxa_t ={(respostaSimulacao[1].data.taxa)} 
-                        primeira_p="2000,00" 
-                        valor_f={valorImovelRecebido + taxa2} 
+                        taxa_t ={(taxa2).toFixed(2)} 
+                        primeira_p={primeiraPrestacaoS16Formatado} 
+                        valor_f={valorS16Formatado} 
                         valor_s={(((respostaSimulacao[1].data.dfi) + (respostaSimulacao[1].data.mip))*100).toFixed(2)} 
                          
                     />
                     <BankCard 
                         banco="Banco Cifra" 
-                        taxa_t ={(respostaSimulacao[2].data.taxa)} 
-                        primeira_p="3000,00" 
-                        valor_f={valorImovelRecebido + taxa3} 
-                        valor_s={(((respostaSimulacao[2].data.dfi) + (respostaSimulacao[2].data.mip))*100).toFixed(2)} 
+                        taxa_t ={(taxa3.toFixed(2))} 
+                        primeira_p={primeiraPrestacaoCifraFormatado}
+                        valor_f={valorCifraFormatado} 
+                        valor_s={(((respostaSimulacao[2].data.dfi) + (respostaSimulacao[2].data.mip)) / 100).toFixed(2)} 
                     />
                 </div>
             </div>

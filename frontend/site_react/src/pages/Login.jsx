@@ -75,16 +75,12 @@ export default function Login() {
     }
 
     api.post('/login', data, {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+
     }).then(e => {
-      console.log(e.data);
       if (e.status === 200) {
         var nomeUsuarioLogado = localStorage.setItem("nomeUsuario", e.data.data.nome);
         var idUsuarioLogado = localStorage.setItem("idUsuario", e.data.data.id);
         var emailUsuarioLogado = localStorage.setItem("emailUsuario", e.data.data.email);
-        console.log(e);
         setModalLoginShow(true);
         setTimeout(() => {
           setModalLoginShow(false);

@@ -16,7 +16,7 @@ body {
 }
 
 body, input, button, textarea {
-  color: var(--text-body-bold-light);
+  color: black;
   text-align: center;
   font-weight: 400;
   font-size: 18px;

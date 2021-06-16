@@ -34,6 +34,8 @@ export default function Cadastro() {
             return;
         }
 
+        console.log(bairro);
+
         axios.get(`https://viacep.com.br/ws/${cepDigitado}/json/`, {}, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -42,6 +44,7 @@ export default function Cadastro() {
                 const dadosCepRes = e.data;
                 setDadosCep(dadosCepRes);
                 setBairro(dadosCep.bairro);
+                console.log(bairro);
                 setEndereco(`${dadosCepRes.logradouro} ${numero ? `, ${numero}` : ''}, ${dadosCepRes.bairro}, ${dadosCepRes.localidade} - ${dadosCepRes.uf}`);
             }).catch(e => {
                 console.error(e);

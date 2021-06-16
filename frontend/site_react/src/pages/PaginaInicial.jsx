@@ -65,7 +65,7 @@ function PaginaInicial() {
         const dataSimulador = {
             cnpj: "123",
             renda: parseInt(renda),
-            valorImovel: parseFloat(valorImovel),
+            valorImovel: valorImovel,
             tempoFinanciamento: parseInt(tempoFinanciamento)
         };
 
