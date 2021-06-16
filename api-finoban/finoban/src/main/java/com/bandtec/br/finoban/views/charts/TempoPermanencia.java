@@ -3,6 +3,7 @@ package com.bandtec.br.finoban.views.charts;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,13 @@ public class TempoPermanencia {
         LocalDateTime periodo = LocalDateTime.from(entrada);
         Long segundos = periodo.until(saida, ChronoUnit.SECONDS);
         return periodo.plusSeconds(segundos).toLocalTime();
+    }
+
+    public static Long diferencaTempoEpoch(LocalDateTime entrada, LocalDateTime saida) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        long agora = entrada.atZone(zoneId).toEpochSecond();
+        long depois = saida.atZone(zoneId).toEpochSecond();
+        return depois - agora;
     }
 
     public Integer getQuantidade() {

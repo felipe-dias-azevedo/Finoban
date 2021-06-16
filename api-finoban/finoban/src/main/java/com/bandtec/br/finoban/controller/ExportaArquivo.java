@@ -3,7 +3,6 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.entidades.Regiao;
 import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.models.DocumentoLayout;
 import com.bandtec.br.finoban.models.LerArquivoImport;
 import com.bandtec.br.finoban.repository.CadastroRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
@@ -14,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -139,16 +140,20 @@ public class DashboardController {
         LocalTime timeMinimo = LocalTime.of(0, 0, 0);
         Integer segundosAcrescentar = 0;
 
-        LocalTime timeAtual;
+        Long diferencaTempoAtual;
         Integer quantidade = 0;
 
         while (timeMinimo.getMinute() < TempoPermanencia.LIMITE_TEMPO.getMinute()) {
             for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-                timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
+                if (p.getDataHoraEntrada() != null && p.getDataHoraSaida() != null) {
+                    diferencaTempoAtual = TempoPermanencia.diferencaTempoEpoch(p.getDataHoraEntrada(), p.getDataHoraSaida());
 
-                if (timeAtual.getSecond() < (timeMinimo.getSecond() + segundosAcrescentar)
-                        && timeAtual.getMinute() == timeMinimo.getMinute()) {
-                    quantidade++;
+                /*if (timeAtual.getSecond() < (timeMinimo.getSecond() + segundosAcrescentar)
+                        || timeAtual.getMinute() == timeMinimo.getMinute()) {*/
+                    if (diferencaTempoAtual > segundosAcrescentar
+                            && diferencaTempoAtual < segundosAcrescentar + TempoPermanencia.INTERVALO_TEMPO) {
+                        quantidade++;
+                    }
                 }
             }
             segundosAcrescentar += TempoPermanencia.INTERVALO_TEMPO;
@@ -159,9 +164,11 @@ public class DashboardController {
         }
 
         for (TempoPermanenciaDatabaseView p : tempoPermanencia) {
-            timeAtual = TempoPermanencia.diferencaTempo(p.getDataHoraEntrada(), p.getDataHoraSaida());
-            if (timeAtual.getMinute() >= timeMinimo.getMinute()) {
-                quantidade++;
+            if (p.getDataHoraEntrada() != null && p.getDataHoraSaida() != null) {
+                diferencaTempoAtual = TempoPermanencia.diferencaTempoEpoch(p.getDataHoraEntrada(), p.getDataHoraSaida());
+                if (diferencaTempoAtual > segundosAcrescentar) {
+                    quantidade++;
+                }
             }
         }
         timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
@@ -300,24 +307,26 @@ public class DashboardController {
         Boolean isIn;
 
         for (CepRegiaoEscolhidaDatabaseView cr : cepRegiao) {
-            bairroAtual = cr.getBairroCliente();
-            regiaoAtual = cr.getRegiaoEscolhida();
-            iteradorRegiao = 0;
-            isIn = false;
-            for (BairrosRegioes br : bairrosRegioesInseridos) {
-                if (bairroAtual.equals(br.getBairro()) && regiaoAtual.equals(br.getRegiao())) {
-                    isIn = true;
-                }
-            }
-            if (!isIn) {
-                for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
-                    if (bairroAtual.equals(c.getBairroCliente())
-                            && regiaoAtual.equals(c.getRegiaoEscolhida())) {
-                        iteradorRegiao += 1;
+            if (cr.getRegiaoEscolhida() != null && cr.getBairroCliente() != null) {
+                bairroAtual = cr.getBairroCliente();
+                regiaoAtual = cr.getRegiaoEscolhida();
+                iteradorRegiao = 0;
+                isIn = false;
+                for (BairrosRegioes br : bairrosRegioesInseridos) {
+                    if (bairroAtual.equals(br.getBairro()) && regiaoAtual.equals(br.getRegiao())) {
+                        isIn = true;
                     }
                 }
-                cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(bairroAtual, regiaoAtual, iteradorRegiao));
-                bairrosRegioesInseridos.add(new BairrosRegioes(bairroAtual, regiaoAtual));
+                if (!isIn) {
+                    for (CepRegiaoEscolhidaDatabaseView c : cepRegiao) {
+                        if (bairroAtual.equals(c.getBairroCliente())
+                                && regiaoAtual.equals(c.getRegiaoEscolhida())) {
+                            iteradorRegiao += 1;
+                        }
+                    }
+                    cepRegiaoEscolhidas.add(new CepRegiaoEscolhida(bairroAtual, regiaoAtual, iteradorRegiao));
+                    bairrosRegioesInseridos.add(new BairrosRegioes(bairroAtual, regiaoAtual));
+                }
             }
         }
 

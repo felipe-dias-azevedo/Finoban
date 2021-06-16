@@ -89,19 +89,19 @@ function Dashboard() {
                     <h2>Correlações</h2>
                     <div className="switches">
                         <div className="switch-holder">
-                            <h3>Regiões p/ Renda</h3>
+                            <h3>Regiões X Renda</h3>
                             <Switch onChange={() => {handleSwitch(5)}} checked={chartsVisible[5]} />
                         </div>
                         <div className="switch-holder">
-                            <h3>Valor Imóvel p/ Idade</h3>
+                            <h3>Valor Imóvel X Idade</h3>
                             <Switch onChange={() => {handleSwitch(6)}} checked={chartsVisible[6]} />
                         </div>
                         <div className="switch-holder">
-                            <h3>Valor Imóvel p/ Renda</h3>
+                            <h3>Valor Imóvel X Renda</h3>
                             <Switch onChange={() => {handleSwitch(8)}} checked={chartsVisible[8]} />
                         </div>
                         <div className="switch-holder">
-                            <h3>CEP p/ Região</h3>
+                            <h3>CEP X Região</h3>
                             <Switch onChange={() => {handleSwitch(9)}} checked={chartsVisible[9]} />
                         </div>
                     </div>
@@ -114,7 +114,7 @@ function Dashboard() {
                             <Switch onChange={() => {handleSwitch(3)}} checked={chartsVisible[3]} />
                         </div>
                         <div className="switch-holder">
-                            <h3>Avaliação Site</h3>
+                            <h3>Avaliações do Site</h3>
                             <Switch onChange={() => {handleSwitch(4)}} checked={chartsVisible[4]} />
                         </div>
                         <div className="switch-holder">
@@ -131,11 +131,11 @@ function Dashboard() {
                     <h2>Lucro</h2>
                     <div className="switches">
                         <div className="switch-holder">
-                            <h3>Rendimento Mensal</h3>
+                            <h3>Renda Média</h3>
                             <Switch onChange={() => {handleSwitch(0)}} checked={chartsVisible[0]} />
                         </div>
                         <div className="switch-holder">
-                            <h3>Porcentual de Perdas</h3>
+                            <h3>Nível de Desistência</h3>
                             <Switch onChange={() => {handleSwitch(1)}} checked={chartsVisible[1]} />
                         </div>
                         <div className="switch-holder">
