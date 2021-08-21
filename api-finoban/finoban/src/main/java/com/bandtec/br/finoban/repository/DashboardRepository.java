@@ -17,8 +17,11 @@ public interface DashboardRepository extends JpaRepository<Acesso, Integer> {
     List<RendimentoMensalDatabaseView> getRendimentoMensalData();
 
     @Query(
+//            value = "select status_saida as 'statusSaida', count(*) as 'contagem' from cliente, acesso " +
+//                    "where fk_cliente = id_cliente and data_hora_saida >= date_sub(now(),interval 15 day) " +
+//                    "group by status_saida",
             value = "select status_saida as 'statusSaida', count(*) as 'contagem' from cliente, acesso " +
-                    "where fk_cliente = id_cliente and data_hora_saida >= date_sub(now(),interval 15 day) " +
+                    "where fk_cliente = id_cliente " +
                     "group by status_saida",
             nativeQuery = true
     )

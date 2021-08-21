@@ -35,7 +35,7 @@ public class DashboardController {
         List<List<Object>> valorImovelIdade = tratarValorImovelIdade(repository.getValorImovelIdadeData());
         List<List<Object>> regioesEscolhidas = tratarRegioesEscolhidas(repository.getRegioesEscolhidasData());
         List<List<Object>> valorImovelRenda = tratarValorImovelRenda(repository.getValorImovelRendaData());
-        List<CepRegiaoEscolhida> cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
+        List<List<Object>> cepRegiaoEscolhida = tratarCepRegiaoEscolhida(repository.getCepRegiaoData());
         List<List<Object>> bancosEscolhidos = tratarBancosEscolhidos(repository.getBancosEscolhidosData());
 
         DashboardResponse dataDashboard = new DashboardResponse(
@@ -53,16 +53,12 @@ public class DashboardController {
         LocalDateTime dataInicio = LocalDateTime.now().minusDays(RendimentoMensal.TEMPO_LIMITE);
 
         List<List<Object>> rendimentoMensals = new ArrayList<>();
-        List<Object> valorRendimento = new ArrayList<>();
         Double mediaDiaria;
         Integer tamanho;
 
-        valorRendimento.add("data");
-        valorRendimento.add("valor");
-        rendimentoMensals.add(valorRendimento);
+        rendimentoMensals.add(Arrays.asList(new Object[] {"Data", "Valor"}));
 
         for (int i = 0; i < RendimentoMensal.TEMPO_LIMITE; i++) {
-            valorRendimento = new ArrayList<>();
             mediaDiaria = 0.0;
             tamanho = 1;
             for (RendimentoMensalDatabaseView r : rendimentoData) {
@@ -71,9 +67,8 @@ public class DashboardController {
                     tamanho++;
                 }
             }
-            valorRendimento.add(dataInicio.plusDays(i).toLocalDate());
-            valorRendimento.add(mediaDiaria / tamanho);
-            rendimentoMensals.add(valorRendimento);
+            rendimentoMensals.add(Arrays.asList(new Object[] {
+                    dataInicio.plusDays(i).toLocalDate(), mediaDiaria / tamanho}));
 //            rendimentoMensals.add(new RendimentoMensal(, ()));
         }
         return rendimentoMensals;
@@ -102,15 +97,9 @@ public class DashboardController {
         }
 
         List<List<Object>> resultadoPercentualPerdas = new ArrayList<>();
-        List<Object> labelPercentualPerdas = new ArrayList<>();
-        List<Object> valoresPercentualPerdas = new ArrayList<>();
-        labelPercentualPerdas.add("Label");
-        labelPercentualPerdas.add("Value");
-        valoresPercentualPerdas.add("Desistência");
-        valoresPercentualPerdas.add(
-                new PorcentualPerdas(confirmado, naoConfirmado).getPorcentual());
-        resultadoPercentualPerdas.add(labelPercentualPerdas);
-        resultadoPercentualPerdas.add(valoresPercentualPerdas);
+        resultadoPercentualPerdas.add(Arrays.asList(new Object[] {"Label", "Value"}));
+        resultadoPercentualPerdas.add(Arrays.asList(new Object[] {
+                "Desistência", new PorcentualPerdas(confirmado, naoConfirmado).getPorcentual()}));
 
         return resultadoPercentualPerdas;
     }
@@ -124,13 +113,10 @@ public class DashboardController {
         }
 
         List<List<Object>> projecao = new ArrayList<>();
-        List<Object> valoresProjecao = new ArrayList<>();
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
         List<Double> valoresRendimento = new ArrayList<>();
 
-        valoresProjecao.add("data");
-        valoresProjecao.add("valor");
-        projecao.add(valoresProjecao);
+        projecao.add(Arrays.asList(new Object[] {"Data", "Valor"}));
 
         for (int i = 1; i < rendimentoMensal.size(); i++) {
             List<Object> rendimentoAnterior = rendimentoMensal.get(i);
@@ -151,10 +137,8 @@ public class DashboardController {
         projecaoRendimento.gerarRegressaoLinear(dias, valoresRendimento);
 
         for (double i = 1; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
-            valoresProjecao = new ArrayList<>();
-            valoresProjecao.add(LocalDate.now().plusDays((long) i));
-            valoresProjecao.add(projecaoRendimento.calculoRegressaoLinear(i));
-            projecao.add(valoresProjecao);
+            projecao.add(Arrays.asList(new Object[] {
+                    LocalDate.now().plusDays((long) i), projecaoRendimento.calculoRegressaoLinear(i)}));
 //            projecao.add(new RendimentoMensal(
 //                    LocalDate.now().plusDays((long) i),
 //                    projecaoRendimento.calculoRegressaoLinear(i)));
@@ -169,10 +153,7 @@ public class DashboardController {
 //        TempoPermanencia permanencia = new TempoPermanencia();
 //        List<TempoPermanencia> permanencia = new ArrayList<TempoPermanencia>();
         List<List<Object>> permanencia = new ArrayList<>();
-        List<Object> valoresPermanencia = new ArrayList<>();
-        valoresPermanencia.add("Tempo de Permanência");
-        valoresPermanencia.add("Quantidade");
-        permanencia.add(valoresPermanencia);
+        permanencia.add(Arrays.asList(new Object[] {"Tempo de Permanência", "Quantidade"}));
 
         LocalTime timeMinimo = LocalTime.of(0, 0, 0);
         Integer segundosAcrescentar = 0;
@@ -197,10 +178,7 @@ public class DashboardController {
             timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
 //            permanencia.adicionarValor(timeMinimo, quantidade);
 //            permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
-            valoresPermanencia = new ArrayList<>();
-            valoresPermanencia.add(timeMinimo);
-            valoresPermanencia.add(quantidade);
-            permanencia.add(valoresPermanencia);
+            permanencia.add(Arrays.asList(new Object[] {timeMinimo, quantidade}));
             quantidade = 0;
         }
 
@@ -215,10 +193,7 @@ public class DashboardController {
         timeMinimo = timeMinimo.plusSeconds(TempoPermanencia.INTERVALO_TEMPO);
 //        permanencia.adicionarValor(timeMinimo, quantidade);
 //        permanencia.add(new TempoPermanencia(quantidade, timeMinimo));
-        valoresPermanencia = new ArrayList<>();
-        valoresPermanencia.add(timeMinimo);
-        valoresPermanencia.add(quantidade);
-        permanencia.add(valoresPermanencia);
+        permanencia.add(Arrays.asList(new Object[] {timeMinimo, quantidade}));
 
         return permanencia;
     }
@@ -230,10 +205,7 @@ public class DashboardController {
         AvaliacaoSite avaliacaoSite = new AvaliacaoSite();
 
         List<List<Object>> resultadoAvaliacaoSite = new ArrayList<>();
-        List<Object> valoresAvaliacaoSite = new ArrayList<>();
-        valoresAvaliacaoSite.add("Tipo de Avaliação");
-        valoresAvaliacaoSite.add("Quantidade");
-        resultadoAvaliacaoSite.add(valoresAvaliacaoSite);
+        resultadoAvaliacaoSite.add(Arrays.asList(new Object[] {"Tipo de Avaliação", "Quantidade"}));
 
         for (AvaliacaoSiteDatabaseView a : avaliacao) {
             switch (Objects.requireNonNull(
@@ -250,20 +222,9 @@ public class DashboardController {
                     break;
             }
         }
-        valoresAvaliacaoSite = new ArrayList<>();
-        valoresAvaliacaoSite.add("Gostou");
-        valoresAvaliacaoSite.add(avaliacaoSite.getGostou());
-        resultadoAvaliacaoSite.add(valoresAvaliacaoSite);
-
-        valoresAvaliacaoSite = new ArrayList<>();
-        valoresAvaliacaoSite.add("Não Gostou");
-        valoresAvaliacaoSite.add(avaliacaoSite.getNaoGostou());
-        resultadoAvaliacaoSite.add(valoresAvaliacaoSite);
-
-        valoresAvaliacaoSite = new ArrayList<>();
-        valoresAvaliacaoSite.add("Sem Feedback");
-        valoresAvaliacaoSite.add(avaliacaoSite.getSemFeedback());
-        resultadoAvaliacaoSite.add(valoresAvaliacaoSite);
+        resultadoAvaliacaoSite.add(Arrays.asList(new Object[] {"Gostou", avaliacaoSite.getGostou()}));
+        resultadoAvaliacaoSite.add(Arrays.asList(new Object[] {"Não gostou", avaliacaoSite.getNaoGostou()}));
+        resultadoAvaliacaoSite.add(Arrays.asList(new Object[] {"Sem feedback", avaliacaoSite.getSemFeedback()}));
 
         return resultadoAvaliacaoSite;
     }
@@ -274,16 +235,10 @@ public class DashboardController {
     {
 //        List<RegiaoRenda> valoresRegiaoRenda = new ArrayList<>();
         List<List<Object>> resultadoRegiaoRenda = new ArrayList<>();
-        List<Object> valoresRegiaoRenda = new ArrayList<>();
-        valoresRegiaoRenda.add("Valor Região");
-        valoresRegiaoRenda.add("Valor Renda");
-        resultadoRegiaoRenda.add(valoresRegiaoRenda);
+        resultadoRegiaoRenda.add(Arrays.asList(new Object[] {"Valor Região", "Valor Renda"}));
 
         for (RegiaoRendaDatabaseView r : regiaoRenda) {
-            valoresRegiaoRenda = new ArrayList<>();
-            valoresRegiaoRenda.add(r.getValorRegiao());
-            valoresRegiaoRenda.add(r.getRenda());
-            resultadoRegiaoRenda.add(valoresRegiaoRenda);
+            resultadoRegiaoRenda.add(Arrays.asList(new Object[] {r.getValorRegiao(), r.getRenda()}));
 //            valoresRegiaoRenda.add(new RegiaoRenda(r.getDescricaoRegiao(), r.getValorRegiao(), r.getRenda()));
         }
 
@@ -296,18 +251,12 @@ public class DashboardController {
     {
 //        List<ValorImovelIdade> valorImovelIdades = new ArrayList<>();
         List<List<Object>> resultadoImovelIdades = new ArrayList<>();
-        List<Object> valoresImovelIdades = new ArrayList<>();
-        valoresImovelIdades.add("Valor Imóvel");
-        valoresImovelIdades.add("Idade");
-        resultadoImovelIdades.add(valoresImovelIdades);
+        resultadoImovelIdades.add(Arrays.asList(new Object[]{"Valor Imóvel", "Idade"}));
 
         for (ValorImovelIdadeDatabaseView i : imovelIdade)
         {
-            valoresImovelIdades = new ArrayList<>();
-            valoresImovelIdades.add(
-                    ValorImovelIdade.converterDataParaIdade(i.getDataNasc()));
-            valoresImovelIdades.add(i.getValorImovel());
-            resultadoImovelIdades.add(valoresImovelIdades);
+            resultadoImovelIdades.add(Arrays.asList(new Object[]{
+                    ValorImovelIdade.converterDataParaIdade(i.getDataNasc()), i.getValorImovel()}));
 //            valorImovelIdades.add(
 //                    new ValorImovelIdade(
 //                            ValorImovelIdade.converterDataParaIdade(i.getDataNasc()),
@@ -324,10 +273,7 @@ public class DashboardController {
         RegioesEscolhidas regioesEscolhidas = new RegioesEscolhidas();
 
         List<List<Object>> resultadoRegioesEscolhidas = new ArrayList<>();
-        List<Object> valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Região Escolhida");
-        valoresRegioesEscolhidas.add("Quantidade");
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Região Escolhida", "Quantidade"}));
 
         for (RegioesEscolhidasDatabaseView r : regioes) {
             switch (Objects.requireNonNull(
@@ -353,35 +299,12 @@ public class DashboardController {
                     break;
             }
         }
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Centro");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getCentro());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
-
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Consolação");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getConsolacao());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
-
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Brooklin");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getBrooklin());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
-
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Mooca");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getMooca());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
-
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Santo Amaro");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getSantoAmaro());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
-
-        valoresRegioesEscolhidas = new ArrayList<>();
-        valoresRegioesEscolhidas.add("Interlagos");
-        valoresRegioesEscolhidas.add(regioesEscolhidas.getInterlagos());
-        resultadoRegioesEscolhidas.add(valoresRegioesEscolhidas);
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Centro", regioesEscolhidas.getCentro()}));
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Consolação", regioesEscolhidas.getConsolacao()}));
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Brooklin", regioesEscolhidas.getBrooklin()}));
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Mooca", regioesEscolhidas.getMooca()}));
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Santo Amaro", regioesEscolhidas.getSantoAmaro()}));
+        resultadoRegioesEscolhidas.add(Arrays.asList(new Object[]{"Interlagos", regioesEscolhidas.getInterlagos()}));
 
         return resultadoRegioesEscolhidas;
     }
@@ -392,17 +315,11 @@ public class DashboardController {
     {
 //        List<ValorImovelRenda> valorImovelRendas = new ArrayList<>();
         List<List<Object>> resultadoImovelRendas = new ArrayList<>();
-        List<Object> valoresImovelRendas = new ArrayList<>();
-        valoresImovelRendas.add("Valor Imóvel");
-        valoresImovelRendas.add("Valor Renda");
-        resultadoImovelRendas.add(valoresImovelRendas);
+        resultadoImovelRendas.add(Arrays.asList(new Object[]{"Valor Imóvel", "Valor Renda"}));
 
         for (ValorImovelRendaDatabaseView i : imovelRenda)
         {
-            valoresImovelRendas = new ArrayList<>();
-            valoresImovelRendas.add(i.getValorImovel());
-            valoresImovelRendas.add(i.getRenda());
-            resultadoImovelRendas.add(valoresImovelRendas);
+            resultadoImovelRendas.add(Arrays.asList(new Object[]{i.getValorImovel(), i.getRenda()}));
 //            valorImovelRendas.add(
 //                    new ValorImovelRenda(
 //                            i.getValorImovel(),
@@ -413,7 +330,7 @@ public class DashboardController {
     }
 
     // GRAFICO 9
-    public static List<CepRegiaoEscolhida> tratarCepRegiaoEscolhida
+    public static List<List<Object>> tratarCepRegiaoEscolhida
             (List<CepRegiaoEscolhidaDatabaseView> cepRegiao)
     {
         List<CepRegiaoEscolhida> cepRegiaoEscolhidas = new ArrayList<>();
@@ -448,7 +365,44 @@ public class DashboardController {
             }
         }
 
-        return cepRegiaoEscolhidas;
+        // tratando os dados sujos de cima para o front.
+
+        List<List<Object>> resultadoCepRegiao = new ArrayList<>();
+        resultadoCepRegiao.add(Arrays.asList(new Object[]{
+                "Bairro", "Centro","Consolação","Brooklin",
+                "Mooca","Santo Amaro","Interlagos"}));
+        List<String> bairrosLidos = new ArrayList<>();
+        Boolean bairroEmBairrosLidos;
+        String bairroAtualLido;
+
+        for (int i = 0; i < cepRegiaoEscolhidas.size(); i++) {
+            bairroAtualLido = cepRegiaoEscolhidas.get(i).getBairroCliente();
+            bairroEmBairrosLidos = false;
+            for (int j = 0; j < bairrosLidos.size(); j++) {
+                if (bairrosLidos.get(j).equals(bairroAtualLido)) {
+                    bairroEmBairrosLidos = true;
+                }
+            }
+            if (!bairroEmBairrosLidos) {
+                resultadoCepRegiao.add(Arrays.asList(new Object[]{
+                        bairroAtualLido,0,0,0,0,0,0}));
+                for (int j = 0; j < cepRegiaoEscolhidas.size(); j++) {
+                    if (bairroAtualLido.equals(cepRegiaoEscolhidas.get(j).getBairroCliente())) {
+                        for (int k = 0; k < resultadoCepRegiao.get(0).size() - 1; k++) {
+                            if (cepRegiaoEscolhidas.get(j).getRegiaoEscolhida().equals(
+                                    resultadoCepRegiao.get(0).get(k + 1)))
+                            {
+                                resultadoCepRegiao.get(resultadoCepRegiao.size() - 1).set(k + 1,
+                                        cepRegiaoEscolhidas.get(j).getContagem());
+                            }
+                        }
+                    }
+                }
+                bairrosLidos.add(bairroAtualLido);
+            }
+        }
+
+        return resultadoCepRegiao;
     }
 
     // GRAFICO 10
@@ -458,10 +412,7 @@ public class DashboardController {
         BancosEscolhidos bancosEscolhidos = new BancosEscolhidos();
 
         List<List<Object>> resultadoBancosEscolhidos = new ArrayList<>();
-        List<Object> valoresBancosEscolhidos = new ArrayList<>();
-        valoresBancosEscolhidos.add("Banco Escolhido");
-        valoresBancosEscolhidos.add("Quantidade");
-        resultadoBancosEscolhidos.add(valoresBancosEscolhidos);
+        resultadoBancosEscolhidos.add(Arrays.asList(new Object[]{"Banco Escolhido", "Quantidade"}));
 
         for (BancosEscolhidosDatabaseView b : bancos) {
             switch (Objects.requireNonNull(
@@ -478,20 +429,9 @@ public class DashboardController {
                     break;
             }
         }
-        valoresBancosEscolhidos = new ArrayList<>();
-        valoresBancosEscolhidos.add("Banco Cifra");
-        valoresBancosEscolhidos.add(bancosEscolhidos.getCifra());
-        resultadoBancosEscolhidos.add(valoresBancosEscolhidos);
-
-        valoresBancosEscolhidos = new ArrayList<>();
-        valoresBancosEscolhidos.add("S16 Bank");
-        valoresBancosEscolhidos.add(bancosEscolhidos.getS16());
-        resultadoBancosEscolhidos.add(valoresBancosEscolhidos);
-
-        valoresBancosEscolhidos = new ArrayList<>();
-        valoresBancosEscolhidos.add("Banco do Presil");
-        valoresBancosEscolhidos.add(bancosEscolhidos.getPresil());
-        resultadoBancosEscolhidos.add(valoresBancosEscolhidos);
+        resultadoBancosEscolhidos.add(Arrays.asList(new Object[]{"Banco Cifra", bancosEscolhidos.getCifra()}));
+        resultadoBancosEscolhidos.add(Arrays.asList(new Object[]{"S16 Bank", bancosEscolhidos.getS16()}));
+        resultadoBancosEscolhidos.add(Arrays.asList(new Object[]{"Banco do Presil", bancosEscolhidos.getPresil()}));
 
         return resultadoBancosEscolhidos;
     }

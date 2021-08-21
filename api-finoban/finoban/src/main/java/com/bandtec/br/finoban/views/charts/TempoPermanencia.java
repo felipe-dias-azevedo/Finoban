@@ -10,8 +10,8 @@ import java.util.List;
 
 public class TempoPermanencia {
 
-    public static final LocalTime LIMITE_TEMPO = LocalTime.of(0, 5, 0);
-    public static final Integer INTERVALO_TEMPO = 15;
+    public static final LocalTime LIMITE_TEMPO = LocalTime.of(0, 8, 0);
+    public static final Integer INTERVALO_TEMPO = 30;
 
     private Integer quantidade;
     private LocalTime permanencia;

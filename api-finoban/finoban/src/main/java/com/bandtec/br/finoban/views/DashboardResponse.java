@@ -15,7 +15,7 @@ public class DashboardResponse {
     private List<List<Object>> valorImovelIdade;
     private List<List<Object>> regioesEscolhidas;
     private List<List<Object>> valorImovelRenda;
-    private List<CepRegiaoEscolhida> cepRegiaoEscolhida;
+    private List<List<Object>> cepRegiaoEscolhida;
     private List<List<Object>> bancosEscolhidos;
 
     public DashboardResponse(
@@ -28,7 +28,7 @@ public class DashboardResponse {
             List<List<Object>> valorImovelIdade,
             List<List<Object>> regioesEscolhidas,
             List<List<Object>> valorImovelRenda,
-            List<CepRegiaoEscolhida> cepRegiaoEscolhida,
+            List<List<Object>> cepRegiaoEscolhida,
             List<List<Object>> bancosEscolhidos)
     {
         this.rendimentoMensal = rendimentoMensal;
@@ -80,7 +80,7 @@ public class DashboardResponse {
         return valorImovelRenda;
     }
 
-    public List<CepRegiaoEscolhida> getCepRegiaoEscolhida() {
+    public List<List<Object>> getCepRegiaoEscolhida() {
         return cepRegiaoEscolhida;
     }
 

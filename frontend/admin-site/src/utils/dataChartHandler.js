@@ -133,47 +133,48 @@ function DataChartHandler ( chartEnum, chartId, data ) {
                     return null;
             }
         case graphicEnum.MAPA:
-            let cepRegiao = [];
-            cepRegiao.push([
-                'Bairro',
-                'Centro',
-                'Consolação',
-                'Brooklin',
-                'Mooca',
-                'Santo Amaro',
-                'Interlagos'
-            ]);
+            // let cepRegiao = [];
+            // cepRegiao.push([
+            //     'Bairro',
+            //     'Centro',
+            //     'Consolação',
+            //     'Brooklin',
+            //     'Mooca',
+            //     'Santo Amaro',
+            //     'Interlagos'
+            // ]);
 
-            let regioesLidas = [];
-            let regiaoEmRegioesLidas;
-            let regiaoAtual;
+            // let regioesLidas = [];
+            // let regiaoEmRegioesLidas;
+            // let regiaoAtual;
 
-            for (let i = 0; i < cepRegiaoEscolhidaData.length; i++) {
-                regiaoAtual = cepRegiaoEscolhidaData[i].bairroCliente;
-                regiaoEmRegioesLidas = false;
-                for (let j = 0; j < regioesLidas.length; j++) {
-                    if (regioesLidas[j] === regiaoAtual) {
-                        regiaoEmRegioesLidas = true;
-                    }
-                }
-                if (!regiaoEmRegioesLidas) {
-                    cepRegiao.push([regiaoAtual,0,0,0,0,0,0]);
-                    console.log(cepRegiao);
-                    for (let h = 0; h < cepRegiaoEscolhidaData.length; h++) {
-                        if (regiaoAtual === cepRegiaoEscolhidaData[h].bairroCliente) {
-                            for (let k = 0; k < cepRegiao[0].length-1; k++) {
-                                if (cepRegiaoEscolhidaData[h].regiaoEscolhida === cepRegiao[0][k+1]) {
-                                    cepRegiao[cepRegiao.length-1][k+1] = cepRegiaoEscolhidaData[h].contagem;
-                                }
-                            }
-                        }
-                    }
-                    regioesLidas.push(regiaoAtual);
-                }
-            }
-            console.log(cepRegiao);
-            console.table(cepRegiao);
-            return cepRegiao;
+            // for (let i = 0; i < cepRegiaoEscolhidaData.length; i++) {
+            //     regiaoAtual = cepRegiaoEscolhidaData[i].bairroCliente;
+            //     regiaoEmRegioesLidas = false;
+            //     for (let j = 0; j < regioesLidas.length; j++) {
+            //         if (regioesLidas[j] === regiaoAtual) {
+            //             regiaoEmRegioesLidas = true;
+            //         }
+            //     }
+            //     if (!regiaoEmRegioesLidas) {
+            //         cepRegiao.push([regiaoAtual,0,0,0,0,0,0]);
+            //         for (let h = 0; h < cepRegiaoEscolhidaData.length; h++) {
+            //             if (regiaoAtual === cepRegiaoEscolhidaData[h].bairroCliente) {
+            //                 for (let k = 0; k < cepRegiao[0].length-1; k++) {
+            //                     if (cepRegiaoEscolhidaData[h].regiaoEscolhida === cepRegiao[0][k+1]) {
+            //                         cepRegiao[cepRegiao.length-1][k+1] = cepRegiaoEscolhidaData[h].contagem;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //         regioesLidas.push(regiaoAtual);
+            //     }
+            // }
+            // console.log(cepRegiao);
+            // console.table(cepRegiao);
+            // return cepRegiao;
+            return cepRegiaoEscolhidaData;
+            
         default:
             return null;
     }
