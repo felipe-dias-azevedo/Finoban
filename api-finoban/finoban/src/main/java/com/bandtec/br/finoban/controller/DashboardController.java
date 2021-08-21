@@ -28,9 +28,9 @@ public class DashboardController {
     @GetMapping
     public ResponseEntity getDataDashboard() {
 
-        List<RendimentoMensal> rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
+        List<List<Object>> rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
         Double porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());
-        List<RendimentoMensal> projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
+        List<List<Object>> projecaoRendimento = tratarProjecaoRendimento(rendimentoMensal);
         List<TempoPermanencia> tempoPermanencia = tratarTempoPermanencia(repository.getTempoPermanenciaData());
         AvaliacaoSite avaliacaoSite = tratarAvaliacaoSite(repository.getAvaliacaoSiteData());
         List<RegiaoRenda> regiaoRenda = tratarRegiaoRenda(repository.getRegiaoRendaData());
@@ -49,17 +49,22 @@ public class DashboardController {
     }
 
     // GRAFICO 0
-    public static List<RendimentoMensal> tratarRendimentoMensal
+    public static List<List<Object>> tratarRendimentoMensal
             (List<RendimentoMensalDatabaseView> rendimentoData)
     {
         LocalDateTime dataInicio = LocalDateTime.now().minusDays(RendimentoMensal.TEMPO_LIMITE);
 
-        List<RendimentoMensal> rendimentoMensals = new ArrayList<RendimentoMensal>();
-//        RendimentoMensal objetoRendimentoMensal = new RendimentoMensal();
+        List<List<Object>> rendimentoMensals = new ArrayList<>();
+        List<Object> valorRendimento = new ArrayList<>();
         Double mediaDiaria;
         Integer tamanho;
 
+        valorRendimento.add("data");
+        valorRendimento.add("valor");
+        rendimentoMensals.add(valorRendimento);
+
         for (int i = 0; i < RendimentoMensal.TEMPO_LIMITE; i++) {
+            valorRendimento = new ArrayList<>();
             mediaDiaria = 0.0;
             tamanho = 1;
             for (RendimentoMensalDatabaseView r : rendimentoData) {
@@ -68,10 +73,11 @@ public class DashboardController {
                     tamanho++;
                 }
             }
-            rendimentoMensals.add(new RendimentoMensal(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho)));
-//            objetoRendimentoMensal.adicionarValor(dataInicio.plusDays(i).toLocalDate(), (mediaDiaria / tamanho));
+            valorRendimento.add(dataInicio.plusDays(i).toLocalDate());
+            valorRendimento.add(mediaDiaria / tamanho);
+            rendimentoMensals.add(valorRendimento);
+//            rendimentoMensals.add(new RendimentoMensal(, ()));
         }
-//        return objetoRendimentoMensal;
         return rendimentoMensals;
     }
 
@@ -99,20 +105,31 @@ public class DashboardController {
     }
 
     // GRAFICO 2
-    public static List<RendimentoMensal> tratarProjecaoRendimento
-            (List<RendimentoMensal> rendimentoMensal)
+    public static List<List<Object>> tratarProjecaoRendimento
+            (List<List<Object>> rendimentoMensal)
     {
         if (rendimentoMensal == null) {
             return null;
         }
 
-        List<RendimentoMensal> projecao = new ArrayList<RendimentoMensal>();
+        List<List<Object>> projecao = new ArrayList<>();
+        List<Object> valoresProjecao = new ArrayList<>();
         ProjecaoRendimento projecaoRendimento = new ProjecaoRendimento();
         List<Double> valoresRendimento = new ArrayList<Double>();
 
-        for (RendimentoMensal rm : rendimentoMensal) {
-            valoresRendimento.add(rm.getValor());
+        valoresProjecao.add("data");
+        valoresProjecao.add("valor");
+        projecao.add(valoresProjecao);
+
+        for (int i = 1; i < rendimentoMensal.size(); i++) {
+            List<Object> rendimentoAnterior = rendimentoMensal.get(i);
+            if (rendimentoAnterior.get(1) instanceof Double) {
+                valoresRendimento.add((Double) rendimentoAnterior.get(1));
+            }
         }
+//        for (RendimentoMensal rm : rendimentoMensal) {
+//            valoresRendimento.add(rm.getValor());
+//        }
 
         List<Double> dias = new ArrayList<>();
 
@@ -123,9 +140,13 @@ public class DashboardController {
         projecaoRendimento.gerarRegressaoLinear(dias, valoresRendimento);
 
         for (double i = 1; i <= RendimentoMensal.TEMPO_LIMITE; i++) {
-            projecao.add(new RendimentoMensal(
-                    LocalDate.now().plusDays((long) i),
-                    projecaoRendimento.calculoRegressaoLinear(i)));
+            valoresProjecao = new ArrayList<>();
+            valoresProjecao.add(LocalDate.now().plusDays((long) i));
+            valoresProjecao.add(projecaoRendimento.calculoRegressaoLinear(i));
+            projecao.add(valoresProjecao);
+//            projecao.add(new RendimentoMensal(
+//                    LocalDate.now().plusDays((long) i),
+//                    projecaoRendimento.calculoRegressaoLinear(i)));
         }
         return projecao;
     }

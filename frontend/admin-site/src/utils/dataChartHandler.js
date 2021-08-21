@@ -17,14 +17,16 @@ function DataChartHandler ( chartEnum, chartId, data ) {
 
     switch (chartEnum) {
         case graphicEnum.LINHA:
-            let dadoAtualLinha;
-            let rendimento = [];
-            rendimento.push(['data', 'valor']);
-            for (let i = 0; i < rendimentoData.length; i++) {
-                dadoAtualLinha = rendimentoData[i];
-                rendimento.push([dadoAtualLinha.data, dadoAtualLinha.valor]);
-            }
-            return rendimento;
+            // let dadoAtualLinha;
+            // let rendimento = [];
+            // rendimento.push(['data', 'valor']);
+            // for (let i = 0; i < rendimentoData.length; i++) {
+            //     dadoAtualLinha = rendimentoData[i];
+            //     rendimento.push([dadoAtualLinha.data, dadoAtualLinha.valor]);
+            // }
+            // return rendimento;
+            return rendimentoData;
+
         case graphicEnum.GAUGE:
             const porcentualPerdas = [
                 ['Label', 'Value'],
@@ -32,14 +34,15 @@ function DataChartHandler ( chartEnum, chartId, data ) {
             ];
             return porcentualPerdas;
         case graphicEnum.PROJECAO:
-            let dadoAtualProjecao;
-            let projecao = [];
-            projecao.push(['data', 'valor']);
-            for (let i = 0; i < projecaoRendimentoData.length; i++) {
-                dadoAtualProjecao = projecaoRendimentoData[i];
-                projecao.push([dadoAtualProjecao.data, dadoAtualProjecao.valor]);
-            }
-            return projecao;
+            // let dadoAtualProjecao;
+            // let projecao = [];
+            // projecao.push(['data', 'valor']);
+            // for (let i = 0; i < projecaoRendimentoData.length; i++) {
+            //     dadoAtualProjecao = projecaoRendimentoData[i];
+            //     projecao.push([dadoAtualProjecao.data, dadoAtualProjecao.valor]);
+            // }
+            // return projecao;
+            return projecaoRendimentoData;
 
         case graphicEnum.HISTOGRAMA:
             switch (chartId) {

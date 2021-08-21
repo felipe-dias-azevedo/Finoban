@@ -6,9 +6,9 @@ import java.util.List;
 
 public class DashboardResponse {
 
-    private List<RendimentoMensal> rendimentoMensal;
+    private List<List<Object>> rendimentoMensal;
     private Double porcentualPerdas;
-    private List<RendimentoMensal> projecaoRendimento;
+    private List<List<Object>> projecaoRendimento;
     private List<TempoPermanencia> tempoPermanencia;
     private AvaliacaoSite avaliacaoSite;
     private List<RegiaoRenda> regiaoRenda;
@@ -19,9 +19,9 @@ public class DashboardResponse {
     private BancosEscolhidos bancosEscolhidos;
 
     public DashboardResponse(
-            List<RendimentoMensal> rendimentoMensal,
+            List<List<Object>> rendimentoMensal,
             Double porcentualPerdas,
-            List<RendimentoMensal> projecaoRendimento,
+            List<List<Object>> projecaoRendimento,
             List<TempoPermanencia> tempoPermanencia,
             AvaliacaoSite avaliacaoSite,
             List<RegiaoRenda> regiaoRenda,
@@ -44,7 +44,7 @@ public class DashboardResponse {
         this.bancosEscolhidos = bancosEscolhidos;
     }
 
-    public List<RendimentoMensal> getRendimentoMensal() {
+    public List<List<Object>> getRendimentoMensal() {
         return rendimentoMensal;
     }
 
@@ -52,7 +52,7 @@ public class DashboardResponse {
         return porcentualPerdas;
     }
 
-    public List<RendimentoMensal> getProjecaoRendimento() {
+    public List<List<Object>> getProjecaoRendimento() {
         return projecaoRendimento;
     }
 
