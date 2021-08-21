@@ -4,7 +4,7 @@ import conexao_mysql as conexao
 import crawler
 import time
 
-conexao = conexao.ConexaoMySQL("18.207.233.50","root","urubu100","Finoban")
+conexao = conexao.ConexaoMySQL("localhost","","","Finoban")
 imoveis = crawler.Imoveis()
 
 while True:
