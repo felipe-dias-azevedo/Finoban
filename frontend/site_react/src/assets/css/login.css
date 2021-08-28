@@ -76,3 +76,7 @@
 a {
   font-weight: 500;
 }
+
+.label-erro {
+  color: red;
+}
