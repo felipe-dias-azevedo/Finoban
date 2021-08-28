@@ -2,6 +2,10 @@ import csv
 from conexao_mysql import ConexaoMySQL
 from tipo_arquivo import TipoArquivo
 
+db_host_name = "finoban.cxifhb2i4s1j.us-east-1.rds.amazonaws.com"
+db_user_name = "felipe"
+db_password = "123mysql"
+db_database = "Finoban"
 
 def retira_acentos(texto):
     import unicodedata
@@ -44,11 +48,7 @@ def main():
     for row in avaliacao_csv:
         avaliacoes.append(tuple(row))
 
-    print(clientes[0])
-    print(acessos[0], len(acessos[0]))
-    print(acessos[1], len(acessos[0]))
-
-    con = ConexaoMySQL("localhost", "felipe", "123mysql@", "Finoban")
+    con = ConexaoMySQL(db_host_name, db_user_name, db_password, db_database)
     con.insercao(clientes, TipoArquivo.CLIENTE)
     con.insercao(acessos, TipoArquivo.ACESSO)
     con.insercao(avaliacoes, TipoArquivo.AVALIACAO)
