@@ -72,8 +72,8 @@ export default function Cadastro() {
 
   function validarCadastro() {
 
-    if (nome.trim() === "") {setErroNome("Insira seu nome completo");}
-    if (cnpj.trim() === "") {setErroCnpj("Insira um CNPJ válido");}
+    if (nome.trim() === "") {setErroNome("Insira seu nome completo")}
+    if (cnpj.trim() === "") {setErroCnpj("Insira um CNPJ válido")}
     if (email.trim() === "") {setErroEmail("Insira um e-mail válido")}
     if (erroSenha.trim() === "") {setErroSenha("Insira uma senha com mais de 6 caracteres")}
     if (senhaConfirma.trim() === "") {setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres")}
