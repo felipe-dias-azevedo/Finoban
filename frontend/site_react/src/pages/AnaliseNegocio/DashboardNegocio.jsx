@@ -14,7 +14,7 @@ function Dashboard() {
     const [chartsVisible, setChartsVisible] = useState([
         true,true,true,true,true,true,true,true,true,true,true
     ]);
-    const [dataDashboard, setDataDashboard] = useState();
+    const [dataDashboard, setDataDashboard] = useState(!!sessionStorage.getItem);
 
     useEffect(() => {
         api.get("/dashboard", {}, {
@@ -23,6 +23,7 @@ function Dashboard() {
         }).then(e => {
             const data = e.data;
             setDataDashboard(data);
+            sessionStorage.setItem('dataDash', JSON.stringify(data));
         }).catch(e => {
             console.error(e);
         });
@@ -52,6 +53,7 @@ function Dashboard() {
                 name={chart.name}
                 setCharts={setCharts}
                 moveCard={moveCardHandler}
+                idGraph={chart.id}
             >
                 <Chart 
                     id={chart.graphic}

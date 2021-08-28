@@ -1,8 +1,9 @@
 import { useDrag } from "react-dnd";
+import { Link } from "react-router-dom";
 
-function MovableItem({children, id, name}) {
+function MovableItem({children, id, name, idGraph}) {
 
-    const [{ isDragging }, drag] = useDrag({
+    const [, drag] = useDrag({
         item: {
             type: 'CHART',
             id,
@@ -12,18 +13,16 @@ function MovableItem({children, id, name}) {
             isDragging: monitor.isDragging()
         })
     });
-    
-    const opacity = isDragging ? "0.3" : "1";
-    const cursor = isDragging ? "copy" : "auto";
 
     return (
         <div
             ref={drag}
             className="movable-item chart-drag"
             id={id}
-            style={{ opacity, cursor }}
         >
-            <h3>{name}</h3>
+            <Link to={`/analise/dashboard/${idGraph}`}>
+                <h3>{name}</h3>
+            </Link>
             <div>
                 {children}
             </div>
