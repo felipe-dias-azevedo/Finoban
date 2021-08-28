@@ -4,7 +4,12 @@ import conexao_mysql as conexao
 import crawler
 import time
 
-conexao = conexao.ConexaoMySQL("localhost","","","Finoban")
+db_host_name = "finoban.cxifhb2i4s1j.us-east-1.rds.amazonaws.com"
+db_user_name = "felipe"
+db_password = "123mysql"
+db_database = "Finoban"
+
+conexao = conexao.ConexaoMySQL(db_host_name,db_user_name,db_password,db_database)
 imoveis = crawler.Imoveis()
 
 while True:

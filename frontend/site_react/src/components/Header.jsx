@@ -21,10 +21,10 @@ function Header() {
                         <Link to="/">Home</Link>
                         <div className="links">
                             <ul>
-                                <li><Link to="/">CONTATO</Link></li>
+                                <li><Link to="/analise">ANÁLISES DE NEGÓCIO</Link></li>
+                                <li><Link to="/">SOBRE</Link></li>
                                 <li><Link to="/">PARCEIROS</Link></li>
                                 <li><Link to="/">OPENBANKING</Link></li>
-                                <li><Link to="/">SOBRE</Link></li>
                             </ul>
                         </div>
                     </div>

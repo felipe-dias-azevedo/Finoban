@@ -6,6 +6,9 @@ import Login from './pages/Login';
 import PaginaInicial from './pages/PaginaInicial';
 import Simulador from './pages/Simulador';
 
+import DashboardNegocio from './pages/AnaliseNegocio/DashboardNegocio';
+import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
+
 function Routes() {
 
     return (
@@ -16,6 +19,10 @@ function Routes() {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/cadastro" component={Cadastro} />
+
+                <Route exact path="/analise" component={LoginNegocio} />
+                <Route exact path="/analise/dashboard" component={DashboardNegocio} />
+
                 <Route exact path="*" component={PaginaInicial} />
             </Switch>
         </Router>
