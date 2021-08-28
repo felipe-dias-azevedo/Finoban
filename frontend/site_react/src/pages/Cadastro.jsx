@@ -72,25 +72,14 @@ export default function Cadastro() {
 
   function validarCadastro() {
 
-    if (
-      nome.trim() === "" ||
-      cnpj.trim() === "" ||
-      email.trim() === "" ||
-      senha.trim() === "" ||
-      senhaConfirma.trim() === "" ||
-      cep.trim() === "" ||
-      numero.trim() === "" ||
-      dataNasc.trim() === ""
-    ) {
-      setErroNome("Insira seu nome completo");
-      setErroCnpj("Insira um CNPJ válido");
-      setErroEmail("Insira um e-mail válido");
-      setErroSenha("Insira uma senha com mais de 6 caracteres");
-      setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres");
-      setErroCep("Insira um CEP válido");
-      setErroNumero("Insira um número válido");
-      setErroDataNascimento("Insira uma data de nascimento válida");
-    }
+    if (nome.trim() === "") {setErroNome("Insira seu nome completo");}
+    if (cnpj.trim() === "") {setErroCnpj("Insira um CNPJ válido");}
+    if (email.trim() === "") {setErroEmail("Insira um e-mail válido")}
+    if (erroSenha.trim() === "") {setErroSenha("Insira uma senha com mais de 6 caracteres")}
+    if (senhaConfirma.trim() === "") {setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres")}
+    if (cep.trim() === "") {setErroCep("Insira um CEP válido")}
+    if (numero.trim() === "") {setErroNumero("Insira um número válido")}
+    if (dataNasc.trim() === "") {setErroDataNascimento("Insira uma data de nascimento válida")}
 
     else if (senha.length < 6 || senhaConfirma.length < 6) {
           setErroSenha("Insira uma senha com mais de 6 caracteres");
@@ -102,6 +91,15 @@ export default function Cadastro() {
     }
 
     else {
+      setErroNome("");
+      setErroCnpj("");
+      setErroEmail("");
+      setErroSenha("");
+      setErroConfirmaSenha("");
+      setErroCep("");
+      setErroNumero("");
+      setErroDataNascimento("");
+
       const data = {
         nome,
         cnpj,
