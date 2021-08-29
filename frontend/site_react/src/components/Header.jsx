@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
 
 function Header() {
     return (
@@ -12,6 +13,7 @@ function Header() {
                             <ul>
                                 <li><Link to="/cadastro">Cadastro</Link></li>
                                 <li><Link to="/login">Login</Link></li>
+                                <li><WiMoonAltWaningGibbous1 size={50} className="dark-icon"/></li>
                             </ul>
                         </div>
                     </div>

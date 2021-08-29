@@ -1,5 +1,0 @@
-00FINANCIAMENTO15/04/2021 19:14:45
-02 Banco Cifra      Zé Azevedo                                                             1_500_000 Centro      30
-02 Banco S16 Bank   Catarina Barbosa                                                       980_560   Interlagos  20
-02 Banco do Presil  Vinicius Heleno						           1_400_000 Brooklin    22
-0100000003 
