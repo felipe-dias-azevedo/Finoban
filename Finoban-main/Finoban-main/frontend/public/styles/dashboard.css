@@ -1,0 +1,17 @@
+.login {
+    height: auto;
+}
+
+.graficos-dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.chart {
+    height: 75%;
+    width: 75%;
+}

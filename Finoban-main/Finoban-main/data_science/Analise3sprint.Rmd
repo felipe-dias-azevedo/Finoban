@@ -1,0 +1,141 @@
+```{r,warning=FALSE}
+#install.packages("tm")  # for text mining
+#install.packages("SnowballC") # for text stemming
+#install.packages("wordcloud") # word-cloud generator 
+#install.packages("RColorBrewer") # color palettes
+#install.packages("stringr")
+
+
+```
+# Gráficos
+```{r,warning=FALSE}
+# CARREGAR LIBS
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+library("stringr")
+
+n<-1000
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("dash","hub","cadastro","login","home")
+)
+
+tempoAcesso.r <- round((tempoAcesso/60),1)
+```
+
+```{r,warning=FALSE}
+#Carregar dados
+
+varianciaTempoAcesso <-round(rnorm(n,4*60,120))
+
+tempoAcesso <- c()
+for(i in 1:n){
+  if(varianciaTempoAcesso[i] >0){
+    tempoAcesso[i] <- varianciaTempoAcesso[i]
+  }
+}
+
+set.seed(123)
+paginaSaida <-round(runif(n,1,5))
+paginaSaida.r <- factor(paginaSaida,
+                        levels = c(1,2,3,4,5),
+                        labels = c("login","hub","cadastro","dash","home")
+)
+
+
+```
+
+
+
+
+```{r,warning=FALSE}
+#Evasão por pagina
+barplot(table(paginaSaida.r),
+ col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7"),
+ ylab   = "Quantidade de usuários",
+ xlab = "página saída",
+main = "Evasão por página")
+
+
+#Tempo por pagina
+plot(paginaSaida.r,tempoAcesso.r,
+                              main = "Diagrama",
+                              xlab = "pagina saida",
+                              ylab = "tempo de acesso",
+                              pch = 20,
+                              col = "#39ADC7")
+
+
+#Clusters pagina de Cadastro
+s <- 220
+
+set.seed(1)
+pagina <-round(runif(s,1,10))
+
+barplot(table (pagina),
+         main = "Tempo de acesso Cadastro",
+        ylab = "usuarios",
+        xlab = "tempo de acesso",
+        col = "#39ADC7")
+
+
+
+library("tm")
+
+#Avaliação do Finoban por Usuarios
+text <- read.csv(file.path("//Users//felipe//GITHUB//Finoban//data_science//ppt//gosta_web_sites.csv"), header=TRUE)
+
+docs <- Corpus(VectorSource(text$opiniaoWebSites))
+
+
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+#Grafico de torta
+df <- data.frame(
+  Avaliacoes = c("Negativo", "Positivo"),
+  Quantidade_de_avaliacoes = c(26.4, 73.6)
+  )
+
+
+#WORD CLOUD FEEDBACK
+
+text <- readLines("//Users//felipe//GITHUB//Finoban//data_science//ppt//nuvem.txt")
+
+docs <- Corpus(VectorSource(text))
+
+#LIMPANDO O ARQUIVO
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeNumbers)
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
+docs <- tm_map(docs, removePunctuation)
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+
+
+
+```
+
+

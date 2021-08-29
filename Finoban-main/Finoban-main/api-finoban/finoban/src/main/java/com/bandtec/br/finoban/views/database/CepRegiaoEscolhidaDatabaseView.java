@@ -1,0 +1,7 @@
+package com.bandtec.br.finoban.views.database;
+
+public interface CepRegiaoEscolhidaDatabaseView {
+
+    String getBairroCliente();
+    String getRegiaoEscolhida();
+}
