@@ -54,7 +54,7 @@ public class RegiaoController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Regiçao não encontrada para resgatar"
+                    description = "Região não encontrada para resgatar"
             )
     })
     @GetMapping("/{id}")

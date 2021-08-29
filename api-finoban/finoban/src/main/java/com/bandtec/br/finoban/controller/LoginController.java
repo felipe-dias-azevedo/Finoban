@@ -23,40 +23,47 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity novoLogin(@RequestBody Login novoLogin) {
-
         Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
-
         if (verificaEmail == null) {
             return ResponseEntity.status(204).body(new ResponseGeneric("Email não encontrado"));
         }
-
         if (!verificaEmail.getSenha().equals(novoLogin.senha)) {
             return ResponseEntity.status(204).body(new ResponseGeneric("Senha incorreta"));
         }
-
         String emailLogado = novoLogin.getEmail();
-
-        for (int i=0; i <= usuariosLogados.size(); i++) {
-            if (!usuariosLogados.contains(emailLogado)) {
-                usuariosLogados.add(emailLogado);
-                return ResponseEntity.status(200).body(new ResponseGeneric(verificaEmail, null));
-            }
-        }
-
-        return ResponseEntity.status(404).body(new ResponseGeneric("Usuário já logado."));
-
+        return verificarUsuariosLogados(usuariosLogados, emailLogado, verificaEmail, usuariosLogados.size());
     }
 
     @PostMapping("/logoff")
     public ResponseEntity efetuarLogoff(@RequestBody Login novoLogin) {
-        for (int i=0; i<usuariosLogados.size(); i++) {
-            if (usuariosLogados.contains(novoLogin.getEmail())) {
-                usuariosLogados.remove(novoLogin.getEmail());
-                Usuario verificaEmail = cadastroRepository.findByEmailContaining(novoLogin.getEmail());
-                String resultado = String.format("%s, você foi deslogado com sucesso!", verificaEmail.getNome());
+        return efetuarLogoffUsuarioLogado(usuariosLogados, novoLogin, new String(), usuariosLogados.size());
+    }
+
+    public static ResponseEntity efetuarLogoffUsuarioLogado(List<String> usuariosLogados, Login login,
+                                                            String resultado, int indice) {
+        if (indice < 0) {
+            return ResponseEntity.status(404).body(new ResponseGeneric("Usuário não logado"));
+        } else {
+            if (usuariosLogados.contains(login.getEmail())) {
+                usuariosLogados.remove(login.getEmail());
+                resultado = String.format("Usuário deslogado com sucesso!");
                 return ResponseEntity.status(200).body(new ResponseGeneric(resultado));
             }
+            return efetuarLogoffUsuarioLogado(usuariosLogados, login, resultado, indice -1);
         }
-        return ResponseEntity.status(404).body(new ResponseGeneric("Usuário não logado."));
+    }
+
+    public static ResponseEntity verificarUsuariosLogados(List<String> usuariosLogados,
+                                                          String emailLogado, Usuario verificaEmail,
+                                                          int indice) {
+        if (indice < 0) {
+            return ResponseEntity.status(404).body(new ResponseGeneric("Usuário já logado."));
+        } else {
+            if (!usuariosLogados.contains(emailLogado)) {
+                usuariosLogados.add(emailLogado);
+                return ResponseEntity.status(200).body(new ResponseGeneric(verificaEmail, null));
+            }
+            return verificarUsuariosLogados(usuariosLogados, emailLogado, verificaEmail, indice-1);
+        }
     }
 }
