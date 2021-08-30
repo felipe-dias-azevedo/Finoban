@@ -202,7 +202,7 @@ function PaginaInicial() {
 									onChange={(e) => setRenda(e.target.value)}
 								/>
 								<label className="label-erro">
-									{setErroRenda}
+									{erroRenda}
 								</label>
 							</section>
 							<section>
