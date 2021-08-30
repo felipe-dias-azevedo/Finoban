@@ -24,7 +24,7 @@ function Header() {
                         <div className="links">
                             <ul>
                                 <li><Link to="/analise">ANÁLISES DE NEGÓCIO</Link></li>
-                                <li><Link to="/">SobreNos</Link></li>
+                                <li><Link to="/">SOBRE</Link></li>
                                 <li><Link to="/">PARCEIROS</Link></li>
                                 <li><Link to="/">OPENBANKING</Link></li>
                             </ul>
