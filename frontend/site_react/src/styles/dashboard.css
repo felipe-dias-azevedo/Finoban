@@ -133,6 +133,16 @@ img {
     flex-direction: column;
 }
 
+.specific-chart {
+    margin: 4%;
+    width: 90%;
+    height: 90%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .giant-chart {
     /* width: 49%; */
     width: 100%;

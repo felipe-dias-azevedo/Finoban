@@ -8,6 +8,7 @@ import './styles/dashboard.css';
 import './styles/home-admin.css';
 import './styles/cadastro.css';
 import './styles/login-admin.css';
+import './styles/components.css';
 
 ReactDOM.render(
   <React.StrictMode>

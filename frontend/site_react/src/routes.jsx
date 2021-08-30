@@ -8,6 +8,7 @@ import Simulador from './pages/Simulador';
 
 import DashboardNegocio from './pages/AnaliseNegocio/DashboardNegocio';
 import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
+import GraficoNegocio from './pages/AnaliseNegocio/GraficoNegocio';
 
 function Routes() {
 
@@ -22,6 +23,7 @@ function Routes() {
 
                 <Route exact path="/analise" component={LoginNegocio} />
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
+                <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
 
                 <Route exact path="*" component={PaginaInicial} />
             </Switch>

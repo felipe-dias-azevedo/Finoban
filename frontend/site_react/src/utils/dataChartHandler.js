@@ -16,7 +16,9 @@ function DataChartHandler ( chartEnum, chartId, data ) {
         case graphicEnum.HISTOGRAMA:
             switch (chartId) {
                 case chartsEnum.TEMPO_PERMANENCIA.id:
-                    data.tempoPermanencia[data.tempoPermanencia.length - 1][0] += "+";
+                    // if (!!data.tempoPermanencia) {
+                    //     data.tempoPermanencia[data.tempoPermanencia.length - 1][0] += "+";
+                    // }
                     return data.tempoPermanencia;
 
                 case chartsEnum.AVALIACAO_SITE.id:
