@@ -2,9 +2,9 @@ import csv
 from conexao_mysql import ConexaoMySQL
 from tipo_arquivo import TipoArquivo
 
-db_host_name = "finoban.cxifhb2i4s1j.us-east-1.rds.amazonaws.com"
-db_user_name = "felipe"
-db_password = "123mysql"
+db_host_name = "3.95.24.155"
+db_user_name = "root"
+db_password = "urubu100"
 db_database = "Finoban"
 
 def retira_acentos(texto):
