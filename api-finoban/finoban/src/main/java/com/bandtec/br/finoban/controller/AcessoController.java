@@ -57,6 +57,7 @@ public class AcessoController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "404", description = "Falha ao concluir requisição")
     })
+
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso acesso) {
         if (cadastroRepository.existsById(acesso.getFkCliente().getId())) {
