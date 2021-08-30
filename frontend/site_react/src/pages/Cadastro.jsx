@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import api from "../services/api";
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
+import { Alert, AlertTitle } from '@material-ui/lab'
 
 export default function Cadastro() {
   const history = useHistory();
@@ -16,8 +17,10 @@ export default function Cadastro() {
   const [senhaConfirma, setSenhaConfirma] = useState("");
   const [cep, setCep] = useState("");
   const [numero, setNumero] = useState("");
-  const [dataNasc, setDataNasc] = useState(new Date());
+  const [dataNasc, setDataNasc] = useState(undefined);
   const [mask, setMask] = useState("");
+  const [erroReq, setErroReq] = useState(false);
+  const [erroReqMsgm, setErroReqMsgm] = useState("");
 
   const [endereco, setEndereco] = useState("");
   const [dadosCep, setDadosCep] = useState({});
@@ -60,8 +63,7 @@ export default function Cadastro() {
         setBairro(dadosCep.bairro);
         console.log(bairro);
         setEndereco(
-          `${dadosCepRes.logradouro} ${numero ? `, ${numero}` : ""}, ${
-            dadosCepRes.bairro
+          `${dadosCepRes.logradouro} ${numero ? `, ${numero}` : ""}, ${dadosCepRes.bairro
           }, ${dadosCepRes.localidade} - ${dadosCepRes.uf}`
         );
       })
@@ -72,18 +74,20 @@ export default function Cadastro() {
 
   function validarCadastro() {
 
-    if (nome.trim() === "") {setErroNome("Insira seu nome completo")}
-    if (cnpj.trim() === "") {setErroCnpj("Insira um CNPJ válido")}
-    if (email.trim() === "") {setErroEmail("Insira um e-mail válido")}
-    if (erroSenha.trim() === "") {setErroSenha("Insira uma senha com mais de 6 caracteres")}
-    if (senhaConfirma.trim() === "") {setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres")}
-    if (cep.trim() === "") {setErroCep("Insira um CEP válido")}
-    if (numero.trim() === "") {setErroNumero("Insira um número válido")}
-    if (dataNasc.trim() === "") {setErroDataNascimento("Insira uma data de nascimento válida")}
+    setErroReq(false);
+
+    if (nome && nome.trim() === "") { setErroNome("Insira seu nome completo") }
+    if (cnpj && cnpj.trim() === "") { setErroCnpj("Insira um CNPJ válido") }
+    if (email && email.trim() === "") { setErroEmail("Insira um e-mail válido") }
+    if (erroSenha && erroSenha.trim() === "") { setErroSenha("Insira uma senha com mais de 6 caracteres") }
+    if (senhaConfirma && senhaConfirma.trim() === "") { setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres") }
+    if (cep && cep.trim() === "") { setErroCep("Insira um CEP válido") }
+    if (numero && numero.trim() === "") { setErroNumero("Insira um número válido") }
+    if (dataNasc === undefined) { setErroDataNascimento("Insira uma data de nascimento válida") }
 
     else if (senha.length < 6 || senhaConfirma.length < 6) {
-          setErroSenha("Insira uma senha com mais de 6 caracteres");
-          setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres");
+      setErroSenha("Insira uma senha com mais de 6 caracteres");
+      setErroConfirmaSenha("Insira uma senha com mais de 6 caracteres");
     }
 
     else if (senha !== senhaConfirma) {
@@ -110,9 +114,9 @@ export default function Cadastro() {
         dataNasc,
         bairro,
       };
-  
+
       console.log(data);
-  
+
       api
         .post("/cadastro", data, {})
         .then((e) => {
@@ -125,6 +129,8 @@ export default function Cadastro() {
         })
         .catch((e) => {
           console.error(e);
+          setErroReqMsgm("Erro ao realizar requisição");
+          setErroReq(true);
         });
     }
 
@@ -138,6 +144,16 @@ export default function Cadastro() {
       </div>
 
       <div className="entrar">
+        {erroReq ? (
+          <Alert severity="error">
+            <AlertTitle><strong>Erro</strong></AlertTitle>
+            {erroReqMsgm}
+          </Alert>
+        ) :
+          (
+            ""
+          )
+        }
         <h3>Nome completo:</h3>
         <input
           type="text"
@@ -198,25 +214,6 @@ export default function Cadastro() {
 
         <label className="label-erro">{erroCep}</label>
 
-        <h3>Número:</h3>
-        <input
-          type="text"
-          name="numeroCasa"
-          id="numero_cadastro"
-          onChange={(e) => {
-            const numeroAtual = e.target.value;
-            setNumero(numeroAtual);
-            if (endereco) {
-              setEndereco(
-                `${dadosCep.logradouro} ${numero ? `${numeroAtual}` : ""}, ${
-                  dadosCep.bairro
-                }, ${dadosCep.localidade} - ${dadosCep.uf}`
-              );
-            }
-          }}
-        />
-
-        <label className="label-erro">{erroNumero}</label>
 
         <h3>Endereço:</h3>
         <input
@@ -227,6 +224,25 @@ export default function Cadastro() {
           value={endereco}
           disabled
         />
+
+        <h3>Número:</h3>
+        <input
+          type="text"
+          name="numeroCasa"
+          id="numero_cadastro"
+          onChange={(e) => {
+            const numeroAtual = e.target.value;
+            setNumero(numeroAtual);
+            if (endereco) {
+              setEndereco(
+                `${dadosCep.logradouro} ${numero ? `${numeroAtual}` : ""}, ${dadosCep.bairro
+                }, ${dadosCep.localidade} - ${dadosCep.uf}`
+              );
+            }
+          }}
+        />
+
+        <label className="label-erro">{erroNumero}</label>
 
         <h3>Data de Nascimento:</h3>
         <input
