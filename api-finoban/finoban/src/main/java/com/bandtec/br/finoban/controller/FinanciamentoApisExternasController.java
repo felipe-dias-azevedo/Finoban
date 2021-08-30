@@ -51,9 +51,9 @@ public class FinanciamentoApisExternasController {
         List<String> listUrl = new ArrayList<>();
         List<RespostaApi> listResponse = new ArrayList<>();
 
-        listUrl.add("http://3.95.24.155:3333/openbanking/v1/financiamento");
-        listUrl.add("http://3.95.24.155:5000/openbanking/v1/financiamento");
-        listUrl.add("http://3.95.24.155:8000/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:3333/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:5000/openbanking/v1/financiamento");
+        listUrl.add("http://54.226.124.160:8000/openbanking/v1/financiamento");
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
