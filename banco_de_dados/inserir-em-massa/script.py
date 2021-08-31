@@ -2,7 +2,7 @@ import csv
 from conexao_mysql import ConexaoMySQL
 from tipo_arquivo import TipoArquivo
 
-db_host_name = "3.95.24.155"
+db_host_name = "54.172.194.145"
 db_user_name = "root"
 db_password = "urubu100"
 db_database = "Finoban"
