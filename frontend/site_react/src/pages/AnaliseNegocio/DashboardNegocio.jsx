@@ -83,11 +83,11 @@ function Dashboard() {
 
     return (
         <div id="app">
-            <section className="title-site">
+            <section className="title-site shadow">
                 <h1>Dashboard</h1>
             </section>
             <section className="subtitle-site">
-                <div className="title-holder">
+                <div className="title-holder shadow">
                     <h2>Correlações</h2>
                     <div className="switches">
                         <div className="switch-holder">
@@ -108,7 +108,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="title-holder">
+                <div className="title-holder shadow">
                     <h2>Histogramas</h2>
                     <div className="switches">
                         <div className="switch-holder">
@@ -129,7 +129,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="title-holder">
+                <div className="title-holder shadow">
                     <h2>Lucro</h2>
                     <div className="switches">
                         <div className="switch-holder">

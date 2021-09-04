@@ -7,6 +7,8 @@ import './assets/css/header.css';
 import './assets/css/home.css';
 import './assets/css/light.css';
 import './assets/css/dark.css';
+import './assets/css/dashboard-negocio.css';
+import './assets/css/forms.css';
 // import './assets/css/index.css';
 // import './assets/css/comum.css';
 // import './assets/css/simulador.css';

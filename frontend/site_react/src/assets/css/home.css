@@ -156,7 +156,8 @@
     justify-content: center;
 }
 
-.option-values-fulfill section input {
+.option-values-fulfill section input,
+.option-values-fulfill section select {
     font-size: 0.9rem;
     padding: 6px;
 }

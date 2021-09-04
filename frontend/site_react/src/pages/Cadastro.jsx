@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import api from "../services/api";
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 import { Alert, AlertTitle } from '@material-ui/lab'
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
   const history = useHistory();
@@ -152,124 +153,141 @@ export default function Cadastro() {
   return (
     <>
       <Header />
-      <div className="login">
-        <h3>Cadastro</h3>
+      <div className="form-title">
+        <h2>Cadastro</h2>
       </div>
 
-      <div className="entrar">
-        {erroForm ? (
+      <div className="form-holder">
+        {erroForm && (
           <Alert severity="error">
             <AlertTitle><strong>Erro</strong></AlertTitle>
             {erroFormMsgm}
           </Alert>
-        ) :
-          (
-            ""
-          )
-        }
-        <h3>Nome completo:</h3>
-        <input
-          type="text"
-          name="nome"
-          id="nome_completo_cadastro"
-          onChange={(e) => setNome(e.target.value)}
-        />
-
-        <label className="label-erro">{erroNome}</label>
-
-        <h3>CNPJ:</h3>
-        <CpfCnpj
-          type="tel"
-          value={cnpj}
-          onChange={(e, type) => {
-            setCnpj(e.target.value);
-            setMask(type === "CNPJ");
-          }}
-        />
-
-        <label className="label-erro">{erroCnpj}</label>
-
-        <h3>E-mail:</h3>
-        <input
-          type="text"
-          name="email"
-          id="nome_cadastro"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label className="label-erro">{erroEmail}</label>
-
-        <div className="parent-label-login">
-          <h3>Senha:</h3>
-          <p>Conter no mínimo 6 caracteres</p>
+        )}
+        <div className="input-holder">
+          <h4>Nome completo:</h4>
+          <input
+            type="text"
+            name="nome"
+            id="nome_completo_cadastro"
+            onChange={(e) => setNome(e.target.value)}
+          />
+          <label className="label-erro">{erroNome}</label>
         </div>
-        <input
-          type="password"
-          name="senha"
-          id="login_cadastro"
-          onChange={(e) => setSenha(e.target.value)}
-        />
 
-        <label className="label-erro">{erroSenha}</label>
+        <div className="input-holder">
+          <h4>CNPJ:</h4>
+          <CpfCnpj
+            type="tel"
+            value={cnpj}
+            onChange={(e, type) => {
+              setCnpj(e.target.value);
+              setMask(type === "CNPJ");
+            }}
+          />
+          <label className="label-erro">{erroCnpj}</label>
+        </div>
 
-        <h3>Confirmar Senha:</h3>
-        <input
-          type="password"
-          name="confirmar_senha"
-          id="confirmar_senha_cadastro"
-          onChange={(e) => setSenhaConfirma(e.target.value)}
-        />
+        <div className="input-holder">
+          <h4>E-mail:</h4>
+          <input
+            type="text"
+            name="email"
+            id="nome_cadastro"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label className="label-erro">{erroEmail}</label>
+        </div>
+        
+        <div className="input-holder">
+          <div className="input-holder-description">
+            <h4>Senha:</h4>
+            <p>Conter no mínimo 6 caracteres</p>
+          </div>
+          <input
+            type="password"
+            name="senha"
+            id="login_cadastro"
+            onChange={(e) => setSenha(e.target.value)}
+          />
+          <label className="label-erro">{erroSenha}</label>
+        </div>
 
-        <label className="label-erro">{erroConfirmaSenha}</label>
+        <div className="input-holder">
+          <h4>Confirmar Senha:</h4>
+          <input
+            type="password"
+            name="confirmar_senha"
+            id="confirmar_senha_cadastro"
+            onChange={(e) => setSenhaConfirma(e.target.value)}
+          />
+          <label className="label-erro">{erroConfirmaSenha}</label>
+        </div>
 
-        <h3>CEP:</h3>
-        <input type="text" name="cep" id="cep_cadastro" onChange={validarCep} />
+        <div className="double-input-holder">
+          <div className="single-input-holder">
+            <h4>CEP:</h4>
+            <input
+              type="text"
+              name="cep"
+              id="cep_cadastro"
+              onChange={validarCep}
+            />
+            <label className="label-erro">{erroCep}</label>
+          </div>
+          <div className="single-input-holder">
+            <h4>Número:</h4>
+            <input
+              type="text"
+              name="numeroCasa"
+              id="numero_cadastro"
+              onChange={(e) => {
+                const numeroAtual = e.target.value;
+                setNumero(numeroAtual);
+                endereco && setEndereco(`${dadosCep.logradouro} ${numero ? `${numeroAtual}` : ""}, ${dadosCep.bairro}, ${dadosCep.localidade} - ${dadosCep.uf}`);
+              }}
+            />
+            <label className="label-erro">{erroNumero}</label>
+          </div>
+        </div>
 
-        <label className="label-erro">{erroCep}</label>
+        <div className="input-holder">
+          <h4>Endereço:</h4>
+          <input
+            className="input-disabled"
+            type="text"
+            name="endereco"
+            id="endereco_cadastro"
+            value={endereco}
+            disabled
+          />
+        </div>
 
+        <div className="input-holder">
+          <h4>Data de Nascimento:</h4>
+          <input
+            type="date"
+            name="datanasc"
+            id="data_nascimento_cadastro"
+            onChange={(e) => setDataNasc(e.target.value)}
+          />
+          <label className="label-erro">{erroDataNascimento}</label>
+        </div>
 
-        <h3>Endereço:</h3>
-        <input
-          className="input-disabled"
-          type="text"
-          name="endereco"
-          id="endereco_cadastro"
-          value={endereco}
-          disabled
-        />
+        <div className="form-subtext-holder">
+          <p>
+            Já possui uma conta?
+          </p>
+          <Link to="/login">
+            Clique aqui para fazer login.
+          </Link>
+        </div>
 
-        <h3>Número:</h3>
-        <input
-          type="text"
-          name="numeroCasa"
-          id="numero_cadastro"
-          onChange={(e) => {
-            const numeroAtual = e.target.value;
-            setNumero(numeroAtual);
-            if (endereco) {
-              setEndereco(
-                `${dadosCep.logradouro} ${numero ? `${numeroAtual}` : ""}, ${dadosCep.bairro
-                }, ${dadosCep.localidade} - ${dadosCep.uf}`
-              );
-            }
-          }}
-        />
-
-        <label className="label-erro">{erroNumero}</label>
-
-        <h3>Data de Nascimento:</h3>
-        <input
-          type="date"
-          name="datanasc"
-          id="data_nascimento_cadastro"
-          onChange={(e) => setDataNasc(e.target.value)}
-        />
-
-        <label className="label-erro">{erroDataNascimento}</label>
-
-        <button className="bt fw-500" onClick={validarCadastro}>
-          Cadastrar
-        </button>
+        <div className="button-holder">
+          <button onClick={validarCadastro}>
+            Cadastrar
+          </button>
+        </div>
       </div>
       <Footer />
     </>

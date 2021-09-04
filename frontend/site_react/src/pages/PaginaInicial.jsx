@@ -324,7 +324,7 @@ function PaginaInicial() {
 					</div>
 				)}
 			</div>
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 }

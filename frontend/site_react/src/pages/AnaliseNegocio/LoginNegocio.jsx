@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import api from '../../services/api';
 
 function Login() {
@@ -9,7 +11,7 @@ function Login() {
     const [senha, setSenha] = useState("");
 
     const [styles, setStyles] = useState({
-        border: "1px solid #3A5B62",
+        border: "2px solid #454545",
     });
 
     function validarLogin() {
@@ -44,14 +46,15 @@ function Login() {
     }
 
     return (
-        <div id="app-login">
-            <div className="login">
-                <h2>Login Analítico</h2>
+        <>
+            <Header />
+            <div className="form-title">
+                <h2>Análise de Dados do Negócio</h2>
             </div>
 
             <div className="form-holder">
                 <div className="input-holder">
-                    <h3>E-mail:</h3>
+                    <h4>E-mail:</h4>
                     <input
                         style={ styles }
                         type="email"
@@ -60,7 +63,7 @@ function Login() {
                     />
                 </div>
                 <div className="input-holder">
-                    <h3>Senha:</h3>
+                    <h4>Senha:</h4>
                     <input
                         style={ styles }
                         type="password"
@@ -74,7 +77,8 @@ function Login() {
                     </button>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     )
 }
 
