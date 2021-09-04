@@ -7,28 +7,26 @@ function Header() {
         <>
             <header className="menu">
                 <div className="pt1">
-                    <div className="container">
-                        <h1>Finoban</h1>
-                        <div className="botoes">
-                            <ul>
-                                <li><Link to="/cadastro">Cadastro</Link></li>
-                                <li><Link to="/login">Login</Link></li>
-                                <li><WiMoonAltWaningGibbous1 size={50} className="dark-icon"/></li>
-                            </ul>
-                        </div>
+                    <div>
+                        <h1 className="logo">Finoban</h1>
+                    </div>
+                    <div className="botoes">
+                        <button className="button"><Link to="/cadastro" >Cadastro</Link></button>
+                        <button className="button"><Link to="/login">Login</Link></button>
+                        <WiMoonAltWaningGibbous1 className="dark-icon" />
                     </div>
                 </div>
-                <div className="pt2">
-                    <div className="container">
+                <div className="pt2 shadow-footer-header">
+                    <div className="migalha">
                         <Link to="/">Home</Link>
-                        <div className="links">
-                            <ul>
-                                <li><Link to="/analise">ANÁLISES DE NEGÓCIO</Link></li>
-                                <li><Link to="/">SOBRE</Link></li>
-                                <li><Link to="/">PARCEIROS</Link></li>
-                                <li><Link to="/">OPENBANKING</Link></li>
-                            </ul>
-                        </div>
+                    </div>
+                    <div className="links">
+                        <ul>
+                            <li><Link to="/analise">ANÁLISES DE NEGÓCIO</Link></li>
+                            <li><Link to="/">SOBRE</Link></li>
+                            <li><Link to="/">PARCEIROS</Link></li>
+                            <li><Link to="/">OPENBANKING</Link></li>
+                        </ul>
                     </div>
                 </div>
             </header>

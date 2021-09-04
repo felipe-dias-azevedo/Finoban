@@ -1,0 +1,54 @@
+
+.menu .pt1 {
+    background-color: var(--cinza-claro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.menu .pt1 .botoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23%;
+    padding-left: 1%;
+}
+
+
+
+.dark-icon {
+    font-size: 52px;
+    color: var(--verde);
+    cursor: pointer;
+}
+
+.menu .logo {
+    color: var(--verde);
+    font-size: 45px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.menu .pt2 {
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.menu .pt2 .links li{
+    font-size: 14px;
+    list-style: none;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--verde)
+}
+
+
+
+
+.menu .pt2 .links li:nth-child(-n+3){
+    margin-right: 20px;
+}

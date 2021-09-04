@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import api from '../services/api';
 import { useHistory } from 'react-router';
-import '../assets/css/login.css';
 import Modal from 'react-bootstrap/Modal'
 import { Link } from 'react-router-dom';
 
