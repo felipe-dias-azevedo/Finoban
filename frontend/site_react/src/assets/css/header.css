@@ -1,54 +1,64 @@
 
-.menu .pt1 {
+header .topheader {
     background-color: var(--cinza-claro);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 5%;
+    width: 100%;
+    padding: 1rem 0;
 }
 
-.menu .pt1 .botoes{
+header .topheader-logo {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    width: 23%;
-    padding-left: 1%;
+    width: 50%;
+    padding-left: 5%;
 }
 
+header .topheader-logo a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+header .logo {
+    width: 70%;
+}
+
+header .topheader-options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    padding-right: 5%;
+}
+
+header .topheader-options * {
+    margin-left: 1.5rem;
+}
 
 .dark-icon {
-    font-size: 52px;
+    font-size: 3rem;
     color: var(--verde);
     cursor: pointer;
 }
 
-.menu .logo {
-    color: var(--verde);
-    font-size: 45px;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-.menu .pt2 {
+header .subheader {
     background-color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%;
+    padding: 1rem 5%;
 }
 
-.menu .pt2 .links li{
-    font-size: 14px;
+header .subheader .links li {
+    font-size: 1rem;
     list-style: none;
     display: inline-block;
     font-weight: bold;
     color: var(--verde)
 }
 
-
-
-
-.menu .pt2 .links li:nth-child(-n+3){
-    margin-right: 20px;
+header .subheader .links li:nth-child(-n+3) {
+    margin-right: 1.5rem;
 }

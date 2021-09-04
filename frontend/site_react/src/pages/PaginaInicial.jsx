@@ -6,7 +6,8 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import { useHistory } from "react-router";
 import api from "../services/api";
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
-import e from "cors";
+import { Link as LinkScroll, animateScroll as Scroll } from "react-scroll";
+import BackgroundHomeImage from '../assets/images/home-background-image.png';
 
 function PaginaInicial() {
 	const history = useHistory();
@@ -74,7 +75,7 @@ function PaginaInicial() {
 			});
 	}, []);
 
-	async function irParaSimulador() {
+	async function handleSimulacao() {
 		if (cnpj.trim() === "") {
 			setErroCnpj("Insira um CNPJ válido");
 		}
@@ -142,44 +143,52 @@ function PaginaInicial() {
 	return (
 		<>
 			<Header />
-			<div className="imagem">
-				<div className="box-texto-simples">
-					<p>
-						Dúvidas sobre qual a melhor opção de financiamento pra
-						você?
-					</p>
-				</div>
-				<div className="box-texto-destaque">
-					<h1>
-						Com simples passos, você terá acesso as{" "}
-						<span className="fw-600"> melhores opções </span> de
-						financiamento!{" "}
-					</h1>
-				</div>
-				<div className="comecar center">
-					<a id="bt-comecar" href="#simulacao">
-						<IoIosArrowDropdown size={46} className="ml-30" />
-						<p> Começar</p>
-					</a>
+			<div className="image-home">
+				<div className="image-home-total">
+					<div className="image-file">
+						<img src={BackgroundHomeImage} alt="família feliz ao ter financiamentos" />
+					</div>
+					<div className="image-home-text">
+						<div className="image-home-holder">
+							<h2>Dúvidas sobre qual a melhor opção de financiamento pra você?</h2>
+						</div>
+						<div className="image-home-holder">
+							<h1>
+								Com simples passos, você terá acesso as 
+								<b>{" "}melhores opções{" "}</b>
+								de financiamento!
+							</h1>
+						</div>
+						<div className="image-home-holder">
+							<LinkScroll
+								activeClass="scroll-start"
+								to="start-simulation"
+								spy
+								smooth
+								offset={-70}
+								duration={500}
+							>
+								<IoIosArrowDropdown size={46} className="ml-30" />
+								<h3>Começar</h3>
+							</LinkScroll>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div className="simulacao" id="simulacao">
-				<div className="pt3">
-					<h3>Insira os dados abaixo</h3>
+			<div id="start-simulation">
+				<div className="simulation-title">
+					<h2>Insira os dados abaixo</h2>
 				</div>
 
 				{respondeuBotao ? (
-					<div id="teste">
-						<div className="imovel">
-							<div className="voltar">
-								<button
-									className="no-bt"
-									onClick={(e) => setRespondeuBotao(false)}
-								>
-									<IoChevronBack size={46} />
-									<span> Voltar </span>
-								</button>
-							</div>
+					<div className="option-value shadow">
+						<div className="option-value-back">
+							<nav onClick={() => setRespondeuBotao(false)}>
+								<IoChevronBack size={46} />
+								<h5>Voltar</h5>
+							</nav>
+						</div>
+						<div className="option-values-fulfill">
 							<section>
 								<p>CNPJ</p>
 								<CpfCnpj
@@ -280,51 +289,42 @@ function PaginaInicial() {
 									{erroPorcentagemRenda}
 								</label>
 							</section>
-							<section></section>
 						</div>
-						<button
-							className="bt-simular"
-							onClick={irParaSimulador}
-							required
-						>
-							Simular
-						</button>
+						<div className="option-value-simulate">
+							<button
+								className="bt-simular"
+								onClick={handleSimulacao}
+								required
+							>
+								Simular
+							</button>
+						</div>
 					</div>
 				) : (
-					<div id="teste2">
-						<div className="pt4">
-							<div className="container">
-								<h3>Já sabe o valor do imóvel?</h3>
-								<div className="btn-valor-imovel">
-									<button
-										className="bt"
-										onClick={(e) => {
-											setSabeValorImovel(true);
-											setRespondeuBotao(true);
-										}}
-										id="sim"
-									>
-										{" "}
-										Sim
-									</button>
-									<button
-										className="bt"
-										onClick={(e) => {
-											setSabeValorImovel(false);
-											setRespondeuBotao(true);
-										}}
-										id="nao"
-									>
-										{" "}
-										Não
-									</button>
-								</div>
-							</div>
-						</div>
+					<div className="option-value shadow">
+						<h3>Já sabe o valor do imóvel?</h3>
+						<section>
+							<button
+								onClick={() => {
+									setSabeValorImovel(true);
+									setRespondeuBotao(true);
+								}}
+							>
+								Sim
+							</button>
+							<button
+								onClick={() => {
+									setSabeValorImovel(false);
+									setRespondeuBotao(true);
+								}}
+							>
+								Não
+							</button>
+						</section>
 					</div>
 				)}
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 }
