@@ -1,38 +1,73 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
+import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
+import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
 
 function Header() {
+
+    const history = useHistory();
+
+    const redirecionarParaPagina = (pagina) => {
+        switch (pagina) {
+            case "cadastro":
+                history.push("/cadastro");
+                break;
+            case "login":
+                history.push("/login");
+                break;
+        }
+
+    }
+
     return (
-        <>
-            <header className="menu">
-                <div className="pt1">
-                    <div className="container">
-                        <h1>Finoban</h1>
-                        <div className="botoes">
-                            <ul>
-                                <li><Link to="/cadastro">Cadastro</Link></li>
-                                <li><Link to="/login">Login</Link></li>
-                                <li><WiMoonAltWaningGibbous1 size={50} className="dark-icon"/></li>
-                            </ul>
-                        </div>
-                    </div>
+        <header>
+            <div className="topheader">
+                <div className="topheader-logo">
+                    <Link to="/">
+                        <img className="logo" src={LogoFinobanLight} alt="" />
+                    </Link>
                 </div>
-                <div className="pt2">
-                    <div className="container">
-                        <Link to="/">Home</Link>
-                        <div className="links">
-                            <ul>
-                                <li><Link to="/analise">ANÁLISES DE NEGÓCIO</Link></li>
-                                <li><Link to="/">SobreNos</Link></li>
-                                <li><Link to="/">PARCEIROS</Link></li>
-                                <li><Link to="/">OPENBANKING</Link></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div className="topheader-options">
+                    <button onClick={() => redirecionarParaPagina("cadastro")}>
+                        Cadastro
+                    </button>
+                    <button onClick={() => redirecionarParaPagina("login")}>
+                        Login
+                    </button>
+                    <WiMoonAltWaningGibbous1 className="dark-icon" />
                 </div>
-            </header>
-        </>
+            </div>
+            <div className="subheader shadow-header">
+                <div className="breadcrumb">
+                    <Link to="/">Home</Link>
+                </div>
+                <div className="links">
+                    <ul>
+                        <li>
+                            <Link to="/analise">
+                                ANÁLISES DE NEGÓCIO
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/">
+                                SOBRE
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/">
+                                PARCEIROS
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/">
+                                OPENBANKING
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
     );
 }
 

@@ -6,26 +6,14 @@ import Api from '../services/api';
 
 function Simulador() {
 
-    var testeRecebido = localStorage.getItem("testeChave");
-    let dataSimulacao = JSON.parse(testeRecebido);
-    var valorImovelRecebido = dataSimulacao.valorImovel;
-    var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
-
-    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
-
-    var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
-
-    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10) + 5;
-    var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
-    var taxa3 = respostaSimulacao[2].data.taxaTotal * 1.2;
-
-    var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
-    var taxaS16 = localStorage.setItem("taxaS16", taxa2);
-    var taxaCifra = localStorage.setItem("taxaCifra", taxa3);
-
+    // Local Storage
     var horarioEntrada = sessionStorage.getItem("horarioEntrada");
     var idUsuario = localStorage.getItem("idUsuario");
-    
+    var dadosSimuladorRecebido = localStorage.getItem("dadosSimulador");
+    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
+    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+
+    // Data
     var data = new Date();
     var dia = String(data.getDate()).padStart(2, '0');
     var mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -33,11 +21,11 @@ function Simulador() {
 
     var hora = data.getHours();
     var minutos = data.getMinutes();
-    if(minutos < 10) {
+    if (minutos < 10) {
         minutos = '0' + minutos;
     }
     var segundos = data.getUTCSeconds();
-    if(segundos < 10) {
+    if (segundos < 10) {
         segundos = '0' + segundos;
     }
 
@@ -45,9 +33,28 @@ function Simulador() {
 
     var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
 
-    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+    let dataSimulacao = JSON.parse(dadosSimuladorRecebido);
+    var valorImovelRecebido = dataSimulacao.valorImovel;
+    var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
 
-    window.onbeforeunload = confirmExit;
+    console.log("data simulacao");
+    console.log(dataSimulacao);
+
+    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
+    console.log("resposta simulacao:");
+    console.log(respostaSimulacao);
+
+    var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
+
+    // Taxas
+    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10) + 5;
+    var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
+    var taxa3 = respostaSimulacao[2].data.taxaTotal*0.7;
+    console.log(taxa3);
+
+    var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
+    var taxaS16 = localStorage.setItem("taxaS16", taxa2);
+    var taxaCifra = localStorage.setItem("taxaCifra", taxa3);
 
     let financiamentoPresil = financiar(valorImovelRecebido, taxa1/29, tempoFinanciamentoRecebido);
     let financiamentoS16 = financiar(valorImovelRecebido, taxa2/30, tempoFinanciamentoRecebido);
@@ -82,13 +89,6 @@ function Simulador() {
 
     console.log(financiamentoCifra.prestacoes);
 
-    var listaFinanciamentoCifra = localStorage.setItem("financiamentoCifra", financiamentoCifra.prestacoes);
-
-    console.log("Lista: " + listaFinanciamentoCifra);
-
-    var valorImovelPresil = localStorage.setItem("valorImovelPresil", financiamentoPresil.valor_a_pagar);
-    var valorImovelS16 = localStorage.setItem("valorImovelS16", financiamentoS16.valor_a_pagar);
-    var valorImovelCifra = localStorage.setItem("valorImovelCifra", financiamentoCifra.valor_a_pagar);
 
     var primeiraPrestacaoPresil = financiamentoPresil.prestacoes[0] / 12;
     var primeiraPrestacaoS16 = financiamentoS16.prestacoes[0] / 12;
@@ -97,57 +97,27 @@ function Simulador() {
     var primeiraPrestacaoPresilFormatado = primeiraPrestacaoPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     var primeiraPrestacaoS16Formatado = primeiraPrestacaoS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     var primeiraPrestacaoCifraFormatado = valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    console.log("ola", primeiraPrestacaoCifraFormatado);
 
-    var valorPrimeiraPrestacaoPresil = localStorage.setItem("valorPrimeiraPrestacaoPresil", primeiraPrestacaoPresilFormatado);
-    var valoPrimeiraPrestacaoS16 = localStorage.setItem("valoPrimeiraPrestacaoS16", primeiraPrestacaoS16Formatado);
-    var valorPrimeiraPrestacaoCifra = localStorage.setItem("valorPrimeiraPrestacaoCifra", primeiraPrestacaoCifraFormatado);
+    var objSetLocalStorages = {
+        listaFinanciamentoCifra: financiamentoCifra.prestacoes,
+        valorImovelPresil: financiamentoPresil.valor_a_pagar,
+        valorImovelS16: financiamentoS16.valor_a_pagar,
+        valorImovelCifra: financiamentoCifra.valor_a_pagar,
+        valorPrimeiraPrestacaoPresil: primeiraPrestacaoPresilFormatado,
+        valorPrimeiraPrestacaoS16: primeiraPrestacaoS16Formatado,
+        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado
+    }
 
-    var primeiraPrestacaoCifraChart = localStorage.setItem("primeiraPrestacaoCifraChart", valorPrimeiraPrestacaoCifra);
+    // Objeto enviado para a dashboard
+    var objParaDashboard = localStorage.setItem("objDashboard", objSetLocalStorages);
 
-    var vPresil = financiamentoPresil.valor_a_pagar;
-    var vS16 = financiamentoS16.valor_a_pagar;
-    var vCifra = financiamentoCifra.valor_a_pagar;
+    console.log(objParaDashboard);
 
-    var valorS16Formatado = vS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var valorPresilFormatado = vPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var valorCifraFormatado = vCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var valorS16Formatado = financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var valorPresilFormatado = financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    var valorCifraFormatado = financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
     var valorImovelCifraFormatado = localStorage.setItem("valorCifraFormatado", valorCifraFormatado);
-
-    function confirmExit(){
-    //   reqAcesso();
-      return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-    }
-
-    var acesso = {
-        dataHoraEntrada: horarioEntrada,
-        dataHoraSaida: dataSaida,
-        paginaSaida: 3,
-        statusSaida: 0,
-        renda: dataSimulacao.renda,
-        valorImovel: dataSimulacao.valorImovel,
-        tempoFinanciamento: dataSimulacao.tempoFinanciamento,
-        porcentagemRenda: parseInt(porcentagemRenda),
-        bancoEscolhido: 2,
-        fkRegiao: {
-            idRegiao: 15
-        },
-        fkCliente: {
-            id: parseInt(idUsuario)
-        },
-    }
-
-    console.log(acesso);
-
-    function reqAcesso() {
-    Api.post('/acessos', acesso, {
-    }).then(e => {
-      console.log(e.data);
-    }).catch(e => {
-      console.error(e)
-    });
-}      
     
     return (
         <>

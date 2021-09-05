@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import api from '../services/api';
 import { useHistory } from 'react-router';
-import '../assets/css/login.css';
 import Modal from 'react-bootstrap/Modal'
 import { Link } from 'react-router-dom';
 
@@ -114,29 +113,42 @@ export default function Login() {
         onHide={() => setModalLoginErroShow(false)}
       />
 
-      <div className="login">
-        <h3>Login</h3>
+      <div className="form-title">
+        <h2>Login</h2>
       </div>
 
-      <form onSubmit={validarLogin} className="entrar">
-        <h3>E-mail:</h3>
-        <input
-          type="email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <h3>Senha:</h3>
-        <input
-          type="password"
-          name="senha"
-          onChange={(e) => setSenha(e.target.value)}
-        />
+      <form onSubmit={validarLogin} className="form-holder">
+        <div className="input-holder">
+          <h4>E-mail:</h4>
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="input-holder">
+          <h4>Senha:</h4>
+          <input
+            type="password"
+            name="senha"
+            onChange={(e) => setSenha(e.target.value)}
+          />
+        </div>
 
-        <p className="txt-cadastrar">Não possui uma conta? Clique <Link to="/cadastro">aqui para se cadastrar.</Link></p>
+        <div className="form-subtext-holder">
+          <p>
+            Não possui uma conta?
+          </p>
+          <Link to="/cadastro">
+            Clique aqui para se cadastrar.
+          </Link>
+        </div>
 
-        <button className="bt fw-500" type="submit">
-          Entrar
-                    </button>
+        <div className="button-holder">
+          <button type="submit">
+            Entrar
+          </button>
+        </div>
       </form>
 
       <Footer />

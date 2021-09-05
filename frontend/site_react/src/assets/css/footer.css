@@ -1,0 +1,27 @@
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: var(--azul);
+    color: var(--preto-terciario);
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+    line-height: 2rem;
+}
+
+.topics {
+    font-style: italic;
+}
+
+.footer .icons div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .copyright{
+    align-items: bottom;
+}
+
+.footer .copyright h3, p{
+    font-size: 14px;
+}
