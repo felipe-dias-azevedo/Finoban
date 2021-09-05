@@ -1,0 +1,92 @@
+
+.form-title {
+    width: 90%;
+    margin: 5rem 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-holder {
+    width: 40%;
+    margin: 0 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.form-holder .input-holder,
+.form-holder .double-input-holder {
+    width: 100%;
+    margin-top: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-holder .input-holder {
+    flex-direction: column;
+}
+
+.form-holder .single-input-holder {
+    width: 100%;
+    flex-direction: row;
+}
+
+.double-input-holder .single-input-holder:first-child {
+    margin-right: 5%;
+}
+
+.form-holder h4 {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: start;
+}
+
+.input-holder-description {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.input-holder-description > h4 {
+    width: auto;
+}
+
+.form-holder input {
+    width: 100%;
+    padding: 6px;
+    text-align: start;
+}
+
+.form-holder .form-subtext-holder {
+    color: var(--verde);
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-holder .form-subtext-holder p {
+    margin-right: 0.3rem;
+}
+
+.form-holder .button-holder {
+    width: 100%;
+    display: flex;    
+    justify-content: flex-end;
+}
+
+.form-holder .button-holder > button {
+    margin-top: 3rem;
+    padding: 8px 15%;
+}

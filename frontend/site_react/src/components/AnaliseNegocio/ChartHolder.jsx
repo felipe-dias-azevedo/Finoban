@@ -16,7 +16,7 @@ function ChartHolder({children, id, giant, moveCard}) {
     return (
         <div
             ref={dropRef}
-            className={`chart ${giant ? "giant" : "tiny"}-chart`}
+            className={`chart ${giant ? "giant" : "tiny"}-chart shadow`}
         >
                 {children}
         </div>
