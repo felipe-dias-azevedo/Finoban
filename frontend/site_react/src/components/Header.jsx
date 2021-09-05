@@ -18,7 +18,9 @@ function Header() {
                 </div>
                 <div className="pt2 shadow-footer-header">
                     <div className="migalha">
-                        <Link to="/">Home</Link>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                        </ul>
                     </div>
                     <div className="links">
                         <ul>
