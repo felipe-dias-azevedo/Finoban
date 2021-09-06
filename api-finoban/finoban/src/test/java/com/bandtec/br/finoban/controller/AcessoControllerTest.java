@@ -112,4 +112,30 @@ class AcessoControllerTest {
         ResponseEntity resposta = acessoController.getAcessos();
         assertEquals(204, resposta.getStatusCodeValue());
     }
+
+    @Test
+    @DisplayName("/DELETE - Deletar últimos acesso - 204")
+    void deleteUltimosAcessos() {
+        Acesso acesso = new Acesso();
+        acesso.setIdEntrada(1);
+        Acesso acesso2 = new Acesso();
+        acesso2.setIdEntrada(2);
+        List<Acesso> lista = new ArrayList<>();
+        lista.add(acesso);
+        lista.add(acesso2);
+
+        Mockito.when(acessoRepository.findTop5ByOrderByDataHoraSaidaDesc()).thenReturn(lista);
+        ResponseEntity resposta = acessoController.deleteUltimosAcessos();
+        assertEquals(204, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("/DELETE - Deletar últimos acesso e esse não existe- 404")
+    void deleteUltimosAcessosNotOk() {
+        List<Acesso> lista = new ArrayList<>();
+
+        Mockito.when(acessoRepository.findTop5ByOrderByDataHoraSaidaDesc()).thenReturn(lista);
+        ResponseEntity resposta = acessoController.deleteUltimosAcessos();
+        assertEquals(404, resposta.getStatusCodeValue());
+    }
 }
