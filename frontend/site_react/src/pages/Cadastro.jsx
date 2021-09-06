@@ -283,7 +283,7 @@ export default function Cadastro() {
           </Link>
         </div>
 
-        <div className="button-holder">
+        <div className="button-holder-sign-in-up">
           <button onClick={validarCadastro}>
             Cadastrar
           </button>

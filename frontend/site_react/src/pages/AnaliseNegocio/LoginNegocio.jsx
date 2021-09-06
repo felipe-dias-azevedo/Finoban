@@ -71,7 +71,7 @@ function Login() {
                         onChange={(e) => setSenha(e.target.value)}
                     />
                 </div>
-                <div className="button-holder">
+                <div className="button-holder-sign-in-up">
                     <button onClick={validarLogin}>
                         Entrar
                     </button>

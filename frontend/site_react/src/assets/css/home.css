@@ -47,7 +47,7 @@
 .image-home-holder {
     height: 33%;
     width: 75%;
-
+    color: #ffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
 .simulation-title {
     padding: 5rem 1rem 3rem 1rem;
     text-align: center;
-    color: var(--verde);
+    color: var(--texto-verde-branco);
 
     display: flex;
     align-items: center;
@@ -83,7 +83,7 @@
     padding: 3rem 0;
     width: 90%;
     margin: 0 5% 4rem 5%;
-
+    color: var(--texto-verde-branco);
     display: flex;
     align-items: center;
     justify-content: center;

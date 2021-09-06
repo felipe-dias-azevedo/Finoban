@@ -144,7 +144,7 @@ export default function Login() {
           </Link>
         </div>
 
-        <div className="button-holder">
+        <div className="button-holder-sign-in-up">
           <button type="submit">
             Entrar
           </button>

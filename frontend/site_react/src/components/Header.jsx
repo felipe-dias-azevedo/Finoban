@@ -20,12 +20,26 @@ function Header() {
 
     }
 
+
+    const darkMode = () => {
+        const $html = document.querySelector('html');
+        const $darkIcon = document.querySelector('#dark-icon');
+        const $logo = document.querySelector('#logo');
+    
+        $darkIcon.addEventListener('click', () => { 
+            $logo.setAttribute('src', LogoFinobanDark);
+            $html.classList.toggle('dark-mode');
+        })
+    }
+
+   
+
     return (
         <header>
             <div className="topheader">
                 <div className="topheader-logo">
                     <Link to="/">
-                        <img className="logo" src={LogoFinobanLight} alt="" />
+                        <img className="logo" id="logo" src={LogoFinobanLight} alt="" />
                     </Link>
                 </div>
                 <div className="topheader-options">
@@ -35,7 +49,7 @@ function Header() {
                     <button onClick={() => redirecionarParaPagina("login")}>
                         Login
                     </button>
-                    <WiMoonAltWaningGibbous1 className="dark-icon" />
+                    <WiMoonAltWaningGibbous1 onClick={() => darkMode()} id="dark-icon" className="dark-icon" />
                 </div>
             </div>
             <div className="subheader shadow-header">

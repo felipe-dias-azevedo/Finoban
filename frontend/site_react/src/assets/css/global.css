@@ -6,6 +6,7 @@
 
 body {
     font-size: 12px;
+    background: var(--branco)
 }
 
 body, input, button, textarea {
@@ -95,17 +96,17 @@ input:focus {
 }
 
 .shadow {
-    box-shadow: 0 4px 8px rgba(178, 178, 178, 0.3);
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
 .shadow-header {
-    -webkit-box-shadow: -2px 16px 16px -5px rgba(178,178,178,0.37); 
-    box-shadow: -2px 16px 16px -5px rgba(178,178,178,0.37);
+    -webkit-box-shadow: -2px 16px 16px -5px var(--shadow); 
+    box-shadow: -2px 16px 16px -5px var(--shadow);
 }
 
 .shadow-footer {
-    -webkit-box-shadow: 1px -17px 15px 0px rgba(178,178,178,0.45); 
-    box-shadow: 1px -17px 15px 0px rgba(178,178,178,0.45);
+    -webkit-box-shadow: 1px -17px 15px 0px var(--shadow); 
+    box-shadow: 1px -17px 15px 0px var(--shadow);
 }
 
  
