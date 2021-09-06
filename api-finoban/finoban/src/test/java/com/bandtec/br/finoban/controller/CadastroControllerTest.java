@@ -64,7 +64,7 @@ class CadastroControllerTest {
     }
 
     @Test
-    @DisplayName("/GET - Resgata um usuário, status 404")
+    @DisplayName("/GET - Resgata um usuário, status 200")
     void getUsuario() {
         CadastroBuilder cadastroBuilder = new CadastroBuilder();
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
@@ -104,7 +104,7 @@ class CadastroControllerTest {
 
     @Test
     @DisplayName("/POST - Criar nova avaliação sendo que usuário não gostou da solução, mas não deu feedback" +
-            " - status 404")
+            " - status 400")
     void novaAvaliacaoNaoGostouENaoPassouFeedback() {
         AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().setAvaliacaoSemFeedback()
@@ -112,6 +112,16 @@ class CadastroControllerTest {
         Mockito.when(acessoRepository.existsById(1)).thenReturn(true);
         ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
         assertEquals(400, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("/POST - Criar nova avaliação com id de acesso inválido - status 404")
+    void novaAvaliacaoNaoAchouAcesso() {
+        AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
+        Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().getAvaliacao();
+        Mockito.when(acessoRepository.existsById(1)).thenReturn(false);
+        ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
+        assertEquals(404, resposta.getStatusCodeValue());
     }
 
     @Test
