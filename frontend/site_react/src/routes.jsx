@@ -9,6 +9,7 @@ import Simulador from './pages/Simulador';
 import DashboardNegocio from './pages/AnaliseNegocio/DashboardNegocio';
 import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
 import GraficoNegocio from './pages/AnaliseNegocio/GraficoNegocio';
+import SobreNos from './pages/SobreNos';
 
 function Routes() {
 
@@ -21,11 +22,14 @@ function Routes() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/cadastro" component={Cadastro} />
 
+                <Route exact path="/sobrenos" component={SobreNos}/>
                 <Route exact path="/analise" component={LoginNegocio} />
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
                 <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
 
                 <Route exact path="*" component={PaginaInicial} />
+
+            
             </Switch>
         </Router>
     );
