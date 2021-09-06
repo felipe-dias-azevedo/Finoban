@@ -299,7 +299,7 @@ export default function Cadastro() {
           <div className="single-input-holder">
             <h4>Número:</h4>
             <input
-              type="text"
+              type="number"
               name="numeroCasa"
               id="numero_cadastro"
               onChange={(e) => {
