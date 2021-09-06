@@ -193,30 +193,45 @@ function Dashboard() {
     const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
     const [modalShowContratar, setModalShowContratar] = React.useState(false);
     
-    var testeRecebido = localStorage.getItem("testeChave");
-    let dataSimulacao = JSON.parse(testeRecebido);
-
-    var rendaRecebido = dataSimulacao.renda;
-
-    var tempoFinanciamento = parseInt(dataSimulacao.tempoFinanciamento);
-    var valorImovelRecebido = parseFloat(dataSimulacao.valorImovel);
-    console.log(dataSimulacao)
-    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
    
     const anoInicial = new Date().getFullYear();
-    const anoFinal = anoInicial + tempoFinanciamento;
+    const anoFinal = anoInicial + objDashboard.tempoFinanciamento;
     const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
+    // Data
+    var horarioEntrada = sessionStorage.getItem("horarioEntrada");
+    var idUsuario = localStorage.getItem("idUsuario");
 
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+
+    var hora = data.getHours();
+    var minutos = data.getMinutes();
+    if (minutos < 10) {
+        minutos = '0' + minutos;
+    }
+    var segundos = data.getUTCSeconds();
+    if (segundos < 10) {
+        segundos = '0' + segundos;
+    }
+    var milisegundos = data.getMilliseconds();
+
+    var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
+
+    // Pegando dados do localStorage
+    var objDashboard = localStorage.getItem("objDashboard");
     var taxaPresil = localStorage.getItem("taxaPresil");
     var taxaS16 = localStorage.getItem("taxaS16");
     var taxaCifra = localStorage.getItem("taxaCifra");
+    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
 
     var taxaSimulacao = taxaCifra + "% a.a.";
 
-    let financiamentoPresil = financiar(valorImovelRecebido, taxaPresil/29, tempoFinanciamento);
-    let financiamentoS16 = financiar(valorImovelRecebido, taxaS16/30, tempoFinanciamento);
-    let financiamentoCifra = financiar(valorImovelRecebido, taxaCifra/25, tempoFinanciamento);
+    let financiamentoPresil = financiar(objDashboard.valorImovel, taxaPresil/29, objDashboard.tempoFinanciamento);
+    let financiamentoS16 = financiar(objDashboard.valorImovel, taxaS16/30, objDashboard.tempoFinanciamento);
+    let financiamentoCifra = financiar(objDashboard.valorImovel, taxaCifra/25, objDashboard.tempoFinanciamento);
 
     let prestacaoChart = financiamentoCifra.prestacoes[0]
 
@@ -247,9 +262,6 @@ function Dashboard() {
         return data_financiamento;
     }
 
-
-    console.log("VALOR DO INPUT", value)
-
     console.log(financiamentoCifra.prestacoes);
 
     var proximaParcela = financiamentoCifra.prestacoes[1] / 12;
@@ -263,48 +275,16 @@ function Dashboard() {
         console.log(proximaParcelaFormatado);
     }
 
-    var horarioEntrada = sessionStorage.getItem("horarioEntrada");
-    var idUsuario = localStorage.getItem("idUsuario");
-
-    var data = new Date();
-    var dia = String(data.getDate()).padStart(2, '0');
-    var mes = String(data.getMonth() + 1).padStart(2, '0');
-    var ano = data.getFullYear();
-
-    var hora = data.getHours();
-    var minutos = data.getMinutes();
-    if (minutos < 10) {
-        minutos = '0' + minutos;
-    }
-    var segundos = data.getUTCSeconds();
-    if (segundos < 10) {
-        segundos = '0' + segundos;
-    }
-    var milisegundos = data.getMilliseconds();
-
-    var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
-
-    console.log(dataSaida);
-
-    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
-    ;
     // taxaCifra = parseFloat(taxaCifra).toFixed(2) + "% a.a.";
 
-    var valorImovelPresil = localStorage.getItem("valorImovelPresil");
-    var valorImovelS16 = localStorage.getItem("valorImovelS16");
-    var valorImovelCifra = localStorage.getItem("valorImovelCifra");
+    var valorImovelPresil = parseFloat(objDashboard.valorImovelPresil).toFixed();
+    var valorImovelS16 = parseFloat(objDashboard.valorImovelS16).toFixed();
+    var valorImovelCifra = parseFloat(objDashboard.valorImovelCifra).toFixed();
 
-    valorImovelPresil = parseFloat(valorImovelPresil).toFixed();
-    valorImovelS16 = parseFloat(valorImovelS16).toFixed();
-    valorImovelCifra = parseFloat(valorImovelCifra).toFixed();
-
-    var valorPrimeiraPrestacaoPresil = localStorage.getItem("valorPrimeiraPrestacaoPresil");
-    var valorPrimeiraPrestacaoS16 = localStorage.getItem("valorPrimeiraPrestacaoS16");
-    var valorPrimeiraPrestacaoCifra = localStorage.getItem("valorPrimeiraPrestacaoCifra");
-
-    console.log("aaaa", valorPrimeiraPrestacaoCifra);
-
-    var valorImovelCifraFormatado = localStorage.getItem("valorCifraFormatado");
+    var valorPrimeiraPrestacaoPresil = objDashboard.valorPrimeiraPrestacaoPresil
+    var valorPrimeiraPrestacaoS16 = objDashboard.valorPrimeiraPrestacaoS16;
+    var valorPrimeiraPrestacaoCifra = objDashboard.valorPrimeiraCifra;
+    var valorImovelCifraFormatado = objDashboard.valorImovelCifraFormatado;
 
     function reqAcesso(confirmouContratacao) {
         var acesso = {
@@ -312,9 +292,9 @@ function Dashboard() {
             dataHoraSaida: dataSaida,
             paginaSaida: 4,
             statusSaida: confirmouContratacao,
-            renda: dataSimulacao.renda,
-            valorImovel: dataSimulacao.valorImovel,
-            tempoFinanciamento: dataSimulacao.tempoFinanciamento,
+            renda: "",
+            valorImovel: "",
+            tempoFinanciamento: objDashboard.tempoFinanciamento,
             porcentagemRenda: parseInt(porcentagemRenda),
             bancoEscolhido: 2,
             fkRegiao: {
@@ -394,7 +374,7 @@ function Dashboard() {
                         <option value="2">Banco do Presil</option>
                         <option value="3">S16 Bank</option>
                     </select>
-                    <input type="text" value={valorImovelRecebido} disabled />
+                    <input type="text" value={objDashboard.valorImovel} disabled />
                 </div>
                 <div className="box-campos">
                     <CampoItem label="Taxa" valor={taxaSimulacao} />

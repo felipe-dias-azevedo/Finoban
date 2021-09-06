@@ -99,18 +99,24 @@ function Simulador() {
     var primeiraPrestacaoCifraFormatado = valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
     var objSetLocalStorages = {
+        tempoFinanciamento: tempoFinanciamentoRecebido,
+        porcentagemRenda: porcentagemRenda,
         listaFinanciamentoCifra: financiamentoCifra.prestacoes,
+        valorImovel: valorImovelRecebido,
         valorImovelPresil: financiamentoPresil.valor_a_pagar,
         valorImovelS16: financiamentoS16.valor_a_pagar,
         valorImovelCifra: financiamentoCifra.valor_a_pagar,
         valorPrimeiraPrestacaoPresil: primeiraPrestacaoPresilFormatado,
         valorPrimeiraPrestacaoS16: primeiraPrestacaoS16Formatado,
-        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado
+        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado,
+        valorS16Formatado: financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorPresilFormatado: financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorCifraFormatadoL: financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorImovelCifraFormatado: localStorage.setItem("valorCifraFormatado", valorCifraFormatado)
     }
 
     // Objeto enviado para a dashboard
     var objParaDashboard = localStorage.setItem("objDashboard", objSetLocalStorages);
-
     console.log(objParaDashboard);
 
     var valorS16Formatado = financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});

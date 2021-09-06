@@ -1,0 +1,82 @@
+.login{
+    margin: auto;
+    width: 50%;
+    height: 80px;
+    margin-top: 80px;
+    background-attachment: #ffffff;
+    box-shadow: 0 0px 24px rgba(0,0,0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .login h3{ 
+    text-decoration: none;
+    margin: 30px;
+    color: #3A5B62;
+    font-size:30px;
+    text-align: center;
+  }
+
+  .entrar{
+  margin: auto;
+  width: 50%;
+  height: auto;
+  margin-top: 50px;
+  display: flex;
+  
+
+  flex-direction: column;
+  }
+
+  .entrar h3{
+    color: black;
+    margin-top: 25px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .entrar input{
+      color: #3A5B62;
+      text-align: start;
+      padding: 2px 6px 2px 6px;
+  }
+
+  .entrar p{
+    width: 50%;
+    text-align: end;
+}
+
+
+
+  .bt {
+    border:1px solid #3A5B62;
+    border-radius:4px;
+    padding:10px 20px;
+    background-color:#3A5B62;
+    color: #ffffff;
+  } 
+
+.parent-label-login {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.txt-cadastrar {
+  margin-top: 5%;
+  font-size: 16px;
+  width: 100% !important;
+  text-align: center !important;
+  font-weight: 500;
+}
+
+a {
+  font-weight: 500;
+}
+
+.label-erro {
+  color: red;
+}

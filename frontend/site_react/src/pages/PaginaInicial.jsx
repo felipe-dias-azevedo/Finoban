@@ -133,7 +133,7 @@ function PaginaInicial() {
 			const dados = dataSimulador;
 
 			var dadosSimulador = localStorage.setItem(
-				"testeChave",
+				"dadosSimulador",
 				JSON.stringify(dados)
 			);
 		}
