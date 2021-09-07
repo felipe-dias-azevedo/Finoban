@@ -11,6 +11,7 @@ import './assets/css/dashboard-negocio.css';
 import './assets/css/forms.css';
 import './assets/css/footer.css';
 import './styles/login-admin.css';
+import './styles/sobre-nos.css';
 // import './assets/css/comum.css';
 // import './assets/css/simulador.css';
 // import './assets/css/dashboard.css';
