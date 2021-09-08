@@ -10,9 +10,9 @@ function SobreNos() {
         <>
             <Header />
 
-            <div class="container">
+            <div className="container">
 
-                <h3>Sobre o Finoban</h3>
+                <h3 className="h33">Sobre o Finoban</h3>
 
                 <div>
 
@@ -33,8 +33,8 @@ function SobreNos() {
 
 
                 <div className="FirstBox">
-                    <CardTime
 
+                    <CardTime
                         nome="Vinicius Carvalho"
                     />
 

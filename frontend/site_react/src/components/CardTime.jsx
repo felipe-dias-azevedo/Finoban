@@ -6,12 +6,12 @@ return(
 
         <div className="box">
                 <div className="boximg">
-                        <img className="img"src="" alt="" />
+              
                 </div>
             
                 <div className="name">
                     <label>
-                    <h4>{props.nome}</h4>
+                    <h4 className="card">{props.nome}</h4>
                     </label>
         
                 </div>
