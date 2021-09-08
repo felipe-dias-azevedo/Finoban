@@ -3,6 +3,8 @@
     /* background-color: red; */
     text-align: center;
     padding-top: 30px;
+    
+    margin-right: 5%;
 }
 
 .box {
@@ -18,13 +20,24 @@
     font-size: 17px;
 }
 
+.boxes, h4{
+    color: #ffffff;
+}
 
-.img {
-    background-image: url(https://scontent.fcgh3-1.fna.fbcdn.net/v/t1.6435-9/36878593_1001926429966459_8303494121994059776_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=HLbDE8rMlSUAX_lymzk&tn=_N5f_zUE9UASbxm6&_nc_ht=scontent.fcgh3-1.fna&oh=441132fffc265dd07c76db274f71b0af&oe=615A49C0); 
+
+.boximg {
+   background-color: aquamarine;
     background-size: cover;
     height: 290px;
     border-radius: 5px;
 }
+.img {
+    background-color: aquamarine;
+     background-size: cover;
+     height: 290px;
+     border-radius: 5px;
+ }
+
 
 .name{
     background-color: #3A5B62;
@@ -32,7 +45,7 @@
 
 .name {
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .name label {

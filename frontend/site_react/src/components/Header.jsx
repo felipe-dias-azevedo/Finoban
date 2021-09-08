@@ -68,7 +68,7 @@ function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/">
+                            <Link to="/sobrenos">
                                 SOBRE
                             </Link>
                         </li>

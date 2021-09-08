@@ -1,15 +1,17 @@
 import React from 'react';
 
-function CardTime(){
+function CardTime(props){
 return(
 <>
 
         <div className="box">
-                <div className="img"></div>
+                <div className="boximg">
+                        <img className="img"src="" alt="" />
+                </div>
             
                 <div className="name">
                     <label>
-                        Jose Paulo
+                    <h4>{props.nome}</h4>
                     </label>
         
                 </div>
