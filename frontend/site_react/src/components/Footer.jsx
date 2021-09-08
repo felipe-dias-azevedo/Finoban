@@ -27,9 +27,9 @@ function Footer() {
                 <section className="icons">
                     <h4>Nossas redes socias</h4>
                     <div>
-                        <AiFillTwitterSquare style={{ height: 50, width: 50 }} />
-                        <AiFillFacebook style={{ height: 50, width: 50 }} />
-                        <AiFillInstagram style={{ height: 50, width: 50 }} />
+                        <AiFillTwitterSquare className="social-icons" style={{ height: 50, width: 50 }} />
+                        <AiFillFacebook className="social-icons" style={{ height: 50, width: 50 }} />
+                        <AiFillInstagram className="social-icons" style={{ height: 50, width: 50 }} />
                     </div>
                 </section>
                 <section className="copyright">

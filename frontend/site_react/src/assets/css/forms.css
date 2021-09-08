@@ -86,16 +86,7 @@
     justify-content: flex-end;
 }
 
-.form-holder .button-holder-sign-in-up {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-}
 
-
-
-.form-holder .button-holder-sign-in-up > button {
-    margin-top: 3rem;
-    padding: 8px 15%;
+.form-holder .button-holder-sign-in-up > button{
+    padding: 8px 5rem;
 }

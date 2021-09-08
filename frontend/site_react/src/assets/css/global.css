@@ -6,7 +6,8 @@
 
 body {
     font-size: 12px;
-    background: var(--branco)
+    background: var(--branco);
+    transition: background 0.2s linear;
 }
 
 body, input, button, textarea {

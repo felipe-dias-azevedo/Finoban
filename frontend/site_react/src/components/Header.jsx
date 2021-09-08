@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
+import { FaSun } from "react-icons/fa";
+import { FaMoon } from "react-icons/fa";
 import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
 import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
 
@@ -25,14 +27,14 @@ function Header() {
         const $html = document.querySelector('html');
         const $darkIcon = document.querySelector('#dark-icon');
         const $logo = document.querySelector('#logo');
-    
-        $darkIcon.addEventListener('click', () => { 
+
+        $darkIcon.addEventListener('click', () => {
             $logo.setAttribute('src', LogoFinobanDark);
             $html.classList.toggle('dark-mode');
         })
     }
 
-   
+
 
     return (
         <header>
@@ -54,7 +56,9 @@ function Header() {
             </div>
             <div className="subheader shadow-header">
                 <div className="breadcrumb">
-                    <Link to="/">Home</Link>
+                    <div className="breadcrumb-home"><Link to="/">Home</Link></div>
+                    <div className="breadcrumb-analise"><Link to="/">Analise</Link></div>
+                    <div className="crumb"></div>
                 </div>
                 <div className="links">
                     <ul>

@@ -26,3 +26,14 @@
 .footer .copyright h3, p{
     font-size: 14px;
 }
+
+.social-icons {
+    cursor: pointer;
+    padding: 0px;
+}
+.social-icons:hover {
+    color: var(--azul);
+    background-color:var(--preto-terciario);
+    border-radius: 4px;
+    transition: background 0.1s linear;
+}
