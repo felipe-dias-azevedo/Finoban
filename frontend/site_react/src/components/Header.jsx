@@ -23,7 +23,7 @@ function Header() {
     }
 
 
-    const darkMode = () => {
+    const darkMode =  () => {
         const $html = document.querySelector('html');
         const $darkIcon = document.querySelector('#dark-icon');
         const $logo = document.querySelector('#logo');
@@ -78,7 +78,7 @@ function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/">
+                            <Link to="/openbanking">
                                 OPENBANKING
                             </Link>
                         </li>

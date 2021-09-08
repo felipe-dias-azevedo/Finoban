@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import PaginaInicial from './pages/PaginaInicial';
 import Simulador from './pages/Simulador';
-
+import Openbanking from './pages/Openbanking';
 import DashboardNegocio from './pages/AnaliseNegocio/DashboardNegocio';
 import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
 import GraficoNegocio from './pages/AnaliseNegocio/GraficoNegocio';
@@ -21,7 +21,7 @@ function Routes() {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/cadastro" component={Cadastro} />
-
+                <Route exact path="/openbanking" component={Openbanking} />
                 <Route exact path="/sobrenos" component={SobreNos}/>
                 <Route exact path="/analise" component={LoginNegocio} />
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
