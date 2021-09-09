@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../components/HeaderSimulador';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
-import Api from '../services/api';
 
 function Simulador() {
 
@@ -47,9 +46,9 @@ function Simulador() {
     var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
 
     // Taxas
-    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10) + 5;
+    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10);
     var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
-    var taxa3 = respostaSimulacao[2].data.taxaTotal*0.7;
+    var taxa3 = respostaSimulacao[2].data.taxaTotal * 30;
     console.log(taxa3);
 
     var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
@@ -99,19 +98,28 @@ function Simulador() {
     var primeiraPrestacaoCifraFormatado = valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
     var objSetLocalStorages = {
+        tempoFinanciamento: tempoFinanciamentoRecebido,
+        porcentagemRenda: porcentagemRenda,
         listaFinanciamentoCifra: financiamentoCifra.prestacoes,
+        valorImovel: valorImovelRecebido,
         valorImovelPresil: financiamentoPresil.valor_a_pagar,
         valorImovelS16: financiamentoS16.valor_a_pagar,
         valorImovelCifra: financiamentoCifra.valor_a_pagar,
         valorPrimeiraPrestacaoPresil: primeiraPrestacaoPresilFormatado,
         valorPrimeiraPrestacaoS16: primeiraPrestacaoS16Formatado,
-        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado
+        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado,
+        valorS16Formatado: financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorPresilFormatado: financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorCifraFormatado: financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        taxa1:  taxa1.toFixed(2),
+        taxa2: taxa2.toFixed(2),
+        taxa3: taxa3.toFixed(2)
     }
+    
+    console.log(objSetLocalStorages);
 
     // Objeto enviado para a dashboard
-    var objParaDashboard = localStorage.setItem("objDashboard", objSetLocalStorages);
-
-    console.log(objParaDashboard);
+    var objParaDashboard = localStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
 
     var valorS16Formatado = financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     var valorPresilFormatado = financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
