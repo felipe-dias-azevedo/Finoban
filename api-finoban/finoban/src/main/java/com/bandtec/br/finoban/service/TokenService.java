@@ -25,8 +25,6 @@ public class TokenService {
 
     public String generateToken(Usuario usuario) {
 
-        System.out.println("Chave: " + key);
-
         return Jwts.builder()
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(String.valueOf(usuario.getNome()))
