@@ -97,7 +97,7 @@ public class AcessoController {
     }
 
     @DeleteMapping("/ultimos")
-    public ResponseEntity getUltimosAcessos() {
+    public ResponseEntity deleteUltimosAcessos() {
 
         if (filaUltimos.isEmpty()) {
             List<Acesso> acessoList = acessoRepository.findTop5ByOrderByDataHoraSaidaDesc();
@@ -124,10 +124,9 @@ public class AcessoController {
                 avaliacaoRepository.deleteById(pilhaAvaliacoes.pop());
             }
 
-            System.out.println("Deletando o acesso de id = " + filaUltimos.peek());
             acessoRepository.deleteById(filaUltimos.poll());
 
-            return ResponseEntity.status(200).build();
+            return ResponseEntity.status(204).build();
         }
 
         Acesso a = new Acesso();
@@ -144,10 +143,9 @@ public class AcessoController {
             avaliacaoRepository.deleteById(pilhaAvaliacoes.pop());
         }
 
-        System.out.println("Deletando o acesso de id = " + filaUltimos.peek());
         acessoRepository.deleteById(filaUltimos.poll());
 
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(204).build();
     }
 
 
