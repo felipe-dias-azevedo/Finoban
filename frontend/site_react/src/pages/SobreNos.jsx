@@ -25,16 +25,18 @@ function SobreNos() {
                 <div class="boxNormal">
 
                     <div className="titulo">
+                    <br /> 
                         <h3>Sobre o Finoban</h3>
                     </div>
 
                     <div className="conteudo">
                         <p>O Finoban é um projeto pensado e desenvolvido por alunos da
-                            faculdade Bandtec. Com o objetivo de
+                        
+                          faculdade Bandtec. Com o objetivo de <br />
                             entregar
                             uma solução tecnológica para o mercado
-                            financeiro, focada no ramo do financiamento
-                            imobiliário.</p>
+                            financeiro, focada no ramo do financiamento <br />
+                            imobiliário.</p>  <br />
                     </div>
 
 
