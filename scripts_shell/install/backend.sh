@@ -12,3 +12,6 @@ sdk install java 11.0.9.j9-adpt
 
 echo "[Finoban]: Instalando o Maven no sistema"
 sudo apt install -y maven
+
+echo "[Finoban]: Copiando o Script de iniciação"
+cp ~/Finoban/scripts_shell/start/backend.sh ~/

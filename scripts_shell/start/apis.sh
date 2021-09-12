@@ -17,3 +17,7 @@ echo 'API Presil iniciada'
 source apis/iniciar_cifra.sh
 
 echo 'API Cifra iniciada'
+
+echo '\n'
+
+fg

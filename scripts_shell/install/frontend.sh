@@ -12,3 +12,6 @@ sudo apt install -y nodejs npm
 echo "[Finoban]: Instalando pacotes do Node no Frontend"
 cd ~/Finoban/frontend/site_react/
 npm i
+
+echo "[Finoban]: Copiando o Script de iniciação"
+cp ~/Finoban/scripts_shell/start/frontend.sh ~/
