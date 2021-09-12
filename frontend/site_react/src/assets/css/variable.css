@@ -1,4 +1,4 @@
-:root {
+.light-mode {
     --verde: #3A5B62;
     --cinza-claro: #EBEBEC;
     --branco: #FFFFFF;
@@ -12,7 +12,7 @@
     --shadow: rgba(178,178,178,0.45);
 }
 
-.dark-mode:root {
+.dark-mode {
     --verde: #EBECEC;
     --cinza-claro: #252525;
     --branco: #353535;

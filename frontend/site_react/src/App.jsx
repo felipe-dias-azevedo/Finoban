@@ -1,9 +1,24 @@
 import Routes from "./routes";
 
-function App() {
+// CSS
+import './assets/css/variable.css';
+import './assets/css/global.css';
+import './assets/css/header.css';
+import './assets/css/home.css';
+import './assets/css/light.css';
+import './assets/css/dark.css';
+import './assets/css/dashboard-negocio.css';
+import './assets/css/forms.css';
+import './assets/css/footer.css';
+import './styles/login-admin.css';
+import './styles/sobre-nos.css';
+import './styles/openbanking.css';
+
+export default function App() {
+
   return (
-    <Routes />
+      <>
+        <Routes />
+      </>
   );
 }
-
-export default App;

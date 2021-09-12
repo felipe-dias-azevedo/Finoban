@@ -1,38 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
-import Loading from '../assets/images/Loading.gif';
 import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
 import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
+import { DarkModeContext } from '../contexts/DarkModeContext';
 
 function Header() {
 
     const history = useHistory();
-    const [modoEscuroHablitado, setModoEscuroHabilitado] = useState();
-
-    useEffect(() => {
-        const escuro = localStorage.getItem('modoEscuro');
-        setModoEscuroHabilitado(escuro === "true" ? true : false);
-    }, []);
-
-    useEffect(() => {
-        console.log("modo =", modoEscuroHablitado);
-        document.querySelector('html').className = modoEscuroHablitado ? 'dark-mode' : 'light-mode';
-    }, [modoEscuroHablitado]);
-
-    function mudarModoEscuro() {
-        document.querySelector('html').className = modoEscuroHablitado ? 'dark-mode' : 'light-mode';
-        
-        localStorage.setItem('modoEscuro', !modoEscuroHablitado);
-        setModoEscuroHabilitado(!modoEscuroHablitado);
-    }
-
+    const { isDarkEnable, changeDarkModeState } = useContext(DarkModeContext);
+    
     return (
         <header>
             <div className="topheader">
                 <div className="topheader-logo">
                     <Link to="/">
-                        {modoEscuroHablitado ? (
+                        {isDarkEnable ? (
                             <img className="logo" src={LogoFinobanDark} alt="Logo Finoban"/>
                         ) :
                         (
@@ -48,7 +31,7 @@ function Header() {
                     <button onClick={() => history.push("/login")}>
                         Login
                     </button>
-                    <WiMoonAltWaningGibbous1 onClick={() => mudarModoEscuro()} id="dark-icon" className="dark-icon" />
+                    <WiMoonAltWaningGibbous1 onClick={changeDarkModeState} id="dark-icon" className="dark-icon" />
                 </div>
             </div>
             <div className="subheader shadow-header">
