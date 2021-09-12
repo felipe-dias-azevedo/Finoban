@@ -93,7 +93,7 @@ export default function Cadastro() {
     }
     if (email && email.trim() === "") {
       setErroEmail("Insira um e-mail válido")
-    }
+    } 
     if (erroSenha && erroSenha.trim() === "") {
       setErroSenha("Insira uma senha com mais de 6 caracteres")
     }
