@@ -3,12 +3,14 @@ import Seguranca from '../assets/images/seguranca.png';
 import Regulamentacao from '../assets/images/regulamentacao.png';
 import Simplicidade from '../assets/images/simplicidade.png';
 import Liberdade from '../assets/images/liberdade.png';
+import Competitividade from '../assets/images/competitividade.png';
 
 const images = [
+  { url: Liberdade },
+  { url: Simplicidade },
+  { url: Competitividade },
   { url: Seguranca },
   { url: Regulamentacao },
-  { url: Simplicidade },
-  { url: Liberdade },
 ];
 
 const Slider = () => {
@@ -17,7 +19,7 @@ const Slider = () => {
       <SimpleImageSlider
         width={'93%'}
         bgColor={'fffff'}
-        height={500}
+        height={'80%'}
         images={images}
         showBullets={true}
         showNavs={true}

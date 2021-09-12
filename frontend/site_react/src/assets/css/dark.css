@@ -1,4 +1,119 @@
-
-.dark-text {
-    color: var(--branco);
+/*START HEADER*/
+/* header .topheader {
+    background-color: var(--cinza-claro-dark);
 }
+
+.dark-icon {
+    color: var(--verde-dark);
+}
+
+.breadcrumb div:nth-child(-n+2){
+    border-bottom: 2px solid var(--verde-dark);
+}
+
+.breadcrumb .crumb {
+    background-color: var(--verde-dark);
+}
+
+header .subheader {
+    color: var(--verde-light);
+    background-color: var(--branco-dark);
+}
+
+header .subheader .links li:after{    
+    background: var(--verde-dark);
+  } */
+
+/*END HEADER*/
+
+/*START FOOTER*/
+/* .footer {
+    background-color: var(--azul-dark);
+    color: var(--preto-terciario-dark);
+}
+
+.social-icons:hover {
+    color: var(--azul-light);
+    background-color:var(--preto-terciario-dark);
+} */
+
+/*END FOOTER*/
+
+/*START FORMS*/
+/* .form-title {
+    color: var(--texto-base-dark);
+}
+.form-holder {
+    color: var(--texto-base-dark);
+}
+.form-holder .form-subtext-holder {
+    color: var(--verde-dark);
+} */
+/*END FORMS*/
+
+/*START GLOBAL*/
+/* body {
+    background: var(--branco-dark);
+}
+
+button {
+    background-color: var(--verde-dark);
+    color: var(--branco-dark);
+    border: 2px solid var(--verde-dark);
+}
+
+button:hover {
+    background-color: var(--branco-dark);
+    color: var(--verde-dark);
+    border: 2px solid var(--verde-dark);
+}
+
+input, select {
+    border: 2px solid var(--preto-secundario-dark);
+}
+
+input:hover {
+    outline: 2px solid var(--azul-hover-dark);
+}
+
+input:focus {
+    outline: 1px solid var(--azul-hover-dark);
+}
+
+.shadow {
+    box-shadow: 0 4px 8px var(--shadow-dark);
+}
+
+.shadow-header {
+    -webkit-box-shadow: -2px 16px 16px -5px var(--shadow-dark); 
+    box-shadow: -2px 16px 16px -5px var(--shadow-dark);
+}
+
+.shadow-footer {
+    -webkit-box-shadow: 1px -17px 15px 0px var(--shadow-dark); 
+    box-shadow: 1px -17px 15px 0px var(--shadow-dark);
+} */
+/*END GLOBAL*/
+
+/*START HOME*/
+/* .image-home {
+    color: var(--branco-dark);
+}
+
+.simulation-title {
+    color: var(--texto-verde-branco-dark);
+}
+
+.option-value {
+    background-color: var(--branco-dark);
+    color: var(--texto-verde-branco-dark);
+}
+
+.option-value h3 {
+    color: var(--verde-dark);
+} */
+/*END HOME*/
+
+/* .dark {
+   
+} */

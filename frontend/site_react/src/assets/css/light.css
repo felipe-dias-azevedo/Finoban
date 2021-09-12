@@ -1,4 +1,123 @@
-
-.light-text {
-    color: var(--verde);
+/*START HEADER*/
+/* header .topheader {
+    background-color: var(--cinza-claro-light);
 }
+
+.dark-icon {
+    color: var(--verde-light);
+}
+
+.breadcrumb div:nth-child(-n+2){
+    border-bottom: 2px solid var(--verde-light);
+}
+
+.breadcrumb .crumb {
+    background-color: var(--verde-light);
+}
+
+header .subheader {
+    color: var(--verde-light);
+    background-color: var(--branco-light);
+}
+
+header .subheader .links li:after{    
+    background: var(--verde-light);
+  } */
+
+/*END HEADER*/
+
+/*START FOOTER*/
+/* .footer {
+    background-color: var(--azul-light);
+    color: var(--preto-terciario-light);
+}
+
+.social-icons:hover {
+    color: var(--azul-light);
+    background-color:var(--preto-terciario-light);
+}
+
+/*END FOOTER*/
+
+/*START FORMS*/
+/* .form-title {
+    color: var(--texto-base-light);
+}
+.form-holder {
+    color: var(--texto-base-light);
+}
+.form-holder .form-subtext-holder {
+    color: var(--verde-light);
+} */ 
+/*END FORMS*/
+
+/*START GLOBAL*/
+/* body {
+    background: var(--branco-light);
+}
+
+button {
+    background-color: var(--verde-light);
+    color: var(--branco-light);
+    border: 2px solid var(--verde-light);
+}
+
+button:hover {
+    background-color: var(--branco-light);
+    color: var(--verde-light);
+    border: 2px solid var(--verde-light);
+}
+
+input, select {
+    border: 2px solid var(--preto-secundario-light);
+}
+
+input:hover {
+    outline: 2px solid var(--azul-hover-light);
+}
+
+input:focus {
+    outline: 1px solid var(--azul-hover-light);
+}
+
+.shadow {
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.shadow-header {
+    -webkit-box-shadow: -2px 16px 16px -5px var(--shadow-light); 
+    box-shadow: -2px 16px 16px -5px var(--shadow-light);
+}
+
+.shadow-footer {
+    -webkit-box-shadow: 1px -17px 15px 0px var(--shadow-light); 
+    box-shadow: 1px -17px 15px 0px var(--shadow-light);
+} */
+/*END GLOBAL*/
+
+/*START HOME*/
+/* .image-home {
+    color: var(--branco-light);
+}
+
+.simulation-title {
+    color: var(--texto-verde-branco-light);
+}
+
+.option-value {
+    background-color: var(--branco-light);
+    color: var(--texto-verde-branco-light);
+}
+
+.option-value h3 {
+    color: var(--verde-light);
+} */
+/*END HOME*/
+
+/* .light {
+    background-color: var(--cinza-claro-light);
+    color: var(--verde-light);
+    border-bottom: 2px solid var(--verde);
+    background-color: var(--verde);
+
+} */
