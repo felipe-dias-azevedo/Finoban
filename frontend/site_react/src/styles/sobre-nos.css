@@ -1,10 +1,10 @@
-.boxes {
+.boxes-time {
     display:flex ;
     justify-content: space-around;
     
     }
     
-    .box {
+    .box-time {
     display: flex;
         width: 290px;  
         flex-wrap: wrap;
@@ -12,24 +12,27 @@
     
     }
 
-    .teste {
-        
-        width: 290px;  
-        height: 300px;
-        border-radius: 5px 5px 0px 0px;
-    }
+  
     
-    .teste img{
-        background-image: url("../assets/images/ze.png");
-        width: 100%;
+    .box-time img{
+        width: 290px;  
+     background:no-repeat;
         float: right;
         border-radius: 5px 5px 0px 0px;
+        align-items: center;
         
     }
     
     .name{
+        position: relative;
+    
+        width: 400px; /* ajuste a largura */
+       
+        margin: 0 auto; /* alinha a div no centro */
+        top: -50px; 
+
         display: flex;
-        width: 100%;
+        width:88%;
         background-color:#3A5B62;
         height: 40px;
         justify-content: center;

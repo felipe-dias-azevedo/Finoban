@@ -5,26 +5,18 @@ function CardTime(props) {
     return (
         <>
             <div className="container">
-                <div className="box">
-
-                    <div className="teste">
-                        <img src="{Jose}" alt="" className="img" />
-                    </div>
-
+                <div className="box-time">
+                    
+                        <img src={Jose} alt="" className="img" />
 
                     <div class="name">
-                        <label>
+                        
                             <h4>{props.nome}</h4>
-                        </label>
+                        
                     </div>
                 </div>
 
             </div>
-
-
-
-
-
 
         </>
     );

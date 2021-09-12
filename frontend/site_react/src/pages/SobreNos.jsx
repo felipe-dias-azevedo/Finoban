@@ -25,14 +25,14 @@ function SobreNos() {
                 <div class="boxNormal">
 
                     <div className="titulo">
-                    <br /> 
+                        <br />
                         <h3>Sobre o Finoban</h3>
                     </div>
 
                     <div className="conteudo">
                         <p>O Finoban é um projeto pensado e desenvolvido por alunos da
-                        
-                          faculdade Bandtec. Com o objetivo de <br />
+
+                            faculdade Bandtec. Com o objetivo de <br />
                             entregar
                             uma solução tecnológica para o mercado
                             financeiro, focada no ramo do financiamento <br />
@@ -46,27 +46,16 @@ function SobreNos() {
 
 
 
-                <div className="boxes">
-
-                    <div className="box">
-
-                        <div className="teste">
-                            <img className="img" src="../assets/images/ze.png" alt="" />
-                        </div>
-
-                        <div className="name">
-                            <label>
-                                <h4>Jose Paulo</h4>
-                            </label>
-                        </div>
-
-                    </div>
+                <div className="boxes-time">
 
                     <CardTime
                         nome="jossssssssssssssssss" />
 
 
-                </div>  </div>
+
+
+                </div>
+            </div>
 
 
 
