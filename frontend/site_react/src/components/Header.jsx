@@ -1,38 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
+import Loading from '../assets/images/Loading.gif';
 import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
 import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
 
 function Header() {
 
     const history = useHistory();
-
-    const redirecionarParaPagina = (pagina) => {
-        switch (pagina) {
-            case "cadastro":
-                history.push("/cadastro");
-                break;
-            case "login":
-                history.push("/login");
-                break;
-        }
-
-    }
-
     const [modoEscuroHablitado, setModoEscuroHabilitado] = useState();
 
     useEffect(() => {
         const escuro = localStorage.getItem('modoEscuro');
-        setModoEscuroHabilitado(escuro ? escuro : false);
+        setModoEscuroHabilitado(escuro === "true" ? true : false);
     }, []);
 
+    useEffect(() => {
+        console.log("modo =", modoEscuroHablitado);
+        document.querySelector('html').className = modoEscuroHablitado ? 'dark-mode' : 'light-mode';
+    }, [modoEscuroHablitado]);
+
     function mudarModoEscuro() {
-        const $html = document.querySelector('html');
-        $html.classList.toggle('dark-mode');
+        document.querySelector('html').className = modoEscuroHablitado ? 'dark-mode' : 'light-mode';
         
-        setModoEscuroHabilitado(!modoEscuroHablitado);
         localStorage.setItem('modoEscuro', !modoEscuroHablitado);
+        setModoEscuroHabilitado(!modoEscuroHablitado);
     }
 
     return (
@@ -40,14 +32,20 @@ function Header() {
             <div className="topheader">
                 <div className="topheader-logo">
                     <Link to="/">
-                        <img className="logo" src={modoEscuroHablitado ? LogoFinobanLight : LogoFinobanDark} alt=""/>
+                        {modoEscuroHablitado ? (
+                            <img className="logo" src={LogoFinobanDark} alt="Logo Finoban"/>
+                        ) :
+                        (
+                            <img className="logo" src={LogoFinobanLight} alt="Logo Finoban"/>
+                        )}
+                        
                     </Link>
                 </div>
                 <div className="topheader-options">
-                    <button onClick={() => redirecionarParaPagina("cadastro")}>
+                    <button onClick={() => history.push("/cadastro")}>
                         Cadastro
                     </button>
-                    <button onClick={() => redirecionarParaPagina("login")}>
+                    <button onClick={() => history.push("/login")}>
                         Login
                     </button>
                     <WiMoonAltWaningGibbous1 onClick={() => mudarModoEscuro()} id="dark-icon" className="dark-icon" />
