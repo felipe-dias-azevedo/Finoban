@@ -1,0 +1,27 @@
+.titulos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+.titulo-simulador{
+    background-color: var(--branco);
+    border-radius: 4px;
+    height: auto;
+    padding: 1rem 0;
+    margin: 0 5% 4rem 5%;
+    color: var(--texto-verde-branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulos div:nth-child(1){
+    width: 40%;
+}
+ 
+.titulos div:nth-child(2){
+    width: 60%;
+}
