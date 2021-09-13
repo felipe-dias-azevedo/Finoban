@@ -110,6 +110,11 @@ function PaginaInicial() {
 				porcentagemRenda
 			);
 
+			localStorage.setItem(
+				"dadosSimulador",
+				JSON.stringify(dataSimulador)
+			);
+
 			await api
 				.post("/financiamento", dataSimulador, {})
 				.then((e) => {
@@ -130,11 +135,6 @@ function PaginaInicial() {
 					console.error(e);
 					alert("Ocorreu um erro!");
 				});
-				
-			localStorage.setItem(
-				"dadosSimulador",
-				JSON.stringify(dataSimulador)
-			);
 		}
 	}
 
