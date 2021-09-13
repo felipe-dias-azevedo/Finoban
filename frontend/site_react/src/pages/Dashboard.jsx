@@ -67,18 +67,18 @@ function ModalFeedback(props) {
 				</Form.Group>
 			</Modal.Body>
 			<Modal.Footer>
-				<button
+				<div
 					onClick={props.onHide}
 					className="btn-avaliacao-cancelar"
 				>
 					Fechar
-				</button>
-				<button
+				</div>
+				<div
 					onClick={avaliacaoLike}
 					className="btn-avaliacao-enviar"
 				>
 					Enviar
-				</button>
+				</div>
 			</Modal.Footer>
 		</Modal>
 	);
@@ -125,24 +125,24 @@ function ModalContratar(props) {
 					<br />
 
 					<div className="d-flex flex-row">
-						<button className="btn-contratar" onClick={() => {}}>
+						<div className="btn-contato" onClick={() => {}}>
 							Telefone
-						</button>
-						<button
-							className="btn-contratar"
+						</div>
+						<div
+							className="btn-contato"
 							onClick={() => IrWhatsapp()}
 						>
 							WhatsApp
-						</button>
-						<button
-							className="btn-contratar"
+						</div>
+						<div
+							className="btn-contato"
 							onClick={() => IrEmail()}
 						>
 							E-mail
-						</button>
-						<button className="btn-contratar">
+						</div>
+						<div className="btn-contato">
 							Visita na Agência
-						</button>
+						</div>
 					</div>
 
 					<ModalSucesso
@@ -378,24 +378,13 @@ function Dashboard() {
 
 	function alterarSlider(indice) {
 		var testeproxima = financiamentoCifra.prestacoes[indice] / 12;
-		var proximaParcelaFormatado = testeproxima.toLocaleString("pt-br", {
+		proximaParcelaFormatado = testeproxima.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL",
 		});
+		console.log("proxima parcela formatado");
 		console.log(proximaParcelaFormatado);
 	}
-
-	var valorImovelPresil = parseFloat(
-		objDashboard.valorImovelPresil
-	).toFixed();
-	var valorImovelS16 = parseFloat(objDashboard.valorImovelS16).toFixed();
-	var valorImovelCifra = parseFloat(objDashboard.valorImovelCifra).toFixed();
-
-	var valorPrimeiraPrestacaoPresil =
-		objDashboard.valorPrimeiraPrestacaoPresil;
-	var valorPrimeiraPrestacaoS16 = objDashboard.valorPrimeiraPrestacaoS16;
-	var valorPrimeiraPrestacaoCifra = objDashboard.valorPrimeiraCifra;
-	var valorImovelCifraFormatado = objDashboard.valorImovelCifraFormatado;
 
 	function reqAcesso(confirmouContratacao) {
 		var acesso = {

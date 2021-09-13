@@ -121,6 +121,25 @@
     cursor: pointer;
 }
 
+.btn-contato {  
+    margin: 0 20px;
+    width: 20%;
+    height: 40px;
+    background-color: white;
+    box-sizing: border-box;
+    border: 4px solid #3A5B62;
+    border-radius: 4px;
+    color: #3A5B62;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-contato a {
+    color: #3A5B62;
+}
+
 .btn-avaliacao-cancelar {
     background-color: #474646;
     color: white;
@@ -130,6 +149,10 @@
     height: 42px;
     border: none;
     box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-avaliacao-enviar {
@@ -141,6 +164,10 @@
     height: 42px;
     border: none;
     box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="range"] {

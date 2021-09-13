@@ -39,8 +39,6 @@ function GoogleChart(props) {
     console.log(data)
     console.log(listaAnos)
 
-    var primeiraPrestacaoCifraChart = localStorage.getItem("primeiraPrestacaoCifraChart");
-
     return (
         <Chart
             width={"100%"}
