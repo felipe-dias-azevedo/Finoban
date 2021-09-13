@@ -105,7 +105,7 @@ function ModalContratar(props) {
 		>
 			<Modal.Header closeButton>
 				<Modal.Title>
-					<p className="cor-verde">
+					<p className="cor-verde fonte-20">
 						De que forma você gostaria de entrar em contato?
 					</p>
 				</Modal.Title>
@@ -113,7 +113,7 @@ function ModalContratar(props) {
 			<Modal.Body>
 				<Form.Group controlId="exampleForm.ControlTextarea1">
 					<div className="d-flex justify-content-center">
-						<Form.Label className="cor-verde">
+						<Form.Label className="cor-verde fonte-15">
 							Gostaria de agendar um horário?{" "}
 							<input type="checkbox" id="agendar-horario"></input>
 							<br />

@@ -213,3 +213,19 @@ input[type="range"]::-webkit-slider-thumb {
     color: #4B4B4B;
     font-weight: 600;
 }
+
+.cor-verde {
+    color: #3A5B62;
+}
+
+.fonte-15 {
+    font-size: 15px;
+}
+
+.fonte-20 {
+    font-size: 20px;
+}
+
+.mr-15 {
+    margin-right: 15px !important;
+}
