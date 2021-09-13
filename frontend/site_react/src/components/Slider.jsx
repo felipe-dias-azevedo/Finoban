@@ -19,7 +19,7 @@ const Slider = () => {
       <SimpleImageSlider
         width={'93%'}
         bgColor={'fffff'}
-        height={'80%'}
+        height={'90%'}
         images={images}
         showBullets={true}
         showNavs={true}
