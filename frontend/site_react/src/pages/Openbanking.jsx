@@ -12,7 +12,7 @@ function Openbanking() {
 
                 <Slider />
 
-            <div className="box-text openbanking-text shadow">
+            <div className="container openbanking-text">
                 <h2>O que é Open Banking? </h2>
                 <br />
                 <br />

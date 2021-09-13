@@ -9,18 +9,6 @@
     justify-content: center;
 }
 
-.box-text{
-    background-color: var(--branco);
-    border-radius: 4px;
-    height: auto;
-    padding: 1rem 0;
-    margin: 12% 5% 2rem 5%;
-    color: var(--texto-verde-branco);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .openbanking-text {
     padding: 20px 70px;
