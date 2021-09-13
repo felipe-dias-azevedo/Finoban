@@ -26,7 +26,6 @@ function GoogleChart(props) {
     
     var contador1 = 10;
     var contador2 = 0;
-    console.log(props.valor.toString())
     var valorPrestacao = props.valor/12
     console.log(valorPrestacao)
     for (var i = new Date().getFullYear(); i <= props.anos; i++) {

@@ -32,7 +32,6 @@ function ModalFeedback(props) {
 			.then((e) => {
 				console.log(e.data);
 				if (e.status === 201) {
-					console.log("ok");
 					props.onHide();
 				}
 			})
@@ -184,9 +183,9 @@ function ModalSucesso(props) {
 }
 
 function Dashboard() {
-	// Pegando dados do localStorage
+
+	// Dados do localStorage
 	var objDashboard = JSON.parse(localStorage.getItem("objDashboard"));
-	console.log(objDashboard);
 	var porcentagemRenda = localStorage.getItem("porcentagemRenda");
 	var dadosUsuario = localStorage.getItem("dadosUsuario");
 
@@ -194,7 +193,7 @@ function Dashboard() {
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
 	const anoInicial = new Date().getFullYear();
-	const anoFinal = objDashboard ? anoInicial + objDashboard.tempoFinanciamento : anoInicial + 30;
+	const anoFinal = anoInicial + objDashboard.tempoFinanciamento;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
 	window.onbeforeunload = confirmExit;
@@ -262,24 +261,24 @@ function Dashboard() {
     var valorFinalImovel;   
     var valorPrimeiraParcela;
     var nomeBanco;
-    
+
 	if (selectValue == 1) {
         taxaSimulacao = objDashboard.taxa1; 
-        valorFinalImovel = objDashboard.valorImovelCifra;
+        valorFinalImovel = objDashboard.valorImovelCifraFormatado;
         valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoCifra;
         nomeBanco = "Banco Cifra";
     }
 
 	if (selectValue == 2) {
         taxaSimulacao = objDashboard.taxa2;
-        valorFinalImovel = objDashboard.valorImovelPresil;
+        valorFinalImovel = objDashboard.valorImovelPresilFormatado;
         valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoPresil;
         nomeBanco = "Banco do Presil";
     } 
 
 	if (selectValue == 3) {
         taxaSimulacao = objDashboard.taxa3;
-        valorFinalImovel = objDashboard.valorImovelS16;
+        valorFinalImovel = objDashboard.valorImovelS16Formatado;
         valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoS16;
         nomeBanco = "Banco S16";
     }
@@ -288,17 +287,18 @@ function Dashboard() {
 
 	let financiamentoPresil = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa1 / 29,
+		objDashboard.taxa1,
 		objDashboard.tempoFinanciamento
 	);
+
 	let financiamentoS16 = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa2 / 30,
+		objDashboard.taxa2,
 		objDashboard.tempoFinanciamento
 	);
 	let financiamentoCifra = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa3 / 25,
+		objDashboard.taxa3,
 		objDashboard.tempoFinanciamento
 	);
 
@@ -351,23 +351,31 @@ function Dashboard() {
 	});
 
 	function alterarSlider(indice) {
-		var testeproxima = financiamentoCifra.prestacoes[indice] / 12;
-		var proximaParcelaFormatado = testeproxima.toLocaleString("pt-br", {
-			style: "currency",
-			currency: "BRL",
-		});
-		console.log(proximaParcelaFormatado);
+		if (selectValue == 1) {
+			proximaParcela = financiamentoCifra.prestacoes[indice] / 12;
+			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+				style: "currency",
+				currency: "BRL",
+			});
+		}
+
+		if (selectValue == 2) {
+			proximaParcela = financiamentoPresil.prestacoes[indice] / 12;
+			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+				style: "currency",
+				currency: "BRL",
+			});
+		}
+
+		if (selectValue == 3) {
+			proximaParcela = financiamentoS16.prestacoes[indice] / 12;
+			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+				style: "currency",
+				currency: "BRL",
+			});
+		}
+
 	}
-
-	var valorImovelPresil = parseFloat(objDashboard.valorImovelPresil).toFixed();
-	var valorImovelS16 = parseFloat(objDashboard.valorImovelS16).toFixed();
-	var valorImovelCifra = parseFloat(objDashboard.valorImovelCifra).toFixed();
-
-	var valorPrimeiraPrestacaoPresil =
-		objDashboard.valorPrimeiraPrestacaoPresil;
-	var valorPrimeiraPrestacaoS16 = objDashboard.valorPrimeiraPrestacaoS16;
-	var valorPrimeiraPrestacaoCifra = objDashboard.valorPrimeiraCifra;
-	var valorImovelCifraFormatado = objDashboard.valorImovelCifraFormatado;
 
 	function reqAcesso(confirmouContratacao) {
 		var acesso = {
@@ -387,8 +395,6 @@ function Dashboard() {
 				id: parseInt(dadosUsuario.id),
 			},
 		};
-
-		console.log(acesso);
 
 		Api.post("/acessos", acesso, {})
 			.then((e) => {
@@ -412,10 +418,7 @@ function Dashboard() {
 			.then((e) => {
 				console.log(e.data);
 				if (e.status === 201) {
-					console.log("ok");
 					alert("Recebemos a sua avaliação, obrigado!");
-				} else {
-					console.log("erro");
 				}
 			})
 			.catch((e) => {
@@ -456,7 +459,6 @@ function Dashboard() {
 					</div>
 				</div>
 				<div className="box-campos">
-					<p>{selectValue}</p>
 					<select
 						value={selectValue}
 						onChange={(e) => setSelectValue(e.target.value)}
@@ -467,7 +469,7 @@ function Dashboard() {
 					</select>
 					<input
 						type="text"
-						value={objDashboard.valorImovel}
+						value={objDashboard.valorImovelFormatado}
 						disabled
 					/>
 				</div>
