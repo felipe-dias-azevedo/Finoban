@@ -18,3 +18,7 @@ sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
   sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-3.1
+
+echo "[Finoban]: Copiando o Script de iniciação"
+cp -rf ~/Finoban/scripts_shell/start/apis/ ~/
+cp ~/Finoban/scripts_shell/start/apis.sh ~/
