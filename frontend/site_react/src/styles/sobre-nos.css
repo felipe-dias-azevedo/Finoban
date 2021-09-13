@@ -39,6 +39,20 @@
         justify-content: center;
         align-items: center;
         border-radius: 0px 0px 5px 5px;
+        
+        justify-content: space-around
+    }
+    .name h4{
+       
+        color: #ffffff;
+    }
+
+    .name2 h4{
+        align-items: center;
+        display: flex;
+        align-content: center;
+        color: #ffffff;
+        flex-direction: column;
     }
 
     .boxNormal{
@@ -81,4 +95,36 @@
         width: 85%;
         display: flex;
         justify-content: space-between;
+    }
+
+    .box-time:hover .name2 {
+        display: block;
+
+      }
+
+      .box-time .name2 {
+        display: none;
+      }
+
+      
+      
+
+      .name2{
+       
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+       
+        margin: 0 auto; /* alinha a div no centro */
+        top: -100px; 
+
+        display: flex;
+        width:88%;
+        background-color:#3A5B62;
+        height: 55px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px 0px 5px 5px;
+    
     }

@@ -47,17 +47,17 @@ function SobreNos() {
 
                         <CardTime name={timeEnum.VINICIUS.name}
                             img={timeEnum.VINICIUS.imageSource}
-                        //func={timeEnum.VINICIUS.assign}
+                        func={timeEnum.VINICIUS.assign}
                         />
 
                         <CardTime name={timeEnum.JOSE.name}
                             img={timeEnum.JOSE.imageSource}
-                        //func={timeEnum.JOSE.assign}
+                        func={timeEnum.JOSE.assign}
                         />
 
                         <CardTime name={timeEnum.CATARINA.name}
                             img={timeEnum.CATARINA.imageSource}
-                        //func={timeEnum.CATARINA.assign}
+                        func={timeEnum.CATARINA.assign}
                         />
 
                     </div>
@@ -67,17 +67,17 @@ function SobreNos() {
 
                         <CardTime name={timeEnum.FELIPE.name}
                             img={timeEnum.FELIPE.imageSource}
-                        //func={timeEnum.FELIPE.assign}
+                        func={timeEnum.FELIPE.assign}
                         />
 
                         <CardTime name={timeEnum.MARIO.name}
                             img={timeEnum.MARIO.imageSource}
-                        //func={timeEnum.MARIO.assign}
+                        func={timeEnum.MARIO.assign}
                         />
 
                         <CardTime name={timeEnum.VICTOR.name}
                             img={timeEnum.VICTOR.imageSource}
-                        //func={timeEnum.VICTOR.assign}
+                        func={timeEnum.VICTOR.assign}
                         />
 
                     </div>
