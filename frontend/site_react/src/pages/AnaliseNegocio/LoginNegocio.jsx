@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { Alert, AlertTitle } from '@material-ui/lab';
 import api from '../../services/api';
 
 function Login() {
@@ -10,15 +11,23 @@ function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const [styles, setStyles] = useState({
-        border: "2px solid #454545",
-    });
+    const [erroLogin, setErroLogin] = useState(false);
+    const [erroMsgm, setErroMsgm] = useState("");
+
+    const erroStyle = {
+        display: "flex",
+        alingItens: "center",
+        justifyContent: "center"
+    }
 
     function validarLogin() {
 
         if (email.trim() === "" || senha.trim() === "") {
+            setErroLogin(true);
             return;
         }
+
+        setErroLogin(false);
 
         const data = {
             email,
@@ -31,17 +40,18 @@ function Login() {
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
         }).then(e => {
             if (e.status === 200) {
-                history.push('/dashboard');
+                localStorage.setItem("nomeUsuario", e.data.data.nome);
+                localStorage.setItem("idUsuario", e.data.data.id);
+                localStorage.setItem("emailUsuario", e.data.data.email);
+                history.push('/analise/dashboard');
             } else {
-                setStyles({
-                    border: "4px solid red",
-                });
+                setErroLogin(true);
+                setErroMsgm("Usuário ou senha incorreto");
             }
         }).catch(e => {
             console.error(e);
-            setStyles({
-                border: "4px solid red",
-            });
+            setErroLogin(true);
+            setErroMsgm("Erro ao realizar login");
         });
     }
 
@@ -52,11 +62,19 @@ function Login() {
                 <h2>Análise de Dados do Negócio</h2>
             </div>
 
+            {erroLogin && (
+                <div style={erroStyle}>
+                    <Alert severity="error">
+                        <AlertTitle><strong>Erro</strong></AlertTitle>
+                        {erroMsgm}
+                    </Alert>
+                </div>
+            )}
+
             <div className="form-holder">
                 <div className="input-holder">
                     <h4>E-mail:</h4>
                     <input
-                        style={ styles }
                         type="email"
                         name="email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -65,7 +83,6 @@ function Login() {
                 <div className="input-holder">
                     <h4>Senha:</h4>
                     <input
-                        style={ styles }
                         type="password"
                         name="senha"
                         onChange={(e) => setSenha(e.target.value)}
