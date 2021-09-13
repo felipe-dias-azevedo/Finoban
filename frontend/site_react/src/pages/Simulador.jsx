@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/HeaderSimulador';
+import Header from '../components/Header';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
 
@@ -44,7 +44,6 @@ function Simulador() {
     var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10);
     var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
     var taxa3 = respostaSimulacao[2].data.taxaTotal * 30;
-    console.log(taxa3);
 
     var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
     var taxaS16 = localStorage.setItem("taxaS16", taxa2);

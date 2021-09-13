@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CampoItem from "../components/CampoItem";
 import Footer from "../components/Footer";
-import Header from "../components/HeaderDashboard";
+import Header from "../components/Header";
 import { RangeStepInput } from "react-range-step-input";
 import GoogleChart from "../components/GoogleChart";
 import { useHistory } from "react-router";
@@ -32,6 +32,7 @@ function ModalFeedback(props) {
 			.then((e) => {
 				console.log(e.data);
 				if (e.status === 201) {
+					console.log("ok");
 					props.onHide();
 				}
 			})
@@ -183,17 +184,19 @@ function ModalSucesso(props) {
 }
 
 function Dashboard() {
-
-	// Dados do localStorage
+	// Pegando dados do localStorage
 	var objDashboard = JSON.parse(localStorage.getItem("objDashboard"));
+	console.log(objDashboard);
 	var porcentagemRenda = localStorage.getItem("porcentagemRenda");
 	var dadosUsuario = localStorage.getItem("dadosUsuario");
 
-    const history = useHistory();
+	const history = useHistory();
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
 	const anoInicial = new Date().getFullYear();
-	const anoFinal = anoInicial + objDashboard.tempoFinanciamento;
+	const anoFinal = objDashboard
+		? anoInicial + objDashboard.tempoFinanciamento
+		: anoInicial + 30;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
 	window.onbeforeunload = confirmExit;
@@ -257,52 +260,89 @@ function Dashboard() {
 		alert(selectValue);
 	}
 
-	var taxaSimulacao;
-    var valorFinalImovel;   
-    var valorPrimeiraParcela;
-    var nomeBanco;
-
-	if (selectValue == 1) {
-        taxaSimulacao = objDashboard.taxa1; 
-        valorFinalImovel = objDashboard.valorImovelCifraFormatado;
-        valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoCifra;
-        nomeBanco = "Banco Cifra";
-    }
-
-	if (selectValue == 2) {
-        taxaSimulacao = objDashboard.taxa2;
-        valorFinalImovel = objDashboard.valorImovelPresilFormatado;
-        valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoPresil;
-        nomeBanco = "Banco do Presil";
-    } 
-
-	if (selectValue == 3) {
-        taxaSimulacao = objDashboard.taxa3;
-        valorFinalImovel = objDashboard.valorImovelS16Formatado;
-        valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoS16;
-        nomeBanco = "Banco S16";
-    }
-
-    taxaSimulacao = taxaSimulacao + "% a.a.";
+	let financiamentoCifra = financiar(
+		objDashboard.valorImovel,
+		objDashboard.taxa3 / 25,
+		objDashboard.tempoFinanciamento
+	);
 
 	let financiamentoPresil = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa1,
+		objDashboard.taxa1 / 29,
 		objDashboard.tempoFinanciamento
 	);
-
 	let financiamentoS16 = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa2,
-		objDashboard.tempoFinanciamento
-	);
-	let financiamentoCifra = financiar(
-		objDashboard.valorImovel,
-		objDashboard.taxa3,
+		objDashboard.taxa2 / 30,
 		objDashboard.tempoFinanciamento
 	);
 
-	let prestacaoChart = financiamentoCifra.prestacoes[0];
+	var taxaSimulacao;
+	var valorFinalImovel;
+	var valorPrimeiraParcela;
+	var nomeBanco;
+	var proximaParcela;
+	var proximaParcelaFormatado;
+	var ultimaParcela;
+	var ultimaParcelaFormatado;
+	var prestacaoChart;
+
+	if (selectValue == 1) {
+		prestacaoChart = financiamentoCifra.prestacoes[0];
+		taxaSimulacao = objDashboard.taxa3;
+		valorFinalImovel = objDashboard.valorImovelCifraFormatado;
+		valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoCifra;
+		proximaParcela = financiamentoCifra.prestacoes[1] / 12;
+		proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+		});
+		ultimaParcela =
+			financiamentoCifra.prestacoes[financiamentoCifra.prestacoes.length - 1] / 12;
+		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+		});
+		nomeBanco = "Banco Cifra";
+	}
+
+	if (selectValue == 2) {
+		prestacaoChart = financiamentoPresil.prestacoes[0];
+		taxaSimulacao = objDashboard.taxa1;
+		valorFinalImovel = objDashboard.valorImovelPresilFormatado;
+		valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoPresil;
+		proximaParcela = financiamentoPresil.prestacoes[1] / 12;
+		proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+		});
+		ultimaParcela = financiamentoPresil.prestacoes[financiamentoCifra.prestacoes.length - 1] / 12;
+		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
+		style: "currency",
+		currency: "BRL",
+	});
+		nomeBanco = "Banco do Presil";
+	}
+
+	if (selectValue == 3) {
+		prestacaoChart = financiamentoS16.prestacoes[0];
+		taxaSimulacao = objDashboard.taxa3;
+		valorFinalImovel = objDashboard.valorImovelS16Formatado;
+		valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoS16;
+		proximaParcela = financiamentoS16.prestacoes[1] / 12;
+		proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+		});
+		ultimaParcela = financiamentoS16.prestacoes[financiamentoS16.prestacoes.length - 1] / 12;
+		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
+		style: "currency",
+		currency: "BRL",
+	});
+		nomeBanco = "Banco S16";
+	}
+
+	taxaSimulacao = taxaSimulacao + "% a.a.";
 
 	function financiar(valor_imovel, valor_taxa_juros, anos_a_serem_pagos) {
 		var imovel = valor_imovel;
@@ -336,46 +376,26 @@ function Dashboard() {
 		return data_financiamento;
 	}
 
-	var proximaParcela = financiamentoCifra.prestacoes[1] / 12;
-	var proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
-		style: "currency",
-		currency: "BRL",
-	});
-	var ultimaParcela =
-		financiamentoCifra.prestacoes[
-			financiamentoCifra.prestacoes.length - 1
-		] / 12;
-	var ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
-		style: "currency",
-		currency: "BRL",
-	});
-
 	function alterarSlider(indice) {
-		if (selectValue == 1) {
-			proximaParcela = financiamentoCifra.prestacoes[indice] / 12;
-			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
-				style: "currency",
-				currency: "BRL",
-			});
-		}
-
-		if (selectValue == 2) {
-			proximaParcela = financiamentoPresil.prestacoes[indice] / 12;
-			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
-				style: "currency",
-				currency: "BRL",
-			});
-		}
-
-		if (selectValue == 3) {
-			proximaParcela = financiamentoS16.prestacoes[indice] / 12;
-			proximaParcelaFormatado = proximaParcela.toLocaleString("pt-br", {
-				style: "currency",
-				currency: "BRL",
-			});
-		}
-
+		var testeproxima = financiamentoCifra.prestacoes[indice] / 12;
+		var proximaParcelaFormatado = testeproxima.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+		});
+		console.log(proximaParcelaFormatado);
 	}
+
+	var valorImovelPresil = parseFloat(
+		objDashboard.valorImovelPresil
+	).toFixed();
+	var valorImovelS16 = parseFloat(objDashboard.valorImovelS16).toFixed();
+	var valorImovelCifra = parseFloat(objDashboard.valorImovelCifra).toFixed();
+
+	var valorPrimeiraPrestacaoPresil =
+		objDashboard.valorPrimeiraPrestacaoPresil;
+	var valorPrimeiraPrestacaoS16 = objDashboard.valorPrimeiraPrestacaoS16;
+	var valorPrimeiraPrestacaoCifra = objDashboard.valorPrimeiraCifra;
+	var valorImovelCifraFormatado = objDashboard.valorImovelCifraFormatado;
 
 	function reqAcesso(confirmouContratacao) {
 		var acesso = {
@@ -395,6 +415,8 @@ function Dashboard() {
 				id: parseInt(dadosUsuario.id),
 			},
 		};
+
+		console.log(acesso);
 
 		Api.post("/acessos", acesso, {})
 			.then((e) => {
@@ -418,7 +440,10 @@ function Dashboard() {
 			.then((e) => {
 				console.log(e.data);
 				if (e.status === 201) {
+					console.log("ok");
 					alert("Recebemos a sua avaliação, obrigado!");
+				} else {
+					console.log("erro");
 				}
 			})
 			.catch((e) => {
@@ -451,11 +476,10 @@ function Dashboard() {
 
 				<div className="box-campos">
 					<div className="box box-label center">
-						<p className="fw-500">Banco:</p>
-                        <p className="fw-500">{nomeBanco}</p>
+						<p className="fw-500 m-0">Banco:</p>
 					</div>
 					<div className="box box-label center">
-						<p class="fw-500">Valor Imóvel:</p>
+						<p class="fw-500 m-0">Valor Imóvel:</p>
 					</div>
 				</div>
 				<div className="box-campos">
@@ -506,7 +530,7 @@ function Dashboard() {
 						Salvar e Baixar CSV
 					</a>
 					<button
-						className="botao"
+						className="btn-contratar"
 						onClick={() => {
 							setModalShowContratar(true);
 						}}

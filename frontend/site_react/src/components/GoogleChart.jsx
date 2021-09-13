@@ -5,7 +5,7 @@ function GoogleChart(props) {
     const opcoes = {
         title: 'Gasto anual das parcelas:',
         hAxis: { title: 'Ano', titleTextStyle: { color: '#4b4b4b' } },
-        vAxis: {minValue: 0, maxValue: 10 },
+        vAxis: {format: 'short'},
         // For the legend to fit, we make the chart area smaller
         chartArea: { width: '80%', height: '50%' },
         // lineWidth: 25

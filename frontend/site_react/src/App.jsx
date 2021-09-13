@@ -15,6 +15,7 @@ import './assets/css/simulador.css';
 import './styles/login-admin.css';
 import './styles/sobre-nos.css';
 import './styles/openbanking.css';
+import './styles/dashboard-bancos.css';
 
 export default function App() {
 
