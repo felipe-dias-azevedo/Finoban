@@ -5,6 +5,7 @@ import api from '../services/api';
 import { useHistory } from 'react-router';
 import Modal from 'react-bootstrap/Modal'
 import { Link } from 'react-router-dom';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 function ModalLoginSucesso(props) {
 
@@ -21,7 +22,7 @@ function ModalLoginSucesso(props) {
       <Modal.Header closeButton>
         <Modal.Title id="text-center">
           Bem-vindo(a) {nomeUsuario}...
-          </Modal.Title>
+        </Modal.Title>
       </Modal.Header>
     </Modal>
   );
@@ -38,7 +39,7 @@ function ModalLoginErro(props) {
       <Modal.Header closeButton>
         <Modal.Title id="text-center">
           Email ou senha inválidos!
-          </Modal.Title>
+        </Modal.Title>
       </Modal.Header>
     </Modal>
   );
@@ -54,11 +55,18 @@ export default function Login() {
   const [modalLoginShow, setModalLoginShow] = React.useState(false);
   const [modalLoginErroShow, setModalLoginErroShow] = React.useState(false);
 
-  var dadosRecebido = localStorage.getItem("testeChave");
-  
-  let dataSimulacao = JSON.parse(dadosRecebido);
+  const [erroLogin, setErroLogin] = useState(false);
+  const [erroMsgm, setErroMsgm] = useState("");
 
-  console.log(dataSimulacao);
+  const erroStyle = {
+    display: "flex",
+    alingItens: "center",
+    justifyContent: "center"
+  }
+
+  var dadosRecebido = localStorage.getItem("testeChave");
+
+  let dataSimulacao = JSON.parse(dadosRecebido);
 
   function validarLogin(e) {
     e.preventDefault();
@@ -80,20 +88,28 @@ export default function Login() {
         var nomeUsuarioLogado = localStorage.setItem("nomeUsuario", e.data.data.nome);
         var idUsuarioLogado = localStorage.setItem("idUsuario", e.data.data.id);
         var emailUsuarioLogado = localStorage.setItem("emailUsuario", e.data.data.email);
-        setModalLoginShow(true);
-        setTimeout(() => {
-          setModalLoginShow(false);
-          history.push({
-            pathname: '/dashboard'
-          });
-        }, 3000);
+        // setModalLoginShow(true);
+        // setTimeout(() => {
+        //   setModalLoginShow(false);
+        //   history.push({
+        //     pathname: '/dashboard'
+        //   });
+        // }, 3000);
+        history.push({
+          pathname: '/dashboard'
+        });
       } else {
-        setModalLoginErroShow(true);
-        setTimeout(() => {
-          setModalLoginErroShow(false);
-        }, 3000);
+        // setModalLoginErroShow(true);
+        // setTimeout(() => {
+        //   setModalLoginErroShow(false);
+        // }, 3000);
+        setErroLogin(true);
+        setErroMsgm("Usuário ou senha incorreto");
+        console.error(e);
       }
     }).catch(e => {
+      setErroLogin(true);
+      setErroMsgm("Erro ao realizar login");
       console.error(e);
     });
 
@@ -116,6 +132,15 @@ export default function Login() {
       <div className="form-title">
         <h2>Login</h2>
       </div>
+
+      {erroLogin && (
+        <div style={erroStyle}>
+          <Alert severity="error">
+            <AlertTitle><strong>Erro</strong></AlertTitle>
+            {erroMsgm}
+          </Alert>
+        </div>
+      )}
 
       <form onSubmit={validarLogin} className="form-holder">
         <div className="input-holder">
