@@ -43,7 +43,7 @@ function Simulador() {
     // Taxas
     var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10);
     var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
-    var taxa3 = respostaSimulacao[2].data.taxaTotal * 30;
+    var taxa3 = respostaSimulacao[2].data.taxaTotal;
 
     var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
     var taxaS16 = localStorage.setItem("taxaS16", taxa2);
