@@ -24,21 +24,21 @@ function ModalLogin(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <p className="cor-verde">Gostou da nossa proposta?</p>
+                    <p className="cor-verde fonte-20">Gostou da nossa proposta?</p>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <div className="d-flex justify-content-center">
-                        <Form.Label className="cor-verde w-40">
+                        <Form.Label className="cor-verde w-40 fonte-15">
                             Faça login para utilizar de todos os nossos recursos
                         </Form.Label>
                     </div>
                     <br />
 
                     <div className="d-flex flex-row justify-content-around">
-                        <button className="btn-proposta" onClick={props.onHide}>Não fazer login</button>
-                        <button className="btn-proposta bg-verde" onClick={IrLogin}>Fazer Login</button>
+                        <button className="btn-proposta fonte-15" onClick={props.onHide}>Não fazer login</button>
+                        <button className="btn-proposta fonte-15 bg-verde" onClick={IrLogin}>Fazer Login</button>
                     </div>
 
                 </Form.Group>

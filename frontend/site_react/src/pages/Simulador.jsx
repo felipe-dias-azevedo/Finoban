@@ -130,7 +130,7 @@ function Simulador() {
                 <div className="box box-subtitulo center">
                     <h4>Valores dos Bancos referente aos dados mencionados</h4>
                 </div>
-                <div className="bancos center">
+                <div className="bancos">
                     <BankCard 
                         banco="Banco do Presil" 
                         taxa_t ={(taxa1).toFixed(2)} 
