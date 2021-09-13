@@ -53,6 +53,7 @@
         align-content: center;
         color: #ffffff;
         flex-direction: column;
+        margin-top: 5px;
     }
 
     .boxNormal{
@@ -117,12 +118,12 @@
         position: relative;
        
         margin: 0 auto; /* alinha a div no centro */
-        top: -100px; 
+        top: -110px; 
 
         display: flex;
         width:88%;
         background-color:#3A5B62;
-        height: 55px;
+        height: 65px;
         justify-content: center;
         align-items: center;
         border-radius: 0px 0px 5px 5px;
