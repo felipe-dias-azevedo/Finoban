@@ -1,56 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
 import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
 import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
+import { DarkModeContext } from '../contexts/DarkModeContext';
 
 function Header() {
 
     const history = useHistory();
-
-    const redirecionarParaPagina = (pagina) => {
-        switch (pagina) {
-            case "cadastro":
-                history.push("/cadastro");
-                break;
-            case "login":
-                history.push("/login");
-                break;
-        }
-
-    }
-
-    const [modoEscuroHablitado, setModoEscuroHabilitado] = useState();
-
-    useEffect(() => {
-        const escuro = localStorage.getItem('modoEscuro');
-        setModoEscuroHabilitado(escuro ? escuro : false);
-    }, []);
-
-    function mudarModoEscuro() {
-        const $html = document.querySelector('html');
-        $html.classList.toggle('dark-mode');
-        
-        setModoEscuroHabilitado(!modoEscuroHablitado);
-        localStorage.setItem('modoEscuro', !modoEscuroHablitado);
-    }
-
+    const { isDarkEnable, changeDarkModeState } = useContext(DarkModeContext);
+    
     return (
         <header>
             <div className="topheader">
                 <div className="topheader-logo">
                     <Link to="/">
-                        <img className="logo" src={modoEscuroHablitado ? LogoFinobanLight : LogoFinobanDark} alt=""/>
+                        {isDarkEnable ? (
+                            <img className="logo" src={LogoFinobanDark} alt="Logo Finoban"/>
+                        ) :
+                        (
+                            <img className="logo" src={LogoFinobanLight} alt="Logo Finoban"/>
+                        )}
+                        
                     </Link>
                 </div>
                 <div className="topheader-options">
-                    <button onClick={() => redirecionarParaPagina("cadastro")}>
+                    <button onClick={() => history.push("/cadastro")}>
                         Cadastro
                     </button>
-                    <button onClick={() => redirecionarParaPagina("login")}>
+                    <button onClick={() => history.push("/login")}>
                         Login
                     </button>
-                    <WiMoonAltWaningGibbous1 onClick={() => mudarModoEscuro()} id="dark-icon" className="dark-icon" />
+                    <WiMoonAltWaningGibbous1 onClick={changeDarkModeState} id="dark-icon" className="dark-icon" />
                 </div>
             </div>
             <div className="subheader shadow-header">

@@ -140,7 +140,7 @@ function Simulador() {
                         <h4>Valores dos Bancos referente aos dados mencionados</h4>
                     </div>
                 </div>
-                {/*<div className="bancos center">
+                <div className="bancos center">
                     <BankCard 
                         banco="Banco do Presil" 
                         taxa_t = "10.0" //{(taxa1).toFixed(2)}
@@ -165,7 +165,7 @@ function Simulador() {
                         valor_f="10.0"//{valorCifraFormatado} 
                         valor_s="10.0"//{(((respostaSimulacao[2].data.dfi) + (respostaSimulacao[2].data.mip)) / 100).toFixed(2)} 
                     />
-                </div> */}
+                </div> 
             </div>
             <Footer />
         </>
