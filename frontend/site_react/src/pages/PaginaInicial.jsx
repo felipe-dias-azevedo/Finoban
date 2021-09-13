@@ -130,12 +130,10 @@ function PaginaInicial() {
 					console.error(e);
 					alert("Ocorreu um erro!");
 				});
-
-			const dados = dataSimulador;
-
-			var dadosSimulador = localStorage.setItem(
-				"testeChave",
-				JSON.stringify(dados)
+				
+			localStorage.setItem(
+				"dadosSimulador",
+				JSON.stringify(dataSimulador)
 			);
 		}
 	}

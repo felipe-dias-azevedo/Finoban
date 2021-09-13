@@ -194,7 +194,7 @@ function Dashboard() {
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
 	const anoInicial = new Date().getFullYear();
-	const anoFinal = anoInicial + objDashboard.tempoFinanciamento;
+	const anoFinal = objDashboard ? anoInicial + objDashboard.tempoFinanciamento : anoInicial + 30;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
 
 	window.onbeforeunload = confirmExit;

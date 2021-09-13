@@ -36,7 +36,7 @@ function ModalLogin(props) {
                     </div>
                     <br />
 
-                    <div className="d-flex flex-row justify-content-center">
+                    <div className="d-flex flex-row justify-content-around">
                         <button className="btn-proposta" onClick={props.onHide}>Não fazer login</button>
                         <button className="btn-proposta bg-verde" onClick={IrLogin}>Fazer Login</button>
                     </div>

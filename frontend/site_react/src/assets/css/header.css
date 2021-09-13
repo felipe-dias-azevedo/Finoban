@@ -81,7 +81,9 @@ header .subheader {
     color: var(--verde);
     background-color: var(--branco);
     display: flex;
-    justify-content: space-between;
+    /* TODO: ALTERAR ISSO APÓS TIRAR BOOTSTRAP */
+    /* justify-content: space-between; */
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem 5%;
 }
@@ -116,4 +118,6 @@ header .subheader .links li:nth-child(-n+3) {
     margin-right: 1.5rem;
 }
 
-
+header .subheader .links li a {
+    margin: 0;
+}

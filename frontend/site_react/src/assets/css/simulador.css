@@ -55,6 +55,9 @@
 
 .icon-bank {
     width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-self: center;
     border-radius: 4px;
 }
