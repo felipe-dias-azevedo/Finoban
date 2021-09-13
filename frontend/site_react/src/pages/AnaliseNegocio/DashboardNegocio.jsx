@@ -84,7 +84,7 @@ function Dashboard() {
     }
 
     return (
-        <div>
+        <>
             <Header />
             <div id="app">
                 <section className="title-site shadow">
@@ -216,7 +216,7 @@ function Dashboard() {
                 </div>
             </div>
             <Footer />
-        </div>
+        </ >
     );
 }
 
