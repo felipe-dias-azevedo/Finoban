@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import api from "../services/api";
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
-import { Alert, AlertTitle } from '@material-ui/lab'
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { Link } from "react-router-dom";
 
 function validarCNPJ(cnpj) {
