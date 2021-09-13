@@ -10,6 +10,7 @@ import './assets/css/dark.css';
 import './assets/css/dashboard-negocio.css';
 import './assets/css/forms.css';
 import './assets/css/footer.css';
+import './assets/css/simulador.css';
 import './styles/login-admin.css';
 import './styles/sobre-nos.css';
 import './styles/openbanking.css';

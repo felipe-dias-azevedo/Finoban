@@ -7,11 +7,12 @@ function CardTime(props) {
             <div className="container">
                 <div className="box-time">
                     
-                        <img src={Jose} alt="" className="img" />
+                        <img src={props.img} alt="" className="img" />
 
                     <div class="name">
                         
-                            <h4>{props.nome}</h4>
+                            <h4>{props.name}</h4> <br/>
+                            <h4>{props.func}</h4>
                         
                     </div>
                 </div>

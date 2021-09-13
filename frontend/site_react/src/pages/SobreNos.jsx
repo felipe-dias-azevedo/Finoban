@@ -2,12 +2,7 @@ import React from 'react';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CardTime from "../components/CardTime";
-import Jose from '../assets/images/ze.png';
-import Cat from '../assets/images/cat.png';
-import Mario from '../assets/images/mario.png';
-import Victor from '../assets/images/victor.png';
-import Vini from '../assets/images/vini.png';
-import Felipe from '../assets/images/felipe.png';
+import timeEnum from '../utils/timeEnum';
 
 
 
@@ -48,16 +43,56 @@ function SobreNos() {
 
                 <div className="boxes-time">
 
-                    <CardTime
-                        nome="jossssssssssssssssss" />
+                    <div className="parte1">
 
+                        <CardTime name={timeEnum.VINICIUS.name}
+                            img={timeEnum.VINICIUS.imageSource}
+                        //func={timeEnum.VINICIUS.assign}
+                        />
+
+                        <CardTime name={timeEnum.JOSE.name}
+                            img={timeEnum.JOSE.imageSource}
+                        //func={timeEnum.JOSE.assign}
+                        />
+
+                        <CardTime name={timeEnum.CATARINA.name}
+                            img={timeEnum.CATARINA.imageSource}
+                        //func={timeEnum.CATARINA.assign}
+                        />
+
+                    </div>
+                    
+
+                    <div className="parte2">
+
+                        <CardTime name={timeEnum.FELIPE.name}
+                            img={timeEnum.FELIPE.imageSource}
+                        //func={timeEnum.FELIPE.assign}
+                        />
+
+                        <CardTime name={timeEnum.MARIO.name}
+                            img={timeEnum.MARIO.imageSource}
+                        //func={timeEnum.MARIO.assign}
+                        />
+
+                        <CardTime name={timeEnum.VICTOR.name}
+                            img={timeEnum.VICTOR.imageSource}
+                        //func={timeEnum.VICTOR.assign}
+                        />
+
+                    </div>
 
 
 
                 </div>
+
+
+
+
+
+
+
             </div>
-
-
 
             <Footer />
         </>
