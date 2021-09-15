@@ -20,8 +20,9 @@ function GraficoNegocio() {
         } else {
             // console.log(sessionStorage.getItem('dataDash'));
             setDataDashboard(JSON.parse(sessionStorage.getItem('dataDash')));
+            sessionStorage.removeItem('dataDash');
         }
-    }, [])
+    }, []);
 
     return (
         <>
