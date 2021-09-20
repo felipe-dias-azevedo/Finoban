@@ -53,11 +53,6 @@ function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/">
-                                PARCEIROS
-                            </Link>
-                        </li>
-                        <li>
                             <Link to="/openbanking">
                                 OPENBANKING
                             </Link>

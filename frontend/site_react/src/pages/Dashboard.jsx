@@ -184,11 +184,11 @@ function ModalSucesso(props) {
 }
 
 function Dashboard() {
-	// Pegando dados do localStorage
-	var objDashboard = JSON.parse(localStorage.getItem("objDashboard"));
+	// Pegando dados do sessionStorage
+	var objDashboard = JSON.parse(sessionStorage.getItem("objDashboard"));
 	console.log(objDashboard);
-	var porcentagemRenda = localStorage.getItem("porcentagemRenda");
-	var dadosUsuario = localStorage.getItem("dadosUsuario");
+	var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
+	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
 
 	const history = useHistory();
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
@@ -326,7 +326,7 @@ function Dashboard() {
 
 	if (selectValue == 3) {
 		prestacaoChart = financiamentoS16.prestacoes[0];
-		taxaSimulacao = objDashboard.taxa3;
+		taxaSimulacao = objDashboard.taxa2;
 		valorFinalImovel = objDashboard.valorImovelS16Formatado;
 		valorPrimeiraParcela = objDashboard.valorPrimeiraPrestacaoS16;
 		proximaParcela = financiamentoS16.prestacoes[1] / 12;
