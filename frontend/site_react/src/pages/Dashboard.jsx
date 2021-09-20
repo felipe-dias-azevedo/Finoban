@@ -186,9 +186,12 @@ function ModalSucesso(props) {
 function Dashboard() {
 	// Pegando dados do sessionStorage
 	var objDashboard = JSON.parse(sessionStorage.getItem("objDashboard"));
-	console.log(objDashboard);
 	var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
 	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
+
+	if (objDashboard == null) {
+		window.location.href="/";
+	}
 
 	const history = useHistory();
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);

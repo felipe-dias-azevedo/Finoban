@@ -2,8 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
+import { useHistory } from "react-router";
 
 function Simulador() {
+
+    const history = useHistory();   
 
     // Local Storage
     var horarioEntrada = sessionStorage.getItem("horarioEntrada");
@@ -11,6 +14,10 @@ function Simulador() {
     var dadosSimuladorRecebido = sessionStorage.getItem("dadosSimulador");
     var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
     var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
+
+    if (dadosSimuladorRecebido == null) {
+        window.location.href="/";
+    }
 
     // Data
     var data = new Date();
