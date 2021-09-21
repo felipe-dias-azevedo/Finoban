@@ -1,14 +1,10 @@
-.container-slider{
-    width: 100%;
-    margin: 0 auto;
-    margin: auto;
-    height: 504px;
-    margin-top: 60px;
-    border-radius: 8px;
+.box-text-openbanking {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin: 5% 5% 2rem 5%;
 }
-
 
 .openbanking-text {
     padding: 20px 70px;
@@ -21,4 +17,15 @@
 }
 .openbanking-text p{
     color: var(--preto-terciario);
+    text-align: center;
+    font-size: 16px;
+}
+
+.carousel-indicators {
+    margin-bottom: 50px;
+}
+
+.carousel { 
+    padding-right: 5%;
+    padding-left: 5%;
 }

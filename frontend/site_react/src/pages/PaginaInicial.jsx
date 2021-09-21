@@ -105,12 +105,12 @@ function PaginaInicial() {
 			};
 
 			console.log(dataSimulador);
-			var porcentagemRecebida = localStorage.setItem(
+			var porcentagemRecebida = sessionStorage.setItem(
 				"porcentagemRenda",
 				porcentagemRenda
 			);
 
-			localStorage.setItem(
+			sessionStorage.setItem(
 				"dadosSimulador",
 				JSON.stringify(dataSimulador)
 			);
@@ -121,7 +121,7 @@ function PaginaInicial() {
 					console.log(e.data);
 					var respostaSimulacao = e.data;
 					if (e.status == 200) {
-						var respostaFinanciamento = localStorage.setItem(
+						var respostaFinanciamento = sessionStorage.setItem(
 							"respostaFinanciamento",
 							JSON.stringify(respostaSimulacao)
 						);

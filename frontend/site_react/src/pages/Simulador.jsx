@@ -2,15 +2,22 @@ import React from 'react';
 import Header from '../components/Header';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
+import { useHistory } from "react-router";
 
 function Simulador() {
 
+    const history = useHistory();   
+
     // Local Storage
     var horarioEntrada = sessionStorage.getItem("horarioEntrada");
-    var idUsuario = localStorage.getItem("idUsuario");
-    var dadosSimuladorRecebido = localStorage.getItem("dadosSimulador");
-    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
-    var porcentagemRenda = localStorage.getItem("porcentagemRenda");
+    var idUsuario = sessionStorage.getItem("idUsuario");
+    var dadosSimuladorRecebido = sessionStorage.getItem("dadosSimulador");
+    var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
+    var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
+
+    if (dadosSimuladorRecebido == null) {
+        window.location.href="/";
+    }
 
     // Data
     var data = new Date();
@@ -36,18 +43,18 @@ function Simulador() {
     var valorImovelRecebido = dataSimulacao.valorImovel;
     var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
 
-    var respostaSimulacao = JSON.parse(localStorage.getItem("respostaFinanciamento"));
+    var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
 
     var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
 
     // Taxas
-    var taxa1 = (respostaSimulacao[0].data.taxaTotal * 10);
-    var taxa2 = respostaSimulacao[1].data.taxaTotal * 100;
+    var taxa1 = respostaSimulacao[0].data.taxaTotal * 5;
+    var taxa2 = respostaSimulacao[1].data.taxaTotal * 3;
     var taxa3 = respostaSimulacao[2].data.taxaTotal;
 
-    var taxaPresil = localStorage.setItem("taxaPresil", taxa1);
-    var taxaS16 = localStorage.setItem("taxaS16", taxa2);
-    var taxaCifra = localStorage.setItem("taxaCifra", taxa3);
+    var taxaPresil = sessionStorage.setItem("taxaPresil", taxa1);
+    var taxaS16 = sessionStorage.setItem("taxaS16", taxa2);
+    var taxaCifra = sessionStorage.setItem("taxaCifra", taxa3);
 
     let financiamentoPresil = financiar(valorImovelRecebido, taxa1/29, tempoFinanciamentoRecebido);
     let financiamentoS16 = financiar(valorImovelRecebido, taxa2/30, tempoFinanciamentoRecebido);
@@ -111,13 +118,13 @@ function Simulador() {
     console.log(objSetLocalStorages);
 
     // Objeto enviado para a dashboard
-    var objParaDashboard = localStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
+    var objParaDashboard = sessionStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
 
     var valorS16Formatado = financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     var valorPresilFormatado = financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     var valorCifraFormatado = financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
-    var valorImovelCifraFormatado = localStorage.setItem("valorCifraFormatado", valorCifraFormatado);
+    var valorImovelCifraFormatado = sessionStorage.setItem("valorCifraFormatado", valorCifraFormatado);
     
     return (
         <>

@@ -16,7 +16,7 @@ function Dashboard() {
     const [chartsVisible, setChartsVisible] = useState([
         true,true,true,true,true,true,true,true,true,true,true
     ]);
-    const [dataDashboard, setDataDashboard] = useState(!!sessionStorage.getItem);
+    const [dataDashboard, setDataDashboard] = useState();
 
     useEffect(() => {
         api.get("/dashboard", {}, {
@@ -30,14 +30,6 @@ function Dashboard() {
             console.error(e);
         });
     }, []);
-
-    if (!dataDashboard) {
-        return (
-            <div id="app-loading">
-                <img src={Loading} alt="loading" className="loading" />
-            </div>
-        );
-    }
 
     function handleSwitch(index) {
         setChartsVisible(prevState => {
@@ -81,6 +73,14 @@ function Dashboard() {
                 return coppyChart;
             }));
         }
+    }
+
+    if (!dataDashboard) {
+        return (
+            <div id="app-loading">
+                <img src={Loading} alt="loading" className="loading" />
+            </div>
+        );
     }
 
     return (
