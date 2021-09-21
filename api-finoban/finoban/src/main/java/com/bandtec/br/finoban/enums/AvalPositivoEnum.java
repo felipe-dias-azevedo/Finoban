@@ -59,6 +59,19 @@ public enum AvalPositivoEnum {
         }
     }
 
+    public static boolean validarEnum(int indice) {
+        switch (indice) {
+            case 0:
+                return true;
+            case 1:
+                return true;
+            case 2:
+                return true;
+            default:
+                return false;
+        }
+    }
+
 
     public static String tirarAcentos(String texto) {
         return Normalizer.normalize(texto, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");

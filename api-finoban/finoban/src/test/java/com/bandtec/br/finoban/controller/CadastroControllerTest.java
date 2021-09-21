@@ -6,11 +6,9 @@ import com.bandtec.br.finoban.entidades.Avaliacao;
 import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.AvaliacaoRepository;
-import com.bandtec.br.finoban.repository.CadastroRepository;
-import com.fasterxml.jackson.databind.util.ArrayIterator;
+import com.bandtec.br.finoban.repository.UsuarioRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +28,7 @@ class CadastroControllerTest {
     @Autowired
     CadastroController cadastroController;
     @MockBean
-    CadastroRepository cadastroRepository;
+    UsuarioRepository cadastroRepository;
     @MockBean
     private AvaliacaoRepository avaliacaoRepository;
     @MockBean

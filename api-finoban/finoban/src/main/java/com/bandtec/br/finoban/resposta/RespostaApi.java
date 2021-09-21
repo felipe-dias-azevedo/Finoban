@@ -1,7 +1,9 @@
 package com.bandtec.br.finoban.resposta;
 
 import com.bandtec.br.finoban.models.Data;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RespostaApi {
 
     private boolean ok;

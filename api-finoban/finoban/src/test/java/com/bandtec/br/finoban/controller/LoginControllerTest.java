@@ -4,7 +4,7 @@ import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.builder.LoginBuilder;
 import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.models.Login;
-import com.bandtec.br.finoban.repository.CadastroRepository;
+import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ class LoginControllerTest {
     LoginController controller;
 
     @MockBean
-    CadastroRepository cadastroRepository;
+    UsuarioRepository cadastroRepository;
 
     @Test
     @DisplayName("/POST - Fazer login com usuário já existente - STATUS 200")

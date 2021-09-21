@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.repository.CadastroRepository;
+import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.models.Login;
 import com.bandtec.br.finoban.resposta.ResponseGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -17,7 +16,7 @@ import java.util.List;
 public class LoginController {
 
     @Autowired
-    private CadastroRepository cadastroRepository;
+    private UsuarioRepository cadastroRepository;
 
     List<String> usuariosLogados = new ArrayList<>();
 
