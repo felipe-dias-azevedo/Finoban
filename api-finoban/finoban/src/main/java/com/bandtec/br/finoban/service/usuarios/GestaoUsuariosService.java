@@ -5,6 +5,7 @@ import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.exceptions.ClienteNaoEncontradoException;
 import com.bandtec.br.finoban.exceptions.EmailNaoEncontradoException;
 import com.bandtec.br.finoban.exceptions.SenhaIncorretaException;
+import com.bandtec.br.finoban.exceptions.UsuarioJaCadastradoException;
 import com.bandtec.br.finoban.models.Login;
 import com.bandtec.br.finoban.recursoes.RecursoesHelper;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
@@ -27,6 +28,10 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
     @Override
     public ResponseEntity cadastrarUsuario(Usuario usuario) {
+
+        if (usuarioRepository.existsUsuarioByEmail(usuario.getEmail()))
+            return new ResponseEntity(new UsuarioJaCadastradoException(), HttpStatus.NOT_FOUND);
+
         usuarioRepository.save(usuario);
         atualizarDadosCadastrais(usuario);
         return ResponseEntity.status(201).body(new ResponseGeneric(usuario));
