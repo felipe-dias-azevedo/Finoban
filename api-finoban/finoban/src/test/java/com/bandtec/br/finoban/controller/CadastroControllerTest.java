@@ -85,7 +85,7 @@ class CadastroControllerTest {
     void novaAvaliacaoGostou() {
         AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoGostou().getAvaliacao();
-        Mockito.when(acessoRepository.existsById(1)).thenReturn(true);
+        Mockito.when(!acessoRepository.existsById(1)).thenReturn(false);
         ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
         assertEquals(201, resposta.getStatusCodeValue());
     }

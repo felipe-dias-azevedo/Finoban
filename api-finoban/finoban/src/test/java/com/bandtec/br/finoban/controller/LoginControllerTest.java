@@ -66,8 +66,7 @@ class LoginControllerTest {
         Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
         ResponseEntity<ResponseGeneric<Usuario>> resposta = controller.efetuarLogoff(login);
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(String.format("%s, você foi deslogado com sucesso!", usuario.getNome()), resposta.getBody().
-                getData());
+        assertEquals("Usuário deslogado com sucesso!", resposta.getBody().getData());
     }
 
     @Test
