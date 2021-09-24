@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class DateHelper {
 
-    public static boolean obterMinutosDoJwt(long exp) {
+    public static boolean verificarJwtExpirou(long exp) {
         Instant instant = Instant.ofEpochSecond(exp);
         Date date = Date.from(instant);
         System.out.println(date);

@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.recursoes;
+package com.bandtec.br.finoban.helpers;
 
 import com.bandtec.br.finoban.entidades.Usuario;
 import com.bandtec.br.finoban.exceptions.UsuarioLogadoException;

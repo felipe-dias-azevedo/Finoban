@@ -1,2 +1,11 @@
-package com.bandtec.br.finoban.repository;public class SendEmailRepository {
+package com.bandtec.br.finoban.repository;
+
+import com.bandtec.br.finoban.entidades.Usuario;
+import org.springframework.http.ResponseEntity;
+
+import javax.mail.MessagingException;
+import java.io.IOException;
+
+public interface SendEmailRepository {
+    ResponseEntity sendEmail(Usuario usuario, String url) throws MessagingException, IOException;
 }
