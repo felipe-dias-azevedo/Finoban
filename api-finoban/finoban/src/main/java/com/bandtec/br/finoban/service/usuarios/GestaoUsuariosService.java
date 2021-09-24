@@ -84,7 +84,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         String senhaCriptografada = Criptografia.criptografarComHashingMaisSaltMaisId(usuarioVerificar.getSenha(), usuarioVerificar.getId());
         usuarioVerificar.setSenha(senhaCriptografada);
         usuarioRepository.redefinirSenhaUsuario(senhaCriptografada, usuario.getId());
-        return ResponseEntity.status(200).body(new ResponseGeneric(usuarioVerificar));
+        return ResponseEntity.status(201).body(new ResponseGeneric(usuarioVerificar));
     }
 
     @Override
@@ -102,7 +102,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         usuarioVerificar.setSenha(senhaCriptografada);
         usuarioRepository.redefinirSenhaUsuario(senhaCriptografada, usuario.getId());
         redefinicaoSenhaRepository.updateCampoExpirado(redefinicaoSenha.getId());
-        return ResponseEntity.status(200).body(new ResponseGeneric(usuarioVerificar));
+        return ResponseEntity.status(201).body(new ResponseGeneric(usuarioVerificar));
     }
 
     @Override
