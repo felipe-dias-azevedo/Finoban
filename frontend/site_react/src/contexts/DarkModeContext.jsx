@@ -29,5 +29,5 @@ export function DarkModeProvider({ children }) {
         >
             {children}
         </DarkModeContext.Provider>
-    )
+    );
 }

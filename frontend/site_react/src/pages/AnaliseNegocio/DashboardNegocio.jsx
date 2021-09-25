@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Switch from "react-switch";
 import ChartHolder from '../../components/AnaliseNegocio/ChartHolder';
 import MovableItem from '../../components/AnaliseNegocio/MovableItem';
 import chartsPreset from '../../utils/chartsPreset';
 import Chart from '../../components/AnaliseNegocio/Chart';
-import api from '../../services/api';
-import Loading from '../../assets/images/Loading.gif';
 import DataChartHandler from '../../utils/dataChartHandler';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { NegocioContext } from '../../contexts/NegocioContext';
+import LoadingScreen from '../../components/LoadingScreen';
+import { SwitchGraficoNegocioContext } from '../../contexts/SwitchGraficoNegocioContext';
 
-function Dashboard() {
+export default function Dashboard() {
 
     const [charts, setCharts] = useState(chartsPreset);
-    const [chartsVisible, setChartsVisible] = useState([
-        true,true,true,true,true,true,true,true,true,true,true
-    ]);
-    const [dataDashboard, setDataDashboard] = useState();
-
-    useEffect(() => {
-        api.get("/dashboard", {}, {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-        }).then(e => {
-            const data = e.data;
-            setDataDashboard(data);
-            sessionStorage.setItem('dataDash', JSON.stringify(data));
-        }).catch(e => {
-            console.error(e);
-        });
-    }, []);
+    const { chartsVisible, setChartsVisible } = useContext(SwitchGraficoNegocioContext);
+    const { dataDashboard } = useContext(NegocioContext);
 
     function handleSwitch(index) {
         setChartsVisible(prevState => {
@@ -59,7 +45,7 @@ function Dashboard() {
         )
     }
 
-    const moveCardHandler = (dragIndex, hoverIndex) => {
+    function moveCardHandler(dragIndex, hoverIndex) {
         const dragItem = charts[dragIndex];
 
         if (dragItem) {
@@ -77,9 +63,7 @@ function Dashboard() {
 
     if (!dataDashboard) {
         return (
-            <div id="app-loading">
-                <img src={Loading} alt="loading" className="loading" />
-            </div>
+            <LoadingScreen />
         );
     }
 
@@ -219,5 +203,3 @@ function Dashboard() {
         </ >
     );
 }
-
-export default Dashboard;

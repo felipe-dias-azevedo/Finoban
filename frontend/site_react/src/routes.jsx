@@ -10,6 +10,8 @@ import DashboardNegocio from './pages/AnaliseNegocio/DashboardNegocio';
 import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
 import GraficoNegocio from './pages/AnaliseNegocio/GraficoNegocio';
 import SobreNos from './pages/SobreNos';
+import { NegocioProvider } from './contexts/NegocioContext';
+import { SwitchGraficoNegocioProvider } from './contexts/SwitchGraficoNegocioContext';
 
 function Routes() {
 
@@ -24,8 +26,13 @@ function Routes() {
                 <Route exact path="/openbanking" component={Openbanking} />
                 <Route exact path="/sobrenos" component={SobreNos}/>
                 <Route exact path="/analise" component={LoginNegocio} />
-                <Route exact path="/analise/dashboard" component={DashboardNegocio} />
-                <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
+
+                <NegocioProvider>
+                    <SwitchGraficoNegocioProvider>
+                        <Route exact path="/analise/dashboard" component={DashboardNegocio} />
+                    </SwitchGraficoNegocioProvider>
+                    <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
+                </NegocioProvider>
 
                 <Route exact path="*" component={PaginaInicial} />
 

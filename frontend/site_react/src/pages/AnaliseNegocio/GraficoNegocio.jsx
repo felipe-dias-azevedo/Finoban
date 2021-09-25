@@ -1,28 +1,25 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Chart from "../../components/AnaliseNegocio/Chart";
 import chartsPreset from '../../utils/chartsPreset';
 import DataChartHandler from '../../utils/dataChartHandler';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { NegocioContext } from '../../contexts/NegocioContext';
+import LoadingScreen from "../../components/LoadingScreen";
 
 function GraficoNegocio() {
 
-    const history = useHistory();
     const params = useParams();
     const [chart, setChart] = useState(chartsPreset[params.id]);
-    const [dataDashboard, setDataDashboard] = useState();
+    const { dataDashboard } = useContext(NegocioContext);
 
-    useEffect(() => {
-        if (!sessionStorage.getItem('dataDash')) {
-            history.push("/analise/dashboard");
-        } else {
-            // console.log(sessionStorage.getItem('dataDash'));
-            setDataDashboard(JSON.parse(sessionStorage.getItem('dataDash')));
-            sessionStorage.removeItem('dataDash');
-        }
-    }, []);
+    if (!dataDashboard) {
+        return (
+            <LoadingScreen />
+        );
+    }
 
     return (
         <>
@@ -31,16 +28,14 @@ function GraficoNegocio() {
                 <section className="title-site">
                     <h1>{chart.name}</h1>
                 </section>
-                { dataDashboard && (
-                    <div className={"chart specific-chart"}>
-                        <Chart
-                            id={chart.graphic}
-                            data={
-                                DataChartHandler(chart.graphic, chart.id, dataDashboard)
-                            } 
-                            />
-                    </div>
-                )}
+                <div className="chart specific-chart">
+                    <Chart
+                        id={chart.graphic}
+                        data={
+                            DataChartHandler(chart.graphic, chart.id, dataDashboard)
+                        } 
+                    />
+                </div>
             </div>
             <Footer />
         </>

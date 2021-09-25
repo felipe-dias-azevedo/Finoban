@@ -1,5 +1,6 @@
 import { useDrag } from "react-dnd";
 import { Link } from "react-router-dom";
+import { FiExternalLink } from "react-icons/fi";
 
 function MovableItem({children, id, name, idGraph}) {
 
@@ -22,6 +23,7 @@ function MovableItem({children, id, name, idGraph}) {
         >
             <Link to={`/analise/dashboard/${idGraph}`}>
                 <h3>{name}</h3>
+                <FiExternalLink />
             </Link>
             <div>
                 {children}
