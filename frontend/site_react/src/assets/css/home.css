@@ -174,3 +174,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 1200px) {
+    .option-values-fulfill {
+        flex-direction: column;
+    }
+}

@@ -121,7 +121,7 @@
     cursor: pointer;
 }
 
-.btn-contato {  
+.btn-contato {
     margin: 0 20px;
     width: 20%;
     height: 40px;
@@ -134,6 +134,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
 }
 
 .btn-contato a {
@@ -209,6 +210,10 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: -1040px 0 0 1040px #3A5B62, inset 0 0 0 40px #fff;
 }
 
+#input-hora {
+    margin: 15px;
+}
+
 .anoFin {
     color: #4B4B4B;
     font-weight: 600;
@@ -228,4 +233,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 .mr-15 {
     margin-right: 15px !important;
+}
+
+.bg-transparente {
+    background-color: transparent;
 }
