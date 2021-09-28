@@ -144,7 +144,7 @@ const Form = () => {
 						required
 					/>
 					{errors.email && (
-						<p className="help is-danger">{errors.email}</p>
+						<p className="text-danger mt-3">{errors.email}</p>
 					)}
 				</div>
 				<div className="input-holder">
@@ -158,7 +158,7 @@ const Form = () => {
 						required
 					/>
 					{errors.password && (
-						<p className="help is-danger">{errors.password}</p>
+						<p className="text-danger mt-3">{errors.password}</p>
 					)}
 				</div>
 
