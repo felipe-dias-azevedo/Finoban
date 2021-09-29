@@ -159,7 +159,14 @@ export default function Login() {
             onChange={(e) => setSenha(e.target.value)}
           />
         </div>
-
+        <div className="form-subtext-holder">
+          <p>
+          Esqueceu a senha? 
+          </p>
+          <Link to="/esqueci-minha-senha">
+            Clique aqui
+          </Link>
+        </div>
         <div className="form-subtext-holder">
           <p>
             Não possui uma conta?

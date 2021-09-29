@@ -1,0 +1,55 @@
+.div-corpo {
+    width: 100%;
+    height: 96vh;
+    background-color: white;
+}
+
+#img-esqueci-minha-senha {
+    width: 80%;
+    margin-top: 14%;
+    /* height: 70%; */
+}
+
+#h1-esqueceu-sua-senha {
+    font-size: 70px;
+}
+
+.retangulo-pai {
+    width: 95%;
+    height: 95%;
+    background-color: white;
+    box-shadow: 0px 16px 16px 4px var(--shadow);
+    margin: 0 auto;
+    margin-top: 2%;
+    border-radius: 20px;
+}
+
+.retangulo-duas-partes {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+
+.parte-direita {
+    height: 50%;
+    margin-top: 20%;
+}
+
+.parte-direita input {
+    width: 60%;
+    text-indent: 14px;
+    text-align: top;
+    margin-bottom: 4%;
+}
+
+.button-link-voltar {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.button-link-voltar Link {
+    text-decoration: underline;
+    margin-top: 2%;
+}

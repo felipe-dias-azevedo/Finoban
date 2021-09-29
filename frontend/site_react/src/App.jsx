@@ -16,6 +16,8 @@ import './styles/login-admin.css';
 import './styles/sobre-nos.css';
 import './styles/openbanking.css';
 import './styles/dashboard-bancos.css';
+import './assets/css/esqueci-minha-senha.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 

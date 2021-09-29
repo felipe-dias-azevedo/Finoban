@@ -6,6 +6,7 @@ import com.bandtec.br.finoban.exceptions.EnviarEmailException;
 import com.bandtec.br.finoban.repository.SendEmailRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -23,8 +24,7 @@ public class SendEmailService implements SendEmailRepository {
 
     private JavaMailSender javaMailSender;
 
-
-    public ResponseEntity sendEmail(Usuario usuario, String url) throws MessagingException, IOException {
+    public ResponseEntity sendEmail(Usuario usuario, String url) {
         try {
             MimeMessage mensagem = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mensagem, true);
