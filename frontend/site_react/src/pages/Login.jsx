@@ -3,54 +3,20 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import api from "../services/api";
 import { useHistory } from "react-router";
-import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import { Alert, AlertTitle } from "@material-ui/lab";
 import UseForm from "../components/UseForm";
 import validate from "../components/ValidacaoFormLogin";
+import configurarToast from "../utils/toastService";
+import { toast } from "react-toastify";
+import ModalAviso from "../components/Toastify";
+import LoadingScreen from "../components/LoadingScreenSemHeader";
+import respostaEnum from "../utils/respostaEnum";
 
 var nomeUsuario;
 
-function ModalLoginSucesso(props) {
-	return (
-		<Modal
-			{...props}
-			size="lg"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title id="text-center">
-					Bem-vindo(a) {nomeUsuario == null ? "" : nomeUsuario}...
-				</Modal.Title>
-			</Modal.Header>
-		</Modal>
-	);
-}
-
-function ModalLoginErro(props) {
-	return (
-		<Modal
-			{...props}
-			size="lg"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title id="text-center">
-					Email ou senha inválidos!
-				</Modal.Title>
-			</Modal.Header>
-		</Modal>
-	);
-}
-
 const Form = () => {
 	const history = useHistory();
-	const [modalLoginShow, setModalLoginShow] = React.useState(false);
-	const [modalLoginErroShow, setModalLoginErroShow] = React.useState(false);
-	const [erroLogin, setErroLogin] = useState(false);
-	const [erroMsgm, setErroMsgm] = useState("");
+	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarLogin,
 		validate
@@ -72,6 +38,7 @@ const Form = () => {
 
 		api.post("/login", data, {})
 			.then((e) => {
+				setResposta(respostaEnum.ESPERANDO);
 				if (e.status === 200) {
 					var objUsuario = {
 						id: e.data.data.id,
@@ -79,63 +46,37 @@ const Form = () => {
 						email: e.data.data.email,
 					};
 
-					nomeUsuario = objUsuario.nome;
+					toast.success(`Bem-vindo(a) ${objUsuario.nome}!`);
 					sessionStorage.setItem("dadosUsuario", objUsuario);
 
-					setModalLoginShow(true);
+					<LoadingScreen />;
+
 					setTimeout(() => {
-						setModalLoginShow(false);
+						setResposta(respostaEnum.SUCESSO);
 						history.push({
 							pathname: "/dashboard",
 						});
-					}, 3000);
+					}, 5000);
 				} else {
-					setErroLogin(true);
-					setErroMsgm("Usuário ou senha incorreto");
-					console.error(e);
+					setResposta(respostaEnum.ERROR);
+					toast.warning("Usuário ou senha incorreto");
 				}
 			})
-			.catch((e) => {
-				setErroLogin(true);
-				setErroMsgm("Erro ao realizar login");
-				console.error(e);
+			.catch(() => {
+				setResposta(respostaEnum.ERROR);
+				toast.error("Ocorreu um erro ao realizar o seu login!");
 			});
 	}
 
-	const erroStyle = {
-		display: "flex",
-		alingItens: "center",
-		justifyContent: "center",
-		marginTop: "5%",
-	};
+	if (resposta === respostaEnum.ESPERANDO) {
+		return <LoadingScreen />;
+	}
 
 	return (
 		<>
-			<ModalLoginSucesso
-				show={modalLoginShow}
-				onHide={() => setModalLoginShow(false)}
-			/>
-
-			<ModalLoginErro
-				show={modalLoginErroShow}
-				onHide={() => setModalLoginErroShow(false)}
-			/>
-
 			<div className="form-title">
 				<h2>Login</h2>
 			</div>
-
-			{erroLogin && (
-				<div style={erroStyle}>
-					<br />
-					<Alert severity="error">
-						<AlertTitle>
-							<strong>Erro</strong>
-						</AlertTitle>
-						{erroMsgm}
-					</Alert>
-				</div>
-			)}
 
 			<form onSubmit={handleSubmit} novalidate className="form-holder">
 				<div className="input-holder">
@@ -174,13 +115,9 @@ const Form = () => {
 				</div>
 
 				<div className="form-subtext-holder">
-          <p>
-          Esqueceu a senha? 
-          </p>
-          <Link to="/esqueci-minha-senha">
-            Clique aqui
-          </Link>
-        </div>
+					<p>Esqueceu a senha?</p>
+					<Link to="/esqueci-minha-senha">Clique aqui</Link>
+				</div>
 
 				<div className="button-holder-sign-in-up">
 					<button type="submit">Entrar</button>
@@ -194,6 +131,7 @@ export default function Login() {
 	return (
 		<>
 			<Header />
+			<ModalAviso />
 			<Form />
 			<Footer />
 		</>
