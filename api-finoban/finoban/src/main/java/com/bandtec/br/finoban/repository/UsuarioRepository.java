@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

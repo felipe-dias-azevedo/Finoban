@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.models.DocumentoLayout;
+import com.bandtec.br.finoban.dominio.DocumentoLayout;
 
 public class DocumentoLayoutBuilder {
     private DocumentoLayout documentoLayout;

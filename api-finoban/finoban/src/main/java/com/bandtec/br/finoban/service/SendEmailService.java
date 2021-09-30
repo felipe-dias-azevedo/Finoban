@@ -1,22 +1,16 @@
 package com.bandtec.br.finoban.service;
 
 
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.exceptions.EnviarEmailException;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.exceptions.EnviarEmailException;
 import com.bandtec.br.finoban.repository.SendEmailRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.IOException;
 
 @Service
 @AllArgsConstructor
@@ -38,7 +32,7 @@ public class SendEmailService implements SendEmailRepository {
             javaMailSender.send(mensagem);
             return ResponseEntity.status(201).build();
         } catch (Exception ex) {
-            return new ResponseEntity(new EnviarEmailException(), HttpStatus.NOT_FOUND);
+            throw new EnviarEmailException();
         }
     }
 }

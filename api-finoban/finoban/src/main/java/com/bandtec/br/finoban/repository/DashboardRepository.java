@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.views.database.*;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.views.database.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,11 +1,13 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Avaliacao;
+import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface GestaoAvaliacoesRepository {
-    ResponseEntity listarAvaliacoes();
-    ResponseEntity resgatarAvaliacaoPeloId(int id);
-    ResponseEntity deletarAvaliacaoPeloId(int id);
-    ResponseEntity cadastrarAvaliacao(Avaliacao avaliacao);
+    List<Avaliacao> listarAvaliacoes();
+    Avaliacao resgatarAvaliacaoPeloId(int id);
+    void deletarAvaliacaoPeloId(int id);
+    void cadastrarAvaliacao(Avaliacao avaliacao);
 }

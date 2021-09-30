@@ -1,8 +1,8 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.RestServiceBuilder;
-import com.bandtec.br.finoban.requisicao.BancoRequisicao;
-import com.bandtec.br.finoban.resposta.RespostaApi;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

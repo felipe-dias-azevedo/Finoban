@@ -1,15 +1,14 @@
 package com.bandtec.br.finoban.service.usuarios;
 
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.exceptions.AcessoNaoEncontradoException;
-import com.bandtec.br.finoban.exceptions.ClienteNaoEncontradoException;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.exceptions.AcessoNaoEncontradoException;
+import com.bandtec.br.finoban.dominio.exceptions.ClienteNaoEncontradoException;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoAcessosRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -25,46 +24,36 @@ public class GestaoAcessosServices implements GestaoAcessosRepository {
     private final RegiaoRepository regiaoRepository;
 
     @Override
-    public ResponseEntity resgatarAcessoPeloId(int id) {
+    public Acesso resgatarAcessoPeloId(int id) {
         Optional<Acesso> acesso = acessoRepository.findById(id);
 
         if (!acesso.isPresent())
-            return new ResponseEntity(new AcessoNaoEncontradoException(), HttpStatus.NOT_FOUND);
+            throw new AcessoNaoEncontradoException();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(acesso));
+        return acesso.get();
     }
 
     @Override
-    public ResponseEntity resgatarTodosAcessos() {
-        List<Acesso> acessoList = acessoRepository.findAllByIdEntrada();
-
-        if (acessoList.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(new ResponseGeneric(acessoList));
-        }
+    public List<Acesso> resgatarTodosAcessos() {
+        return acessoRepository.findAllByIdEntrada();
     }
 
     @Override
-    public ResponseEntity deletarAcessoPeloId(int id) {
+    public void deletarAcessoPeloId(int id) {
         if (!acessoRepository.existsById(id))
-            return new ResponseEntity(new AcessoNaoEncontradoException(), HttpStatus.NOT_FOUND);
+            throw new AcessoNaoEncontradoException();
 
         acessoRepository.deleteById(id);
-        return ResponseEntity.status(204).build();
     }
 
     @Override
-    public ResponseEntity postAcesso(Acesso acesso) {
-
+    public void postAcesso(Acesso acesso) {
         if (!cadastroRepository.existsById(acesso.getFkCliente().getId()))
-            return new ResponseEntity(new ClienteNaoEncontradoException(), HttpStatus.NOT_FOUND);
+            throw new ClienteNaoEncontradoException();
 
         if (!regiaoRepository.existsById(acesso.getFkRegiao().getIdRegiao()))
-            return new ResponseEntity(new AcessoNaoEncontradoException(), HttpStatus.NOT_FOUND);
+            throw new AcessoNaoEncontradoException();
 
         acessoRepository.save(acesso);
-        return ResponseEntity.status(201).build();
-
     }
 }

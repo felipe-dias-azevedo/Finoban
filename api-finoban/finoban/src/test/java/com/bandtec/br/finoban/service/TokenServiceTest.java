@@ -2,26 +2,16 @@ package com.bandtec.br.finoban.service;
 
 import com.bandtec.br.finoban.builder.AcessoBuilder;
 import com.bandtec.br.finoban.builder.CadastroBuilder;
-import com.bandtec.br.finoban.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.MalformedJwtException;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;

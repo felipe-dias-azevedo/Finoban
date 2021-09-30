@@ -2,10 +2,10 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.builder.LoginBuilder;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.models.Login;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

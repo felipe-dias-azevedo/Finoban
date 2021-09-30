@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.entidades.Avaliacao;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

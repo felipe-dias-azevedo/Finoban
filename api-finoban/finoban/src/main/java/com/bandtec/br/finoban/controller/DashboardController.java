@@ -1,10 +1,10 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.enums.*;
+import com.bandtec.br.finoban.dominio.enums.*;
 import com.bandtec.br.finoban.repository.DashboardRepository;
-import com.bandtec.br.finoban.views.DashboardResponse;
-import com.bandtec.br.finoban.views.charts.*;
-import com.bandtec.br.finoban.views.database.*;
+import com.bandtec.br.finoban.dominio.views.DashboardResponse;
+import com.bandtec.br.finoban.dominio.views.charts.*;
+import com.bandtec.br.finoban.dominio.views.database.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

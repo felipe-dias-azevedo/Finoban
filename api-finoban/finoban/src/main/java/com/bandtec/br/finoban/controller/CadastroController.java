@@ -1,11 +1,11 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.entidades.Avaliacao;
-import com.bandtec.br.finoban.entidades.RedefinicaoSenha;
-import com.bandtec.br.finoban.exceptions.EmailNaoEncontradoException;
-import com.bandtec.br.finoban.models.RedefinicaoSenhaModel;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.models.RedefinirSenhaModel;
+import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
+import com.bandtec.br.finoban.dominio.exceptions.EmailNaoEncontradoException;
+import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.service.usuarios.GestaoAvaliacoesService;
 import com.bandtec.br.finoban.service.usuarios.GestaoUsuariosService;
@@ -20,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api-finoban")
@@ -33,22 +34,29 @@ public class CadastroController {
     @PostMapping("/cadastro")
     public ResponseEntity novoCadastro(@Valid @RequestBody Usuario novoCadastro) {
         novoCadastro.setDataCriacao(LocalDateTime.now());
-        return gestaoUsuariosService.cadastrarUsuario(novoCadastro);
+        gestaoUsuariosService.cadastrarUsuario(novoCadastro);
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/usuarios")
     public ResponseEntity listarUsuarios() {
-        return gestaoUsuariosService.listarUsuarios();
+        List<Usuario> usuarioList = gestaoUsuariosService.listarUsuarios();
+        
+        if (usuarioList.isEmpty())
+            return ResponseEntity.status(204).build();
+
+        return ResponseEntity.status(200).body(usuarioList);
     }
 
     @GetMapping("/usuarios/{id}")
     public ResponseEntity getUsuario(@PathVariable Integer id) {
-        return gestaoUsuariosService.resgatarUsuarioPeloId(id);
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.resgatarUsuarioPeloId(id)));
     }
 
     @DeleteMapping("/usuarios/{id}")
     public ResponseEntity deleteUsuario(@PathVariable int id) {
-       return gestaoUsuariosService.deletarUsuarioPeloId(id);
+       gestaoUsuariosService.deletarUsuarioPeloId(id);
+       return ResponseEntity.status(201).build();
     }
 
     @ApiResponses(value = {
@@ -59,7 +67,8 @@ public class CadastroController {
     @PostMapping("/avaliacao")
     public ResponseEntity novaAvaliacao(@Valid @RequestBody Avaliacao novaAvaliacao) {
         novaAvaliacao.setDataAval(LocalDateTime.now());
-        return gestaoAvaliacoesService.cadastrarAvaliacao(novaAvaliacao);
+        gestaoAvaliacoesService.cadastrarAvaliacao(novaAvaliacao);
+        return ResponseEntity.status(201).build();
     }
 
     @ApiResponses(value = {
@@ -67,41 +76,43 @@ public class CadastroController {
     })
     @GetMapping("/avaliacoes")
     public ResponseEntity getAvaliacoes() {
-        return gestaoAvaliacoesService.listarAvaliacoes();
+        List<Avaliacao> avaliacoes = gestaoAvaliacoesService.listarAvaliacoes();
+        if (avaliacoes.isEmpty())
+            return ResponseEntity.status(204).build();
+
+        return ResponseEntity.status(200).body(new ResponseGeneric(avaliacoes));
     }
 
     @GetMapping("/avaliacoes/{id}")
     public ResponseEntity getAvaliacao(@PathVariable int id) {
-        return gestaoAvaliacoesService.resgatarAvaliacaoPeloId(id);
+        return ResponseEntity.status(200).body(new ResponseGeneric(gestaoAvaliacoesService.resgatarAvaliacaoPeloId(id)));
     }
 
     @DeleteMapping("/avaliacoes/{id}")
     public ResponseEntity deleteAvaliacao(@PathVariable int id) {
-        return gestaoAvaliacoesService.deletarAvaliacaoPeloId(id);
+        gestaoAvaliacoesService.deletarAvaliacaoPeloId(id);
+        return ResponseEntity.status(204).build();
     }
 
     @PostMapping("/usuarios/iniciar-redefinicao-senha")
     public ResponseEntity iniciarRedefinicaoSenha(@RequestBody RedefinicaoSenhaModel redefinicaoSenhaModel) throws MessagingException, IOException {
-        Usuario usuario = usuarioRepository.findByEmailContaining(redefinicaoSenhaModel.getEmail());
-        if (usuario == null)
-            return new ResponseEntity(new EmailNaoEncontradoException(), HttpStatus.NOT_FOUND);
-
-        return gestaoUsuariosService.iniciarRedefinicaoSenha(usuario);
+        gestaoUsuariosService.iniciarRedefinicaoSenha(redefinicaoSenhaModel);
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/usuarios/redefinir-senha/verificar/{jwt}")
     public ResponseEntity verificarRedefinicaoSenha(@PathVariable String jwt) {
-        return gestaoUsuariosService.verificarRedeficicaoSenha(jwt);
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.verificarRedeficicaoSenha(jwt)));
     }
 
     @PostMapping("/usuarios/redefinir-senha")
     public ResponseEntity redefinirSenha(@RequestBody RedefinirSenhaModel redefinirSenhaModel) {
         Usuario usuario = usuarioRepository.findByEmailContaining(redefinirSenhaModel.getEmail());
         if (usuario == null)
-            return new ResponseEntity(new EmailNaoEncontradoException(), HttpStatus.NOT_FOUND);
+            throw new EmailNaoEncontradoException();
 
         usuario.setSenha(redefinirSenhaModel.getNovaSenha());
-        return gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel);
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel)));
     }
 
 }

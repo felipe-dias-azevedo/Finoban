@@ -1,11 +1,9 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.models.DocumentoLayout;
+import com.bandtec.br.finoban.dominio.DocumentoLayout;
 //import com.bandtec.br.finoban.repository.ArquivoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.text.SimpleDateFormat;

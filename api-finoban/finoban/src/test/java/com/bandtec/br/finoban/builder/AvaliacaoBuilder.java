@@ -1,7 +1,6 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.entidades.Avaliacao;
+import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 
 import java.time.LocalDateTime;
 

@@ -1,9 +1,9 @@
 package com.bandtec.br.finoban.service;
 
-import com.bandtec.br.finoban.criptografia.Criptografia;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.helpers.DateHelper;
-import com.bandtec.br.finoban.models.TokenDecodificadoModel;
+import com.bandtec.br.finoban.infraestrutura.criptografia.Criptografia;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.infraestrutura.helpers.DateHelper;
+import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,13 +1,12 @@
 package com.bandtec.br.finoban.service.core;
 
-import com.bandtec.br.finoban.integracao.ClienteApisExternasCifra;
-import com.bandtec.br.finoban.integracao.ClienteApisExternasPresil;
-import com.bandtec.br.finoban.integracao.ClienteApisExternasS16Bank;
-import com.bandtec.br.finoban.models.Data;
-import com.bandtec.br.finoban.requisicao.BancoRequisicao;
-import com.bandtec.br.finoban.resposta.RespostaApi;
+import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasCifra;
+import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasPresil;
+import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasS16Bank;
+import com.bandtec.br.finoban.dominio.Data;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

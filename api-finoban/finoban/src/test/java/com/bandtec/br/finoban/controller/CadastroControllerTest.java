@@ -2,8 +2,8 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.AvaliacaoBuilder;
 import com.bandtec.br.finoban.builder.CadastroBuilder;
-import com.bandtec.br.finoban.entidades.Avaliacao;
-import com.bandtec.br.finoban.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.AvaliacaoRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;

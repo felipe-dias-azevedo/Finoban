@@ -1,9 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.entidades.Regiao;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.repository.RegiaoRepository;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.entidades.Regiao;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.service.core.GestaoRegioesService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,12 +9,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api-finoban/regioes")
@@ -41,7 +37,11 @@ public class RegiaoController {
             }
     )
     public ResponseEntity getRegioes() {
-        return gestaoRegioesService.listarRegioes();
+        List<Regiao> regioes = gestaoRegioesService.listarRegioes();
+        if (regioes.isEmpty())
+            return ResponseEntity.status(204).build();
+
+        return ResponseEntity.status(200).body(new ResponseGeneric(regioes));
     }
 
     @ApiResponses(value = {
@@ -57,7 +57,7 @@ public class RegiaoController {
     })
     @GetMapping("/{id}")
     public ResponseEntity getRegiao(@PathVariable Integer id) {
-        return gestaoRegioesService.resgatarRegiaoPeloId(id);
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoRegioesService.resgatarRegiaoPeloId(id)));
     }
 
 
@@ -69,7 +69,8 @@ public class RegiaoController {
     })
     @PostMapping
     public ResponseEntity postRegiao(@RequestBody Regiao regiao) {
-        return gestaoRegioesService.registrarRegiao(regiao);
+        gestaoRegioesService.registrarRegiao(regiao);
+        return ResponseEntity.status(201).build();
     }
 
     @ApiResponses(value = {
@@ -84,7 +85,8 @@ public class RegiaoController {
     })
     @DeleteMapping("/{id}")
     public ResponseEntity deleteRegiao(@PathVariable int id) {
-        return gestaoRegioesService.deletarRegiaoPeloId(id);
+        gestaoRegioesService.deletarRegiaoPeloId(id);
+        return ResponseEntity.status(204).build();
     }
 
     @ApiResponses(value = {
@@ -100,6 +102,6 @@ public class RegiaoController {
     })
     @PutMapping
     public ResponseEntity atualizarRegiao(@RequestBody Regiao regiao) {
-        return gestaoRegioesService.atualizarRegiao(regiao);
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoRegioesService.atualizarRegiao(regiao)));
     }
 }

@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.RedefinicaoSenha;
+import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

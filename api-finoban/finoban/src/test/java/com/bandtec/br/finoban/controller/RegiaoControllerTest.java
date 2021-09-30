@@ -1,10 +1,9 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.RegiaoBuilder;
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.entidades.Regiao;
+import com.bandtec.br.finoban.dominio.entidades.Regiao;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

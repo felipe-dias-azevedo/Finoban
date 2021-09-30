@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.models.DocumentoLayout;
-import com.bandtec.br.finoban.models.ListaObj;
+import com.bandtec.br.finoban.dominio.DocumentoLayout;
+import com.bandtec.br.finoban.dominio.ListaObj;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

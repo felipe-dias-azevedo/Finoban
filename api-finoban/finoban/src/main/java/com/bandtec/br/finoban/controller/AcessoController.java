@@ -1,16 +1,14 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.repository.*;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,12 +20,16 @@ public class AcessoController {
 
     @GetMapping("/{id}")
     public ResponseEntity getAcesso(@PathVariable int id) {
-        return gestaoUsuariosRepository.resgatarAcessoPeloId(id);
+        return ResponseEntity.status(200).body(new ResponseGeneric(gestaoUsuariosRepository.resgatarAcessoPeloId(id)));
     }
 
     @GetMapping
     public ResponseEntity getAcessos() {
-        return gestaoUsuariosRepository.resgatarTodosAcessos();
+        List<Acesso> acessoList = gestaoUsuariosRepository.resgatarTodosAcessos();
+        if (acessoList.isEmpty())
+            return ResponseEntity.status(204).build();
+
+        return ResponseEntity.status(200).body(new ResponseGeneric(acessoList));
     }
 
     @ApiResponses(value = {
@@ -37,12 +39,14 @@ public class AcessoController {
     })
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso acesso) {
-       return gestaoUsuariosRepository.postAcesso(acesso);
+       gestaoUsuariosRepository.postAcesso(acesso);
+       return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteAcesso(@PathVariable int id) {
-        return gestaoUsuariosRepository.deletarAcessoPeloId(id);
+        gestaoUsuariosRepository.deletarAcessoPeloId(id);
+        return ResponseEntity.status(204).build();
     }
 
     // USAR HASHING PARA DELETAR ULTIMOS ACESSOS

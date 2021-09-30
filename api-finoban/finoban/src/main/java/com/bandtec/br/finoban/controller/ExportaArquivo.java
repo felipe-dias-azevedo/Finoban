@@ -1,9 +1,9 @@
 package com.bandtec.br.finoban.controller;
 
 
-import com.bandtec.br.finoban.entidades.Regiao;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.models.LerArquivoImport;
+import com.bandtec.br.finoban.dominio.entidades.Regiao;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.LerArquivoImport;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.repository.RegiaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

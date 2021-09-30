@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.models.Login;
+import com.bandtec.br.finoban.dominio.Login;
 
 public class LoginBuilder {
     private Login login;

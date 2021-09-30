@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
 
 public class RestServiceBuilder {
     private BancoRequisicao bancoRequisicao;

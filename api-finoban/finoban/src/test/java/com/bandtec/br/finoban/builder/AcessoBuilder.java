@@ -1,12 +1,8 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.entidades.Acesso;
-import com.bandtec.br.finoban.entidades.Regiao;
-import com.bandtec.br.finoban.entidades.Usuario;
-import com.bandtec.br.finoban.enums.BancoEscolhidoEnum;
-import com.bandtec.br.finoban.enums.PaginaSaidaEnum;
-import com.bandtec.br.finoban.enums.StatusSaidaEnum;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.entidades.Regiao;
+import com.bandtec.br.finoban.dominio.entidades.Usuario;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

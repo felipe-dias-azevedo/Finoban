@@ -1,9 +1,9 @@
 package com.bandtec.br.finoban.service.usuarios;
 
-import com.bandtec.br.finoban.entidades.RedefinicaoSenha;
+import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
 import com.bandtec.br.finoban.repository.GestaoRedefinicaoSenhaRepository;
 import com.bandtec.br.finoban.repository.RedefinicaoSenhaRepository;
-import com.bandtec.br.finoban.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,7 @@ public class GestaoRedefinicaoSenhaService implements GestaoRedefinicaoSenhaRepo
     private final RedefinicaoSenhaRepository redefinicaoSenhaRepository;
 
     @Override
-    public ResponseEntity listarRedefinicoes() {
-        List<RedefinicaoSenha> redefinicaoSenhaList = redefinicaoSenhaRepository.findAll();
-        if (redefinicaoSenhaList.isEmpty())
-            return ResponseEntity.status(204).build();
-
-        return ResponseEntity.status(200).body(new ResponseGeneric(redefinicaoSenhaList));
+    public List<RedefinicaoSenha> listarRedefinicoes() {
+        return redefinicaoSenhaRepository.findAll();
     }
 }

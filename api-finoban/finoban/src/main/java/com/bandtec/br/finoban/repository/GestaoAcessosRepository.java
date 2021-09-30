@@ -1,11 +1,13 @@
 package com.bandtec.br.finoban.repository;
 
-import com.bandtec.br.finoban.entidades.Acesso;
+import com.bandtec.br.finoban.dominio.entidades.Acesso;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface GestaoAcessosRepository {
-    ResponseEntity resgatarAcessoPeloId(int id);
-    ResponseEntity resgatarTodosAcessos();
-    ResponseEntity deletarAcessoPeloId(int id);
-    ResponseEntity postAcesso(Acesso acesso);
+    Acesso resgatarAcessoPeloId(int id);
+    List<Acesso> resgatarTodosAcessos();
+    void deletarAcessoPeloId(int id);
+    void postAcesso(Acesso acesso);
 }
