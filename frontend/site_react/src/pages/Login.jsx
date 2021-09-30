@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import UseForm from "../components/UseForm";
-import validate from "../components/ValidacaoForm";
+import validate from "../components/ValidacaoFormLogin";
 
 var nomeUsuario;
 
@@ -55,6 +55,14 @@ const Form = () => {
 		efetuarLogin,
 		validate
 	);
+
+	const handler = (event) => {
+		if (event.key == "Enter") {
+			if (validate.errors) {
+				efetuarLogin();
+			}
+		}
+	};
 
 	function efetuarLogin(e) {
 		const data = {
@@ -139,7 +147,7 @@ const Form = () => {
 						name="email"
 						onChange={handleChange}
 						value={values.email || ""}
-						required
+						onKeyPress={(e) => handler(e)}
 					/>
 					{errors.email && (
 						<p className="text-danger mt-3">{errors.email}</p>
@@ -153,7 +161,7 @@ const Form = () => {
 						name="password"
 						onChange={handleChange}
 						value={values.password || ""}
-						required
+						onKeyPress={(e) => handler(e)}
 					/>
 					{errors.password && (
 						<p className="text-danger mt-3">{errors.password}</p>
@@ -164,6 +172,15 @@ const Form = () => {
 					<p>Não possui uma conta?</p>
 					<Link to="/cadastro">Clique aqui para se cadastrar.</Link>
 				</div>
+
+				<div className="form-subtext-holder">
+          <p>
+          Esqueceu a senha? 
+          </p>
+          <Link to="/esqueci-minha-senha">
+            Clique aqui
+          </Link>
+        </div>
 
 				<div className="button-holder-sign-in-up">
 					<button type="submit">Entrar</button>

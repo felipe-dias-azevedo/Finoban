@@ -7,7 +7,7 @@ export default function validate(values) {
     }
     
     if (!values.password) {
-      errors.password = 'Insira uma senha`';
+      errors.password = 'Insira uma senha';
     } else if (values.password.length < 6) {
       errors.password = 'Insira uma senha com no mínimo 6 caracteres';
     }
