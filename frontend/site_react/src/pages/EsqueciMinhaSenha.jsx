@@ -15,6 +15,14 @@ import validate from "../components/ValidacaoFormEsqueciSenha";
 
 const Form = () => {
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
+
+	const handler = (event) => {
+		if (event.key == "Enter") {
+			if (validate.errors) {
+				efetuarRedefinicao();
+			}
+		}
+	};
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarRedefinicao,
 		validate
@@ -79,6 +87,7 @@ const Form = () => {
 									name="email"
 									onChange={handleChange}
 									value={values.email || ""}
+									onKeyPress={(e) => handler(e)}
 								/>
 								{errors.email && (
 									<p className="text-danger">
