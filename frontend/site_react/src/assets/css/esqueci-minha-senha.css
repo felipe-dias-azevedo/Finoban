@@ -11,7 +11,8 @@
 }
 
 #h1-esqueceu-sua-senha {
-    font-size: 70px;
+    font-size: 50px;
+    margin-bottom: 10%;
 }
 
 .retangulo-pai {
@@ -41,4 +42,5 @@
     text-indent: 14px;
     text-align: top;
     margin-bottom: 4%;
+    height: 40px;
 }
