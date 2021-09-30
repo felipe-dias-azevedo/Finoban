@@ -23,6 +23,7 @@ const Form = () => {
 			}
 		}
 	};
+    
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarRedefinicao,
 		validate

@@ -51,12 +51,18 @@ const Form = () => {
 	const [modalLoginErroShow, setModalLoginErroShow] = React.useState(false);
 	const [erroLogin, setErroLogin] = useState(false);
 	const [erroMsgm, setErroMsgm] = useState("");
-	const [email, setEmail] = useState("");
-	const [senha, setSenha] = useState("");
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarLogin,
 		validate
 	);
+
+	const handler = (event) => {
+		if (event.key == "Enter") {
+			if (validate.errors) {
+				efetuarLogin();
+			}
+		}
+	};
 
 	function efetuarLogin(e) {
 		const data = {
@@ -141,6 +147,7 @@ const Form = () => {
 						name="email"
 						onChange={handleChange}
 						value={values.email || ""}
+						onKeyPress={(e) => handler(e)}
 					/>
 					{errors.email && (
 						<p className="text-danger mt-3">{errors.email}</p>
@@ -154,6 +161,7 @@ const Form = () => {
 						name="password"
 						onChange={handleChange}
 						value={values.password || ""}
+						onKeyPress={(e) => handler(e)}
 					/>
 					{errors.password && (
 						<p className="text-danger mt-3">{errors.password}</p>
