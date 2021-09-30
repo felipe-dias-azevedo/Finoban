@@ -7,5 +7,5 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 
 public interface SendEmailRepository {
-    ResponseEntity sendEmail(Usuario usuario, String url) throws MessagingException, IOException;
+    void sendEmail(Usuario usuario, String url) throws MessagingException, IOException;
 }
