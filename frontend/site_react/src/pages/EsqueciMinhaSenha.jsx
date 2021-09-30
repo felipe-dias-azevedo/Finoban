@@ -37,7 +37,7 @@ const Form = () => {
 		setResposta(respostaEnum.ESPERANDO);
 
 		api.post("/usuarios/iniciar-redefinicao-senha", data)
-			.then((e) => {
+			.then(() => {
 				setResposta(respostaEnum.SUCESSO);
 				toast.success("Enviamos uma mensagem para seu e-mail");
 			})

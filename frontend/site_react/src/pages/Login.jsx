@@ -40,6 +40,7 @@ const Form = () => {
 			.then((e) => {
 				setResposta(respostaEnum.ESPERANDO);
 				if (e.status === 200) {
+					console.log(e);
 					var objUsuario = {
 						id: e.data.data.id,
 						nome: e.data.data.nome,
@@ -62,9 +63,11 @@ const Form = () => {
 					toast.warning("Usuário ou senha incorreto");
 				}
 			})
-			.catch(() => {
+			.catch((e) => {
+				console.log(e);
+				const status = e.response.status;
+				e.response.data.code == "FIN07" ? toast.error("Email não encontrado") : toast.error("Usuário já possui uma sessão ativa");
 				setResposta(respostaEnum.ERROR);
-				toast.error("Ocorreu um erro ao realizar o seu login!");
 			});
 	}
 
