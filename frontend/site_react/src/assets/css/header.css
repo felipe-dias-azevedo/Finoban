@@ -31,6 +31,7 @@ header .topheader-options {
     align-items: center;
     width: 50%;
     padding-right: 5%;
+    font-size: 15px;
 }
 
 header .topheader-options * {
