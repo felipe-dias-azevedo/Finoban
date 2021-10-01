@@ -7,7 +7,7 @@ import LogoFinobanLight from "../assets/images/logo-finoban-light.svg";
 import ImgEsqueciMinhaSenha from "../assets/images/imagem-esqueci-minha-senha.svg";
 import ModalAviso from "../components/Toastify";
 import respostaEnum from "../utils/respostaEnum";
-import LoadingScreen from "../components/LoadingScreen";
+import LoadingScreen from "../components/LoadingScreenSemHeader";
 import configurarToast from "../utils/toastService";
 import { toast } from "react-toastify";
 import UseForm from "../components/UseForm";
@@ -23,7 +23,7 @@ const Form = () => {
 			}
 		}
 	};
-    
+
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarRedefinicao,
 		validate
@@ -37,7 +37,7 @@ const Form = () => {
 		setResposta(respostaEnum.ESPERANDO);
 
 		api.post("/usuarios/iniciar-redefinicao-senha", data)
-			.then((e) => {
+			.then(() => {
 				setResposta(respostaEnum.SUCESSO);
 				toast.success("Enviamos uma mensagem para seu e-mail");
 			})
