@@ -11,6 +11,7 @@ import LoginNegocio from './pages/AnaliseNegocio/LoginNegocio';
 import GraficoNegocio from './pages/AnaliseNegocio/GraficoNegocio';
 import SobreNos from './pages/SobreNos';
 import EsqueciMinhaSenha from './pages/EsqueciMinhaSenha';
+import RedefinirSenha from './pages/RedefinirSenha';
 import { NegocioProvider } from './contexts/NegocioContext';
 import { SwitchGraficoNegocioProvider } from './contexts/SwitchGraficoNegocioContext';
 
@@ -28,7 +29,8 @@ function Routes() {
                 <Route exact path="/sobrenos" component={SobreNos}/>
                 <Route exact path="/analise" component={LoginNegocio} />
                 <Route exact path="/esqueci-minha-senha" component={EsqueciMinhaSenha} />
-                
+                <Route exact path="/esqueci-minha-senha/:jwt" component={RedefinirSenha} />
+
                 <NegocioProvider>
                     <SwitchGraficoNegocioProvider>
                         <Route exact path="/analise/dashboard" component={DashboardNegocio} />
