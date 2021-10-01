@@ -57,3 +57,19 @@ main {
     padding: 2px 0;
     border: 1px solid black;
 }
+
+.bg-transparente {
+    background-color: transparent;
+}
+
+.cor-verde {
+    color: #3A5B62;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.fonte-15 {
+    font-size: 15px;
+}

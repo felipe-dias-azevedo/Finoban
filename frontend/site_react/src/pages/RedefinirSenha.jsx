@@ -31,11 +31,17 @@ export default function RedefinirSenha() {
 							<h4 className="mt-4">Repita sua senha:</h4>
 							<input type="password" />
 
-							<div className="button-holder-sign-in-up">
-								<button type="submit" class="w-100 mt-3">
-									Redefinir senha
-								</button>
-							</div>
+                            <div className="d-flex flex-row justify-content-beetwen mt-5 fonte-15">
+							<button
+								type="submit"
+								className="bg-transparente cor-verde mr-15"
+							>
+								<Link to="/login">Voltar ao login</Link>
+							</button>
+							<button type="submit">
+								Redefinir senha
+							</button>
+                            </div>
 						</div>
 					</form>
 				</div>
