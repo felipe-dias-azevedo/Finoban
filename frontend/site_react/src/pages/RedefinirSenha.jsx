@@ -14,29 +14,32 @@ import UseForm from "../components/UseForm";
 import validate from "../components/ValidacaoFormEsqueciSenha";
 
 export default function RedefinirSenha() {
-    return (
-        <main>
-            <div className="container">
-                <div className="logo">
-                    <img src={LogoFinobanLight} alt="" />
-                </div>
-                <div className="content-form">
-                    <form action="">
-                        <br />
-                        <h1>Redefinição de senha</h1>
-                        <br />
-                        <div className="redefinir-senha">
-                            <h4>Insira sua senha:</h4>
-                            <input type="passoword" />
-                        </div>
-                        <div className="redefinir-senha">
-                            <h4>Repita sua senha:</h4>
-                            <input type="passoword" />
-                        </div>
-                        <button type="submit">Redefinir senha</button>
-                    </form>
-                </div>
-            </div>
-        </main>
-    );
+	return (
+		<main>
+			<div className="container">
+				<div className="logo">
+					<img src={LogoFinobanLight} alt="" />
+				</div>
+				<div className="content-form">
+					<form action="">
+						<br />
+						<h1 className="text-center">Redefinição de senha</h1>
+						<br />
+						<div className="redefinir-senha">
+							<h4>Insira sua senha:</h4>
+							<input type="password" />
+							<h4 className="mt-4">Repita sua senha:</h4>
+							<input type="password" />
+
+							<div className="button-holder-sign-in-up">
+								<button type="submit" class="w-100 mt-3">
+									Redefinir senha
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	);
 }

@@ -101,7 +101,7 @@ const Form = () => {
 										type="submit"
 										className="bg-transparente cor-verde"
 									>
-										<a href="/login">Voltar ao Login</a>
+										<Link to="/login">Voltar ao login</Link>
 									</button>
 									<button type="submit" className="ml-3">
 										<a>Redefinir senha</a>
