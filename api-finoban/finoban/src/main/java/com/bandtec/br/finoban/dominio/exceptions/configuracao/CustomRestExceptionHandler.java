@@ -48,9 +48,9 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(apiError, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(EnviarEmailException.class)
+    @ExceptionHandler(FalhaAoEnviarEmailException.class)
     public final ResponseEntity<Object> handleEnviarEmailException(Exception ex, WebRequest request) {
-        EnviarEmailException exception = new EnviarEmailException();
+        FalhaAoEnviarEmailException exception = new FalhaAoEnviarEmailException();
         ApiError apiError = new ApiError(exception.getCode(), exception.getMessage());
         return new ResponseEntity(apiError, HttpStatus.NOT_FOUND);
     }

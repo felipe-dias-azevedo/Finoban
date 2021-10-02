@@ -21,6 +21,7 @@ public class LoginController {
 
     @PostMapping("/logoff")
     public ResponseEntity efetuarLogoff(@RequestBody Login login) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.efetuarLogoff(login)));
+        gestaoUsuariosService.efetuarLogoff(login);
+        return ResponseEntity.status(204).build();
     }
 }
