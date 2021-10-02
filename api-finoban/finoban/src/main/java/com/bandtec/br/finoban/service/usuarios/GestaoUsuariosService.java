@@ -8,7 +8,6 @@ import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.*;
 import com.bandtec.br.finoban.dominio.Login;
-import com.bandtec.br.finoban.infraestrutura.helpers.RecursoesHelper;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
 import com.bandtec.br.finoban.repository.RedefinicaoSenhaRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
@@ -30,8 +29,9 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
     private AuthService authService;
     private final UsuarioRepository usuarioRepository;
     private final RedefinicaoSenhaRepository redefinicaoSenhaRepository;
-    private SendEmailService sendEmailService;
-    private List<String> usuariosLogados;
+
+    private final SendEmailService sendEmailService;
+    private final LoginService loginService;
 
     @Override
     public void cadastrarUsuario(Usuario usuario) {
@@ -95,23 +95,26 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
     @Override
     public Usuario efetuarLogin(Login login) {
-        Usuario verificaEmail = usuarioRepository.findByEmailContaining(login.getEmail());
-        if (verificaEmail == null)
+        Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
+        if (usuario == null)
             throw new EmailNaoEncontradoException();
 
         String senhaCriptografada = Criptografia.criptografarComHashingMaisSaltMaisId(login.getSenha(),
-                verificaEmail.getId());
+                usuario.getId());
 
-        if (!verificaEmail.getSenha().equals(senhaCriptografada))
+        if (!usuario.getSenha().equals(senhaCriptografada))
             throw new SenhaIncorretaException();
 
-        String emailLogado = login.getEmail();
-        return RecursoesHelper.verificarUsuariosLogados(usuariosLogados, emailLogado, verificaEmail, usuariosLogados.size());
+        return loginService.logarUsuario(usuario);
     }
 
     @Override
-    public String efetuarLogoff(Login login) {
-        return RecursoesHelper.efetuarLogoffUsuarioLogado(usuariosLogados, login, usuariosLogados.size());
+    public void efetuarLogoff(Login login) {
+        Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
+        if (usuario == null)
+            throw new EmailNaoEncontradoException();
+
+        loginService.realizarLogoffUsuario(usuario);
     }
 
     @Override

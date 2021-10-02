@@ -19,7 +19,7 @@ public interface GestaoUsuariosRepository {
     Usuario atualizarDadosCadastrais(Usuario usuario);
     Usuario atualizarDadosCadastrais(Usuario usuario, RedefinirSenhaModel redefinirSenhaModel);
     Usuario efetuarLogin(Login login);
-    String efetuarLogoff(Login login);
+    void efetuarLogoff(Login login);
     void iniciarRedefinicaoSenha(RedefinicaoSenhaModel redefinicaoSenhaModel) throws MessagingException, IOException;
     TokenDecodificadoModel verificarRedeficicaoSenha(String jwt);
 }

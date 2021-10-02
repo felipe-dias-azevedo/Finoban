@@ -57,6 +57,7 @@ const Form = () => {
 						history.push({
 							pathname: "/dashboard",
 						});
+						window.location.href="/dashboard"
 					}, 5000);
 				} else {
 					setResposta(respostaEnum.ERROR);
@@ -66,7 +67,7 @@ const Form = () => {
 			.catch((e) => {
 				console.log(e);
 				const status = e.response.status;
-				e.response.data.code == "FIN07" ? toast.error("Email não encontrado") : toast.error("Usuário já possui uma sessão ativa");
+				status == "FIN07" ? toast.error("Email não encontrado") : toast.error("Usuário já possui uma sessão ativa");
 				setResposta(respostaEnum.ERROR);
 			});
 	}
@@ -114,12 +115,12 @@ const Form = () => {
 
 				<div className="form-subtext-holder">
 					<p>Não possui uma conta?</p>
-					<Link to="/cadastro">Clique aqui para se cadastrar.</Link>
+					<Link to="/cadastro" className="font-weight-bold">Clique aqui para se cadastrar.</Link>
 				</div>
 
 				<div className="form-subtext-holder">
 					<p>Esqueceu a senha?</p>
-					<Link to="/esqueci-minha-senha">Clique aqui</Link>
+					<Link to="/esqueci-minha-senha" className="font-weight-bold">Clique aqui</Link>
 				</div>
 
 				<div className="button-holder-sign-in-up">
