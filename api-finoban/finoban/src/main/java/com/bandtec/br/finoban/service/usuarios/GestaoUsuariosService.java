@@ -13,16 +13,12 @@ import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
 import com.bandtec.br.finoban.repository.RedefinicaoSenhaRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoUsuariosRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.service.AuthService;
 import com.bandtec.br.finoban.service.SendEmailService;
-import com.bandtec.br.finoban.service.TokenService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,11 +26,12 @@ import java.util.Optional;
 @AllArgsConstructor
 public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
+    @Autowired
+    private AuthService authService;
     private final UsuarioRepository usuarioRepository;
     private final RedefinicaoSenhaRepository redefinicaoSenhaRepository;
     private SendEmailService sendEmailService;
     private List<String> usuariosLogados;
-
 
     @Override
     public void cadastrarUsuario(Usuario usuario) {
@@ -123,16 +120,14 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (usuario == null)
             throw new EmailNaoEncontradoException();
 
-        TokenService tokenService = new TokenService();
-        String jwt = tokenService.createJWT(usuario);
+        String jwt = authService.createJWT(usuario);
         redefinicaoSenhaRepository.save(new RedefinicaoSenha(usuario, jwt));
         sendEmailService.sendEmail(usuario, Constantes.URL_REDEFINIR_SENHA + jwt);
     }
 
     @Override
     public TokenDecodificadoModel verificarRedeficicaoSenha(String jwt) {
-        TokenService tokenService = new TokenService();
-        if (tokenService.jwtExpirado(jwt))
+        if (authService.jwtExpirado(jwt))
             throw new TokenExpiradoException();
 
         RedefinicaoSenha redefinicaoSenha = redefinicaoSenhaRepository.findAllByTokenJWT(jwt);
@@ -143,6 +138,6 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (redefinicaoSenha.isExpirado())
             throw new TokenExpiradoException();
 
-        return tokenService.converterToModel(jwt);
+        return authService.converterToModel(jwt);
     }
 }

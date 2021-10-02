@@ -28,7 +28,6 @@ public class Usuario implements Serializable {
     private LocalDate dataNasc;
     private LocalDateTime dataCriacao;
 
-
     public Usuario() {
 
     }

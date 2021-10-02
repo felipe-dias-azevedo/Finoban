@@ -7,6 +7,7 @@ import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Date;
@@ -21,20 +22,21 @@ import java.util.Map;
  *   Fonte Authentication schemes: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes"
  * */
 
-public class TokenService {
+@Service
+public class TokenServiceImpl implements AuthService {
 
     // 60000ms = 1min
     // 1800000 = 30min
-    private int tempoExpiracao = 1_800_000;
-    private String key = "_FINOBAN_BEST";
+    private static final int TEMPO_EXPIRACAO = 1_800_000;
+    private static final String KEY = "_FINOBAN_BEST";
 
     public String generateToken(Usuario usuario) {
 
         return Jwts.builder()
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(String.valueOf(usuario.getNome()))
-                .setExpiration(new Date(System.currentTimeMillis() + tempoExpiracao))
-                .signWith(SignatureAlgorithm.HS256, key)
+                .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
+                .signWith(SignatureAlgorithm.HS256, KEY)
                 .compact();
     }
 
@@ -45,14 +47,14 @@ public class TokenService {
         return Jwts.builder()
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setClaims(mapJwt)
-                .setExpiration(new Date(System.currentTimeMillis() + tempoExpiracao))
-                .signWith(SignatureAlgorithm.HS256, key)
+                .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
+                .signWith(SignatureAlgorithm.HS256, KEY)
                 .compact();
     }
 
     public Claims decodeToken(String token) {
         return Jwts.parser()
-                .setSigningKey(key)
+                .setSigningKey(KEY)
                 .parseClaimsJws(token)
                 .getBody();
     }
