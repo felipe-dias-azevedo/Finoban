@@ -25,7 +25,6 @@ main {
 .logo {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
 }
 
 
@@ -48,28 +47,29 @@ main {
 
 .redefinir-senha {
     margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .redefinir-senha input {
     width: 70%;
     padding: 2px 0;
     border: 1px solid black;
-    border-radius: 4px;
 }
 
-.content-form form button {
-    border: 1px solid black;
-    border-radius: 4px;
-    background-color: white;
-    color: black;
-    margin-top: 5%;
-    padding: 2% 4%;
-    transition: 0.4s all;
-    cursor: pointer;
+.bg-transparente {
+    background-color: transparent;
 }
 
-.content-form form button:hover {
-    background-color: black;
-    color: white;
-    border: white;
+.cor-verde {
+    color: #3A5B62;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.fonte-15 {
+    font-size: 15px;
 }
