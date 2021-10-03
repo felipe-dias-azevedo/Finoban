@@ -21,7 +21,7 @@ class TokenServiceTest {
     @Test
     @DisplayName("Decode token - Sucesso")
     void decodeToken() {
-        TokenService service = new TokenService();
+        TokenServiceImpl service = new TokenServiceImpl();
         AcessoBuilder acessoBuilder = new AcessoBuilder();
         Usuario usuario = acessoBuilder.setUsuario();
 
@@ -35,7 +35,7 @@ class TokenServiceTest {
     @Test
     @DisplayName("Decode token - Erro")
     void decodeTokenNotOK() {
-        TokenService service = new TokenService();
+        TokenServiceImpl service = new TokenServiceImpl();
         AcessoBuilder acessoBuilder = new AcessoBuilder();
         Usuario usuario = acessoBuilder.setUsuario();
 
@@ -47,7 +47,7 @@ class TokenServiceTest {
 
     @Test
     void testeJWT() throws ParseException {
-        TokenService tokenService = new TokenService();
+        TokenServiceImpl tokenService = new TokenServiceImpl();
         Usuario usuario = new CadastroBuilder().criarCadastro().getUsuario();
         String token = tokenService.createJWT(usuario);
         System.out.println(token);

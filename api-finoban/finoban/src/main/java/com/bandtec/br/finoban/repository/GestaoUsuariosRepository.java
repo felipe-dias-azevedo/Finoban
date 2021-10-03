@@ -5,6 +5,7 @@ import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
+import com.bandtec.br.finoban.dominio.resposta.RespostaLogin;
 import org.springframework.http.ResponseEntity;
 
 import javax.mail.MessagingException;
@@ -18,8 +19,8 @@ public interface GestaoUsuariosRepository {
     void deletarUsuarioPeloId(int id);
     Usuario atualizarDadosCadastrais(Usuario usuario);
     Usuario atualizarDadosCadastrais(Usuario usuario, RedefinirSenhaModel redefinirSenhaModel);
-    Usuario efetuarLogin(Login login);
-    String efetuarLogoff(Login login);
+    RespostaLogin efetuarLogin(Login login);
+    void efetuarLogoff(Login login);
     void iniciarRedefinicaoSenha(RedefinicaoSenhaModel redefinicaoSenhaModel) throws MessagingException, IOException;
     TokenDecodificadoModel verificarRedeficicaoSenha(String jwt);
 }

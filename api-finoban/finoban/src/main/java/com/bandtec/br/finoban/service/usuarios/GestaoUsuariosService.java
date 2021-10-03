@@ -2,27 +2,23 @@ package com.bandtec.br.finoban.service.usuarios;
 
 import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
+import com.bandtec.br.finoban.dominio.resposta.RespostaLogin;
 import com.bandtec.br.finoban.infraestrutura.constantes.Constantes;
 import com.bandtec.br.finoban.infraestrutura.criptografia.Criptografia;
 import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.*;
 import com.bandtec.br.finoban.dominio.Login;
-import com.bandtec.br.finoban.infraestrutura.helpers.RecursoesHelper;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
 import com.bandtec.br.finoban.repository.RedefinicaoSenhaRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoUsuariosRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.service.AuthService;
 import com.bandtec.br.finoban.service.SendEmailService;
-import com.bandtec.br.finoban.service.TokenService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,11 +26,13 @@ import java.util.Optional;
 @AllArgsConstructor
 public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
+    @Autowired
+    private AuthService authService;
     private final UsuarioRepository usuarioRepository;
     private final RedefinicaoSenhaRepository redefinicaoSenhaRepository;
-    private SendEmailService sendEmailService;
-    private List<String> usuariosLogados;
 
+    private final SendEmailService sendEmailService;
+    private final LoginService loginService;
 
     @Override
     public void cadastrarUsuario(Usuario usuario) {
@@ -97,24 +95,27 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
     }
 
     @Override
-    public Usuario efetuarLogin(Login login) {
-        Usuario verificaEmail = usuarioRepository.findByEmailContaining(login.getEmail());
-        if (verificaEmail == null)
+    public RespostaLogin efetuarLogin(Login login) {
+        Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
+        if (usuario == null)
             throw new EmailNaoEncontradoException();
 
         String senhaCriptografada = Criptografia.criptografarComHashingMaisSaltMaisId(login.getSenha(),
-                verificaEmail.getId());
+                usuario.getId());
 
-        if (!verificaEmail.getSenha().equals(senhaCriptografada))
+        if (!usuario.getSenha().equals(senhaCriptografada))
             throw new SenhaIncorretaException();
 
-        String emailLogado = login.getEmail();
-        return RecursoesHelper.verificarUsuariosLogados(usuariosLogados, emailLogado, verificaEmail, usuariosLogados.size());
+        return loginService.logarUsuario(usuario);
     }
 
     @Override
-    public String efetuarLogoff(Login login) {
-        return RecursoesHelper.efetuarLogoffUsuarioLogado(usuariosLogados, login, usuariosLogados.size());
+    public void efetuarLogoff(Login login) {
+        Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
+        if (usuario == null)
+            throw new EmailNaoEncontradoException();
+
+        loginService.realizarLogoffUsuario(usuario);
     }
 
     @Override
@@ -123,16 +124,14 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (usuario == null)
             throw new EmailNaoEncontradoException();
 
-        TokenService tokenService = new TokenService();
-        String jwt = tokenService.createJWT(usuario);
+        String jwt = authService.createJWT(usuario);
         redefinicaoSenhaRepository.save(new RedefinicaoSenha(usuario, jwt));
         sendEmailService.sendEmail(usuario, Constantes.URL_REDEFINIR_SENHA + jwt);
     }
 
     @Override
     public TokenDecodificadoModel verificarRedeficicaoSenha(String jwt) {
-        TokenService tokenService = new TokenService();
-        if (tokenService.jwtExpirado(jwt))
+        if (authService.jwtExpirado(jwt))
             throw new TokenExpiradoException();
 
         RedefinicaoSenha redefinicaoSenha = redefinicaoSenhaRepository.findAllByTokenJWT(jwt);
@@ -143,6 +142,6 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (redefinicaoSenha.isExpirado())
             throw new TokenExpiradoException();
 
-        return tokenService.converterToModel(jwt);
+        return authService.converterToModel(jwt);
     }
 }
