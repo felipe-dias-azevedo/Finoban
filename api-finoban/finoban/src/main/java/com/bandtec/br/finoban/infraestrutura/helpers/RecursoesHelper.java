@@ -12,7 +12,7 @@ import java.util.List;
 
 public class RecursoesHelper {
 
-    public static Usuario verificarUsuariosLogados(List<String> usuariosLogados,
+    public static RespostaLogin verificarUsuariosLogados(List<String> usuariosLogados,
                                                           String emailLogado, Usuario verificaEmail,
                                                           int indice) {
         AuthService authService = new TokenServiceImpl();

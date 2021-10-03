@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.service.usuarios;
 
 import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
+import com.bandtec.br.finoban.dominio.resposta.RespostaLogin;
 import com.bandtec.br.finoban.infraestrutura.constantes.Constantes;
 import com.bandtec.br.finoban.infraestrutura.criptografia.Criptografia;
 import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
@@ -94,7 +95,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
     }
 
     @Override
-    public Usuario efetuarLogin(Login login) {
+    public RespostaLogin efetuarLogin(Login login) {
         Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
         if (usuario == null)
             throw new EmailNaoEncontradoException();
