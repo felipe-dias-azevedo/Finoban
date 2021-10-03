@@ -17,7 +17,6 @@ public class RespostaLogin {
         this.setNome(usuario.getNome());
         this.setEmail(usuario.getEmail());
         this.setSenha(usuario.getSenha());
-        this.setSenha(usuario.getCep());
         this.setCep(usuario.getCep());
         this.setBairro(usuario.getBairro());
         this.setNumero(usuario.getNumero());

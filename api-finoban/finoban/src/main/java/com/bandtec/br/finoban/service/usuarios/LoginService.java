@@ -32,8 +32,7 @@ public class LoginService implements LoginRepository {
             throw new UsuarioLogadoException();
 
         hashTable.insere(usuario);
-        RespostaLogin respostaLogin = new RespostaLogin(usuario, authService.generateToken(usuario));
-        return respostaLogin;
+        return new RespostaLogin(usuario, authService.generateToken(usuario));
     }
 
     @Override
