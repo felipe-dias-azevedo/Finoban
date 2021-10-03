@@ -12,8 +12,6 @@ import ModalAviso from "../components/Toastify";
 import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
 
-var nomeUsuario;
-
 const Form = () => {
 	const history = useHistory();
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
@@ -48,16 +46,16 @@ const Form = () => {
 					};
 
 					toast.success(`Bem-vindo(a) ${objUsuario.nome}!`);
+					sessionStorage.setItem("usuarioLogado", true);
 					sessionStorage.setItem("dadosUsuario", objUsuario);
 
-					<LoadingScreen />;
+					<LoadingScreen />
 
 					setTimeout(() => {
 						setResposta(respostaEnum.SUCESSO);
 						history.push({
 							pathname: "/dashboard",
 						});
-						window.location.href="/dashboard"
 					}, 5000);
 				} else {
 					setResposta(respostaEnum.ERROR);
@@ -65,9 +63,10 @@ const Form = () => {
 				}
 			})
 			.catch((e) => {
-				console.log(e);
-				const status = e.response.status;
-				status == "FIN07" ? toast.error("Email não encontrado") : toast.error("Usuário já possui uma sessão ativa");
+				const status = e.response.data.code;
+				if (status == "FIN07") toast.error("Email não encontrado");
+				if (status == "FIN08") toast.error("A senha informada é inválida");
+				if (status == "FIN09") toast.error("Usuário já possui uma sessão ativa");
 				setResposta(respostaEnum.ERROR);
 			});
 	}
@@ -115,12 +114,19 @@ const Form = () => {
 
 				<div className="form-subtext-holder">
 					<p>Não possui uma conta?</p>
-					<Link to="/cadastro" className="font-weight-bold">Clique aqui para se cadastrar.</Link>
+					<Link to="/cadastro" className="font-weight-bold">
+						Clique aqui para se cadastrar.
+					</Link>
 				</div>
 
 				<div className="form-subtext-holder">
 					<p>Esqueceu a senha?</p>
-					<Link to="/esqueci-minha-senha" className="font-weight-bold">Clique aqui</Link>
+					<Link
+						to="/esqueci-minha-senha"
+						className="font-weight-bold"
+					>
+						Clique aqui
+					</Link>
 				</div>
 
 				<div className="button-holder-sign-in-up">

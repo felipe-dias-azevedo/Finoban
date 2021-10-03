@@ -97,10 +97,7 @@ const Form = () => {
 								)}
 
 								<div className="button-link-voltar">
-									<button
-										type="submit"
-										className="bg-transparente cor-verde"
-									>
+									<button className="bg-transparente cor-verde" type="button">
 										<Link to="/login">Voltar ao login</Link>
 									</button>
 									<button type="submit" className="ml-3">

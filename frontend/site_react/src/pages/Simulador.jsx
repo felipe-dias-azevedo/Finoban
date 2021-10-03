@@ -2,15 +2,10 @@ import React from 'react';
 import Header from '../components/Header';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
-import { useHistory } from "react-router";
 
 function Simulador() {
 
-    const history = useHistory();   
-
     // Local Storage
-    var horarioEntrada = sessionStorage.getItem("horarioEntrada");
-    var idUsuario = sessionStorage.getItem("idUsuario");
     var dadosSimuladorRecebido = sessionStorage.getItem("dadosSimulador");
     var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
     var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
@@ -19,42 +14,14 @@ function Simulador() {
         window.location.href="/";
     }
 
-    // Data
-    var data = new Date();
-    var dia = String(data.getDate()).padStart(2, '0');
-    var mes = String(data.getMonth() + 1).padStart(2, '0');
-    var ano = data.getFullYear();
-
-    var hora = data.getHours();
-    var minutos = data.getMinutes();
-    if (minutos < 10) {
-        minutos = '0' + minutos;
-    }
-    var segundos = data.getUTCSeconds();
-    if (segundos < 10) {
-        segundos = '0' + segundos;
-    }
-
-    var milisegundos = data.getMilliseconds();
-
-    var dataSaida = ano + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos + ':' + segundos + '.' + milisegundos;
-
     let dataSimulacao = JSON.parse(dadosSimuladorRecebido);
     var valorImovelRecebido = dataSimulacao.valorImovel;
     var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
 
-    var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
-
-    var tempoFinanciamento = tempoFinanciamentoRecebido * 12;
-
     // Taxas
-    var taxa1 = respostaSimulacao[0].data.taxaTotal * 5;
-    var taxa2 = respostaSimulacao[1].data.taxaTotal * 3;
-    var taxa3 = respostaSimulacao[2].data.taxaTotal;
-
-    var taxaPresil = sessionStorage.setItem("taxaPresil", taxa1);
-    var taxaS16 = sessionStorage.setItem("taxaS16", taxa2);
-    var taxaCifra = sessionStorage.setItem("taxaCifra", taxa3);
+    var taxa1 = respostaSimulacao.data[0].data.taxaTotal;
+    var taxa2 = respostaSimulacao.data[1].data.taxaTotal * 5;
+    var taxa3 = respostaSimulacao.data[2].data.taxaTotal * 3;
 
     let financiamentoPresil = financiar(valorImovelRecebido, taxa1/29, tempoFinanciamentoRecebido);
     let financiamentoS16 = financiar(valorImovelRecebido, taxa2/30, tempoFinanciamentoRecebido);
@@ -143,7 +110,7 @@ function Simulador() {
                         taxa_t ={(taxa1).toFixed(2)} 
                         primeira_p={primeiraPrestacaoPresilFormatado} 
                         valor_f={valorPresilFormatado}
-                        valor_s={(((respostaSimulacao[0].data.dfi) + (respostaSimulacao[0].data.mip))*100).toFixed(2)
+                        valor_s={(((respostaSimulacao.data[0].data.dfi) + (respostaSimulacao.data[0].data.mip))*100).toFixed(2)
                         }     
                         
                     />
@@ -153,7 +120,7 @@ function Simulador() {
                         taxa_t ={(taxa2).toFixed(2)} 
                         primeira_p={primeiraPrestacaoS16Formatado} 
                         valor_f={valorS16Formatado} 
-                        valor_s={(((respostaSimulacao[1].data.dfi) + (respostaSimulacao[1].data.mip))*100).toFixed(2)} 
+                        valor_s={(((respostaSimulacao.data[1].data.dfi) + (respostaSimulacao.data[1].data.mip))*100).toFixed(2)} 
                          
                     />
                     <BankCard 
@@ -161,7 +128,7 @@ function Simulador() {
                         taxa_t ={(taxa3.toFixed(2))} 
                         primeira_p={primeiraPrestacaoCifraFormatado}
                         valor_f={valorCifraFormatado} 
-                        valor_s={(((respostaSimulacao[2].data.dfi) + (respostaSimulacao[2].data.mip)) / 100).toFixed(2)} 
+                        valor_s={(((respostaSimulacao.data[2].data.dfi) + (respostaSimulacao.data[2].data.mip)) / 100).toFixed(2)} 
                     />
                 </div>
             </div>
