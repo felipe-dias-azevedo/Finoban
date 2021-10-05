@@ -6,6 +6,7 @@ import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.service.usuarios.GestaoAvaliacoesService;
 import com.bandtec.br.finoban.service.usuarios.GestaoUsuariosService;
@@ -19,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,12 +46,13 @@ public class CadastroController {
         if (usuarioList.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(usuarioList);
+        return ResponseEntity.status(200)
+                .body(new ResponseGeneric<>(UsuarioRespostaSimples.converterListaUsuarioParaUsuarioSimples(usuarioList)));
     }
 
     @GetMapping("/usuarios/{id}")
     public ResponseEntity getUsuario(@PathVariable Integer id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.resgatarUsuarioPeloId(id)));
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(new UsuarioRespostaSimples(gestaoUsuariosService.resgatarUsuarioPeloId(id))));
     }
 
     @DeleteMapping("/usuarios/{id}")

@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.util.Assert;
 
-public class GestaoUsuariosSteps {
+public class GestaoOperacoesMatematicasSteps {
 
     private int numero1;
     private int numero2;
