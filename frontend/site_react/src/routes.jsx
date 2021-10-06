@@ -40,8 +40,8 @@ function Routes() {
                         <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
                     </NegocioProvider>
 
-                    <Route exact path="*" component={PaginaInicial} />
                 </UserProvider>
+                <Route exact path="*" component={PaginaInicial} />
             </Switch>
         </Router>
     );

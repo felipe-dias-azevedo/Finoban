@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 export function UserProvider({ children }) {
 
@@ -22,9 +22,9 @@ export function UserProvider({ children }) {
     
 }
 
-export function useUser() {
-    const context = useContext(UserContext);
-    if (!context) throw new Error("useUser deve ser utilizado em conjunto com um UserProvider");
-    const { dataUsuario, setDataUsuario, authorization, setAuthorization } = context;
-    return { dataUsuario, setDataUsuario, authorization, setAuthorization };
-}
+// export function useUser() {
+//     const context = useContext(UserContext);
+//     if (!context) throw new Error("useUser deve ser utilizado em conjunto com um UserProvider");
+//     const { dataUsuario, setDataUsuario, authorization, setAuthorization } = context;
+//     return { dataUsuario, setDataUsuario, authorization, setAuthorization };
+// }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import api from "../services/api";
@@ -11,12 +11,13 @@ import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
 import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
-import { useUser } from "../contexts/UserContext";
+import { UserContext, useUser } from "../contexts/UserContext";
 
 const Form = () => {
 	const history = useHistory();
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
-	const { setDataUsuario, setAuthorization } = useUser();
+	// const { setDataUsuario, setAuthorization } = useUser();
+	const { setDataUsuario, setAuthorization } = useContext(UserContext);
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarLogin,
 		validate
