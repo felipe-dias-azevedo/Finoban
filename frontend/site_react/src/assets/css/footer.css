@@ -6,9 +6,11 @@
     color: var(--preto-terciario);
     display: flex;
     justify-content: space-between;
-    padding: 3rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2rem;
     line-height: 2rem;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .topics {
