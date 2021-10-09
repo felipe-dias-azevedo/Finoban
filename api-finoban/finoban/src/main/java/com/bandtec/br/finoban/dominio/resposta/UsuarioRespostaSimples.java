@@ -2,6 +2,8 @@ package com.bandtec.br.finoban.dominio.resposta;
 
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 
+import javax.swing.text.MaskFormatter;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,6 @@ public class UsuarioRespostaSimples {
     private String email;
     private String senha;
     private String bairro;
-    private Integer numero;
 
     public UsuarioRespostaSimples(Usuario usuario) {
         this.idUsuario = usuario.getId();
@@ -23,11 +24,18 @@ public class UsuarioRespostaSimples {
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();
         this.bairro = usuario.getBairro();
-        this.numero = usuario.getNumero();
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCnpj() throws ParseException {
+        if (cnpj == null)
+            return cnpj;
+
+        cnpj = cnpj.replace("/","")
+                .replace(".","")
+                .replace("-","");
+        char[] array = cnpj.toCharArray();
+        array[0] = 'X'; array[1] = 'X'; array[2] = 'X'; array[cnpj.length()-2] = 'X'; array[cnpj.length()-1] = 'X';
+        return new String().valueOf(array);
     }
 
     public int getIdUsuario() {
@@ -73,14 +81,6 @@ public class UsuarioRespostaSimples {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
     }
 
     public static List<UsuarioRespostaSimples> converterListaUsuarioParaUsuarioSimples(List<Usuario> usuarios) {

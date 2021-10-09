@@ -30,4 +30,5 @@ public class HashTable {
         for (int i = 0; i < this.tab.length; i++)
             this.tab[i] = new ListaLigada();
     }
+
 }
