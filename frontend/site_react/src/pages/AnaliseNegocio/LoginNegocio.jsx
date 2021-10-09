@@ -60,7 +60,8 @@ function Login() {
         <>
             <Header />
             <div className="form-title">
-                <h2>Análise de Dados do Negócio</h2>
+                <h2>Login Análise</h2>
+                <h5>Dados de Negócio</h5>
             </div>
 
             {erroLogin && (

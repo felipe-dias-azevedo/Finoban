@@ -5,6 +5,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.form-title h5 {
+    margin-top: 0.5rem;
 }
 
 .form-holder {
@@ -87,7 +92,9 @@
 }
 
 .button-holder-sign-in-up {
+    margin-top: 2rem;
     font-size: 18px;
+    margin-bottom: 5rem;
 }
 
 .form-holder .button-holder-sign-in-up > button{

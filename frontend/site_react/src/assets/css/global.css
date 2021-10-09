@@ -47,12 +47,9 @@ p {
     font-weight: 400;
 }
 
-h1, h2, h3 {
-    font-family: 'Roboto Slab', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-h4, h5, p {
-    font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -93,7 +90,8 @@ button:hover {
 }
 
 input, select {
-    padding: 2px 4px 2px 4px;
+    padding: 6px;
+    background-color: #ffffff;
     border: 2px solid var(--preto-secundario);
     border-radius: 2px;
 }
@@ -102,7 +100,8 @@ input:hover {
     outline: 2px solid var(--azul-hover);
 }
 
-input:focus {
+input:focus,
+select:focus {
     outline: 1px solid var(--azul-hover);
 }
 

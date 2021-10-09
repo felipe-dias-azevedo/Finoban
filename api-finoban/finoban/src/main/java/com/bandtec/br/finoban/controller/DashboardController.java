@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class DashboardController {
 
-//    private AuthService authService;
+    private AuthService authService;
 
     private DashboardService dashboardService;
 
     @GetMapping
-    public ResponseEntity<DashboardDTO> getDataDashboard(/*@RequestHeader("Authorization") String authorization*/) {
+    public ResponseEntity<DashboardDTO> getDataDashboard(@RequestHeader("Authorization") String authorization) {
 
-//        authService.validateJwt(authorization);
+        authService.validateJwt(authorization);
 
         DashboardDTO dadosDashboard = dashboardService.obterDadosDashboard();
 
