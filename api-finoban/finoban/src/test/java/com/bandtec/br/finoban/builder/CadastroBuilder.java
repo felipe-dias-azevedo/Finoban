@@ -16,7 +16,7 @@ public class CadastroBuilder {
         usuario.setNumero(597);
         usuario.setDataCriacao(LocalDateTime.now());
         usuario.setCep("01414001");
-        usuario.setCnpj("01234567890000");
+        usuario.setCpf("01234567890000");
         usuario.setSenha("teste123");
         usuario.setEmail("teste.teste@teste.com");
         usuario.setBairro("Consolação");

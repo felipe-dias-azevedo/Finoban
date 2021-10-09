@@ -18,7 +18,7 @@ public class LoginService implements LoginRepository {
     private HashTable hashTable;
 
     public LoginService() {
-        this.hashTable = new HashTable(5000);
+        this.hashTable = new HashTable(26);
     }
 
     @Override

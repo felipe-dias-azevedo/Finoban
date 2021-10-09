@@ -2,13 +2,13 @@ package com.bandtec.br.finoban.dominio.requisicao;
 
 public class BancoRequisicao {
 
-    private String cnpj;
+    private String cpf;
     private Integer renda;
     private Integer valorImovel;
     private Integer tempoFinanciamento;
 
-    public BancoRequisicao(String cnpj, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
-        this.cnpj = cnpj;
+    public BancoRequisicao(String cpf, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
+        this.cpf = cpf;
         this.renda = renda;
         this.valorImovel = valorImovel;
         this.tempoFinanciamento = tempoFinanciamento;
@@ -18,12 +18,12 @@ public class BancoRequisicao {
 
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Integer getRenda() {
