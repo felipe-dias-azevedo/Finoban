@@ -41,8 +41,8 @@ function Routes() {
                         <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
                     </NegocioProvider>
 
+                    <Route path="*" component={PaginaNaoExiste} />
                 </UserProvider>
-                <Route exact path="*" component={PaginaInicial} />
             </Switch>
         </Router>
     );
