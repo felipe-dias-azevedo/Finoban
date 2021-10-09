@@ -90,7 +90,7 @@ public class AcessoBuilder {
         usuario.setEmail("teste.teste@testezinho.com");
         usuario.setSenha("teste123");
         usuario.setCep("01414001");
-        usuario.setCnpj("01234567890000");
+        usuario.setCpf("01234567890000");
         usuario.setDataNasc(LocalDate.now().plusYears(-21));
         usuario.setDataCriacao(LocalDateTime.now());
         usuario.setNumero(593);

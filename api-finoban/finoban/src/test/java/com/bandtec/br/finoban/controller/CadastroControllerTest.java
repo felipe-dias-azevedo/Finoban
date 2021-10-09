@@ -69,7 +69,7 @@ class CadastroControllerTest {
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.of(usuario));
         ResponseEntity<Optional<Usuario>> resposta = cadastroController.getUsuario(1);
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(usuario.getCnpj(), resposta.getBody().get().getCnpj());
+        assertEquals(usuario.getCpf(), resposta.getBody().get().getCpf());
     }
 
     @Test

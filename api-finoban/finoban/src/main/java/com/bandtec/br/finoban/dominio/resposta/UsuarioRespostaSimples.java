@@ -2,7 +2,6 @@ package com.bandtec.br.finoban.dominio.resposta;
 
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 
-import javax.swing.text.MaskFormatter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class UsuarioRespostaSimples {
 
     private int idUsuario;
-    private String cnpj;
+    private String cpf;
     private String nome;
     private String email;
     private String senha;
@@ -19,22 +18,22 @@ public class UsuarioRespostaSimples {
 
     public UsuarioRespostaSimples(Usuario usuario) {
         this.idUsuario = usuario.getId();
-        this.cnpj = usuario.getCnpj();
+        this.cpf = usuario.getCpf();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();
         this.bairro = usuario.getBairro();
     }
 
-    public String getCnpj() throws ParseException {
-        if (cnpj == null)
-            return cnpj;
+    public String getCpf() throws ParseException {
+        if (cpf == null)
+            return cpf;
 
-        cnpj = cnpj.replace("/","")
+        cpf = cpf.replace("/","")
                 .replace(".","")
                 .replace("-","");
-        char[] array = cnpj.toCharArray();
-        array[0] = 'X'; array[1] = 'X'; array[2] = 'X'; array[cnpj.length()-2] = 'X'; array[cnpj.length()-1] = 'X';
+        char[] array = cpf.toCharArray();
+        array[0] = 'X'; array[1] = 'X'; array[2] = 'X'; array[cpf.length()-2] = 'X'; array[cpf.length()-1] = 'X';
         return new String().valueOf(array);
     }
 
@@ -46,8 +45,8 @@ public class UsuarioRespostaSimples {
         this.idUsuario = idUsuario;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {

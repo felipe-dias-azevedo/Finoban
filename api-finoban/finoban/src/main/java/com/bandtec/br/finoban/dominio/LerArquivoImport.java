@@ -46,7 +46,7 @@ public class LerArquivoImport {
 
                 if (tipoRegistro.equals("03")) {
 
-                    String cnpj = registro.substring(2, 16).trim();
+                    String cpf = registro.substring(2, 16).trim();
                     String nome = registro.substring(16, 106).trim();
                     String email = registro.substring(106, 146).trim();
                     String senha = registro.substring(147, 196).trim();
@@ -59,7 +59,7 @@ public class LerArquivoImport {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     LocalDate dataFormatada = LocalDate.parse(dataNasc, formatter);
 
-                    usuario.setCnpj(cnpj);
+                    usuario.setCpf(cpf);
                     usuario.setNome(nome);
                     usuario.setDataCriacao(LocalDateTime.now());
                     usuario.setEmail(email);

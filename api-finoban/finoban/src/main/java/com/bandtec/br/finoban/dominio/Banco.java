@@ -2,7 +2,7 @@ package com.bandtec.br.finoban.dominio;
 
 public class Banco {
 
-    private Integer cnpj;
+    private Integer cpf;
     private Integer renda;
     private Integer valorImovel;
     private Integer tempoFinanciamento;
@@ -10,12 +10,12 @@ public class Banco {
     public Banco(){
     }
 
-    public Integer getCnpj() {
-        return cnpj;
+    public Integer getCpf() {
+        return cpf;
     }
 
-    public void setCnpj(Integer cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(Integer cpf) {
+        this.cpf = cpf;
     }
 
     public Integer getRenda() {

@@ -10,7 +10,7 @@ public class RestServiceBuilder {
     }
 
     public RestServiceBuilder criarRequisicao() {
-        this.bancoRequisicao.setCnpj("123");
+        this.bancoRequisicao.setCpf("123");
         this.bancoRequisicao.setRenda(40000);
         this.bancoRequisicao.setTempoFinanciamento(25);
         this.bancoRequisicao.setValorImovel(1_200_000);
