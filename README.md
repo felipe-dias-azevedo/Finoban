@@ -50,6 +50,12 @@ TBD
   mvn spring-boot:run
 ```
 
+### Para visualizar a documentação da API
+
+```ruby
+url: "http://localhost:8080/swagger-ui.html"
+```
+
 ### Frontend
 
 ```
