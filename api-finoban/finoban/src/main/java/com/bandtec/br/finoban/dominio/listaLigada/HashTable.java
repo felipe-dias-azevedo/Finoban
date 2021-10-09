@@ -13,10 +13,9 @@ public class HashTable {
     }
 
     public int funcaoHash(Character caractere) {
-        return ((int)caractere - 97)  % this.tab.length;
+        return caractere % 97;
     }
-
-    // 97 a 122 tabela ascii = 26
+    
     public char retornaChar(String nome) {
         return nome.toLowerCase(Locale.ROOT).charAt(0);
     }
