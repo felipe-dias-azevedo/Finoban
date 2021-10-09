@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
 import com.bandtec.br.finoban.service.usuarios.GestaoUsuariosService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

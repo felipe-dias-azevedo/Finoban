@@ -114,7 +114,7 @@ public class CadastroController {
             throw new EmailNaoEncontradoException();
 
         usuario.setSenha(redefinirSenhaModel.getNovaSenha());
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel)));
+        return ResponseEntity.status(200).body(new ResponseGeneric<>(new UsuarioRespostaSimples(gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel))));
     }
 
 }

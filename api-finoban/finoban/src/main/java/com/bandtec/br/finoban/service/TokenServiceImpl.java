@@ -5,6 +5,7 @@ import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.infraestrutura.helpers.DateHelper;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
@@ -60,21 +61,29 @@ public class TokenServiceImpl implements AuthService {
     }
 
     public boolean jwtExpirado(String token) {
-        Claims claims = decodeToken(token);
-        long value = Integer.parseInt(claims.get("exp").toString());
-        return DateHelper.verificarJwtExpirou(value);
+        try {
+            Claims claims = decodeToken(token);
+            long value = Integer.parseInt(claims.get("exp").toString());
+            return DateHelper.verificarJwtExpirou(value);
+        } catch (Exception ex) {
+            return true;
+        }
     }
 
     public TokenDecodificadoModel converterToModel(String jwt) {
-        Claims claims = decodeToken(jwt);
-        long value = Integer.parseInt(claims.get("exp").toString());
-        Instant instant = Instant.ofEpochSecond(value);
-        Date date = Date.from(instant);
-        return new TokenDecodificadoModel(
-                claims.get("email").toString(),
-                claims.get("token").toString(),
-                date
-                );
+        try {
+            Claims claims = decodeToken(jwt);
+            long value = Integer.parseInt(claims.get("exp").toString());
+            Instant instant = Instant.ofEpochSecond(value);
+            Date date = Date.from(instant);
+            return new TokenDecodificadoModel(
+                    claims.get("email").toString(),
+                    claims.get("token").toString(),
+                    date
+            );
+        } catch (ExpiredJwtException ex) {
+            return null;
+        }
     }
 
 }
