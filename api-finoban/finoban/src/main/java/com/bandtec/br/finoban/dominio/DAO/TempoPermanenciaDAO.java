@@ -1,8 +1,8 @@
-package com.bandtec.br.finoban.dominio.views.database;
+package com.bandtec.br.finoban.dominio.DAO;
 
 import java.time.LocalDateTime;
 
-public interface TempoPermanenciaDatabaseView {
+public interface TempoPermanenciaDAO {
 
     LocalDateTime getDataHoraEntrada();
     LocalDateTime getDataHoraSaida();

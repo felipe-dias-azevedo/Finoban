@@ -1,9 +1,8 @@
 import React from 'react';
 import ImageNotFound from '../assets/images/error-404-page-3100465-2582986.png';
 
-const Pagina = () => { 
+export default function PaginaNaoExiste() { 
     return (
-        <>
         <div className="main">
             <div className="content">
                 <div className="text">
@@ -11,18 +10,9 @@ const Pagina = () => {
                     <p>Parece que a página que você tentou acessar está com problema</p>
                 </div>
                 <div className="image">
-                    <img src={ImageNotFound}></img>
+                    <img src={ImageNotFound} alt="Imagem Página não encontrada" />
                 </div>
             </div>
         </div>
-        </>
-    )
-}
-
-export default function PaginaNaoExiste() {
-    return (
-        <>
-            <Pagina />
-        </>
     )
 }

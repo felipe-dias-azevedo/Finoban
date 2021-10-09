@@ -14,6 +14,8 @@ public interface AuthService {
 
     public boolean jwtExpirado(String token);
 
+    public boolean validateJwt(String token);
+
     public TokenDecodificadoModel converterToModel(String jwt);
 
 }

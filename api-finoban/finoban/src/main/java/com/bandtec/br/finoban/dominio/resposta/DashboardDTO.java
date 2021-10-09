@@ -1,8 +1,8 @@
-package com.bandtec.br.finoban.dominio.views;
+package com.bandtec.br.finoban.dominio.resposta;
 
 import java.util.List;
 
-public class DashboardResponse {
+public class DashboardDTO {
 
     private List<List<Object>> rendimentoMensal;
     private List<List<Object>> porcentualPerdas;
@@ -16,7 +16,7 @@ public class DashboardResponse {
     private List<List<Object>> cepRegiaoEscolhida;
     private List<List<Object>> bancosEscolhidos;
 
-    public DashboardResponse(
+    public DashboardDTO(
             List<List<Object>> rendimentoMensal,
             List<List<Object>> porcentualPerdas,
             List<List<Object>> projecaoRendimento,

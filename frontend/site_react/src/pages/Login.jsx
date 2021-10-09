@@ -11,13 +11,10 @@ import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
 import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
-import { UserContext, useUser } from "../contexts/UserContext";
 
 const Form = () => {
 	const history = useHistory();
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
-	// const { setDataUsuario, setAuthorization } = useUser();
-	const { setDataUsuario, setAuthorization } = useContext(UserContext);
 	const { values, errors, handleChange, handleSubmit } = UseForm(
 		efetuarLogin,
 		validate
@@ -48,12 +45,12 @@ const Form = () => {
 						email: e.data.data.email,
 					};
 
-					setDataUsuario(objUsuario);
-					setAuthorization(e.data.data.token);
+					var token = e.data.data.token;
 
 					toast.success(`Bem-vindo(a) ${objUsuario.nome}!`);
 					sessionStorage.setItem("usuarioLogado", true);
 					sessionStorage.setItem("dadosUsuario", objUsuario);
+					sessionStorage.setItem("tokenAuth", token);
 
 					<LoadingScreen />
 
