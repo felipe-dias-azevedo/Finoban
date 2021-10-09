@@ -19,6 +19,7 @@ import './styles/dashboard-bancos.css';
 import './assets/css/esqueci-minha-senha.css'
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/redefinir-senha.css';
+import './assets/css/pagina-nao-existe.css'
 
 export default function App() {
 

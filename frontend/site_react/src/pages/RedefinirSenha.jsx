@@ -11,6 +11,7 @@ import respostaEnum from "../utils/respostaEnum";
 import LoadingScreen from "../components/LoadingScreen";
 import configurarToast from "../utils/toastService";
 import { toast } from "react-toastify";
+import PaginaNaoExiste from "../pages/PaginaNaoExiste"
 import UseForm from "../components/UseForm";
 import validate from "../components/ValidacaoFormEsqueciSenha";
 
@@ -37,13 +38,18 @@ const Form = () => {
 			});
 	}, [])
 
+	if (!jwtIsValid) return (
+		<>
+			<PaginaNaoExiste />
+		</>
+	)
 
 	const RedefinirSenha = (e) => {
 
 		if (!jwtIsValid) toast.error("Token inválido")
 
 		e.preventDefault();
-		
+
 		if (novaSenha != confirmacaoNovaSenha) toast.error("Senhas diferentes")
 
 

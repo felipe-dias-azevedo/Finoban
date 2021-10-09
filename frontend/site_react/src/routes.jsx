@@ -15,6 +15,7 @@ import RedefinirSenha from './pages/RedefinirSenha';
 import { NegocioProvider } from './contexts/NegocioContext';
 import { UserProvider } from './contexts/UserContext';
 import { SwitchGraficoNegocioProvider } from './contexts/SwitchGraficoNegocioContext';
+import PaginaNaoExiste from './pages/PaginaNaoExiste';
 
 function Routes() {
 
