@@ -43,6 +43,7 @@ function Login() {
                 localStorage.setItem("nomeUsuario", e.data.data.nome);
                 localStorage.setItem("idUsuario", e.data.data.id);
                 localStorage.setItem("emailUsuario", e.data.data.email);
+                sessionStorage.setItem("tokenAuth", e.data.data.token);
                 history.push('/analise/dashboard');
             } else {
                 setErroLogin(true);

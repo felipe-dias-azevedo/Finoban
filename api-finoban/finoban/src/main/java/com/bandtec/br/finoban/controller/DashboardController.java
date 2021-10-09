@@ -5,9 +5,11 @@ import com.bandtec.br.finoban.repository.DashboardRepository;
 import com.bandtec.br.finoban.dominio.views.DashboardResponse;
 import com.bandtec.br.finoban.dominio.views.charts.*;
 import com.bandtec.br.finoban.dominio.views.database.*;
+import com.bandtec.br.finoban.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +25,13 @@ public class DashboardController {
     @Autowired
     private DashboardRepository repository;
 
+    @Autowired
+    private AuthService authService;
+
     @GetMapping
-    public ResponseEntity<DashboardResponse> getDataDashboard() {
+    public ResponseEntity<DashboardResponse> getDataDashboard(@RequestHeader("Authorization") String authorization) {
+
+        authService.validateJwt(authorization);
 
         List<List<Object>> rendimentoMensal = tratarRendimentoMensal(repository.getRendimentoMensalData());
         List<List<Object>> porcentualPerdas = tratarPorcentualPerdas(repository.getPorcentualPerdaData());

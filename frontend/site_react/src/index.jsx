@@ -4,9 +4,9 @@ import App from './App';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DarkModeProvider } from './contexts/DarkModeContext';
-import { UserProvider } from './contexts/UserContext';
 import { NegocioProvider } from './contexts/NegocioContext';
 import { SwitchGraficoNegocioProvider } from './contexts/SwitchGraficoNegocioContext';
+import UserProvider from './contexts/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>
