@@ -29,12 +29,10 @@ const Form = () => {
 			if (e.status == 200) {
 				setJwtIsValid(true);
 				setEmailRetornoRequisicao(e.data.data.email);
-				console.log(e.data.data)
 			}
 		})
 			.catch((e) => {
 				const status = e.response.data.code;
-				if (status == "FIN13") toast.error("Token Expirado");
 			});
 	}, [])
 
@@ -45,8 +43,6 @@ const Form = () => {
 	)
 
 	const RedefinirSenha = (e) => {
-
-		if (!jwtIsValid) toast.error("Token inválido")
 
 		e.preventDefault();
 
