@@ -15,7 +15,7 @@ public class HashTable {
     public int funcaoHash(Character caractere) {
         return caractere % 97;
     }
-    
+
     public char retornaChar(String nome) {
         return nome.toLowerCase(Locale.ROOT).charAt(0);
     }

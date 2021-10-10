@@ -110,4 +110,25 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError apiError = new ApiError(exception.getCode(), exception.getMessage());
         return new ResponseEntity(apiError, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(PermissaoNaoEncontradaException.class)
+    public final ResponseEntity<Object> handlePermissaoNaoEncontradaException() {
+        PermissaoNaoEncontradaException permissaoNaoEncontradaException = new PermissaoNaoEncontradaException();
+        return new ResponseEntity(new ApiError(permissaoNaoEncontradaException.getCode(),
+                permissaoNaoEncontradaException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminNaoEncontradoException.class)
+    public final ResponseEntity<Object> handleAdminNaoEncontradoException() {
+        AdminNaoEncontradoException adminNaoEncontradoException = new AdminNaoEncontradoException();
+        return new ResponseEntity(new ApiError(adminNaoEncontradoException.getCode(),
+                adminNaoEncontradoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CargoInexistenteException.class)
+    public final ResponseEntity<Object> handleCargoNaoExistenteException() {
+        CargoInexistenteException cargoInexistenteException = new CargoInexistenteException();
+        return new ResponseEntity(new ApiError(cargoInexistenteException.getCode(),
+                cargoInexistenteException.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }
