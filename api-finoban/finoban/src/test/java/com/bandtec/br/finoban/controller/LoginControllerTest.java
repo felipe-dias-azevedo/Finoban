@@ -4,10 +4,15 @@ import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.builder.LoginBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.Login;
+import com.bandtec.br.finoban.dominio.exceptions.EmailNaoEncontradoException;
+import com.bandtec.br.finoban.dominio.exceptions.SenhaIncorretaException;
+import com.bandtec.br.finoban.dominio.exceptions.UsuarioLogadoException;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.service.usuarios.LoginService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +33,9 @@ class LoginControllerTest {
     @MockBean
     UsuarioRepository cadastroRepository;
 
+    @MockBean
+    LoginService loginService;
+
     @Test
     @DisplayName("/POST - Fazer login com usuário já existente - STATUS 200")
     void novoLoginOk() {
@@ -36,9 +44,7 @@ class LoginControllerTest {
         CadastroBuilder cadastroBuilder = new CadastroBuilder();
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
         Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(usuario);
-        ResponseEntity<ResponseGeneric<Usuario>> resposta = controller.novoLogin(login);
-        assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(usuario.getSenha(), resposta.getBody().getData().getSenha());
+        assertThrows(SenhaIncorretaException.class, () -> controller.novoLogin(login));
     }
 
     @Test
@@ -46,12 +52,8 @@ class LoginControllerTest {
     void novoLoginNotOk() {
         LoginBuilder loginBuilder = new LoginBuilder();
         Login login = loginBuilder.criarLogin().getLogin();
-        CadastroBuilder cadastroBuilder = new CadastroBuilder();
-        Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
         Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(null);
-        ResponseEntity<ResponseGeneric> resposta = controller.novoLogin(login);
-        assertEquals(204, resposta.getStatusCodeValue());
-        assertEquals("Email não encontrado", resposta.getBody().getData());
+        assertThrows(EmailNaoEncontradoException.class, () -> controller.novoLogin(login));
     }
 
     @Test
@@ -65,17 +67,17 @@ class LoginControllerTest {
         usuariosLogados.add(usuario.getEmail());
         Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
         ResponseEntity<ResponseGeneric<Usuario>> resposta = controller.efetuarLogoff(login);
-        assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals("Usuário deslogado com sucesso!", resposta.getBody().getData());
+        assertEquals(204, resposta.getStatusCodeValue());
     }
 
     @Test
     @DisplayName("/POST - Efetuar logoff de um usuário que não está logado - STATUS 404")
     void efetutarLogoffNotOk() {
-        List<String> usuariosLogados = new ArrayList<>();
         LoginBuilder loginBuilder = new LoginBuilder();
         Login login = loginBuilder.criarLogin().getLogin();
-        ResponseEntity resposta = controller.efetuarLogoff(login);
-        assertEquals(404, resposta.getStatusCodeValue());
+        Usuario usuario = new CadastroBuilder().criarCadastro().getUsuario();
+        Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(usuario);
+        Mockito.when(!loginService.verificaUsuarioLogado(usuario)).thenReturn(false);
+        assertThrows(UsuarioLogadoException.class, () -> controller.efetuarLogoff(login));
     }
 }

@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.dominio.listaLigada;
 
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public class HashTable {
