@@ -201,6 +201,7 @@ function Dashboard() {
 		? anoInicial + objDashboard.tempoFinanciamento
 		: anoInicial + 30;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
+	const [showFb, setShowFb] = useState(true);
 
 	window.onbeforeunload = confirmExit;
 	function confirmExit() {
@@ -532,8 +533,10 @@ function Dashboard() {
 				</div>
 			</div>
 
-			<div className="alert-avaliacao">
-				<img src={BtnClose} className="btn-close" />
+			<div className="alert-avaliacao" style={ {display: showFb ? 'block' : 'none'} }>
+				<img src={BtnClose} className="btn-close" onClick={()=> {
+					setShowFb(false)
+				}} />
 				<h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
 				<div className="btn-avaliacao">
 					<img
