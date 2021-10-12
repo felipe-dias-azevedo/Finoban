@@ -131,4 +131,25 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(new ApiError(cargoInexistenteException.getCode(),
                 cargoInexistenteException.getMessage()), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(AdminJaCadastradoException.class)
+    public final ResponseEntity<Object> handleAdminJaEncontradoException() {
+        AdminJaCadastradoException adminJaCadastradoException = new AdminJaCadastradoException();
+        return new ResponseEntity(new ApiError(adminJaCadastradoException.getCode(),
+                adminJaCadastradoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminLogadoException.class)
+    public final ResponseEntity<Object> handleAdminLogadoException() {
+        AdminLogadoException adminLogadoException = new AdminLogadoException();
+        return new ResponseEntity(new ApiError(adminLogadoException.getCode(),
+                adminLogadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminNaoLogadoException.class)
+    public final ResponseEntity<Object> handleAdminNaoLogadoException() {
+        AdminNaoLogadoException adminNaoLogadoException = new AdminNaoLogadoException();
+        return new ResponseEntity(new ApiError(adminNaoLogadoException.getCode(),
+                adminNaoLogadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }

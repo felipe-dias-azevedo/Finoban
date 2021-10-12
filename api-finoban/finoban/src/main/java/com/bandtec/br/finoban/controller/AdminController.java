@@ -1,5 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
+import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.service.admin.AdminService;
@@ -34,5 +35,16 @@ public class AdminController {
     @GetMapping("/{id}")
     public ResponseEntity getAdminForId(@PathVariable int id) {
         return ResponseEntity.status(200).body(new ResponseGeneric<>(adminService.resgatarAdminPeloId(id)));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity loginAdmin(@RequestBody Login login) {
+        return ResponseEntity.status(201).body(new ResponseGeneric<>(adminService.realizarLogin(login)));
+    }
+
+    @PostMapping("/logoff")
+    public ResponseEntity logoffAdmin(@RequestBody Login logoff) {
+        adminService.realizarLogoff(logoff);
+        return ResponseEntity.status(204).build();
     }
 }

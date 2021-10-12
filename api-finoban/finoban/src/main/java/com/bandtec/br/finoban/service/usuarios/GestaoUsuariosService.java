@@ -2,7 +2,7 @@ package com.bandtec.br.finoban.service.usuarios;
 
 import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
-import com.bandtec.br.finoban.dominio.resposta.RespostaLogin;
+import com.bandtec.br.finoban.dominio.resposta.respostasLogin.RespostaLoginUsuario;
 import com.bandtec.br.finoban.infraestrutura.constantes.Constantes;
 import com.bandtec.br.finoban.infraestrutura.criptografia.Criptografia;
 import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
@@ -32,7 +32,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
     private final RedefinicaoSenhaRepository redefinicaoSenhaRepository;
 
     private final SendEmailService sendEmailService;
-    private final LoginService loginService;
+    private final LoginUsuarioService loginUsuarioService;
 
     @Override
     public void cadastrarUsuario(Usuario usuario) {
@@ -95,7 +95,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
     }
 
     @Override
-    public RespostaLogin efetuarLogin(Login login) {
+    public RespostaLoginUsuario efetuarLogin(Login login) {
         Usuario usuario = usuarioRepository.findByEmailContaining(login.getEmail());
         if (usuario == null)
             throw new EmailNaoEncontradoException();
@@ -106,7 +106,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (!usuario.getSenha().equals(senhaCriptografada))
             throw new SenhaIncorretaException();
 
-        return loginService.logarUsuario(usuario);
+        return loginUsuarioService.logarUsuario(usuario);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
         if (usuario == null)
             throw new EmailNaoEncontradoException();
 
-        loginService.realizarLogoffUsuario(usuario);
+        loginUsuarioService.realizarLogoffUsuario(usuario);
     }
 
     @Override

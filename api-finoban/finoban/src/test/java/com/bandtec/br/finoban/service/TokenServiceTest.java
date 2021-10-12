@@ -1,16 +1,12 @@
 package com.bandtec.br.finoban.service;
 
 import com.bandtec.br.finoban.builder.AcessoBuilder;
-import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.MalformedJwtException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +21,7 @@ class TokenServiceTest {
         AcessoBuilder acessoBuilder = new AcessoBuilder();
         Usuario usuario = acessoBuilder.setUsuario();
 
-        String jwt = service.generateToken(usuario);
+        String jwt = service.generatetokenUsuario(usuario);
         Claims claims = service.decodeToken(jwt);
 
         assertEquals(usuario.getNome(), claims.getSubject());

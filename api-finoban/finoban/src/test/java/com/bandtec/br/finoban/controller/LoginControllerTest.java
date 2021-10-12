@@ -9,10 +9,9 @@ import com.bandtec.br.finoban.dominio.exceptions.SenhaIncorretaException;
 import com.bandtec.br.finoban.dominio.exceptions.UsuarioLogadoException;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
-import com.bandtec.br.finoban.service.usuarios.LoginService;
+import com.bandtec.br.finoban.service.usuarios.LoginUsuarioService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +33,7 @@ class LoginControllerTest {
     UsuarioRepository cadastroRepository;
 
     @MockBean
-    LoginService loginService;
+    LoginUsuarioService loginUsuarioService;
 
     @Test
     @DisplayName("/POST - Fazer login com usuário já existente - STATUS 200")
@@ -77,7 +76,7 @@ class LoginControllerTest {
         Login login = loginBuilder.criarLogin().getLogin();
         Usuario usuario = new CadastroBuilder().criarCadastro().getUsuario();
         Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(usuario);
-        Mockito.when(!loginService.verificaUsuarioLogado(usuario)).thenReturn(false);
+        Mockito.when(!loginUsuarioService.verificaUsuarioLogado(usuario)).thenReturn(false);
         assertThrows(UsuarioLogadoException.class, () -> controller.efetuarLogoff(login));
     }
 }

@@ -1,6 +1,8 @@
 package com.bandtec.br.finoban.dominio.listaLigada;
 
+import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ListaLigada<T> {
     private Node<T> head;
@@ -117,28 +119,58 @@ public class ListaLigada<T> {
 
     public Node buscaNodeRecursao(T valor) {
         Node atual = head.getNext();
-        return buscaNodeRecursao(atual, valor);
+
+        if (valor instanceof Usuario) {
+            Usuario usuario = (Usuario) valor;
+            return buscaNodeRecursaoUsuario(atual, usuario);
+        }
+
+        if (valor instanceof Admin) {
+            Admin admin = (Admin) valor;
+            buscaNodeRecursaoAdmin(atual, admin);
+        }
+
+        return atual;
     }
 
-    private Node buscaNodeRecursao(Node node, T valor) {
+    private Node buscaNodeRecursaoUsuario(Node node, Usuario usuario) {
         if (node != null) {
-            Usuario usuario = (Usuario) node.getInfo();
-            if (usuario.getEmail().equals(((Usuario) valor).getEmail())) {
+            Usuario usuarioNode = (Usuario) node.getInfo();
+            if (usuario.getEmail().equals(usuarioNode.getEmail())) {
                 return node;
             }
         } else {
             return null;
         }
-        return buscaNodeRecursao(node.getNext(), valor);
+        return buscaNodeRecursaoUsuario(node.getNext(), usuario);
+    }
+
+    private Node buscaNodeRecursaoAdmin(Node node, Admin admin) {
+        if (node != null) {
+            Admin adminNode = (Admin) node.getInfo();
+            if (admin.getEmail().equals(adminNode.getEmail())) {
+                return node;
+            }
+        } else {
+            return null;
+        }
+        return buscaNodeRecursaoAdmin(node.getNext(), admin);
     }
 
     public boolean remodeNodeRecursivo(T valor) {
         Node ant = head;
         Node atual = head.getNext();
-        return removeNodeRecursivo(atual, ant, valor);
+
+        if (valor instanceof Usuario)
+            return removeNodeRecursivoUsuario(atual, ant, valor);
+
+        if (valor instanceof Admin)
+            return removeNodeRecursivoAdmin(atual, ant, valor);
+
+        return false;
     }
 
-    private boolean removeNodeRecursivo(Node atual, Node ant, T valor) {
+    private boolean removeNodeRecursivoUsuario(Node atual, Node ant, T valor) {
         if (atual != null) {
             Usuario usuario = (Usuario) atual.getInfo();
             if (usuario.getEmail().equals(((Usuario) valor).getEmail())) {
@@ -148,7 +180,20 @@ public class ListaLigada<T> {
         } else {
             return false;
         }
-        return removeNodeRecursivo(atual.getNext(), atual, valor);
+        return removeNodeRecursivoUsuario(atual.getNext(), atual, valor);
+    }
+
+    private boolean removeNodeRecursivoAdmin(Node atual, Node ant, T valor) {
+        if (atual != null) {
+            Admin usuario = (Admin) atual.getInfo();
+            if (usuario.getEmail().equals(((Admin) valor).getEmail())) {
+                ant.setNext(atual.getNext());
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return removeNodeRecursivoAdmin(atual.getNext(), atual, valor);
     }
 
     public int getTamanhoRecursivo() {

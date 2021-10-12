@@ -20,6 +20,9 @@ FIN014 - "Token Inválido."
 FIN015 - "Permissão não encontrada."
 FIN016 - "Admin não encontrado."
 FIN017 - "Cargo não existente."
+FIN018 - "Admin já encontrado."
+FIN019 - "Admin já se encontra logado."
+FIN020 - "Não encontra-se admin logado."
 ```
 
 ### Testes Integrados

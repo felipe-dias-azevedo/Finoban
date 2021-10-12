@@ -1,5 +1,6 @@
 package com.bandtec.br.finoban.service;
 
+import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.exceptions.TokenExpiradoException;
 import com.bandtec.br.finoban.dominio.exceptions.TokenInvalidoException;
 import com.bandtec.br.finoban.dominio.exceptions.configuracao.ExceptionGeneric;
@@ -31,11 +32,21 @@ public class TokenServiceImpl implements AuthService {
     private static final int TEMPO_EXPIRACAO = 1_800_000;
     private static final String KEY = "_FINOBAN_BEST";
 
-    public String generateToken(Usuario usuario) {
+    public String generatetokenUsuario(Usuario usuario) {
 
         return Jwts.builder()
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(String.valueOf(usuario.getNome()))
+                .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
+                .signWith(SignatureAlgorithm.HS256, KEY)
+                .compact();
+    }
+
+    @Override
+    public String generateTokenAdmin(Admin admin) {
+        return Jwts.builder()
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setSubject(String.valueOf(admin.getNome()))
                 .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
                 .signWith(SignatureAlgorithm.HS256, KEY)
                 .compact();

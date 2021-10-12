@@ -8,39 +8,19 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAmin;
 
+    private String nome;
+    private String email;
+    private String senha;
+
     @OneToOne
     private Permissoes permissoes;
 
-    @OneToOne
-    private Usuario usuario;
-
-    public int getIdAmin() {
-        return idAmin;
-    }
-
-    public void setIdAmin(int idAmin) {
-        this.idAmin = idAmin;
-    }
-
-    public Permissoes getPermissoes() {
-        return permissoes;
-    }
-
-    public void setPermissoes(Permissoes permissoes) {
-        this.permissoes = permissoes;
-    }
-
-    public UsuarioRespostaSimples getUsuario() {
-        return new UsuarioRespostaSimples(usuario);
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }
