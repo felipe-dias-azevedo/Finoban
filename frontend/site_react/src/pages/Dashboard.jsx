@@ -125,7 +125,7 @@ function ModalContratar(props) {
 					<br />
 
 					<div className="d-flex flex-row">
-						<div className="btn-contato" onClick={() => {}}>
+						<div className="btn-contato" onClick={() => { }}>
 							Telefone
 						</div>
 						<div
@@ -190,7 +190,7 @@ function Dashboard() {
 	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
 
 	if (objDashboard == null) {
-		window.location.href="/";
+		window.location.href = "/";
 	}
 
 	const history = useHistory();
@@ -322,9 +322,9 @@ function Dashboard() {
 		});
 		ultimaParcela = financiamentoPresil.prestacoes[financiamentoCifra.prestacoes.length - 1] / 12;
 		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
-		style: "currency",
-		currency: "BRL",
-	});
+			style: "currency",
+			currency: "BRL",
+		});
 		nomeBanco = "Banco do Presil";
 	}
 
@@ -340,9 +340,9 @@ function Dashboard() {
 		});
 		ultimaParcela = financiamentoS16.prestacoes[financiamentoS16.prestacoes.length - 1] / 12;
 		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
-		style: "currency",
-		currency: "BRL",
-	});
+			style: "currency",
+			currency: "BRL",
+		});
 		nomeBanco = "Banco S16";
 	}
 
@@ -533,20 +533,24 @@ function Dashboard() {
 				</div>
 			</div>
 
-			<div className="alert-avaliacao" style={ {display: showFb ? 'block' : 'none'} }>
-				<img src={BtnClose} className="btn-close" onClick={()=> {
-					setShowFb(false)
-				}} />
-				<h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
-				<div className="btn-avaliacao">
-					<img
-						src={Like}
-						alt=""
-						onClick={() => setModalShowFeedback(true)}
-					/>
-					<img src={Deslike} alt="" onClick={avaliacaoDeslike} />
+			{ 
+				showFb &&
+				<div className="alert-avaliacao">
+					<img src={BtnClose} className="btn-close" onClick={() => {
+						setShowFb(false)
+					}} />
+					<h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
+					<div className="btn-avaliacao">
+						<img
+							src={Like}
+							alt=""
+							onClick={() => setModalShowFeedback(true)}
+						/>
+						<img src={Deslike} alt="" onClick={avaliacaoDeslike} />
+					</div>
 				</div>
-			</div>
+			}
+
 
 			<ModalFeedback
 				show={modalShowFeedback}
