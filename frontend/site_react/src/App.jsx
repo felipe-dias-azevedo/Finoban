@@ -2,6 +2,7 @@ import Routes from "./routes";
 
 // CSS
 import './assets/css/bootstrap.min.css';
+import './assets/css/breadcrumb.css';
 import './assets/css/variable.css';
 import './assets/css/global.css';
 import './assets/css/header.css';
