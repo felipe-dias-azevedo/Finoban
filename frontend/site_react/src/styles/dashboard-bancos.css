@@ -84,7 +84,7 @@
 
 .alert-avaliacao {
     background-color: #3A5B62;
-    box-shadow: 8px 8px 0px 1px #000000;
+    box-shadow: 0 4px 8px #000;
     border-radius: 12px;
     color: white;
     width: 300px;

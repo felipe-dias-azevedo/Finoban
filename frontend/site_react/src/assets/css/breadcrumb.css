@@ -1,0 +1,13 @@
+.breadcrumb-text {
+    color: var(--verde);
+}
+
+.MuiBreadcrumbs-separator{
+    color: var(--verde);
+}
+
+.MuiBreadcrumbs-li{
+    color: var(--verde);
+    font-weight: bold;
+}
+

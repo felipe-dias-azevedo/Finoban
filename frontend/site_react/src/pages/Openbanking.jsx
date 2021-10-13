@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Slider from "../components/Slider";
 import Carousel from "react-bootstrap/Carousel";
 import Seguranca from "../assets/images/seguranca.png";
 import Regulamentacao from "../assets/images/regulamentacao.png";
@@ -14,22 +13,22 @@ function Openbanking() {
 		<>
 			<Header />
 
-			<Carousel>
-				<Carousel.Item interval={5000}>
+			<Carousel >
+				<Carousel.Item interval={4000}>
 					<img className="d-block w-100" src={Liberdade} />
 				</Carousel.Item>
-				<Carousel.Item interval={5000}>
+				<Carousel.Item interval={4000}>
 					<img className="d-block w-100" src={Simplicidade} />
 				</Carousel.Item>
-				<Carousel.Item interval={5000}>
+				<Carousel.Item interval={4000}>
 					<img className="d-block w-100" src={Competitividade} />
 				</Carousel.Item>
 
-				<Carousel.Item interval={5000}>
+				<Carousel.Item interval={4000}>
 					<img className="d-block w-100" src={Seguranca} />
 				</Carousel.Item>
 
-				<Carousel.Item interval={5000}>
+				<Carousel.Item interval={4000}>
 					<img className="d-block w-100" src={Regulamentacao} />
 				</Carousel.Item>
 			</Carousel>

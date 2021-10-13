@@ -5,62 +5,36 @@ import { IoChevronBack } from "react-icons/io5";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useHistory } from "react-router";
 import api from "../services/api";
-import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 import { Link as LinkScroll, animateScroll as Scroll } from "react-scroll";
-import BackgroundHomeImage from '../assets/images/home-background-image.png';
+import BackgroundHomeImage from "../assets/images/home-background-image.png";
+import UseForm from "../components/UseForm";
+import validate from "../components/ValidacaoFormInicial";
+import configurarToast from "../utils/toastService";
+import { toast } from "react-toastify";
+import ModalAviso from "../components/Toastify";
+import LoadingScreen from "../components/LoadingScreenSemHeader";
+import respostaEnum from "../utils/respostaEnum";
 
-function PaginaInicial() {
+const Form = () => {
+	const { values, errors, handleChange, handleSubmit } = UseForm(
+		buscarTaxas,
+		validate
+	);
+
 	const history = useHistory();
-
 	const [sabeValorImovel, setSabeValorImovel] = useState(null);
 	const [respondeuBotao, setRespondeuBotao] = useState(false);
-
-	const [cnpj, setCnpj] = useState("");
 	const [mask, setMask] = useState("");
-	const [renda, setRenda] = useState("");
-	const [valorImovel, setValorImovel] = useState("");
-	const [tempoFinanciamento, setTempoFinanciamento] = useState("");
-	const [porcentagemRenda, setPorcentagemRenda] = useState("");
 	const [imoveisList, setImoveisList] = useState([]);
+	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
 
-	const [erroCnpj, setErroCnpj] = useState("");
-	const [erroRenda, setErroRenda] = useState("");
-	const [erroValorImovel, setErroValorImovel] = useState("");
-	const [erroTempoFinanciamento, setErroTempoFinanciamento] = useState("");
-	const [erroPorcentagemRenda, setErroPorcentagemRenda] = useState("");
-
-	var data = new Date();
-	var dia = String(data.getDate()).padStart(2, "0");
-	var mes = String(data.getMonth() + 1).padStart(2, "0");
-	var ano = data.getFullYear();
-
-	var hora = data.getHours();
-	var minutos = data.getMinutes();
-	if (minutos < 10) {
-		minutos = "0" + minutos;
-	}
-	var segundos = data.getUTCSeconds();
-	if (segundos < 10) {
-		segundos = "0" + segundos;
-	}
-	var milisegundos = data.getMilliseconds();
-
-	var dataAtual =
-		ano +
-		"-" +
-		mes +
-		"-" +
-		dia +
-		"T" +
-		hora +
-		":" +
-		minutos +
-		":" +
-		segundos +
-		"." +
-		milisegundos;
-
-	var horarioEntrada = sessionStorage.setItem("horarioEntrada", dataAtual);
+	const handler = (event) => {
+		if (event.key == "Enter") {
+			if (validate.errors) {
+				buscarTaxas();
+			}
+		}
+	};
 
 	useEffect(() => {
 		api.get("/regioes")
@@ -75,85 +49,68 @@ function PaginaInicial() {
 			});
 	}, []);
 
-	async function handleSimulacao() {
-		if (cnpj.trim() === "") {
-			setErroCnpj("Insira um CNPJ válido");
-		}
-		if (renda.trim() === "") {
-			setErroRenda("Insira uma renda válida");
-		}
-		if (valorImovel.trim() === "") {
-			setErroValorImovel("Insira um valor válido");
-		}
-		if (tempoFinanciamento.trim() === "") {
-			setErroTempoFinanciamento("Insira o tempo do financiamento");
-		}
-		if (porcentagemRenda.trim() === "") {
-			setErroPorcentagemRenda("Insira a porcentagem da renda");
-		} else {
-            setErroCnpj("");
-            setErroRenda("");
-            setErroValorImovel("");
-            setErroTempoFinanciamento("");
-            setErroPorcentagemRenda("");
+	function buscarTaxas() {
+		<LoadingScreen />
 
-			const dataSimulador = {
-				cnpj: "123",
-				renda: parseInt(renda),
-				valorImovel: valorImovel,
-				tempoFinanciamento: parseInt(tempoFinanciamento),
-			};
+		const dataSimulador = {
+			cnpj: "123",
+			renda: parseInt(values.renda),
+			valorImovel: values.valorImovel,
+			tempoFinanciamento: parseInt(values.tempoFinanciamento),
+		};
 
-			console.log(dataSimulador);
-			var porcentagemRecebida = sessionStorage.setItem(
-				"porcentagemRenda",
-				porcentagemRenda
-			);
+		sessionStorage.setItem("dadosSimulador", JSON.stringify(dataSimulador));
 
-			sessionStorage.setItem(
-				"dadosSimulador",
-				JSON.stringify(dataSimulador)
-			);
-
-			await api
-				.post("/financiamento", dataSimulador, {})
-				.then((e) => {
-					console.log(e.data);
-					var respostaSimulacao = e.data;
-					if (e.status == 200) {
-						var respostaFinanciamento = sessionStorage.setItem(
-							"respostaFinanciamento",
-							JSON.stringify(respostaSimulacao)
-						);
+		api.post("/financiamento", dataSimulador, {})
+			.then((e) => {
+				setResposta(respostaEnum.ESPERANDO);
+				console.log(e.data);
+				var respostaSimulacao = e.data;
+				if (e.status == 200) {
+					setTimeout(() => {
+						setResposta(respostaEnum.SUCESSO);
 						history.push({
 							pathname: "/simulador",
-							state: { data: dataSimulador },
 						});
-					}
-				})
-				.catch((e) => {
-					console.error(e);
-					alert("Ocorreu um erro!");
-				});
-		}
+					}, 5000);
+					var respostaFinanciamento = sessionStorage.setItem(
+						"respostaFinanciamento",
+						JSON.stringify(respostaSimulacao)
+					);
+				}
+			})
+			.catch((e) => {
+				console.error(e);
+				setResposta(respostaEnum.ERROR);
+				toast.error("Ocorreu um erro ao realizar a requisição!");
+			});
+	}
+
+	if (resposta === respostaEnum.ESPERANDO) {
+		return <LoadingScreen />;
 	}
 
 	return (
 		<>
-			<Header />
 			<div className="image-home">
 				<div className="image-home-total">
 					<div className="image-file">
-						<img src={BackgroundHomeImage} alt="família feliz ao ter financiamentos" />
+						<img
+							src={BackgroundHomeImage}
+							alt="família feliz ao ter financiamentos"
+						/>
 					</div>
 					<div className="image-home-text">
 						<div className="image-home-holder">
-							<h2>Dúvidas sobre qual a melhor opção de financiamento pra você?</h2>
+							<h2>
+								Dúvidas sobre qual a melhor opção de
+								financiamento pra você?
+							</h2>
 						</div>
 						<div className="image-home-holder">
 							<h1>
-								Com simples passos, você terá acesso as 
-								<b>{" "}melhores opções{" "}</b>
+								Com simples passos, você terá acesso as
+								<b> melhores opções </b>
 								de financiamento!
 							</h1>
 						</div>
@@ -166,7 +123,10 @@ function PaginaInicial() {
 								offset={-70}
 								duration={500}
 							>
-								<IoIosArrowDropdown size={46} className="ml-30" />
+								<IoIosArrowDropdown
+									size={46}
+									className="ml-30"
+								/>
 								<h3>Começar</h3>
 							</LinkScroll>
 						</div>
@@ -186,57 +146,91 @@ function PaginaInicial() {
 								<h5>Voltar</h5>
 							</nav>
 						</div>
-						<div className="option-values-fulfill">
-							<section>
-								<p>CNPJ</p>
-								<CpfCnpj
-									placeholder="00.000.000/0000-00"
-									type="tel"
-									value={cnpj}
-									onChange={(e, type) => {
-										setCnpj(e.target.value);
-										setMask(type === "CNPJ");
-									}}
-								/>
-
-								<label className="label-erro">{erroCnpj}</label>
-							</section>
-							<section>
-								<p>Renda</p>
+						<form onSubmit={handleSubmit} className="form-holder">
+							<div className="option-values-fulfill">
+								<p>CPF</p>
+								{/* <CpfCnpj
+									className={`input mb-4 ${
+										errors.cpf && "is-danger"
+									}`}
+									placeholder="000.000.000-00"
+									type="text"
+									maxLength="14"
+									id="cpf"
+									name="cpf"
+									defaultValue={values.cpf || ""}
+									onCh	ange={(type) => setMask(type == "CPF")}
+									onKeyPress={(e) => handler(e)}
+								/> */}
 								<input
+									className={`input mb-4 ${
+										errors.cpf && "is-danger"
+									}`}
 									type="text"
 									placeholder="ex: 5000,00"
-									onChange={(e) => setRenda(e.target.value)}
+									maxLength="10"
+									id="cpf"
+									name="cpf"
+									value={values.cpf}
+									onChange={handleChange}
+									onKeyPress={(e) => handler(e)}
 								/>
-								<label className="label-erro">
-									{erroRenda}
-								</label>
-							</section>
-							<section>
+								{errors.cpf && (
+									<p className="text-danger mb-3">{errors.cpf}</p>
+								)}
+								<p>Renda</p>
+								<input
+									className={`input mb-4 ${
+										errors.renda && "is-danger"
+									}`}
+									type="text"
+									placeholder="ex: 5000,00"
+									maxLength="10"
+									id="renda"
+									name="renda"
+									value={values.renda}
+									onChange={handleChange}
+									onKeyPress={(e) => handler(e)}
+								/>
+								{errors.renda && (
+									<p className="text-danger mb-3">
+										{errors.renda}
+									</p>
+								)}
 								{sabeValorImovel ? (
 									<>
 										<p id="mudar">Valor do imóvel</p>
 										<input
-											id="valor"
+											className={`input mb-4 ${
+												errors.valorImovel &&
+												"is-danger"
+											}`}
+											id="valorImovel"
+											name="valorImovel"
 											type="text"
 											placeholder="ex: 600000,00"
-											onChange={(e) =>
-												setValorImovel(e.target.value)
+											defaultValue={
+												values.valorImovel || ""
 											}
+											onChange={handleChange}
+											onKeyPress={(e) => handler(e)}
 										/>
-
-										<label className="label-erro">
-											{erroValorImovel}
-										</label>
+										{errors.valorImovel && (
+											<p className="text-danger mb-3">
+												{errors.valorImovel}
+											</p>
+										)}
+											
 									</>
 								) : (
 									<>
 										<p id="mudar">Região</p>
 										<select
 											id="select-imoveis"
-											onChange={(e) => {
-												setValorImovel(e.target.value);
-											}}
+											defaultValue={
+												values.valorImovel || ""
+											}
+											onChange={handleChange}
 										>
 											<option value="">
 												-- Selecione --
@@ -257,46 +251,53 @@ function PaginaInicial() {
 										</select>
 									</>
 								)}
-							</section>
-							<section>
 								<p>Tempo financiamento</p>
 								<input
-									t
-									ype="text"
+									className={`input mb-4 ${
+										errors.tempoFinanciamento && "is-danger"
+									}`}
+									type="tel"
 									placeholder="ex: 30"
 									maxLength="2"
-									onChange={(e) =>
-										setTempoFinanciamento(e.target.value)
+									id="tempoFinanciamento"
+									name="tempoFinanciamento"
+									defaultValue={
+										values.tempoFinanciamento || ""
 									}
+									onChange={handleChange}
+									onKeyPress={(e) => handler(e)}
 								/>
-								<label className="label-erro">
-									{erroTempoFinanciamento}
-								</label>
-							</section>
-							<section>
+								{errors.tempoFinanciamento && (
+									<p className="text-danger mb-3">
+										{errors.tempoFinanciamento}
+									</p>
+								)}
 								<p>Porcentagem de Renda</p>
 								<input
+									className={`input mb-4 ${
+										errors.porcentagemRenda && "is-danger"
+									}`}
 									type="text"
 									placeholder="ex: 15"
 									maxLength="3"
-									onChange={(e) =>
-										setPorcentagemRenda(e.target.value)
-									}
+									id="porcentagemRenda"
+									name="porcentagemRenda"
+									defaultValue={values.porcentagemRenda || ""}
+									onChange={handleChange}
+									onKeyPress={(e) => handler(e)}
 								/>
-								<label className="label-erro">
-									{erroPorcentagemRenda}
-								</label>
-							</section>
-						</div>
-						<div className="option-value-simulate">
-							<button
-								className="bt-simular"
-								onClick={handleSimulacao}
-								required
-							>
-								Simular
-							</button>
-						</div>
+								{errors.porcentagemRenda && (
+									<p className="text-danger mb-3">
+										{errors.porcentagemRenda}
+									</p>
+								)}
+							</div>
+							<div className="option-value-simulate">
+								<button className="bt-simular" required>
+									Simular
+								</button>
+							</div>
+						</form>
 					</div>
 				) : (
 					<div className="option-value shadow">
@@ -322,6 +323,16 @@ function PaginaInicial() {
 					</div>
 				)}
 			</div>
+		</>
+	);
+};
+
+function PaginaInicial() {
+	return (
+		<>
+			<Header />
+			<ModalAviso />
+			<Form />
 			<Footer />
 		</>
 	);

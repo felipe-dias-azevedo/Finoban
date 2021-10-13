@@ -8,24 +8,20 @@ function Simulador() {
     // Local Storage
     var dadosSimuladorRecebido = sessionStorage.getItem("dadosSimulador");
     var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
-    var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
-
+    let dataSimulacao = JSON.parse(dadosSimuladorRecebido);
+    console.log(dataSimulacao);
     if (dadosSimuladorRecebido == null) {
         window.location.href="/";
     }
 
-    let dataSimulacao = JSON.parse(dadosSimuladorRecebido);
-    var valorImovelRecebido = dataSimulacao.valorImovel;
-    var tempoFinanciamentoRecebido = dataSimulacao.tempoFinanciamento;
-
     // Taxas
     var taxa1 = respostaSimulacao.data[0].data.taxaTotal;
-    var taxa2 = respostaSimulacao.data[1].data.taxaTotal * 5;
-    var taxa3 = respostaSimulacao.data[2].data.taxaTotal * 3;
+    var taxa2 = respostaSimulacao.data[1].data.taxaTotal;
+    var taxa3 = respostaSimulacao.data[2].data.taxaTotal;
 
-    let financiamentoPresil = financiar(valorImovelRecebido, taxa1/29, tempoFinanciamentoRecebido);
-    let financiamentoS16 = financiar(valorImovelRecebido, taxa2/30, tempoFinanciamentoRecebido);
-    let financiamentoCifra = financiar(valorImovelRecebido, taxa3/25, tempoFinanciamentoRecebido);
+    let financiamentoPresil = financiar(dataSimulacao.valorImovel, taxa1, dataSimulacao.tempoFinanciamento);
+    let financiamentoS16 = financiar(dataSimulacao.valorImovel, taxa2, dataSimulacao.tempoFinanciamento);
+    let financiamentoCifra = financiar(dataSimulacao.valorImovel, taxa3, dataSimulacao.tempoFinanciamento);
 
     function financiar(valor_imovel, valor_taxa_juros, anos_a_serem_pagos) {
         var imovel = valor_imovel;
@@ -58,22 +54,18 @@ function Simulador() {
     var primeiraPrestacaoS16 = financiamentoS16.prestacoes[0] / 12;
     var valorPrimeiraPrestacaoCifra = financiamentoCifra.prestacoes[0] / 12;
 
-    var primeiraPrestacaoPresilFormatado = primeiraPrestacaoPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var primeiraPrestacaoS16Formatado = primeiraPrestacaoS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var primeiraPrestacaoCifraFormatado = valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-
     var objSetLocalStorages = {
-        tempoFinanciamento: tempoFinanciamentoRecebido,
-        porcentagemRenda: porcentagemRenda,
+        tempoFinanciamento: dataSimulacao.tempoFinanciamento,
+        porcentagemRenda: dataSimulacao.porcentagemRenda,
         listaFinanciamentoCifra: financiamentoCifra.prestacoes,
-        valorImovel: valorImovelRecebido,
-        valorImovelFormatado: parseInt(valorImovelRecebido).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorImovel: dataSimulacao.valorImovel,
+        valorImovelFormatado: parseInt(dataSimulacao.valorImovel).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
         valorImovelPresil: financiamentoPresil.valor_a_pagar,
         valorImovelS16: financiamentoS16.valor_a_pagar,
         valorImovelCifra: financiamentoCifra.valor_a_pagar,
-        valorPrimeiraPrestacaoPresil: primeiraPrestacaoPresilFormatado,
-        valorPrimeiraPrestacaoS16: primeiraPrestacaoS16Formatado,
-        valorPrimeiraPrestacaoCifra: primeiraPrestacaoCifraFormatado,
+        valorPrimeiraPrestacaoPresil: primeiraPrestacaoPresil.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorPrimeiraPrestacaoS16: primeiraPrestacaoS16.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+        valorPrimeiraPrestacaoCifra: valorPrimeiraPrestacaoCifra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
         valorImovelS16Formatado: financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
         valorImovelPresilFormatado: financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
         valorImovelCifraFormatado: financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
@@ -86,12 +78,6 @@ function Simulador() {
 
     // Objeto enviado para a dashboard
     var objParaDashboard = sessionStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
-
-    var valorS16Formatado = financiamentoS16.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var valorPresilFormatado = financiamentoPresil.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    var valorCifraFormatado = financiamentoCifra.valor_a_pagar.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-
-    var valorImovelCifraFormatado = sessionStorage.setItem("valorCifraFormatado", valorCifraFormatado);
     
     return (
         <>
@@ -108,8 +94,8 @@ function Simulador() {
                     <BankCard 
                         banco="Banco do Presil" 
                         taxa_t ={(taxa1).toFixed(2)} 
-                        primeira_p={primeiraPrestacaoPresilFormatado} 
-                        valor_f={valorPresilFormatado}
+                        primeira_p={objSetLocalStorages.valorPrimeiraPrestacaoPresil} 
+                        valor_f={objSetLocalStorages.valorImovelPresilFormatado}
                         valor_s={(((respostaSimulacao.data[0].data.dfi) + (respostaSimulacao.data[0].data.mip))*100).toFixed(2)
                         }     
                         
@@ -118,16 +104,16 @@ function Simulador() {
                     <BankCard 
                         banco="S16 Bank"
                         taxa_t ={(taxa2).toFixed(2)} 
-                        primeira_p={primeiraPrestacaoS16Formatado} 
-                        valor_f={valorS16Formatado} 
+                        primeira_p={objSetLocalStorages.valorPrimeiraPrestacaoS16} 
+                        valor_f={objSetLocalStorages.valorImovelS16Formatado} 
                         valor_s={(((respostaSimulacao.data[1].data.dfi) + (respostaSimulacao.data[1].data.mip))*100).toFixed(2)} 
                          
                     />
                     <BankCard 
                         banco="Banco Cifra" 
                         taxa_t ={(taxa3.toFixed(2))} 
-                        primeira_p={primeiraPrestacaoCifraFormatado}
-                        valor_f={valorCifraFormatado} 
+                        primeira_p={objSetLocalStorages.valorPrimeiraPrestacaoCifra}
+                        valor_f={objSetLocalStorages.valorPrimeiraPrestacaoCifra} 
                         valor_s={(((respostaSimulacao.data[2].data.dfi) + (respostaSimulacao.data[2].data.mip)) / 100).toFixed(2)} 
                     />
                 </div>

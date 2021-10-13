@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 5% 5% 2rem 5%;
+    margin: 5% 5% 4rem 5%;
 }
 
 .openbanking-text {
@@ -22,10 +22,16 @@
 }
 
 .carousel-indicators {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .carousel { 
-    padding-right: 5%;
-    padding-left: 5%;
+    margin-top: 40px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 15%;
+    margin: 0;
 }

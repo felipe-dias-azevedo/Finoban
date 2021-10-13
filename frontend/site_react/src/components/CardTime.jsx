@@ -1,31 +1,18 @@
 import React from 'react';
-import Jose from '../assets/images/ze.png'
 
 function CardTime(props) {
     return (
         <>
-            <div className="container">
-
-
                 <div className="box-time">
-                    <img src={props.img} alt="" className="img" />
-                    <div class="name">
+                    <img src={props.img} alt="" className="img-box-time" />
+                    <div className="info-box-time">
 
-                        <h4>{props.name}</h4> 
+                        <p className="info-1">{props.name}</p> 
+
+                        <p className="info-2">{props.func}</p>
 
                     </div>
-
-                    <div className="name2">
-
-                            <h4>{props.name}</h4> 
-
-                            <h4>{props.func}</h4>
-                        </div>
                 </div>
-
-
-
-            </div>
 
         </>
     );
