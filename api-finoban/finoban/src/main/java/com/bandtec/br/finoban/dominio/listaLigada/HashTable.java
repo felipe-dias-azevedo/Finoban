@@ -23,6 +23,7 @@ public class HashTable<T> {
     }
 
     public void insere(T objeto) {
+
         if (objeto instanceof Usuario) {
             Usuario usuario = (Usuario) objeto;
             this.tab[funcaoHash(retornaChar(usuario.getNome()))].insereNode(usuario);

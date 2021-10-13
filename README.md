@@ -23,7 +23,7 @@ TBD
   <img width="800" src="./.github/architecture-v2.png">
 </p>
 
-
+  
 ## Instalação
 
 ### Dependências

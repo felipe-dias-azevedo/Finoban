@@ -127,7 +127,7 @@ public class ListaLigada<T> {
 
         if (valor instanceof Admin) {
             Admin admin = (Admin) valor;
-            buscaNodeRecursaoAdmin(atual, admin);
+            return buscaNodeRecursaoAdmin(atual, admin);
         }
 
         return atual;
