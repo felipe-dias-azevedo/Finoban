@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
     @Column(name = "idCliente")
     private int id;
 
-    private String cnpj;
+    private String cpf;
     private String nome;
     private String email;
     private String senha;
@@ -32,8 +32,8 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String cnpj, String nome, String email, String senha, String cep, Integer numero) {
-        this.cnpj = cnpj;
+    public Usuario(String cpf, String nome, String email, String senha, String cep, Integer numero) {
+        this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -49,12 +49,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -125,7 +125,7 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
-                ", cnpj='" + cnpj + '\'' +
+                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +

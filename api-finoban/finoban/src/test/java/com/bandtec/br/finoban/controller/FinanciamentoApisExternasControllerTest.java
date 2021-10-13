@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.RestServiceBuilder;
 import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,9 +26,9 @@ class FinanciamentoApisExternasControllerTest {
     void retornaLista() {
         RestServiceBuilder restServiceBuilder = new RestServiceBuilder();
         BancoRequisicao bancoRequisicao = restServiceBuilder.criarRequisicao().getBancoRequisicao();
-        ResponseEntity<List<RespostaApi>> resposta =  controller.realizarFinaciamento(bancoRequisicao);
+        ResponseEntity<ResponseGeneric<List<RespostaApi>>> resposta =  controller.realizarFinaciamento(bancoRequisicao);
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(3, resposta.getBody().size());
+        assertEquals(3, resposta.getBody().getData().size());
     }
 
 }

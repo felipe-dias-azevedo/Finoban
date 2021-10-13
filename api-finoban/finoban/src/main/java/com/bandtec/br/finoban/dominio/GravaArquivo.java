@@ -76,7 +76,7 @@ public class GravaArquivo {
                     gravaRegistro(nomeArq, corpo);
                     break;
                 case 2:
-                    String cnpj;
+                    String cpf;
                     String nome;
                     String email;
                     String senha;
@@ -85,8 +85,8 @@ public class GravaArquivo {
                     String dataNascimento;
                     String bairro;
 
-                    System.out.print("Por favor, digite o CNPJ do cliente: ");
-                    cnpj = scanString2.next();
+                    System.out.print("Por favor, digite o cpf do cliente: ");
+                    cpf = scanString2.next();
                     System.out.print("Por favor, digite o nome do cliente: ");
                     nome = scanString.nextLine();
                     System.out.print("Por favor, digite o email do cliente: ");
@@ -103,7 +103,7 @@ public class GravaArquivo {
                     bairro = scanString.nextLine();
 
                     corpo = "03";
-                    corpo += String.format("%14s", cnpj);
+                    corpo += String.format("%14s", cpf);
                     corpo += String.format("%90s", nome);
                     corpo += String.format("%40s", email);
                     corpo += String.format("%50s", senha);

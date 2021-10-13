@@ -34,6 +34,12 @@ header .topheader-options {
     font-size: 15px;
 }
 
+
+.topheader-options .btn-topheader:nth-child(2) {
+    background-color: var(--branco);
+    color: var(--verde);
+}
+
 header .topheader-options * {
     margin-left: 1.5rem;
 }
@@ -82,14 +88,20 @@ header .subheader {
     color: var(--verde);
     background-color: var(--branco);
     display: flex;
-    /* TODO: ALTERAR ISSO APÓS TIRAR BOOTSTRAP */
-    /* justify-content: space-between; */
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.5rem 5%;
 }
 
-header .subheader .links li {
+header .topheader .links {
+    width: 700px;
+    bottom: 0;
+    color: var(--verde);
+    margin-top: 10px;
+}
+
+header .topheader .links li {
+    color: var(--links-verde-fraco);
     list-style: none;
     display: inline-block;
     font-weight: bold;
@@ -98,7 +110,7 @@ header .subheader .links li {
     padding-top: 2px;
 }
 
-header .subheader .links li:after{    
+header .topheader .links li:after{    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -110,19 +122,19 @@ header .subheader .links li:after{
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
-  header .subheader .links li:hover:after { 
+  header .topheader .links li:hover:after { 
     width: 100%; 
     left: 0; 
   }
 
-header .subheader .links li:nth-child(-n+3) {
+header .topheader .links li:nth-child(-n+3) {
     margin-right: 1.5rem;
 }
 
-header .subheader .links li a {
+header .topheader .links li a {
     margin: 0;
 }
 
-header .subheader .links ul {
+header .topheader .links ul {
     margin: 0;
 }

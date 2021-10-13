@@ -65,7 +65,7 @@ function PaginaInicial() {
 	useEffect(() => {
 		api.get("/regioes")
 			.then((e) => {
-				const imoveis = e.data;
+				const imoveis = e.data.data;
 				if (e.status === 200) {
 					setImoveisList(imoveis);
 				}

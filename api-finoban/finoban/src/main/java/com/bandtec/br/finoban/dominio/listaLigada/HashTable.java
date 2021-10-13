@@ -1,8 +1,12 @@
 package com.bandtec.br.finoban.dominio.listaLigada;
 
+import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class HashTable {
+import java.util.Locale;
+
+public class HashTable<T> {
     private ListaLigada[] tab;
 
     public HashTable(int tamanho) {
@@ -10,20 +14,58 @@ public class HashTable {
         iniciarListaLigada();
     }
 
-    public int funcaoHash(int x) {
-        return x % this.tab.length;
+    public int funcaoHash(Character caractere) {
+        return caractere % 97;
     }
 
-    public void insere(Usuario usuario) {
-        this.tab[funcaoHash(usuario.getId())].insereNode(usuario);
+    public char retornaChar(String nome) {
+        return nome.toLowerCase(Locale.ROOT).charAt(0);
     }
 
-    public boolean busca(Usuario usuario) {
-        return this.tab[funcaoHash(usuario.getId())].buscaNodeRecursao(usuario) == null ? false : true;
+    public void insere(T objeto) {
+        if (objeto instanceof Usuario) {
+            Usuario usuario = (Usuario) objeto;
+            this.tab[funcaoHash(retornaChar(usuario.getNome()))].insereNode(usuario);
+        }
+
+        if (objeto instanceof Admin) {
+            Admin admin = (Admin) objeto;
+            this.tab[funcaoHash(retornaChar(admin.getEmail()))].insereNode(admin);
+        }
+
     }
 
-    public boolean remove(Usuario usuario) {
-        return this.tab[funcaoHash(usuario.getId())].remodeNodeRecursivo(usuario);
+    public boolean busca(T objeto) {
+
+        if (objeto instanceof Usuario) {
+            Usuario usuario = (Usuario) objeto;
+            return this.tab[funcaoHash(retornaChar((usuario.getNome())))]
+                    .buscaNodeRecursao(usuario) == null ? false : true;
+        }
+
+        if (objeto instanceof Admin) {
+            Admin admin = (Admin) objeto;
+            return this.tab[funcaoHash(retornaChar((admin.getEmail())))]
+                    .buscaNodeRecursao(admin) == null ? false : true;
+        }
+
+        throw new NotImplementedException();
+
+    }
+
+    public boolean remove(T objeto) {
+
+        if (objeto instanceof Usuario) {
+            Usuario usuario = (Usuario) objeto;
+            return this.tab[funcaoHash(retornaChar(usuario.getNome()))].remodeNodeRecursivo(usuario);
+        }
+
+        if (objeto instanceof Admin) {
+            Admin admin = (Admin) objeto;
+            return this.tab[funcaoHash(retornaChar((admin.getEmail())))].remodeNodeRecursivo(admin);
+        }
+
+        throw new NotImplementedException();
     }
 
     public void iniciarListaLigada() {

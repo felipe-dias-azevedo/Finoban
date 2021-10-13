@@ -58,7 +58,7 @@ public class CadastroController {
     @DeleteMapping("/usuarios/{id}")
     public ResponseEntity deleteUsuario(@PathVariable int id) {
        gestaoUsuariosService.deletarUsuarioPeloId(id);
-       return ResponseEntity.status(201).build();
+       return ResponseEntity.status(204).build();
     }
 
     @ApiResponses(value = {

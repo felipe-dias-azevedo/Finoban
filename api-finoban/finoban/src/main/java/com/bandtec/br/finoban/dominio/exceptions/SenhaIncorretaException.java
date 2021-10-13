@@ -4,6 +4,6 @@ import com.bandtec.br.finoban.dominio.exceptions.configuracao.ExceptionGeneric;
 
 public class SenhaIncorretaException extends ExceptionGeneric {
     public SenhaIncorretaException() {
-        super("FIN08", "Senha incorreta.");
+        super("FIN008", "Senha incorreta.");
     }
 }

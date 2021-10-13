@@ -1,7 +1,7 @@
 import React from 'react';
-import { AiFillFacebook } from 'react-icons/ai';
-import { AiFillTwitterSquare } from 'react-icons/ai';
-import { AiFillInstagram } from 'react-icons/ai';
+import { FaFacebookSquare } from 'react-icons/fa';
+import { FaInstagramSquare } from 'react-icons/fa';
+import { FaTwitterSquare } from 'react-icons/fa';
 
 function Footer() {
     return (
@@ -27,9 +27,9 @@ function Footer() {
                 <section className="icons">
                     <h4>Nossas redes socias</h4>
                     <div>
-                        <AiFillTwitterSquare className="social-icons" style={{ height: 50, width: 50 }} />
-                        <AiFillFacebook className="social-icons" style={{ height: 50, width: 50 }} />
-                        <AiFillInstagram className="social-icons" style={{ height: 50, width: 50 }} />
+                        <FaFacebookSquare className="social-icons" style={{ height: 35, width: 35 }} />
+                        <FaTwitterSquare className="social-icons" style={{ height: 35, width: 35 }} />
+                        <FaInstagramSquare className="social-icons" style={{ height: 35, width: 35 }} />
                     </div>
                 </section>
                 <section className="copyright">

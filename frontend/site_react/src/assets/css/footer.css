@@ -1,6 +1,6 @@
 
 .footer {
-    bottom: 0;
+    margin:auto;
     width: 100%;
     background-color: var(--azul);
     color: var(--preto-terciario);

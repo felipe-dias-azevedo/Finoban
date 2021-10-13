@@ -4,17 +4,22 @@ import com.bandtec.br.finoban.builder.AvaliacaoBuilder;
 import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import com.bandtec.br.finoban.dominio.exceptions.*;
+import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.AvaliacaoRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +44,8 @@ class CadastroControllerTest {
     void novoCadastro() {
         CadastroBuilder cadastroBuilder = new CadastroBuilder();
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
+        Mockito.when(cadastroRepository.existsUsuarioByEmail(usuario.getEmail())).thenReturn(false);
+        Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
         ResponseEntity resposta = cadastroController.novoCadastro(usuario);
         assertEquals(201, resposta.getStatusCodeValue());
     }
@@ -48,9 +55,9 @@ class CadastroControllerTest {
     void listarUsuarios() {
         Iterable<Usuario> usuarioLista = Arrays.asList(new Usuario(), new Usuario(), new Usuario());
         Mockito.when(cadastroRepository.findAll()).thenReturn(usuarioLista);
-        ResponseEntity<List<Usuario>> resposta = cadastroController.listarUsuarios();
+        ResponseEntity<ResponseGeneric<List<Usuario>>> resposta = cadastroController.listarUsuarios();
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(3, resposta.getBody().size());
+        assertEquals(3, resposta.getBody().getData().size());
     }
 
     @Test
@@ -63,21 +70,20 @@ class CadastroControllerTest {
 
     @Test
     @DisplayName("/GET - Resgata um usuário, status 200")
-    void getUsuario() {
+    void getUsuario() throws ParseException {
         CadastroBuilder cadastroBuilder = new CadastroBuilder();
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.of(usuario));
-        ResponseEntity<Optional<Usuario>> resposta = cadastroController.getUsuario(1);
+        ResponseEntity<ResponseGeneric<UsuarioRespostaSimples>> resposta = cadastroController.getUsuario(1);
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(usuario.getCnpj(), resposta.getBody().get().getCnpj());
+        assertEquals(usuario.getEmail(), resposta.getBody().getData().getEmail());
     }
 
     @Test
     @DisplayName("/GET - Resgata um usuário, porém ele não existe - status 404")
     void getUsuarioNotOK() {
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.empty());
-        ResponseEntity<Optional<Usuario>> resposta = cadastroController.getUsuario(1);
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertThrows(ClienteNaoEncontradoException.class, () -> cadastroController.getUsuario(1));
     }
 
     @Test
@@ -86,6 +92,7 @@ class CadastroControllerTest {
         AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoGostou().getAvaliacao();
         Mockito.when(!acessoRepository.existsById(1)).thenReturn(false);
+        Mockito.when(!avaliacaoRepository.existsById(avaliacao.getFkAcesso().getIdEntrada())).thenReturn(true);
         ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
         assertEquals(201, resposta.getStatusCodeValue());
     }
@@ -96,6 +103,7 @@ class CadastroControllerTest {
         AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().getAvaliacao();
         Mockito.when(acessoRepository.existsById(1)).thenReturn(true);
+        Mockito.when(!avaliacaoRepository.existsById(avaliacao.getFkAcesso().getIdEntrada())).thenReturn(true);
         ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
         assertEquals(201, resposta.getStatusCodeValue());
     }
@@ -108,8 +116,7 @@ class CadastroControllerTest {
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().setAvaliacaoSemFeedback()
                 .getAvaliacao();
         Mockito.when(acessoRepository.existsById(1)).thenReturn(true);
-        ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
-        assertEquals(400, resposta.getStatusCodeValue());
+        assertThrows(FeedbackNullException.class, () -> cadastroController.novaAvaliacao(avaliacao));
     }
 
     @Test
@@ -118,8 +125,7 @@ class CadastroControllerTest {
         AvaliacaoBuilder avaliacaoBuilder = new AvaliacaoBuilder();
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().getAvaliacao();
         Mockito.when(acessoRepository.existsById(1)).thenReturn(false);
-        ResponseEntity resposta = cadastroController.novaAvaliacao(avaliacao);
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertThrows(AcessoNaoEncontradoException.class, () -> cadastroController.novaAvaliacao(avaliacao));
     }
 
     @Test
@@ -134,8 +140,7 @@ class CadastroControllerTest {
     @DisplayName("/DELETE - Excluir um usuário, porém ele não existe - STATUS 404")
     void deleteUsuarioNotOk() {
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.empty());
-        ResponseEntity resposta = cadastroController.deleteUsuario(1);
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertThrows(ClienteNaoEncontradoException.class, () -> cadastroController.deleteUsuario(1));
     }
 
     @Test
@@ -143,9 +148,10 @@ class CadastroControllerTest {
     void getAvaliacoesOk() {
         List<Avaliacao> avaliacaos = Arrays.asList(new Avaliacao(), new Avaliacao());
         Mockito.when(avaliacaoRepository.findAll()).thenReturn(avaliacaos);
-        ResponseEntity<List<Avaliacao>> resposta = cadastroController.getAvaliacoes();
+        Mockito.when(avaliacaoRepository.findAllByIdAvaliacao()).thenReturn(avaliacaos);
+        ResponseEntity<ResponseGeneric<List<Avaliacao>>> resposta = cadastroController.getAvaliacoes();
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(2, resposta.getBody().size());
+        assertEquals(2, resposta.getBody().getData().size());
     }
 
     @Test
@@ -165,17 +171,16 @@ class CadastroControllerTest {
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().setAvaliacaoSemFeedback()
                 .getAvaliacao();
         Mockito.when(avaliacaoRepository.findById(1)).thenReturn(Optional.of(avaliacao));
-        ResponseEntity<Optional<Avaliacao>> resposta = cadastroController.getAvaliacao(1);
+        ResponseEntity<ResponseGeneric<Avaliacao>> resposta = cadastroController.getAvaliacao(1);
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(avaliacao.getAvalPositivo(), resposta.getBody().get().getAvalPositivo());
+        assertEquals(avaliacao.getAvalPositivo(), resposta.getBody().getData().getAvalPositivo());
     }
 
     @Test
     @DisplayName("/GET/{id} - Resgatar uma única avaliação, mas ela não existe - STATUS 404")
     void getAvaliacaoNotOK() {
         Mockito.when(avaliacaoRepository.findById(1)).thenReturn(Optional.empty());
-        ResponseEntity resposta = cadastroController.getAvaliacao(1);
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertThrows(AvaliacaoNaoEncontradaException.class, () -> cadastroController.getAvaliacao(1));
     }
 
     @Test
@@ -190,7 +195,6 @@ class CadastroControllerTest {
     @DisplayName("/DELETE/{id} - Deletar uma avaliação, sendo que ela não existe - STATUS 404")
     void deleteAvaliacaoNotOK() {
         Mockito.when(avaliacaoRepository.existsById(1)).thenReturn(false);
-        ResponseEntity resposta = cadastroController.deleteAvaliacao(1);
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertThrows(AvaliacaoNaoEncontradaException.class, () -> cadastroController.deleteAvaliacao(1));
     }
 }

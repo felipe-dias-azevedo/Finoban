@@ -4,6 +4,6 @@ import com.bandtec.br.finoban.dominio.exceptions.configuracao.ExceptionGeneric;
 
 public class AvalPositivoIncorretoException extends ExceptionGeneric {
     public AvalPositivoIncorretoException() {
-        super("FIN05", "AvalPositivoEnum Incorreto.");
+        super("FIN005", "AvalPositivoEnum Incorreto.");
     }
 }

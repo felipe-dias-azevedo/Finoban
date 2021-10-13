@@ -1,13 +1,14 @@
 package com.bandtec.br.finoban.service;
 
+import com.bandtec.br.finoban.dominio.entidades.Admin;
+import com.bandtec.br.finoban.dominio.exceptions.TokenExpiradoException;
+import com.bandtec.br.finoban.dominio.exceptions.TokenInvalidoException;
+import com.bandtec.br.finoban.dominio.exceptions.configuracao.ExceptionGeneric;
 import com.bandtec.br.finoban.infraestrutura.criptografia.Criptografia;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.infraestrutura.helpers.DateHelper;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -31,11 +32,21 @@ public class TokenServiceImpl implements AuthService {
     private static final int TEMPO_EXPIRACAO = 1_800_000;
     private static final String KEY = "_FINOBAN_BEST";
 
-    public String generateToken(Usuario usuario) {
+    public String generatetokenUsuario(Usuario usuario) {
 
         return Jwts.builder()
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(String.valueOf(usuario.getNome()))
+                .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
+                .signWith(SignatureAlgorithm.HS256, KEY)
+                .compact();
+    }
+
+    @Override
+    public String generateTokenAdmin(Admin admin) {
+        return Jwts.builder()
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setSubject(String.valueOf(admin.getNome()))
                 .setExpiration(new Date(System.currentTimeMillis() + TEMPO_EXPIRACAO))
                 .signWith(SignatureAlgorithm.HS256, KEY)
                 .compact();
@@ -58,6 +69,20 @@ public class TokenServiceImpl implements AuthService {
                 .setSigningKey(KEY)
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public boolean validateJwt(String token) {
+        String tokenTratado = token.replace("Bearer ", "");
+        try {
+            decodeToken(tokenTratado);
+            return true;
+        } catch (ExpiredJwtException e) {
+            throw new TokenExpiradoException();
+        } catch (SignatureException e) {
+            throw new TokenInvalidoException();
+        } catch (Exception e) {
+            throw new ExceptionGeneric("0", "Erro Desconhecido");
+        }
     }
 
     public boolean jwtExpirado(String token) {

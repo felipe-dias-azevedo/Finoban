@@ -3,6 +3,7 @@ package com.bandtec.br.finoban.service.usuarios;
 import com.bandtec.br.finoban.dominio.entidades.Acesso;
 import com.bandtec.br.finoban.dominio.exceptions.AcessoNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.ClienteNaoEncontradoException;
+import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
 import com.bandtec.br.finoban.repository.AcessoRepository;
 import com.bandtec.br.finoban.repository.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoAcessosRepository;
@@ -52,7 +53,7 @@ public class GestaoAcessosServices implements GestaoAcessosRepository {
             throw new ClienteNaoEncontradoException();
 
         if (!regiaoRepository.existsById(acesso.getFkRegiao().getIdRegiao()))
-            throw new AcessoNaoEncontradoException();
+            throw new RegiaoNaoEncontradaException();
 
         acessoRepository.save(acesso);
     }

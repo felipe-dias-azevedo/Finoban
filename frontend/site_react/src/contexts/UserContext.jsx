@@ -1,11 +1,16 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const UserContext = createContext();
+const UserContext = createContext();
 
-export function UserProvider({ children }) {
+export default function UserProvider({ children }) {
 
     const [dataUsuario, setDataUsuario] = useState();
     const [authorization, setAuthorization] = useState("");
+
+    useEffect(() => {
+        setDataUsuario(sessionStorage.getItem("dadosUsuario"));
+        setAuthorization(sessionStorage.getItem("tokenAuth"));
+    }, []);
 
     return (
         <UserContext.Provider
@@ -19,12 +24,12 @@ export function UserProvider({ children }) {
             {children}
         </UserContext.Provider>
     )
-    
+
 }
 
-// export function useUser() {
-//     const context = useContext(UserContext);
-//     if (!context) throw new Error("useUser deve ser utilizado em conjunto com um UserProvider");
-//     const { dataUsuario, setDataUsuario, authorization, setAuthorization } = context;
-//     return { dataUsuario, setDataUsuario, authorization, setAuthorization };
-// }
+export function useUser() {
+    const context = useContext(UserContext);
+    if (!context) throw new Error("useUser deve ser utilizado em conjunto com um UserProvider");
+    const { dataUsuario, setDataUsuario, authorization, setAuthorization } = context;
+    return { dataUsuario, setDataUsuario, authorization, setAuthorization };
+}

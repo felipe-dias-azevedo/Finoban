@@ -110,4 +110,46 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError apiError = new ApiError(exception.getCode(), exception.getMessage());
         return new ResponseEntity(apiError, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(PermissaoNaoEncontradaException.class)
+    public final ResponseEntity<Object> handlePermissaoNaoEncontradaException() {
+        PermissaoNaoEncontradaException permissaoNaoEncontradaException = new PermissaoNaoEncontradaException();
+        return new ResponseEntity(new ApiError(permissaoNaoEncontradaException.getCode(),
+                permissaoNaoEncontradaException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminNaoEncontradoException.class)
+    public final ResponseEntity<Object> handleAdminNaoEncontradoException() {
+        AdminNaoEncontradoException adminNaoEncontradoException = new AdminNaoEncontradoException();
+        return new ResponseEntity(new ApiError(adminNaoEncontradoException.getCode(),
+                adminNaoEncontradoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CargoInexistenteException.class)
+    public final ResponseEntity<Object> handleCargoNaoExistenteException() {
+        CargoInexistenteException cargoInexistenteException = new CargoInexistenteException();
+        return new ResponseEntity(new ApiError(cargoInexistenteException.getCode(),
+                cargoInexistenteException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminJaCadastradoException.class)
+    public final ResponseEntity<Object> handleAdminJaEncontradoException() {
+        AdminJaCadastradoException adminJaCadastradoException = new AdminJaCadastradoException();
+        return new ResponseEntity(new ApiError(adminJaCadastradoException.getCode(),
+                adminJaCadastradoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminLogadoException.class)
+    public final ResponseEntity<Object> handleAdminLogadoException() {
+        AdminLogadoException adminLogadoException = new AdminLogadoException();
+        return new ResponseEntity(new ApiError(adminLogadoException.getCode(),
+                adminLogadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AdminNaoLogadoException.class)
+    public final ResponseEntity<Object> handleAdminNaoLogadoException() {
+        AdminNaoLogadoException adminNaoLogadoException = new AdminNaoLogadoException();
+        return new ResponseEntity(new ApiError(adminNaoLogadoException.getCode(),
+                adminNaoLogadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }

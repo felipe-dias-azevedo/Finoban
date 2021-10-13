@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Switch from "react-switch";
 import ChartHolder from '../../components/AnaliseNegocio/ChartHolder';
 import MovableItem from '../../components/AnaliseNegocio/MovableItem';
@@ -10,12 +10,29 @@ import Footer from '../../components/Footer';
 import { NegocioContext } from '../../contexts/NegocioContext';
 import LoadingScreen from '../../components/LoadingScreen';
 import { SwitchGraficoNegocioContext } from '../../contexts/SwitchGraficoNegocioContext';
+import api from '../../services/api';
 
 export default function Dashboard() {
 
     const [charts, setCharts] = useState(chartsPreset);
     const { chartsVisible, setChartsVisible } = useContext(SwitchGraficoNegocioContext);
-    const { dataDashboard } = useContext(NegocioContext);
+    const { dataDashboard, setDataDashboard } = useContext(NegocioContext);
+
+    useEffect(() => {
+        api.get("/dashboard", {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+                'Authorization': 'Bearer ' + sessionStorage.getItem("tokenAuth")
+            }
+        }).then(e => {
+            const data = e.data;
+            setDataDashboard(data);
+            sessionStorage.setItem('dataDash', JSON.stringify(data));
+        }).catch(e => {
+            console.error(e);
+        });
+    }, [setDataDashboard]);
 
     function handleSwitch(index) {
         setChartsVisible(prevState => {
