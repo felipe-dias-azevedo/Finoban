@@ -1,7 +1,7 @@
 package main
 
 type Usuario struct {
-	CNPJ       int     `json:"cnpj"`
+	CPF       int     `json:"CPF"`
 	Nome       string  `json:"nome"`
 	Patrimonio float64 `json:"patrimonio"`
 	Data       string  `json:"data"`
@@ -9,7 +9,7 @@ type Usuario struct {
 }
 
 type User struct {
-	CNPJ int `json:"cnpj"`
+	CPF int `json:"CPF"`
 }
 
 type Response struct {
