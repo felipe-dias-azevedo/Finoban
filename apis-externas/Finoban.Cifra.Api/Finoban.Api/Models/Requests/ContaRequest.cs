@@ -7,7 +7,7 @@ namespace Finoban.Api.Cifra.Models.Requests
 {
     public class ContaRequest
     {
-        public string CNPJ { get; set; }
+        public string CPF { get; set; }
 
     }
 }

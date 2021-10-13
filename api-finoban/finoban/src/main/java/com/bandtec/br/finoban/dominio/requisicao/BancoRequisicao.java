@@ -1,5 +1,7 @@
 package com.bandtec.br.finoban.dominio.requisicao;
 
+import org.springframework.beans.factory.annotation.Required;
+
 public class BancoRequisicao {
 
     private String cpf;

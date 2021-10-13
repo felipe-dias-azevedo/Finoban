@@ -37,20 +37,11 @@ namespace Finoban.Api.Controllers
             }
             else
             {
-                //conexaoMySQL = new ConnectionMySQL("18.207.233.50", "Cifra", "root", "urubu100");
-
-                //double patrimonio = conexaoMySQL.SelectPatrimonio(usuario.CNPJ).Result;
-
-                //calculoFinanciamento = new CalculoFinanciamento();
-                //var dataNascimento = conexaoMySQL.SelectYearNasc(usuario.CNPJ);
-                //int dateNow = dataNascimento.Result.Year;
-                //var date = DateTime.Now.AddYears(-dateNow);
-                //int idade = date.Year;
-                conexaoSQLite = new ConnectionSQLite(usuario.CNPJ);
+                conexaoSQLite = new ConnectionSQLite(usuario.CPF);
                 var dataNascimento = conexaoSQLite.Cliente.AnoNascimento;
                 var idade = DateTime.Now.AddYears(-dataNascimento).Year;
                 scoreSerasa = new ScoreSerasa();
-                var score = scoreSerasa.GetScore(usuario.CNPJ).Result;
+                var score = scoreSerasa.GetScore(usuario.CPF).Result;
                 if (score == 0)
                 {
                     var erroResponse = new ErroResponse
@@ -95,7 +86,7 @@ namespace Finoban.Api.Controllers
             }
             else
             {
-                conexaoSQLite = new ConnectionSQLite(model.CNPJ);
+                conexaoSQLite = new ConnectionSQLite(model.CPF);
 
                 var possuiConta = conexaoSQLite.Cliente.PossuiConta;
 
