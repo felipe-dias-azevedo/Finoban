@@ -7,12 +7,12 @@ namespace Finoban.Api.Cifra.Dal.SQLite
     public class ConnectionSQLite
     {
         public Cliente Cliente { get; set; }
-        public ConnectionSQLite(string cnpj)
+        public ConnectionSQLite(string cpf)
         {
             SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
             CreateTable(sqlite_conn);
-            Cliente = ReadCliente(sqlite_conn, cnpj);
+            Cliente = ReadCliente(sqlite_conn, cpf);
         }
 
         public SQLiteConnection CreateConnection()
@@ -33,19 +33,19 @@ namespace Finoban.Api.Cifra.Dal.SQLite
         public void CreateTable(SQLiteConnection conn)
         {
             SQLiteCommand sqlite_cmd;
-            string Createsql = "CREATE TABLE IF NOT EXISTS Cliente (cnpj INT PRIMARY KEY NOT NULL, nome TEXT, patrimonio REAL, data DATE)";
+            string Createsql = "CREATE TABLE IF NOT EXISTS Cliente (cpf INT PRIMARY KEY NOT NULL, nome TEXT, patrimonio REAL, data DATE)";
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = Createsql;
             sqlite_cmd.ExecuteNonQuery();
         }
-        public Cliente ReadCliente(SQLiteConnection conn, string cnpj)
+        public Cliente ReadCliente(SQLiteConnection conn, string cpf)
         {
             //conn.Open();
             Cliente cliente = new Cliente();
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = $"SELECT * FROM Cliente where cnpj = '{cnpj}'";
+            sqlite_cmd.CommandText = $"SELECT * FROM Cliente where cpf = '{cpf}'";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())

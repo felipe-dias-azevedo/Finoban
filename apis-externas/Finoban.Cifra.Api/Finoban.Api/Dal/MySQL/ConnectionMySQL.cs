@@ -52,7 +52,7 @@ namespace Finoban.Api.Dal.MySQL
             }
 
         }
-        public async Task<double> SelectPatrimonio(string cnpj)
+        public async Task<double> SelectPatrimonio(string cpf)
         {
             double patrimonio = 0.0;
             using (var conn = new MySqlConnection(stringBuilder.ConnectionString))
@@ -62,14 +62,14 @@ namespace Finoban.Api.Dal.MySQL
 
                 using (var command = conn.CreateCommand())
                 {
-                    command.CommandText = $"SELECT * FROM Cliente where cnpj = '{cnpj}';";
+                    command.CommandText = $"SELECT * FROM Cliente where cpf = '{cpf}';";
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
                             Console.WriteLine(string.Format(
-                                "Lendo da Tabela [cnpj:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
+                                "Lendo da Tabela [cpf:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
                                 reader.GetString(0),
                                 reader.GetString(1),
                                 reader.GetDouble(2),
@@ -84,7 +84,7 @@ namespace Finoban.Api.Dal.MySQL
             return patrimonio;
         }
 
-        public async Task<DateTime> SelectYearNasc(string cnpj)
+        public async Task<DateTime> SelectYearNasc(string cpf)
         {
             DateTime date = new DateTime();
             using (var conn = new MySqlConnection(stringBuilder.ConnectionString))
@@ -94,14 +94,14 @@ namespace Finoban.Api.Dal.MySQL
 
                 using (var command = conn.CreateCommand())
                 {
-                    command.CommandText = $"SELECT * FROM Cliente where cnpj = '{cnpj}';";
+                    command.CommandText = $"SELECT * FROM Cliente where cpf = '{cpf}';";
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
                             Console.WriteLine(string.Format(
-                                "Lendo da Tabela [cnpj:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
+                                "Lendo da Tabela [cpf:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
                                 reader.GetString(0),
                                 reader.GetString(1),
                                 reader.GetDouble(2),
@@ -117,7 +117,7 @@ namespace Finoban.Api.Dal.MySQL
             return date;
         }
 
-        public async Task<bool> VerifyPossuiConta(string cnpj)
+        public async Task<bool> VerifyPossuiConta(string cpf)
         {
             bool possuiConta = false;
             using (var conn = new MySqlConnection(stringBuilder.ConnectionString))
@@ -127,14 +127,14 @@ namespace Finoban.Api.Dal.MySQL
 
                 using (var command = conn.CreateCommand())
                 {
-                    command.CommandText = $"SELECT * FROM Cliente where cnpj = '{cnpj}';";
+                    command.CommandText = $"SELECT * FROM Cliente where cpf = '{cpf}';";
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
                             Console.WriteLine(string.Format(
-                                "Lendo da Tabela [cnpj:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
+                                "Lendo da Tabela [cpf:{0}, nome:'{1}', patrimonio: {2}, dataNascimento: {3}]",
                                 reader.GetString(0),
                                 reader.GetString(1),
                                 reader.GetDouble(2),
