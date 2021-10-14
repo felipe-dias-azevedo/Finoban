@@ -7,6 +7,6 @@ namespace Finoban.Api.Cifra.Models.Requests
 {
     public class ScoreSerasaRequest
     {
-        public int CNPJ { get; set; }
+        public int CPF { get; set; }
     }
 }

@@ -21,7 +21,7 @@ func (c Controllers) homePage(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var score int = database.selectBancoDeDados(user.CNPJ).Score
+	var score int = database.selectBancoDeDados(user.CPF).Score
 	if score == 0 {
 		errorMessage.Ok = false
 		errorMessage.Status = 400
