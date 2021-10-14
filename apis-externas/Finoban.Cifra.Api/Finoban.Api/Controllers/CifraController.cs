@@ -8,6 +8,8 @@ using Finoban.Api.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Finoban.Api.Cifra.Models;
+using Finoban.Api.Repository;
+using Finoban.Api.Service;
 
 namespace Finoban.Api.Controllers
 {
@@ -16,12 +18,15 @@ namespace Finoban.Api.Controllers
     [Route("openbanking/v1")]
     public class CifraController : ControllerBase
     {
+        private CalculoFinanciamento calculoFinanciamento;
+        private ConnectionSQLite conexaoSQLite;
+        private ISerasaRepository _repository;
 
-        public CalculoFinanciamento calculoFinanciamento;
-        public ConnectionMySQL conexaoMySQL;
-        public ConnectionSQLite conexaoSQLite;
-        public ScoreSerasa scoreSerasa;
-
+        public CifraController()
+        {
+            this._repository = new SerasaService();
+        }
+        
         [HttpPost("financiamento")]
         public IActionResult GetUsuario([FromBody] UsuarioResponse usuario)
         {
@@ -40,9 +45,8 @@ namespace Finoban.Api.Controllers
                 conexaoSQLite = new ConnectionSQLite(usuario.CPF);
                 var dataNascimento = conexaoSQLite.Cliente.AnoNascimento;
                 var idade = DateTime.Now.AddYears(-dataNascimento).Year;
-                scoreSerasa = new ScoreSerasa();
-                var score = scoreSerasa.GetScore(usuario.CPF).Result;
-                if (score == 0)
+                var dataRequestSerasa = this._repository.GetScore(usuario.CPF).Result;
+                if (dataRequestSerasa.Data.Score == 0)
                 {
                     var erroResponse = new ErroResponse
                     {
@@ -52,7 +56,8 @@ namespace Finoban.Api.Controllers
                     return BadRequest(erroResponse);
                 }
                 calculoFinanciamento = new CalculoFinanciamento(idade, conexaoSQLite.Cliente.Patrimonio, 
-                    usuario.TempoFinanciamento, score, usuario.ValorImovel);
+                    usuario.TempoFinanciamento, dataRequestSerasa.Data.Score, usuario.ValorImovel);
+                
                 FinanciamentoRequest financiamento = new FinanciamentoRequest
                 {
                     Ok = true,
@@ -66,6 +71,7 @@ namespace Finoban.Api.Controllers
                         TaxaTotal = Math.Round(calculoFinanciamento.TaxaTotal,2)
                     }
                 };
+                
                 financiamento.Data.TaxaTotal = Math.Round(financiamento.Data.Taxa + financiamento.Data.MIP +
                     financiamento.Data.TaxaAdministracao + financiamento.Data.DFI, 2);
                 return Ok(financiamento);
