@@ -66,7 +66,10 @@ function ModalFeedback(props) {
 				</Form.Group>
 			</Modal.Body>
 			<Modal.Footer>
-				<div onClick={props.onHide} className="btn-avaliacao btn-avaliacao-cancelar">
+				<div
+					onClick={props.onHide}
+					className="btn-avaliacao btn-avaliacao-cancelar"
+				>
 					Fechar
 				</div>
 				<div onClick={avaliacaoLike} className="btn-avaliacao">
@@ -80,6 +83,7 @@ function ModalFeedback(props) {
 function ModalContratar(props) {
 	const [modalShowSucesso, setModalShowSucesso] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
+	const [showAgendarHorario, setShowAgendarHorario] = React.useState(false);
 
 	function IrWhatsapp() {
 		window.location.href = "https://wa.me/551131758248";
@@ -108,11 +112,26 @@ function ModalContratar(props) {
 					<div className="d-flex justify-content-center">
 						<Form.Label className="cor-verde fonte-15">
 							Gostaria de agendar um horário?{" "}
-							<input type="checkbox" id="agendar-horario"></input>
-							<br />
-							<div className="mt-3" />
-							<input type="date" className="input-data"></input>
-							<input type="time" id="input-hora"></input>
+							<input
+								type="checkbox"
+								id="agendar-horario"
+								onClick={() => {
+									if (!showAgendarHorario)
+										setShowAgendarHorario(true);
+									else setShowAgendarHorario(false);
+								}}
+							></input>
+							<div
+								className={
+									showAgendarHorario ? "d-block" : "d-none"
+								}
+							>
+								<input
+									type="date"
+									className="input-data"
+								></input>
+								<input type="time" id="input-hora"></input>
+							</div>
 						</Form.Label>
 					</div>
 					<br />
