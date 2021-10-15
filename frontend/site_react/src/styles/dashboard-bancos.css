@@ -229,6 +229,18 @@ input[type="range"]::-webkit-slider-thumb {
     color: #3A5B62;
 }
 
+.mr-15 {
+    margin-right: 15px !important;
+}
+
+.fonte-13 {
+    font-size: 13px;
+}
+
+.fonte-14 {
+    font-size: 14px;
+}
+
 .fonte-15 {
     font-size: 15px;
 }
@@ -239,10 +251,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 .fonte-20 {
     font-size: 20px;
-}
-
-.mr-15 {
-    margin-right: 15px !important;
 }
 
 .bg-transparente {

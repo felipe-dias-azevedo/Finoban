@@ -88,7 +88,7 @@ function Simulador() {
                     <h1>Simulador</h1>
                 </div>
                 <div className="box box-subtitulo center">
-                    <h4>Valores dos Bancos referente aos dados mencionados</h4>
+                    <h4>Confira as taxas de cada banco referente aos dados mencionados</h4>
                 </div>
                 <div className="bancos">
                     <BankCard 

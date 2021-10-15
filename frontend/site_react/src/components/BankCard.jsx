@@ -12,19 +12,19 @@ function BankCard(props) {
                 <h4>{props.banco}</h4>
                 <div className="cx-info">
                     <span className="taxa-total"> Taxa Total: </span>
-                    <span> {props.taxa_t}% </span>
+                    <span className="fonte-16"> {props.taxa_t}% </span>
                 </div>
                 <div className="cx-info">
-                    <span> Primeira Prestação: </span>
-                    <span> {props.primeira_p} </span>
+                    <span className="fonte-14"> Primeira Prestação: </span>
+                    <span className="fonte-14"> {props.primeira_p} </span>
                 </div>
                 <div className="cx-info">
-                    <span> Valor final do imovel: </span>
-                    <span> {props.valor_f} </span>
+                    <span className="fonte-14"> Valor final do imóvel: </span>
+                    <span className="fonte-14"> {props.valor_f} </span>
                 </div>
                 <div className="cx-info">
-                    <span> Valor seguros: </span>
-                    <span> {props.valor_s}% </span>
+                    <span className="fonte-14"> Valor seguros: </span>
+                    <span className="fonte-14"> {props.valor_s}% </span>
                 </div>
 
                 <Button className="btn-bank-card" />
