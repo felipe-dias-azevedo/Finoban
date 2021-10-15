@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
 import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
+import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 
 const Form = () => {
 	const { values, errors, handleChange, handleSubmit } = UseForm(
@@ -39,7 +40,7 @@ const Form = () => {
 	useEffect(() => {
 		api.get("/regioes")
 			.then((e) => {
-				const imoveis = e.data.data;
+				const imoveis = e.data.data;		
 				if (e.status === 200) {
 					setImoveisList(imoveis);
 				}
@@ -53,7 +54,7 @@ const Form = () => {
 		<LoadingScreen />
 
 		const dataSimulador = {
-			cnpj: "123",
+			cpf: "123",
 			renda: parseInt(values.renda),
 			valorImovel: values.valorImovel,
 			tempoFinanciamento: parseInt(values.tempoFinanciamento),
@@ -149,7 +150,7 @@ const Form = () => {
 						<form onSubmit={handleSubmit} className="form-holder">
 							<div className="option-values-fulfill">
 								<p>CPF</p>
-								{/* <CpfCnpj
+								<CpfCnpj
 									className={`input mb-4 ${
 										errors.cpf && "is-danger"
 									}`}
@@ -158,10 +159,10 @@ const Form = () => {
 									maxLength="14"
 									id="cpf"
 									name="cpf"
-									defaultValue={values.cpf || ""}
-									onCh	ange={(type) => setMask(type == "CPF")}
+									// value={values.cpf || ""}
+									onChange={(type) => setMask(type == "CPF")}
 									onKeyPress={(e) => handler(e)}
-								/> */}
+								/>
 								<input
 									className={`input mb-4 ${
 										errors.cpf && "is-danger"
@@ -327,7 +328,15 @@ const Form = () => {
 	);
 };
 
-function PaginaInicial() {
+function PaginaInicial(props) {
+	const history = useHistory();
+
+	useEffect(() => {
+		if (props && props.location.state != undefined) {
+			toast.success("Você foi deslogado com com sucesso!");
+		}
+	}, []);
+
 	return (
 		<>
 			<Header />

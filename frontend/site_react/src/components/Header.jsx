@@ -25,7 +25,7 @@ function Header() {
 			.then((e) => {
 				console.log(e.data);
                     history.push({
-                        location: "/",
+                        pathname: "/",
                         state: { logoff: true}
                     });
 			})
