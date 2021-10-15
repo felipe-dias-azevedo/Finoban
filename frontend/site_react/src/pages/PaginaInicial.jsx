@@ -40,7 +40,7 @@ const Form = () => {
 	useEffect(() => {
 		api.get("/regioes")
 			.then((e) => {
-				const imoveis = e.data.data;		
+				const imoveis = e.data.data;
 				if (e.status === 200) {
 					setImoveisList(imoveis);
 				}
@@ -51,7 +51,7 @@ const Form = () => {
 	}, []);
 
 	function buscarTaxas() {
-		<LoadingScreen />
+		<LoadingScreen />;
 
 		const dataSimulador = {
 			cpf: "123",
@@ -177,7 +177,9 @@ const Form = () => {
 									onKeyPress={(e) => handler(e)}
 								/>
 								{errors.cpf && (
-									<p className="text-danger mb-3">{errors.cpf}</p>
+									<p className="text-danger mb-3">
+										{errors.cpf}
+									</p>
 								)}
 								<p>Renda</p>
 								<input
@@ -221,7 +223,6 @@ const Form = () => {
 												{errors.valorImovel}
 											</p>
 										)}
-											
 									</>
 								) : (
 									<>
@@ -330,10 +331,13 @@ const Form = () => {
 
 function PaginaInicial(props) {
 	const history = useHistory();
-
+	
 	useEffect(() => {
 		if (props && props.location.state != undefined) {
-			toast.success("Você foi deslogado com com sucesso!");
+			if (props.location.state.logoff) {
+				toast.success("Você foi deslogado com com sucesso!");
+				history.replace({ state: { logoff: true } });
+			}
 		}
 	}, []);
 

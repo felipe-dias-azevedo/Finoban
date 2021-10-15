@@ -23,7 +23,7 @@ function Header() {
 	
 		Api.post("/logoff", req, {})
 			.then((e) => {
-				console.log(e.data);
+                sessionStorage.setItem("usuarioLogado", false);
                     history.push({
                         pathname: "/",
                         state: { logoff: true}
