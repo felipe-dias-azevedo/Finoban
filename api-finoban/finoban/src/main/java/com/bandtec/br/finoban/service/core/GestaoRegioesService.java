@@ -3,10 +3,8 @@ package com.bandtec.br.finoban.service.core;
 import com.bandtec.br.finoban.dominio.entidades.Regiao;
 import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
 import com.bandtec.br.finoban.repository.GestaoRegioesRepository;
-import com.bandtec.br.finoban.repository.RegiaoRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.repository.database.RegiaoRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

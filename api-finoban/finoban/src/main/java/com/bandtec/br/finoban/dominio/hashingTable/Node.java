@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.dominio.listaLigada;
+package com.bandtec.br.finoban.dominio.hashingTable;
 
 public class Node<T> {
 

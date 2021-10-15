@@ -7,7 +7,7 @@ import com.bandtec.br.finoban.dominio.enums.RegioesEnum;
 import com.bandtec.br.finoban.dominio.enums.StatusSaidaEnum;
 import com.bandtec.br.finoban.dominio.resposta.DashboardDTO;
 import com.bandtec.br.finoban.dominio.views.charts.*;
-import com.bandtec.br.finoban.repository.DashboardRepository;
+import com.bandtec.br.finoban.repository.database.DashboardRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

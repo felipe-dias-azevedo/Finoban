@@ -1,8 +1,7 @@
-package com.bandtec.br.finoban.dominio.listaLigada;
+package com.bandtec.br.finoban.dominio.hashingTable;
 
 import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ListaLigada<T> {
     private Node<T> head;

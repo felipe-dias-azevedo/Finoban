@@ -1,11 +1,13 @@
 package com.bandtec.br.finoban.service.admin;
 
 import com.bandtec.br.finoban.dominio.entidades.Permissoes;
+import com.bandtec.br.finoban.dominio.exceptions.ErroRemoverDadoRelacionadoException;
 import com.bandtec.br.finoban.repository.PermissoesInterface;
-import com.bandtec.br.finoban.repository.PermissoesRepository;
+import com.bandtec.br.finoban.repository.database.PermissoesRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @AllArgsConstructor
@@ -25,7 +27,17 @@ public class PermissoesService implements PermissoesInterface {
     }
 
     @Override
-    public void atualizarPermissao(Permissoes permissoes) {
+    public Permissoes atualizarPermissao(Permissoes permissoes) {
         permissoesRepository.updateCargo(permissoes.getCargo(), permissoes.getIdPermissao());
+        return permissoesRepository.findById(permissoes.getIdPermissao()).get();
+    }
+
+    @Override
+    public void deletarPermissao(int id) {
+        try {
+            permissoesRepository.deleteById(id);
+        } catch (Exception ex) {
+            throw new ErroRemoverDadoRelacionadoException();
+        }
     }
 }

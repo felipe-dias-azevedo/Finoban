@@ -152,4 +152,11 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(new ApiError(adminNaoLogadoException.getCode(),
                 adminNaoLogadoException.getMessage()), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ErroRemoverDadoRelacionadoException.class)
+    public final ResponseEntity<Object> handleErroRemoverDadoRelacionadoException() {
+        ErroRemoverDadoRelacionadoException erroRemoverDadoRelacionadoException = new ErroRemoverDadoRelacionadoException();
+        return new ResponseEntity(new ApiError(erroRemoverDadoRelacionadoException.getCode(),
+                erroRemoverDadoRelacionadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }
