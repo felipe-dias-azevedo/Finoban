@@ -67,9 +67,9 @@ const Form = () => {
 			})
 			.catch((e) => {
 				const status = e.response.data.code;
-				if (status == "FIN07") toast.error("Email não encontrado");
-				if (status == "FIN08") toast.error("A senha informada é inválida");
-				if (status == "FIN09") toast.error("Usuário já possui uma sessão ativa");
+				if (status == "FIN007") toast.error("Email não encontrado");
+				if (status == "FIN008") toast.error("A senha informada é inválida");
+				if (status == "FIN009") toast.error("Usuário já possui uma sessão ativa");
 				setResposta(respostaEnum.ERROR);
 			});
 	}
@@ -123,13 +123,13 @@ const Form = () => {
 				</div>
 
 				<div className="form-subtext-holder">
-					<p>Esqueceu a senha?</p>
-					<Link
+				<Link
 						to="/esqueci-minha-senha"
 						className="font-weight-bold"
 					>
-						Clique aqui
+						<u>Esqueci minha senha</u>
 					</Link>
+				
 				</div>
 
 				<div className="button-holder-sign-in-up">

@@ -84,7 +84,6 @@ button {
 button:hover {
     background-color: var(--branco);
     color: var(--verde);
-    box-sizing: content-box;
     border: 2px solid var(--verde);
     transition: 0.1s;
 }

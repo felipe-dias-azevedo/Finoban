@@ -10,11 +10,10 @@ import Deslike from "../assets/images/deslike.svg";
 import BtnClose from "../assets/images/btn-close.svg";
 import Api from "../services/api";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import FormGroup from "react-bootstrap/FormGroup";
-import { mockComponent } from "react-dom/test-utils";
-import NumberFormat from "react-number-format";
+import configurarToast from "../utils/toastService";
+import { toast } from "react-toastify";
+import ModalAviso from "../components/Toastify";
 
 function ModalFeedback(props) {
 	const [feedback, setFeedback] = useState("");
@@ -67,16 +66,10 @@ function ModalFeedback(props) {
 				</Form.Group>
 			</Modal.Body>
 			<Modal.Footer>
-				<div
-					onClick={props.onHide}
-					className="btn-avaliacao-cancelar"
-				>
+				<div onClick={props.onHide} className="btn-avaliacao-cancelar">
 					Fechar
 				</div>
-				<div
-					onClick={avaliacaoLike}
-					className="btn-avaliacao-enviar"
-				>
+				<div onClick={avaliacaoLike} className="btn-avaliacao-enviar">
 					Enviar
 				</div>
 			</Modal.Footer>
@@ -125,7 +118,7 @@ function ModalContratar(props) {
 					<br />
 
 					<div className="d-flex flex-row">
-						<div className="btn-contato" onClick={() => { }}>
+						<div className="btn-contato" onClick={() => {}}>
 							Telefone
 						</div>
 						<div
@@ -134,15 +127,10 @@ function ModalContratar(props) {
 						>
 							WhatsApp
 						</div>
-						<div
-							className="btn-contato"
-							onClick={() => IrEmail()}
-						>
+						<div className="btn-contato" onClick={() => IrEmail()}>
 							E-mail
 						</div>
-						<div className="btn-contato">
-							Visita na Agência
-						</div>
+						<div className="btn-contato">Visita na Agência</div>
 					</div>
 
 					<ModalSucesso
@@ -190,25 +178,19 @@ function Dashboard() {
 	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
 
 	if (objDashboard == null) {
-		window.location.href = "/";
+		history.push("/");
 	}
 
 	const history = useHistory();
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
+	const [showFb, setShowFb] = React.useState(true);
+
 	const anoInicial = new Date().getFullYear();
 	const anoFinal = objDashboard
 		? anoInicial + objDashboard.tempoFinanciamento
 		: anoInicial + 30;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
-	const [showFb, setShowFb] = useState(true);
-
-	window.onbeforeunload = confirmExit;
-	function confirmExit() {
-		efetuarLogoff();
-		reqAcesso(1);
-		return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-	}
 
 	function efetuarLogoff() {
 		const req = {
@@ -222,35 +204,9 @@ function Dashboard() {
 				}
 			})
 			.catch((e) => {
-				console.error(e);
+				toast.error("Ocorreu um erro, tente novamente mais tarde.");
 			});
 	}
-
-	// Data
-	var data = new Date();
-	var dia = String(data.getDate()).padStart(2, "0");
-	var mes = String(data.getMonth() + 1).padStart(2, "0");
-	var ano = data.getFullYear();
-	var hora = data.getHours();
-	var minutos = data.getMinutes();
-	if (minutos < 10) minutos = "0" + minutos;
-	var segundos = data.getUTCSeconds();
-	if (segundos < 10) segundos = "0" + segundos;
-	var milisegundos = data.getMilliseconds();
-	var dataSaida =
-		ano +
-		"-" +
-		mes +
-		"-" +
-		dia +
-		"T" +
-		hora +
-		":" +
-		minutos +
-		":" +
-		segundos +
-		"." +
-		milisegundos;
 
 	const [selectValue, setSelectValue] = useState(1);
 	const listaBancos = [
@@ -258,11 +214,6 @@ function Dashboard() {
 		{ id: 2, name: "Banco do Presil" },
 		{ id: 3, name: "Banco S16" },
 	];
-
-	function handleCreate(e) {
-		e.preventDefault();
-		alert(selectValue);
-	}
 
 	let financiamentoCifra = financiar(
 		objDashboard.valorImovel,
@@ -302,7 +253,9 @@ function Dashboard() {
 			currency: "BRL",
 		});
 		ultimaParcela =
-			financiamentoCifra.prestacoes[financiamentoCifra.prestacoes.length - 1] / 12;
+			financiamentoCifra.prestacoes[
+				financiamentoCifra.prestacoes.length - 1
+			] / 12;
 		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL",
@@ -320,7 +273,10 @@ function Dashboard() {
 			style: "currency",
 			currency: "BRL",
 		});
-		ultimaParcela = financiamentoPresil.prestacoes[financiamentoCifra.prestacoes.length - 1] / 12;
+		ultimaParcela =
+			financiamentoPresil.prestacoes[
+				financiamentoCifra.prestacoes.length - 1
+			] / 12;
 		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL",
@@ -338,7 +294,10 @@ function Dashboard() {
 			style: "currency",
 			currency: "BRL",
 		});
-		ultimaParcela = financiamentoS16.prestacoes[financiamentoS16.prestacoes.length - 1] / 12;
+		ultimaParcela =
+			financiamentoS16.prestacoes[
+				financiamentoS16.prestacoes.length - 1
+			] / 12;
 		ultimaParcelaFormatado = ultimaParcela.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL",
@@ -386,38 +345,6 @@ function Dashboard() {
 			style: "currency",
 			currency: "BRL",
 		});
-		console.log("proxima parcela formatado");
-		console.log(proximaParcelaFormatado);
-	}
-
-	function reqAcesso(confirmouContratacao) {
-		var acesso = {
-			// dataHoraEntrada: horarioEntrada,
-			dataHoraSaida: dataSaida,
-			paginaSaida: 4,
-			statusSaida: confirmouContratacao,
-			renda: "",
-			valorImovel: "",
-			tempoFinanciamento: objDashboard.tempoFinanciamento,
-			porcentagemRenda: parseInt(porcentagemRenda),
-			bancoEscolhido: 2,
-			fkRegiao: {
-				idRegiao: 15,
-			},
-			fkCliente: {
-				id: parseInt(dadosUsuario.id),
-			},
-		};
-
-		console.log(acesso);
-
-		Api.post("/acessos", acesso, {})
-			.then((e) => {
-				console.log(e.data);
-			})
-			.catch((e) => {
-				console.error(e);
-			});
 	}
 
 	function avaliacaoDeslike() {
@@ -433,22 +360,22 @@ function Dashboard() {
 			.then((e) => {
 				console.log(e.data);
 				if (e.status === 201) {
-					console.log("ok");
-					alert("Recebemos a sua avaliação, obrigado!");
+					toast.success("Recebemos a sua avaliação, obrigado!");
 				} else {
-					console.log("erro");
+					toast.error("Ocorreu um erro, tente novamente mais tarde.");
 				}
 			})
 			.catch((e) => {
-				console.error(e);
+				toast.error("Ocorreu um erro, tente novamente mais tarde.");
 			});
 	}
 
 	return (
 		<>
 			<Header />
+			<ModalAviso />
 			<div className="center">
-				<div className="box box-titulo center">
+				<div className="box box-titulo center mt-5">
 					<h1>Dashboard Comparativo</h1>
 				</div>
 				<div className="box box-subtitulo center">
@@ -465,7 +392,7 @@ function Dashboard() {
 						alterarSlider(value - new Date().getFullYear());
 					}}
 				/>
-				<span className="anoFin">{value} </span>
+				<span className="anoFin mb-4">{value} </span>
 
 				<div className="box-campos">
 					<div className="box box-label center">
@@ -475,7 +402,7 @@ function Dashboard() {
 						<p class="fw-500 m-0">Valor Imóvel:</p>
 					</div>
 				</div>
-				<div className="box-campos">
+				<div className="box-campos mb-5">
 					<select
 						value={selectValue}
 						onChange={(e) => setSelectValue(e.target.value)}
@@ -490,38 +417,36 @@ function Dashboard() {
 						disabled
 					/>
 				</div>
-				<div className="box-campos">
-					<CampoItem label="Taxa" valor={taxaSimulacao} />
-					<CampoItem
-						label="Primeira Parcela"
-						valor={valorPrimeiraParcela}
-					/>
-					<CampoItem
-						label="Próxima Parcela"
-						valor={proximaParcelaFormatado}
-					/>
-					<CampoItem
-						label="Última Parcela"
-						valor={ultimaParcelaFormatado}
-					/>
-				</div>
-				<div className="box-campos">
-					<div className="box box-item center">
-						<p>Valor final do imóvel</p>
-						<br />
-						<p className="fw-600">{valorFinalImovel}</p>
-					</div>
-					<div className="grafico">
-						<GoogleChart anos={value} valor={prestacaoChart} />
+
+				<div className="container">
+					<div className="d-flex flex-row">
+						<CampoItem label="Taxa" valor={taxaSimulacao} />
+						<CampoItem
+							label="Primeira Parcela"
+							valor={valorPrimeiraParcela}
+						/>
+						<CampoItem
+							label="Próxima Parcela"
+							valor={proximaParcelaFormatado}
+						/>
+						<CampoItem
+							label="Última Parcela"
+							valor={ultimaParcelaFormatado}
+						/>
+						<CampoItem
+							label="Valor final do imóvel"
+							valor={valorFinalImovel}
+						/>
 					</div>
 				</div>
-				<div className="box-campos">
-					<a
-						href="http://localhost:8080/api-finoban/download/csv"
-						className="botao"
-					>
-						Salvar e Baixar CSV
-					</a>
+			</div>
+
+			<div className="container">
+				<div className="grafico">
+					<GoogleChart anos={value} valor={prestacaoChart} />
+				</div>
+
+				<div className="d-flex flex-row justify-content-end">
 					<button
 						className="btn-contratar"
 						onClick={() => {
@@ -533,12 +458,15 @@ function Dashboard() {
 				</div>
 			</div>
 
-			{ 
-				showFb &&
+			{showFb && (
 				<div className="alert-avaliacao">
-					<img src={BtnClose} className="btn-close" onClick={() => {
-						setShowFb(false)
-					}} />
+					<img
+						src={BtnClose}
+						className="btn-close"
+						onClick={() => {
+							setShowFb(false);
+						}}
+					/>
 					<h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
 					<div className="btn-avaliacao">
 						<img
@@ -549,19 +477,16 @@ function Dashboard() {
 						<img src={Deslike} alt="" onClick={avaliacaoDeslike} />
 					</div>
 				</div>
-			}
-
+			)}
 
 			<ModalFeedback
 				show={modalShowFeedback}
 				onHide={() => setModalShowFeedback(false)}
 			/>
-
 			<ModalContratar
 				show={modalShowContratar}
 				onHide={() => setModalShowContratar(false)}
 			/>
-
 			<Footer />
 		</>
 	);

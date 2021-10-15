@@ -4,6 +4,7 @@ import Chart from "react-google-charts";
 function GoogleChart(props) {
     const opcoes = {
         title: 'Gasto anual das parcelas:',
+        fontSize: 14,
         hAxis: { title: 'Ano', titleTextStyle: { color: '#4b4b4b' } },
         vAxis: {format: 'short'},
         // For the legend to fit, we make the chart area smaller

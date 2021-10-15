@@ -3,9 +3,9 @@ import React from 'react';
 function CampoItem(props) {
     return (
         <div className="box box-item center">
-            <p>{props.label}:</p>
+            <p className="fonte-15">{props.label}:</p>
             <br/>
-            <p> <strong>{props.valor}</strong> </p>
+            <p className="fonte-16"> <strong>{props.valor}</strong> </p>
         </div>
     );
 }
