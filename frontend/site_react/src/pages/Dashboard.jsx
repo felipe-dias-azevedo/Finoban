@@ -54,7 +54,7 @@ function ModalFeedback(props) {
 			</Modal.Header>
 			<Modal.Body>
 				<Form.Group controlId="exampleForm.ControlTextarea1">
-					<Form.Label name="feedback" v>
+					<Form.Label name="feedback" className="fonte-16">
 						Digite sua mensagem
 					</Form.Label>
 					<Form.Control
@@ -66,10 +66,10 @@ function ModalFeedback(props) {
 				</Form.Group>
 			</Modal.Body>
 			<Modal.Footer>
-				<div onClick={props.onHide} className="btn-avaliacao-cancelar">
+				<div onClick={props.onHide} className="btn-avaliacao btn-avaliacao-cancelar">
 					Fechar
 				</div>
-				<div onClick={avaliacaoLike} className="btn-avaliacao-enviar">
+				<div onClick={avaliacaoLike} className="btn-avaliacao">
 					Enviar
 				</div>
 			</Modal.Footer>
@@ -468,7 +468,7 @@ function Dashboard() {
 						}}
 					/>
 					<h1 className="titulo-avaliacao">Avalie nosso serviço</h1>
-					<div className="btn-avaliacao">
+					<div className="icon-avaliacao">
 						<img
 							src={Like}
 							alt=""

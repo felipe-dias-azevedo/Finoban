@@ -112,20 +112,9 @@
 .titulo-avaliacao {
     font-size: 20px;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
-.btn-avaliacao {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.btn-avaliacao img {
-    margin-top: 1%;
-    width: 50px;
-    cursor: pointer;
-}
 
 .btn-contato {
     margin: 0 20px;
@@ -148,26 +137,15 @@
 }
 
 .btn-avaliacao-cancelar {
-    background-color: #474646;
-    color: white;
-    font-weight: 600;
-    border-radius: 5px;
-    width: 208px;
-    height: 42px;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #474646 !important;
 }
 
-.btn-avaliacao-enviar {
+.btn-avaliacao {
     background-color: #3A5B62;
     color: white;
     font-weight: 600;
     border-radius: 5px;
-    width: 208px;
+    width: 50%;
     height: 42px;
     border: none;
     box-sizing: border-box;
@@ -175,6 +153,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 15px;
+}
+
+.icon-avaliacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.icon-avaliacao img {
+    margin-top: 1%;
+    width: 50px;
+    cursor: pointer;
 }
 
 input[type="range"] {
