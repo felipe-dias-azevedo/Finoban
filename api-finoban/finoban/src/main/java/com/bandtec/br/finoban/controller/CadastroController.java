@@ -7,12 +7,18 @@ import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
-import com.bandtec.br.finoban.repository.UsuarioRepository;
+import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.service.usuarios.GestaoAvaliacoesService;
 import com.bandtec.br.finoban.service.usuarios.GestaoUsuariosService;
+import com.sun.net.httpserver.HttpContext;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +26,6 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,8 +34,12 @@ import java.util.List;
 public class CadastroController {
 
     private GestaoUsuariosService gestaoUsuariosService;
+
     private GestaoAvaliacoesService gestaoAvaliacoesService;
+
     private UsuarioRepository usuarioRepository;
+
+    private static final Logger log = LogManager.getLogger(CadastroController.class.getName());
 
     @PostMapping("/cadastro")
     public ResponseEntity novoCadastro(@Valid @RequestBody Usuario novoCadastro) {
@@ -41,8 +50,8 @@ public class CadastroController {
 
     @GetMapping("/usuarios")
     public ResponseEntity listarUsuarios() {
+        log.info("GET api-finoban/usuarios");
         List<Usuario> usuarioList = gestaoUsuariosService.listarUsuarios();
-        
         if (usuarioList.isEmpty())
             return ResponseEntity.status(204).build();
 

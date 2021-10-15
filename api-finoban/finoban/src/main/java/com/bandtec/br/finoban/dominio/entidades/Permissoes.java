@@ -5,7 +5,6 @@ import com.bandtec.br.finoban.dominio.enums.CargoEnum;
 import com.bandtec.br.finoban.dominio.exceptions.CargoInexistenteException;
 import lombok.Getter;
 import lombok.Setter;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

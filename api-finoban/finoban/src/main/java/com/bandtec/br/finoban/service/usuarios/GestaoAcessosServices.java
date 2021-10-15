@@ -4,13 +4,11 @@ import com.bandtec.br.finoban.dominio.entidades.Acesso;
 import com.bandtec.br.finoban.dominio.exceptions.AcessoNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.ClienteNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
-import com.bandtec.br.finoban.repository.AcessoRepository;
-import com.bandtec.br.finoban.repository.UsuarioRepository;
+import com.bandtec.br.finoban.repository.database.AcessoRepository;
+import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoAcessosRepository;
-import com.bandtec.br.finoban.repository.RegiaoRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.repository.database.RegiaoRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

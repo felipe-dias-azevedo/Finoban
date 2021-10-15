@@ -3,7 +3,7 @@ package com.bandtec.br.finoban.controller;
 import com.bandtec.br.finoban.builder.RegiaoBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Regiao;
 import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
-import com.bandtec.br.finoban.repository.RegiaoRepository;
+import com.bandtec.br.finoban.repository.database.RegiaoRepository;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,7 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.entidades.Permissoes;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
-import com.bandtec.br.finoban.service.admin.PermissoesService;
+import com.bandtec.br.finoban.repository.PermissoesInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 public class PermissoesController {
 
-    private PermissoesService permissoesService;
+    private PermissoesInterface permissoesRepository;
 
     @GetMapping
     public ResponseEntity getAllPermissoes() {
-        List<Permissoes> permissoesList = permissoesService.resgatarTodasAsPermissoes();
+        List<Permissoes> permissoesList = permissoesRepository.resgatarTodasAsPermissoes();
         if (permissoesList.isEmpty())
             return ResponseEntity.status(204).build();
 
@@ -27,14 +27,20 @@ public class PermissoesController {
 
     @PostMapping
     public ResponseEntity postPermissao(@RequestBody Permissoes permissoes) {
-        permissoesService.cadastrarPermissao(permissoes);
+        permissoesRepository.cadastrarPermissao(permissoes);
         return ResponseEntity.status(201).build();
     }
 
     @PutMapping
     public ResponseEntity atualizarCargo(@RequestBody Permissoes permissoes) {
-        permissoesService.atualizarPermissao(permissoes);
+        permissoesRepository.atualizarPermissao(permissoes);
         return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletarPermissao(@PathVariable int id) {
+        permissoesRepository.deletarPermissao(id);
+        return ResponseEntity.status(204).build();
     }
 
 }

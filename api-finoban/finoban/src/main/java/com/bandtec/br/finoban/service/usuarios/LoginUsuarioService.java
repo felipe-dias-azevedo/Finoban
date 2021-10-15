@@ -3,7 +3,7 @@ package com.bandtec.br.finoban.service.usuarios;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.UsuarioLogadoException;
 import com.bandtec.br.finoban.dominio.exceptions.UsuarioNaoLogadoException;
-import com.bandtec.br.finoban.dominio.listaLigada.HashTable;
+import com.bandtec.br.finoban.dominio.hashingTable.HashTable;
 import com.bandtec.br.finoban.dominio.resposta.respostasLogin.RespostaLoginUsuario;
 import com.bandtec.br.finoban.repository.LoginRepository;
 import com.bandtec.br.finoban.service.AuthService;

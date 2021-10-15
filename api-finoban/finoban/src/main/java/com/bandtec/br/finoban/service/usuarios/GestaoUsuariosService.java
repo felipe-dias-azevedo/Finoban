@@ -1,5 +1,6 @@
 package com.bandtec.br.finoban.service.usuarios;
 
+import com.bandtec.br.finoban.controller.CadastroController;
 import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.TokenDecodificadoModel;
 import com.bandtec.br.finoban.dominio.resposta.respostasLogin.RespostaLoginUsuario;
@@ -10,12 +11,15 @@ import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.*;
 import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
-import com.bandtec.br.finoban.repository.RedefinicaoSenhaRepository;
-import com.bandtec.br.finoban.repository.UsuarioRepository;
+import com.bandtec.br.finoban.repository.database.RedefinicaoSenhaRepository;
+import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.repository.GestaoUsuariosRepository;
 import com.bandtec.br.finoban.service.AuthService;
 import com.bandtec.br.finoban.service.SendEmailService;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +37,7 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
     private final SendEmailService sendEmailService;
     private final LoginUsuarioService loginUsuarioService;
+    private static final Logger log = LogManager.getLogger(CadastroController.class.getName());
 
     @Override
     public void cadastrarUsuario(Usuario usuario) {
@@ -46,15 +51,19 @@ public class GestaoUsuariosService implements GestaoUsuariosRepository {
 
     @Override
     public List<Usuario> listarUsuarios() {
+        
         return (List<Usuario>) usuarioRepository.findAll();
     }
 
     @Override
     public Usuario resgatarUsuarioPeloId(int id) {
+        
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (!usuario.isPresent())
             throw new ClienteNaoEncontradoException();
+
+        log.info(usuario.get());
 
         return usuario.get();
     }

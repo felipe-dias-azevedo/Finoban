@@ -4,12 +4,11 @@ import com.bandtec.br.finoban.builder.AcessoBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Acesso;
 import com.bandtec.br.finoban.dominio.exceptions.AcessoNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
-import com.bandtec.br.finoban.repository.AcessoRepository;
+import com.bandtec.br.finoban.repository.database.AcessoRepository;
 import com.bandtec.br.finoban.repository.GestaoAcessosRepository;
-import com.bandtec.br.finoban.repository.UsuarioRepository;
-import com.bandtec.br.finoban.repository.RegiaoRepository;
+import com.bandtec.br.finoban.repository.database.UsuarioRepository;
+import com.bandtec.br.finoban.repository.database.RegiaoRepository;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
-import com.bandtec.br.finoban.service.usuarios.GestaoAcessosServices;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AcessoControllerTest {

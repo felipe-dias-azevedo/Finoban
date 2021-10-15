@@ -7,7 +7,7 @@ import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.exceptions.EmailNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.SenhaIncorretaException;
 import com.bandtec.br.finoban.dominio.exceptions.UsuarioLogadoException;
-import com.bandtec.br.finoban.repository.UsuarioRepository;
+import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import com.bandtec.br.finoban.service.usuarios.LoginUsuarioService;
 import org.junit.jupiter.api.DisplayName;

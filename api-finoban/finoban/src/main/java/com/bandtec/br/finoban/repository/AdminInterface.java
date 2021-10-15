@@ -11,8 +11,8 @@ public interface AdminInterface {
     List<Admin> resgatarTodosAdmins();
     RespostaLogin realizarLogin(Login logoff);
     void realizarLogoff(Login logoff);
-    void atualizarStatusAdmin(Admin admin);
-    void removerAdmin(Admin admin);
+    Admin atualizarStatusAdmin(Admin admin);
+    void removerAdminPorId(int idAdmin);
     Admin resgatarAdminPeloId(int id);
     Admin atualizarDados(Admin admin);
 }

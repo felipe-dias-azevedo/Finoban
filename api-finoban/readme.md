@@ -23,6 +23,7 @@ FIN017 - "Cargo não existente."
 FIN018 - "Admin já encontrado."
 FIN019 - "Admin já se encontra logado."
 FIN020 - "Não encontra-se admin logado."
+FIN021 - "Erro ao remover dado relacionado em outra tabela."
 ```
 
 ### Testes Integrados

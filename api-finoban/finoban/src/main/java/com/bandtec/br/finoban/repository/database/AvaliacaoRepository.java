@@ -1,4 +1,4 @@
-package com.bandtec.br.finoban.repository;
+package com.bandtec.br.finoban.repository.database;
 
 import com.bandtec.br.finoban.dominio.entidades.Acesso;
 import com.bandtec.br.finoban.dominio.entidades.Avaliacao;

@@ -6,12 +6,10 @@ import com.bandtec.br.finoban.dominio.exceptions.AcessoNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.AvalPositivoIncorretoException;
 import com.bandtec.br.finoban.dominio.exceptions.AvaliacaoNaoEncontradaException;
 import com.bandtec.br.finoban.dominio.exceptions.FeedbackNullException;
-import com.bandtec.br.finoban.repository.AcessoRepository;
-import com.bandtec.br.finoban.repository.AvaliacaoRepository;
+import com.bandtec.br.finoban.repository.database.AcessoRepository;
+import com.bandtec.br.finoban.repository.database.AvaliacaoRepository;
 import com.bandtec.br.finoban.repository.GestaoAvaliacoesRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
