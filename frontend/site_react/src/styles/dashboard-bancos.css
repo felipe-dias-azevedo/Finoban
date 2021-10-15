@@ -84,7 +84,7 @@
     box-sizing: border-box;
     border-radius: 4px;
     font-weight: 500;
-    width: 30%;
+    width: 40%;
     font-size: 18px;
 }
 
@@ -97,7 +97,7 @@
     height: 130px;
     opacity: 0.8;
     position: fixed;
-    bottom: 25%;
+    bottom: 5%;
     right: 28px;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .icon-avaliacao img {
-    margin-top: 1%;
+    margin-top: 5%;
     width: 50px;
     cursor: pointer;
 }
@@ -246,4 +246,16 @@ input[type="range"]::-webkit-slider-thumb {
 
 .bg-transparente {
     background-color: transparent;
+}
+
+.display-block {
+    transition: opacity 0.5s ease-in;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.display-none {
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
+    overflow: hidden;
 }
