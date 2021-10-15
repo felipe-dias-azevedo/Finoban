@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
 import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
+import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 
 const Form = () => {
 	const { values, errors, handleChange, handleSubmit } = UseForm(
@@ -50,10 +51,10 @@ const Form = () => {
 	}, []);
 
 	function buscarTaxas() {
-		<LoadingScreen />
+		<LoadingScreen />;
 
 		const dataSimulador = {
-			cnpj: "123",
+			cpf: "123",
 			renda: parseInt(values.renda),
 			valorImovel: values.valorImovel,
 			tempoFinanciamento: parseInt(values.tempoFinanciamento),
@@ -149,7 +150,7 @@ const Form = () => {
 						<form onSubmit={handleSubmit} className="form-holder">
 							<div className="option-values-fulfill">
 								<p>CPF</p>
-								{/* <CpfCnpj
+								<CpfCnpj
 									className={`input mb-4 ${
 										errors.cpf && "is-danger"
 									}`}
@@ -158,10 +159,10 @@ const Form = () => {
 									maxLength="14"
 									id="cpf"
 									name="cpf"
-									defaultValue={values.cpf || ""}
-									onCh	ange={(type) => setMask(type == "CPF")}
+									// value={values.cpf || ""}
+									onChange={(type) => setMask(type == "CPF")}
 									onKeyPress={(e) => handler(e)}
-								/> */}
+								/>
 								<input
 									className={`input mb-4 ${
 										errors.cpf && "is-danger"
@@ -176,7 +177,9 @@ const Form = () => {
 									onKeyPress={(e) => handler(e)}
 								/>
 								{errors.cpf && (
-									<p className="text-danger mb-3">{errors.cpf}</p>
+									<p className="text-danger mb-3">
+										{errors.cpf}
+									</p>
 								)}
 								<p>Renda</p>
 								<input
@@ -220,7 +223,6 @@ const Form = () => {
 												{errors.valorImovel}
 											</p>
 										)}
-											
 									</>
 								) : (
 									<>
@@ -327,7 +329,18 @@ const Form = () => {
 	);
 };
 
-function PaginaInicial() {
+function PaginaInicial(props) {
+	const history = useHistory();
+	
+	useEffect(() => {
+		if (props && props.location.state != undefined) {
+			if (props.location.state.logoff) {
+				toast.success("Você foi deslogado com com sucesso!");
+				history.replace({ state: { logoff: true } });
+			}
+		}
+	}, []);
+
 	return (
 		<>
 			<Header />
