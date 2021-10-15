@@ -109,8 +109,8 @@ function ModalContratar(props) {
 			</Modal.Header>
 			<Modal.Body>
 				<Form.Group controlId="exampleForm.ControlTextarea1">
-					<div className="d-flex justify-content-center">
-						<Form.Label className="cor-verde fonte-15">
+					<div className="d-flex justify-content-center mt-3">
+						<Form.Label className="cor-verde fonte-16">
 							Gostaria de agendar um horário?{" "}
 							<input
 								type="checkbox"
@@ -123,7 +123,7 @@ function ModalContratar(props) {
 							></input>
 							<div
 								className={
-									showAgendarHorario ? "d-block" : "d-none"
+									showAgendarHorario ? "display-block" : "display-none"
 								}
 							>
 								<input
