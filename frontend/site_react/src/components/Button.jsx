@@ -53,7 +53,7 @@ function Button() {
 
     return (
         <>
-            <button className="btn" onClick={() => setModalShow(true)}>Ver mais</button>
+            <button className="btn btn-bank-card" onClick={() => setModalShow(true)}>Ver mais</button>
 
             <ModalLogin
                 show={modalShow}

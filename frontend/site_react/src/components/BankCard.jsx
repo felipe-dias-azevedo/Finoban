@@ -10,24 +10,24 @@ function BankCard(props) {
                     <img className="logo-bancos" src={Icon} alt="" />
                 </div>
                 <h4>{props.banco}</h4>
-                <div className="cx-info shadow">
-                    <span> Taxa Total: </span>
+                <div className="cx-info">
+                    <span className="taxa-total"> Taxa Total: </span>
                     <span> {props.taxa_t}% </span>
                 </div>
-                <div className="cx-info shadow">
+                <div className="cx-info">
                     <span> Primeira Prestação: </span>
                     <span> {props.primeira_p} </span>
                 </div>
-                <div className="cx-info shadow">
+                <div className="cx-info">
                     <span> Valor final do imovel: </span>
                     <span> {props.valor_f} </span>
                 </div>
-                <div className="cx-info shadow">
+                <div className="cx-info">
                     <span> Valor seguros: </span>
                     <span> {props.valor_s}% </span>
                 </div>
 
-                <Button />
+                <Button className="btn-bank-card" />
             </div>
         </>
     );

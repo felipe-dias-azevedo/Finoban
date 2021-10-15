@@ -25,7 +25,7 @@ import './assets/css/pagina-nao-existe.css'
 export default function App() {
 
   return (
-      <>
+      <> 
         <Routes />
       </>
   );
