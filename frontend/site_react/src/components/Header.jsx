@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
 import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
@@ -72,13 +72,13 @@ function Header() {
                         Cadastro
                     </button>
 
-                    { usuarioLogado && (
+                    { usuarioLogado == "true" && (
                     <button className="btn-topheader" onClick={efetuarLogoff}>
                         Logout
                     </button>
                     )}
 
-                    { !usuarioLogado && (
+                    { usuarioLogado == "false" && (
                     <button className="btn-topheader" onClick={() => history.push("/login")}>
                         Login
                     </button>
