@@ -13,18 +13,18 @@ router.get('/clientes', async (req, res) => {
     res.status(200).send(clientes); 
 });
 
-router.get('/clientes/:cnpj', async (req, res) => {
-    const cliente = await bd.findClient(req.params.cnpj);
+router.get('/clientes/:cpf', async (req, res) => {
+    const cliente = await bd.findClient(req.params.cpf);
     res.status(200).send(cliente[0]); 
 });
 
-router.patch('/clientes/:cnpj', async (req, res) => {
-    const clienteAtt = await bd.updateClient(req.params.cnpj, req.body);
+router.patch('/clientes/:cpf', async (req, res) => {
+    const clienteAtt = await bd.updateClient(req.params.cpf, req.body);
     res.sendStatus(202).send(clienteAtt); 
 });
 
-router.delete('/clientes/:cnpj', async (req, res) => {
-    const cliente = await bd.deleteClient(req.params.cnpj);
+router.delete('/clientes/:cpf', async (req, res) => {
+    const cliente = await bd.deleteClient(req.params.cpf);
     res.sendStatus(200).send(cliente); 
 });
 

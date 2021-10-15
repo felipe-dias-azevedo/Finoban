@@ -12,15 +12,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/conta', async (req, res) => {
-    let cnpj = req.body.cnpj;
-    let v_body = validar.cnpj(cnpj);
+    let cpf = req.body.cpf;
+    let v_body = validar.cpf(cpf);
 
     let status;
     let data;
 
     if (v_body) {
 
-        const conta = await bd.findClient(cnpj);
+        const conta = await bd.findClient(cpf);
         let possui_conta = conta.length > 0 ? true : false;
         status = conta.length > 0 ? 200 : 404;
         data = {
@@ -29,14 +29,12 @@ router.post('/conta', async (req, res) => {
         }
 
     } else {
-
         status = 400;
         data = {
-            erro: "CNPJ inválido"
+            erro: "CPF inválido"
         }
-
     }
-    
+
     res.status(status).json(response(status, data));
 
 });
@@ -44,7 +42,7 @@ router.post('/conta', async (req, res) => {
 router.post('/financiamento', async (req, res) => {
     let dados = req.body;
     let v_dados = validar.financiamento(dados);
-    dados.cnpj = Number(dados.cnpj);
+    dados.cpf = Number(dados.cpf);
 
     let data;
     let status;
@@ -52,7 +50,7 @@ router.post('/financiamento', async (req, res) => {
 
     if (v_dados.valido) {
 
-        let cliente = await bd.findClient(dados.cnpj);
+        let cliente = await bd.findClient(dados.cpf);
 
         if (cliente[0]) {
             status = 200;
@@ -62,13 +60,13 @@ router.post('/financiamento', async (req, res) => {
             let tempo_f = dados.tempoFinanciamento;
             let valor_imovel = dados.valorImovel;
             let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
-            let txa = await calc(patrimonio, idade, renda, tempo_f, valor_imovel, dados.cnpj);
+            let txa = await calc(patrimonio, idade, renda, tempo_f, valor_imovel, dados.cpf);
             data = {
                 taxa: parseFloat(txa.toFixed(2)),
                 taxaAdministracao: taxas_fixas.tx_adm,
                 dfi: taxas_fixas.dfi,
                 mip: taxas_fixas.mip,
-                taxaTotal: parseFloat((txa + taxas_fixas.tx_adm + taxas_fixas.dfi + taxas_fixas.mip).toFixed(2))
+                taxaTotal: parseFloat((txa + taxas_fixas.tx_adm + taxas_fixas.dfi + taxas_fixas.mip))
             }
         } else {
             status = 404;

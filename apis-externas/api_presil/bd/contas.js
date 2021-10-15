@@ -8,16 +8,16 @@ function selectAllClient() {
     return knex("Cliente").select("*");
 };
 
-function findClient(cnpj) {
-    return knex("Cliente").where("cnpj", cnpj);
+function findClient(cpf) {
+    return knex("Cliente").where("cnpj", cpf);
 };
 
-function deleteClient(cnpj) {
-    return knex("Cliente").where("cnpj", cnpj).del();
+function deleteClient(cpf) {
+    return knex("Cliente").where("cnpj", cpf).del();
 };
 
-function updateClient(cnpj, client) {
-    return knex("Cliente").where("cnpj", cnpj).update(client);
+function updateClient(cpf, client) {
+    return knex("Cliente").where("cnpj", cpf).update(client);
 };
 
 

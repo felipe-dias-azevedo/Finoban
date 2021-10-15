@@ -1,6 +1,6 @@
-let validar_cnpj = (cnpj) => {
+let validar_cpf = (cpf) => {
 
-    if (isNaN(Number(cnpj))) {
+    if (isNaN(Number(cpf))) {
         return false;    
     }
 
@@ -14,9 +14,9 @@ let validar_financiamento = (dados) => {
     let valido = true;
     let erros = []
 
-    if (body.cnpj == undefined || isNaN(Number(body.cnpj))) {
+    if (body.cpf == undefined || isNaN(Number(body.cpf))) {
         valido = false;
-        erros.push("CNPJ inválido");
+        erros.push("CPF inválido");
     }
 
     if (body.valorImovel == undefined || isNaN(Number(body.valorImovel))) {
@@ -37,6 +37,6 @@ let validar_financiamento = (dados) => {
 };
 
 module.exports = {
-    cnpj: validar_cnpj,
+    cpf: validar_cpf,
     financiamento: validar_financiamento
 };

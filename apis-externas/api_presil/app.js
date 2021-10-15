@@ -15,4 +15,4 @@ app.get('/', (req, res) => res.send('API funcionando'));
 app.use("/admin", admin);
 app.use("/openbanking/v1", ob);
 
-app.listen(port, () => console.log("Aplicação rodando no Endereço: http://localhost:3000"));
+app.listen(port, () => console.log("Aplicação rodando no Endereço: http://localhost:3333"));
