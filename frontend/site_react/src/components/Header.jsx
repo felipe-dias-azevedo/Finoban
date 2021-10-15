@@ -5,11 +5,34 @@ import LogoFinobanLight from '../assets/images/logo-finoban-light.svg';
 import LogoFinobanDark from '../assets/images/logo-finoban-dark.svg';
 import { DarkModeContext } from '../contexts/DarkModeContext';
 import Breadcrumbs from './Breadcrumbs';
+import Api from '../services/api';
+import configurarToast from "../utils/toastService";
+import { toast } from "react-toastify";
+import ModalAviso from "../components/Toastify";
 
 function Header() {
-
     const history = useHistory();
     const { isDarkEnable, changeDarkModeState } = useContext(DarkModeContext);
+    const usuarioLogado = sessionStorage.getItem("usuarioLogado");
+    const dadosUsuarioLogado = JSON.parse(sessionStorage.getItem("dadosUsuario"));   
+
+
+	function efetuarLogoff() {
+        var req = {};
+		req.email = dadosUsuarioLogado.email;
+	
+		Api.post("/logoff", req, {})
+			.then((e) => {
+				console.log(e.data);
+                    history.push({
+                        location: "/",
+                        state: { logoff: true}
+                    });
+			})
+			.catch(() => {
+				toast.error("Ocorreu um erro. Tente novamente mais tarde.")
+			});
+	}
 
     return (
         <header>
@@ -48,16 +71,28 @@ function Header() {
                     <button className="btn-topheader" onClick={() => history.push("/cadastro")}>
                         Cadastro
                     </button>
+
+                    { usuarioLogado && (
+                    <button className="btn-topheader" onClick={efetuarLogoff}>
+                        Logout
+                    </button>
+                    )}
+
+                    { !usuarioLogado && (
                     <button className="btn-topheader" onClick={() => history.push("/login")}>
                         Login
                     </button>
+                    )}
+
                     <WiMoonAltWaningGibbous1 onClick={changeDarkModeState} id="dark-icon" className="dark-icon" />
                 </div>
             </div>
             <div className="subheader shadow-header">
                 <Breadcrumbs/>
             </div>
+            <ModalAviso />
         </header>
+                        
     );
 }
 
