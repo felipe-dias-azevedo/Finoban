@@ -25,7 +25,6 @@ const Form = () => {
 	const history = useHistory();
 	const [sabeValorImovel, setSabeValorImovel] = useState(null);
 	const [respondeuBotao, setRespondeuBotao] = useState(false);
-	const [mask, setMask] = useState("");
 	const [imoveisList, setImoveisList] = useState([]);
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
 
@@ -154,24 +153,10 @@ const Form = () => {
 									className={`input mb-4 ${
 										errors.cpf && "is-danger"
 									}`}
-									placeholder="000.000.000-00"
-									type="text"
+									id="cpf"
+									name="cpf"
 									maxLength="14"
-									id="cpf"
-									name="cpf"
-									// value={values.cpf || ""}
-									onChange={(type) => setMask(type == "CPF")}
-									onKeyPress={(e) => handler(e)}
-								/>
-								<input
-									className={`input mb-4 ${
-										errors.cpf && "is-danger"
-									}`}
-									type="text"
-									placeholder="ex: 5000,00"
-									maxLength="10"
-									id="cpf"
-									name="cpf"
+									placeHolder="000.000.000-00"
 									value={values.cpf}
 									onChange={handleChange}
 									onKeyPress={(e) => handler(e)}
@@ -181,6 +166,7 @@ const Form = () => {
 										{errors.cpf}
 									</p>
 								)}
+
 								<p>Renda</p>
 								<input
 									className={`input mb-4 ${
@@ -331,7 +317,7 @@ const Form = () => {
 
 function PaginaInicial(props) {
 	const history = useHistory();
-	
+
 	useEffect(() => {
 		if (props && props.location.state != undefined) {
 			if (props.location.state.logoff) {
