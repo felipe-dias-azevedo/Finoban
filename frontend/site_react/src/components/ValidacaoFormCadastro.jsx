@@ -52,8 +52,10 @@ export default function validate(values) {
 	let errors = {};
 	if (!values.nome) {
 		errors.nome = "Insira seu nome completo";
-	} else if (values.nome.length < 3) {
-		errors.nome = "Nome inválido";
+	} if (typeof values.nome != "string") {
+		errors.nome = "Insira um nome válido";
+	} else if (typeof values.nome == "string" && values.nome.length < 5) {
+		errors.nome = "Insira um nome válido";
 	}
 
 	if (!values.cnpj) {
