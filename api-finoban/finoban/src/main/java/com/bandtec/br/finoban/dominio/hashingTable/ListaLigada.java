@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.dominio.hashingTable;
 
 import com.bandtec.br.finoban.dominio.entidades.Admin;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class ListaLigada<T> {
     private Node<T> head;
@@ -129,7 +130,7 @@ public class ListaLigada<T> {
             return buscaNodeRecursaoAdmin(atual, admin);
         }
 
-        return atual;
+        throw new NotImplementedException();
     }
 
     private Node buscaNodeRecursaoUsuario(Node node, Usuario usuario) {

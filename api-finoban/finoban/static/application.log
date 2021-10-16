@@ -1,0 +1,25 @@
+2021-10-15 16:53:13.500  INFO 18516 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 18516 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-15 16:53:13.506  INFO 18516 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-15 16:53:16.686  INFO 18516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-15 16:53:17.092  INFO 18516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 383 ms. Found 8 JPA repository interfaces.
+2021-10-15 16:53:17.612  INFO 18516 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=17f2aaae-4a0a-3be9-95b8-dc827991d495
+2021-10-15 16:53:18.534  INFO 18516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-10-15 16:53:18.561  INFO 18516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-15 16:53:18.563  INFO 18516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-15 16:53:19.743  INFO 18516 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-15 16:53:19.745  INFO 18516 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6112 ms
+2021-10-15 16:53:20.451  INFO 18516 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-15 16:53:20.612  INFO 18516 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-15 16:53:21.060  INFO 18516 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-15 16:53:21.388  INFO 18516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-15 16:53:24.393  INFO 18516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-15 16:53:24.475  INFO 18516 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-15 16:53:30.548  INFO 18516 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-15 16:53:30.597  INFO 18516 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-15 16:53:33.163  WARN 18516 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-15 16:53:36.938  INFO 18516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-10-15 16:53:37.821  INFO 18516 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 26.524 seconds (JVM running for 31.209)
+2021-10-15 16:54:05.352  INFO 18516 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-15 16:54:05.354  INFO 18516 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-10-15 16:54:05.358  INFO 18516 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-10-15 16:54:07.541  INFO 18516 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Usuario{id=1072, cpf='35.052.166/0001-36', nome='José Paulo', email='josepaulomarinho2@gmail.com', senha='ee1e9803684d2f45a2b92138cce6acee69ccba88becffc87e22f0753f52567f7', cep='09781220', bairro='Ferrazópolis', numero=1700, dataNasc=2002-05-26, dataCriacao=2021-10-03T00:23:34}

@@ -1,0 +1,208 @@
+2021-10-17 16:26:24.493  INFO 19476 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 19476 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 16:26:24.509  INFO 19476 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-17 16:26:27.306  INFO 19476 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-17 16:26:27.307  INFO 19476 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-17 16:26:27.967  INFO 19476 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-17 16:26:28.306  INFO 19476 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 16:26:28.392  INFO 19476 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 16:26:28.612  INFO 19476 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 16:26:28.760  INFO 19476 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 16:26:30.688  INFO 19476 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 16:26:30.707  INFO 19476 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 16:26:35.582  INFO 19476 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 16:26:39.211  INFO 19476 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 15.96 seconds (JVM running for 18.843)
+2021-10-17 16:26:47.090  INFO 19476 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 16:33:34.546  INFO 13200 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 13200 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 16:33:34.549  INFO 13200 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-17 16:33:37.026  INFO 13200 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-17 16:33:37.027  INFO 13200 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-17 16:33:37.580  INFO 13200 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-17 16:33:37.915  INFO 13200 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 16:33:38.000  INFO 13200 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 16:33:38.168  INFO 13200 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 16:33:38.294  INFO 13200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 16:33:40.242  INFO 13200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 16:33:40.266  INFO 13200 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 16:33:45.492  INFO 13200 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 16:33:49.528  INFO 13200 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 16.029 seconds (JVM running for 18.829)
+2021-10-17 16:33:56.692  INFO 13200 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 16:34:10.899 ERROR 13200 --- [http-nio-8080-exec-3] c.b.b.f.controller.CadastroController    : Requisição a API externa Cifra
+2021-10-17 16:34:12.405 ERROR 13200 --- [http-nio-8080-exec-3] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 16:34:12.726 ERROR 13200 --- [http-nio-8080-exec-3] c.b.b.f.controller.CadastroController    : Requisição a API externa Banco do Presil
+2021-10-17 16:35:36.381  INFO 9140 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 9140 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 16:35:36.384  INFO 9140 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-17 16:35:38.810  INFO 9140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-17 16:35:38.811  INFO 9140 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-17 16:35:39.366  INFO 9140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-17 16:35:39.689  INFO 9140 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 16:35:39.754  INFO 9140 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 16:35:39.912  INFO 9140 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 16:35:40.036  INFO 9140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 16:35:42.035  INFO 9140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 16:35:42.054  INFO 9140 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 16:35:47.342  INFO 9140 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 16:35:50.563  INFO 9140 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 15.203 seconds (JVM running for 17.7)
+2021-10-17 16:36:21.632  INFO 9140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 16:36:22.587  INFO 9140 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Cifra
+2021-10-17 16:36:22.590  INFO 9140 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@729cc626
+2021-10-17 16:36:24.105 ERROR 9140 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 16:36:24.460 ERROR 9140 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Requisição a API externa Banco do Presil
+2021-10-17 16:51:08.494  INFO 9140 --- [http-nio-8080-exec-5] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Cifra
+2021-10-17 16:51:08.495  INFO 9140 --- [http-nio-8080-exec-5] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@3db02d5d
+2021-10-17 16:51:10.009 ERROR 9140 --- [http-nio-8080-exec-5] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 16:51:10.328  INFO 9140 --- [http-nio-8080-exec-5] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Banco do Presil
+2021-10-17 16:51:10.329  INFO 9140 --- [http-nio-8080-exec-5] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@3db02d5d
+2021-10-17 16:53:54.058  INFO 24024 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 24024 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 16:53:54.061  INFO 24024 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-17 16:53:56.400  INFO 24024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-17 16:53:56.401  INFO 24024 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-17 16:53:56.939  INFO 24024 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-17 16:53:57.259  INFO 24024 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 16:53:57.335  INFO 24024 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 16:53:57.522  INFO 24024 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 16:53:57.652  INFO 24024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 16:53:59.525  INFO 24024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 16:53:59.543  INFO 24024 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 16:54:05.080  INFO 24024 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 16:54:08.409  INFO 24024 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 15.391 seconds (JVM running for 17.977)
+2021-10-17 16:55:42.380  INFO 24024 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 16:55:43.906  INFO 24024 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Cifra
+2021-10-17 16:55:43.908  INFO 24024 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@69deda28
+2021-10-17 16:55:45.423 ERROR 24024 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 16:55:45.720  INFO 24024 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Banco do Presil
+2021-10-17 16:55:45.720  INFO 24024 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@69deda28
+2021-10-17 16:56:31.284  INFO 22200 --- [main] c.bandtec.br.finoban.FinobanApplication  : Starting FinobanApplication using Java 11.0.11 on RMT705651 with PID 22200 (C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban\target\classes started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 16:56:31.287  INFO 22200 --- [main] c.bandtec.br.finoban.FinobanApplication  : No active profile set, falling back to default profiles: default
+2021-10-17 16:56:33.684  INFO 22200 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-17 16:56:33.685  INFO 22200 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-17 16:56:34.214  INFO 22200 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-17 16:56:34.518  INFO 22200 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 16:56:34.567  INFO 22200 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 16:56:34.690  INFO 22200 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 16:56:34.808  INFO 22200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 16:56:36.576  INFO 22200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 16:56:36.592  INFO 22200 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 16:56:41.245  INFO 22200 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 16:56:44.459  INFO 22200 --- [main] c.bandtec.br.finoban.FinobanApplication  : Started FinobanApplication in 14.36 seconds (JVM running for 17.025)
+2021-10-17 16:56:49.367  INFO 22200 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 16:56:49.914  INFO 22200 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Cifra
+2021-10-17 16:56:49.916  INFO 22200 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@1ad52361
+2021-10-17 16:56:51.423 ERROR 22200 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 16:56:51.733  INFO 22200 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : Sucesso ao fazer requisição na API Banco do Presil
+2021-10-17 16:56:51.734  INFO 22200 --- [http-nio-8080-exec-1] c.b.b.f.controller.CadastroController    : com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao@1ad52361
+2021-10-17 20:40:33.377  INFO 7512 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : Starting GravaArquivoControllerTest using Java 11.0.11 on RMT705651 with PID 7512 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:40:33.380  INFO 7512 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : No active profile set, falling back to default profiles: default
+2021-10-17 20:40:36.829  INFO 7512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:40:36.949  INFO 7512 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 20:40:37.226  INFO 7512 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 20:40:37.483  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 20:40:39.624  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 20:40:39.663  INFO 7512 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:40:45.071  INFO 7512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:40:51.059  INFO 7512 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : Started GravaArquivoControllerTest in 18.933 seconds (JVM running for 23.853)
+2021-10-17 20:40:52.363  INFO 7512 --- [main] c.b.b.f.controller.LoginControllerTest   : Starting LoginControllerTest using Java 11.0.11 on RMT705651 with PID 7512 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:40:52.364  INFO 7512 --- [main] c.b.b.f.controller.LoginControllerTest   : No active profile set, falling back to default profiles: default
+2021-10-17 20:40:53.967  INFO 7512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:40:53.989  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-10-17 20:40:55.580  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-10-17 20:40:55.580  INFO 7512 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:40:59.528  INFO 7512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:41:02.834  INFO 7512 --- [main] c.b.b.f.controller.LoginControllerTest   : Started LoginControllerTest in 11.269 seconds (JVM running for 35.628)
+2021-10-17 20:41:03.683  INFO 7512 --- [main] c.b.b.f.controller.RegiaoControllerTest  : Starting RegiaoControllerTest using Java 11.0.11 on RMT705651 with PID 7512 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:41:03.683  INFO 7512 --- [main] c.b.b.f.controller.RegiaoControllerTest  : No active profile set, falling back to default profiles: default
+2021-10-17 20:41:05.183  INFO 7512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:41:05.197  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-10-17 20:41:06.714  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-10-17 20:41:06.715  INFO 7512 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:41:10.698  INFO 7512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:41:12.975  INFO 7512 --- [main] c.b.b.f.controller.RegiaoControllerTest  : Started RegiaoControllerTest in 9.848 seconds (JVM running for 45.769)
+2021-10-17 20:41:14.783 ERROR 7512 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa Cifra
+2021-10-17 20:41:16.296 ERROR 7512 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 20:41:17.813 ERROR 7512 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa Banco do Presil
+2021-10-17 20:41:18.345  INFO 7512 --- [main] c.b.b.f.c.CadastroControllerTest         : Starting CadastroControllerTest using Java 11.0.11 on RMT705651 with PID 7512 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:41:18.346  INFO 7512 --- [main] c.b.b.f.c.CadastroControllerTest         : No active profile set, falling back to default profiles: default
+2021-10-17 20:41:19.549  INFO 7512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:41:19.561  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2021-10-17 20:41:21.252  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2021-10-17 20:41:21.253  INFO 7512 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:41:25.482  INFO 7512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:41:27.799  INFO 7512 --- [main] c.b.b.f.c.CadastroControllerTest         : Started CadastroControllerTest in 9.955 seconds (JVM running for 60.593)
+2021-10-17 20:41:27.928  INFO 7512 --- [main] c.b.b.f.controller.CadastroController    : GET api-finoban/usuarios
+2021-10-17 20:41:27.999  INFO 7512 --- [main] c.b.b.f.controller.CadastroController    : GET api-finoban/usuarios
+2021-10-17 20:41:28.056  INFO 7512 --- [main] c.b.b.f.controller.CadastroController    : Usuario{id=1, cpf='01234567890000', nome='null', email='teste.teste@teste.com', senha='teste123', cep='01414001', bairro='Consolação', numero=597, dataNasc=null, dataCriacao=2021-10-17T20:41:28.025533}
+2021-10-17 20:41:28.855  INFO 7512 --- [main] c.b.b.f.controller.AcessoControllerTest  : Starting AcessoControllerTest using Java 11.0.11 on RMT705651 with PID 7512 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:41:28.856  INFO 7512 --- [main] c.b.b.f.controller.AcessoControllerTest  : No active profile set, falling back to default profiles: default
+2021-10-17 20:41:30.103  INFO 7512 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:41:30.119  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2021-10-17 20:41:31.626  INFO 7512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2021-10-17 20:41:31.627  INFO 7512 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:41:35.438  INFO 7512 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:41:38.175  INFO 7512 --- [main] c.b.b.f.controller.AcessoControllerTest  : Started AcessoControllerTest in 9.926 seconds (JVM running for 70.969)
+2021-10-17 20:41:38.440  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-10-17 20:41:40.005  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-10-17 20:41:40.011  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-10-17 20:41:41.503  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-10-17 20:41:41.508  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-10-17 20:41:43.017  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2021-10-17 20:41:43.023  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2021-10-17 20:41:44.569  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2021-10-17 20:41:44.575  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-10-17 20:41:46.110  INFO 7512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2021-10-17 20:57:06.800  INFO 23352 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : Starting GravaArquivoControllerTest using Java 11.0.11 on RMT705651 with PID 23352 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:57:06.802  INFO 23352 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : No active profile set, falling back to default profiles: default
+2021-10-17 20:57:10.461  INFO 23352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:57:10.597  INFO 23352 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 20:57:10.855  INFO 23352 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 20:57:11.092  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 20:57:13.171  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 20:57:13.204  INFO 23352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:57:18.779  INFO 23352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:57:24.808  INFO 23352 --- [main] c.b.b.f.c.GravaArquivoControllerTest     : Started GravaArquivoControllerTest in 19.405 seconds (JVM running for 24.334)
+2021-10-17 20:57:25.962  INFO 23352 --- [main] c.b.b.f.controller.LoginControllerTest   : Starting LoginControllerTest using Java 11.0.11 on RMT705651 with PID 23352 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:57:25.963  INFO 23352 --- [main] c.b.b.f.controller.LoginControllerTest   : No active profile set, falling back to default profiles: default
+2021-10-17 20:57:27.933  INFO 23352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:57:27.948  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-10-17 20:57:29.647  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-10-17 20:57:29.647  INFO 23352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:57:33.984  INFO 23352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:57:37.944  INFO 23352 --- [main] c.b.b.f.controller.LoginControllerTest   : Started LoginControllerTest in 12.627 seconds (JVM running for 37.47)
+2021-10-17 20:57:38.922  INFO 23352 --- [main] c.b.b.f.controller.RegiaoControllerTest  : Starting RegiaoControllerTest using Java 11.0.11 on RMT705651 with PID 23352 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:57:38.922  INFO 23352 --- [main] c.b.b.f.controller.RegiaoControllerTest  : No active profile set, falling back to default profiles: default
+2021-10-17 20:57:40.750  INFO 23352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:57:40.774  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-10-17 20:57:42.492  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-10-17 20:57:42.492  INFO 23352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:57:46.772  INFO 23352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:57:49.248  INFO 23352 --- [main] c.b.b.f.controller.RegiaoControllerTest  : Started RegiaoControllerTest in 10.97 seconds (JVM running for 48.774)
+2021-10-17 20:57:51.024 ERROR 23352 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa Cifra
+2021-10-17 20:57:52.537 ERROR 23352 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa S16 Bank
+2021-10-17 20:57:54.049 ERROR 23352 --- [main] c.b.b.f.controller.CadastroController    : Requisição a API externa Banco do Presil
+2021-10-17 20:57:54.554  INFO 23352 --- [main] c.b.b.f.c.CadastroControllerTest         : Starting CadastroControllerTest using Java 11.0.11 on RMT705651 with PID 23352 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:57:54.555  INFO 23352 --- [main] c.b.b.f.c.CadastroControllerTest         : No active profile set, falling back to default profiles: default
+2021-10-17 20:57:55.665  INFO 23352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:57:55.686  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2021-10-17 20:57:57.518  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2021-10-17 20:57:57.520  INFO 23352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:58:01.980  INFO 23352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:58:04.160  INFO 23352 --- [main] c.b.b.f.c.CadastroControllerTest         : Started CadastroControllerTest in 10.086 seconds (JVM running for 63.685)
+2021-10-17 20:58:04.288  INFO 23352 --- [main] c.b.b.f.controller.CadastroController    : GET api-finoban/usuarios
+2021-10-17 20:58:04.367  INFO 23352 --- [main] c.b.b.f.controller.CadastroController    : GET api-finoban/usuarios
+2021-10-17 20:58:04.418  INFO 23352 --- [main] c.b.b.f.controller.CadastroController    : Usuario{id=1, cpf='01234567890000', nome='null', email='teste.teste@teste.com', senha='teste123', cep='01414001', bairro='Consolação', numero=597, dataNasc=null, dataCriacao=2021-10-17T20:58:04.388076500}
+2021-10-17 20:58:05.235  INFO 23352 --- [main] c.b.b.f.controller.AcessoControllerTest  : Starting AcessoControllerTest using Java 11.0.11 on RMT705651 with PID 23352 (started by MARINJO in C:\Users\MARINJO\Desktop\repositorios-github\Finoban\api-finoban\finoban)
+2021-10-17 20:58:05.236  INFO 23352 --- [main] c.b.b.f.controller.AcessoControllerTest  : No active profile set, falling back to default profiles: default
+2021-10-17 20:58:06.511  INFO 23352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:58:06.521  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2021-10-17 20:58:08.215  INFO 23352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2021-10-17 20:58:08.216  INFO 23352 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-10-17 20:58:12.434  INFO 23352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:58:14.681  INFO 23352 --- [main] c.b.b.f.controller.AcessoControllerTest  : Started AcessoControllerTest in 10.081 seconds (JVM running for 74.207)
+2021-10-17 20:58:14.939  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-10-17 20:58:16.531  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-10-17 20:58:16.536  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-10-17 20:58:18.118  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-10-17 20:58:18.122  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-10-17 20:58:19.653  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2021-10-17 20:58:19.657  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2021-10-17 20:58:21.285  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2021-10-17 20:58:21.291  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-10-17 20:58:22.825  INFO 23352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.

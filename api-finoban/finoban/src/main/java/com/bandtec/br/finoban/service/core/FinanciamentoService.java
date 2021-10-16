@@ -1,5 +1,6 @@
 package com.bandtec.br.finoban.service.core;
 
+import com.bandtec.br.finoban.controller.CadastroController;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasCifra;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasPresil;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasS16Bank;
@@ -7,6 +8,8 @@ import com.bandtec.br.finoban.dominio.Data;
 import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class FinanciamentoService {
     private ClienteApisExternasCifra clienteCifra;
     private ClienteApisExternasS16Bank clienteS16Bank;
     private ClienteApisExternasPresil clientePresil;
+    private static final Logger log = LogManager.getLogger(CadastroController.class.getName());
 
     public List<RespostaApi> RealizarRequisicaoApisExternas(BancoRequisicao novaRequisicao) {
 
@@ -35,7 +39,10 @@ public class FinanciamentoService {
 
         try {
             respostaApiCifra = clienteCifra.postCifra(novaRequisicao);
+            log.info("Sucesso ao fazer requisição na API Cifra");
+            log.info(novaRequisicao);
         } catch (Exception ex) {
+            log.error("Requisição a API externa Cifra");
             respostaApiCifra = new RespostaApi();
             respostaApiCifra.setStatus(404);
             respostaApiCifra.setData(dataMockadaParaErro);
@@ -43,7 +50,10 @@ public class FinanciamentoService {
 
         try {
             respostaApiS16Bank = clienteS16Bank.postS16Bank(novaRequisicao);
+            log.info("Sucesso ao fazer requisição na API S16 Bank");
+            log.info(novaRequisicao);
         }catch (Exception ex) {
+            log.error("Requisição a API externa S16 Bank");
             respostaApiS16Bank = new RespostaApi();
             respostaApiS16Bank.setStatus(404);
             respostaApiS16Bank.setData(dataMockadaParaErro);
@@ -51,7 +61,11 @@ public class FinanciamentoService {
 
         try {
             respostaApiPresil = clientePresil.postBancoPresil(novaRequisicao);
+            respostaApiPresil.getData().setTaxaTotal(respostaApiPresil.getData().getTaxaTotal() * 100);
+            log.info("Sucesso ao fazer requisição na API Banco do Presil");
+            log.info(novaRequisicao);
         } catch (Exception ex) {
+            log.error("Requisição a API externa Banco do Presil");
             respostaApiPresil = new RespostaApi();
             respostaApiPresil.setStatus(404);
             respostaApiPresil.setData(dataMockadaParaErro);
