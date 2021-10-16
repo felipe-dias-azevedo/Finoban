@@ -59,7 +59,7 @@ const Form = () => {
 	function efetuarCadastro() {
 		const data = {
 			nome: values.nome,
-			cnpj: values.cnpj,
+			cpf: values.cpf,
 			email: values.email,
 			senha: values.senha,
 			cep: cep,
