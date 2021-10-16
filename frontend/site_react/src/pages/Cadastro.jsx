@@ -16,8 +16,6 @@ import respostaEnum from "../utils/respostaEnum";
 const Form = () => {
 	const history = useHistory();
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
-	const [cnpj, setCnpj] = useState("");
-	const [mask, setMask] = useState("");
 	const [cep, setCep] = useState("");
 	const [dadosCep, setDadosCep] = useState({});
 	const [bairro, setBairro] = useState("");
@@ -118,17 +116,19 @@ const Form = () => {
 					</div>
 
 					<div className="input-holder">
-						<h4>CNPJ:</h4>
+						<h4>CPF:</h4>
 						<CpfCnpj
 							type="tel"
-							name="cnpj"
-							className={`input ${errors.cnpj && "is-danger"}`}
+							id="cpf"
+							name="cpf"
+							maxLength="14"
+							className={`input ${errors.cpf && "is-danger"}`}
 							onChange={handleChange}
-							value={values.cnpj || ""}
+							value={values.cpf || ""}
 							onKeyPress={(e) => handler(e)}
 						/>
-						{errors.cnpj && (
-							<p className="text-danger mt-3">{errors.cnpj}</p>
+						{errors.cpf && (
+							<p className="text-danger mt-3">{errors.cpf}</p>
 						)}
 					</div>
 
@@ -241,8 +241,8 @@ const Form = () => {
 						/>
 					</div>
 
-					<div className="form-subtext-holder">
-						<p>Já possui uma conta?</p>
+					<div className="form-subtext-holder mt-5">
+						<p className="fonte-16">Já possui uma conta?</p>
 						<Link to="/login">Clique aqui para fazer login.</Link>
 					</div>
 

@@ -48,8 +48,8 @@ const Form = () => {
 					var token = e.data.data.token;
 
 					toast.success(`Bem-vindo(a) ${objUsuario.nome}!`);
+					sessionStorage.setItem("dadosUsuario", JSON.stringify(objUsuario));
 					sessionStorage.setItem("usuarioLogado", true);
-					sessionStorage.setItem("dadosUsuario", objUsuario);
 					sessionStorage.setItem("tokenAuth", token);
 
 					<LoadingScreen />
