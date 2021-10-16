@@ -1,0 +1,166 @@
+```{r}
+set.seed(123)
+#Valores das regiões
+Centro <- c()
+Consolacao <- c()
+Brooklin <- c()
+Santo_Amaro <- c()
+Interlagos <- c()
+Mooca <- c()
+
+contCentro <- 0
+contConsolacao <- 0
+contBrooklin <- 0
+contSanto_Amaro <- 0
+contInterlagos <- 0
+contMooca <- 0
+
+for(i in 1:2052){
+  if(Regiao$descricao_regiao[i] == "Consolacao") {
+    Consolacao[contConsolacao] <- Regiao$valor_regiao[i]
+    contConsolacao <- contConsolacao+1
+  } else if (Regiao$descricao_regiao[i] == "Centro") {
+    Centro[contCentro] <- Regiao$valor_regiao[i]
+    contCentro <- contCentro+1
+  } else if (Regiao$descricao_regiao[i] == "Brooklin") {
+    Brooklin[contBrooklin] <- Regiao$valor_regiao[i]
+    contBrooklin <- contBrooklin+1
+  } else if (Regiao$descricao_regiao[i] == "Santo Amaro") {
+    Santo_Amaro[contSanto_Amaro] <- Regiao$valor_regiao[i]
+    contSanto_Amaro <- contSanto_Amaro+1
+  } else if (Regiao$descricao_regiao[i] == "Interlagos") {
+    Interlagos[contInterlagos] <- Regiao$valor_regiao[i]
+    contInterlagos <- contInterlagos+1
+  } else if (Regiao$descricao_regiao[i] == "Mooca") {
+    Mooca[contMooca] <- Regiao$valor_regiao[i]
+    contMooca <- contMooca+1
+  }
+}
+
+Consolacao
+Centro
+Brooklin
+Mooca
+Santo_Amaro
+Interlagos
+```
+
+```{r}
+print("Consolacao")
+summary(Consolacao)
+print("Centro")
+summary(Centro)
+print("Brooklin")
+summary(Brooklin)
+print("Mooca")
+summary(Mooca)
+print("Santo_Amaro")
+summary(Santo_Amaro)
+print("Interlagos")
+summary(Interlagos)
+```
+
+```{r}
+n <- 2000
+
+medianaConsolacao <- median(Consolacao)
+medianaCentro <- median(Centro)
+medianaBrooklin <- median(Brooklin)
+medianaInterlagos <- median(Interlagos)
+medianaMooca <- median(Mooca)
+medianaSanto_Amaro <- median(Santo_Amaro)
+
+desvio_consolacao <- (5 * medianaConsolacao) / 100
+desvio_Mooca <- (5 * medianaMooca) / 100
+desvio_Centro <- (5 * medianaCentro) / 100
+desvio_interlagos <- (5 * medianaInterlagos) / 100
+desvio_santoamaro <- (5 * medianaSanto_Amaro) / 100
+desvio_brooklin <- (5 * medianaBrooklin) / 100
+
+distribuicao_consolacao <- round(rnorm(n, mean = medianaConsolacao, sd = desvio_consolacao))
+distribuicao_centro <- round(rnorm(n, mean = medianaCentro, sd = desvio_Centro))
+distribuicao_brooklin <- round(rnorm(n, mean = medianaBrooklin, sd = desvio_brooklin))
+distribuicao_interlagos <- round(rnorm(n, mean = medianaInterlagos, sd = desvio_interlagos))
+distribuicao_mooca <- round(rnorm(n, mean = medianaMooca, sd = desvio_Mooca))
+distribuicao_santoamaro <- round(rnorm(n, mean = medianaSanto_Amaro, sd = desvio_santoamaro))
+
+```
+
+```{r}
+id_regiao <- c(1:(n*6))
+```
+
+
+```{r}
+contAuxDescricao <- 0
+auxDescRegiao <- c()
+for (i in 1:(n*6)) {
+  if (contAuxDescricao %% 6 == 0) {
+    contAuxDescricao <- 0
+  }
+  contAuxDescricao <- contAuxDescricao + 1
+  auxDescRegiao[i] <- contAuxDescricao
+}
+
+descricao_regiao <- c()
+
+for (i in 1:(n*6)) {
+  if(auxDescRegiao[i] == 1) {
+    descricao_regiao[i] <- "Centro"
+  } else if (auxDescRegiao[i] == 2) {
+    descricao_regiao[i] <- "Consolação"
+  } else if (auxDescRegiao[i] == 3) {
+    descricao_regiao[i] <- "Brooklin"
+  } else if (auxDescRegiao[i] == 4) {
+    descricao_regiao[i] <- "Mooca"
+  } else if (auxDescRegiao[i] == 5) {
+    descricao_regiao[i] <- "Santo Amaro"
+  } else if (auxDescRegiao[i] == 6) {
+    descricao_regiao[i] <- "Interlagos"
+  }
+}
+
+```
+
+```{r}
+valor_regiao <- c()
+for (i in 1:(n)) {
+  if(descricao_regiao[i] == "Centro") {
+    valor_regiao[i] <- distribuicao_centro[i]
+  } else if(descricao_regiao[i] == "Consolação") {
+    valor_regiao[i] <- distribuicao_consolacao[i]
+  } else if(descricao_regiao[i] == "Brooklin") {
+    valor_regiao[i] <- distribuicao_brooklin[i]
+  } else if(descricao_regiao[i] == "Mooca") {
+    valor_regiao[i] <- distribuicao_mooca[i]
+  } else if(descricao_regiao[i] == "Santo Amaro") {
+    valor_regiao[i] <- distribuicao_santoamaro[i]
+  } else if(descricao_regiao[i] == "Interlagos") {
+    valor_regiao[i] <- distribuicao_interlagos[i]
+  }
+}
+```
+
+
+```{r}
+contSomaTempo <- 0
+contSomaTempoAux <- 0
+now <- Sys.time()
+data_craw <- c()
+for (i in 1:(n*6)) {
+  if (contSomaTempoAux %% 6 == 0) {
+    contSomaTempo <- contSomaTempo + 15
+  }
+  contSomaTempoAux <- contSomaTempoAux + 1
+  data_craw[i] <- as.character(now + contSomaTempo)
+}
+```
+
+
+```{r}
+TableRegiao <- data.frame(id_regiao = id_regiao, descricao_regiao = descricao_regiao, valor_regiao = valor_regiao, data_craw = data_craw)
+write.csv(TableRegiao, file = "C:/Users/vinic/Downloads/TableRegiao/TableRegiao.csv", row.names = FALSE)
+```
+
+
+
