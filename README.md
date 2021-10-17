@@ -11,16 +11,26 @@ TBD
 
 ## Arquitetura
 
-### V1
+### LLD
+
+#### V1
 
 <p align="center">
-  <img width="800" src="./.github/architecture.png">
+  <img width="800" src="./.github/architecture-lld.png">
 </p>
 
-### V2
+#### V2
 
 <p align="center">
-  <img width="800" src="./.github/architecture-v2.png">
+  <img width="800" src="./.github/architecture-lld2.png">
+</p>
+
+### Redes
+
+#### V1
+
+<p align="center">
+  <img width="800" src="./.github/architecture-network.png">
 </p>
 
   
