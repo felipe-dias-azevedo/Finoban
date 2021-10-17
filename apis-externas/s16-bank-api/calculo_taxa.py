@@ -1,7 +1,7 @@
-def valor_score_serasa(cnpj: str) -> int:
+def valor_score_serasa(cpf: str) -> int:
     import json
     from requests import post, get
-    pload = {"cnpj": cnpj}
+    pload = {"cpf": cpf}
     try:
         req = post("http://localhost:8082/consultas/v1/score", json=pload)
         req = json.loads(req.content)

@@ -76,19 +76,29 @@ def select_db(query, args=(), one=False):
 
 @app.route('/openbanking/v1/financiamento', methods=['POST'])
 def financiamento():
-    # create_db()
+    
     body = request.json
-    cnpj = body['cnpj']
+
+    if not body.get('renda') or not body.get('valorImovel') or not body.get('tempoFinanciamento'):
+        return make_response(jsonify(), 400)
+
+    if not body.get('cpf') and body.get('cnpj'):
+        cpf = body['cnpj']
+    elif not body.get('cpf') and not body.get('cnpj'):
+        return make_response(jsonify(), 400)
+    else:
+        cpf = body['cpf']
+    
     renda = body['renda']
     valor_imovel = body['valorImovel']
     tempo_financiamento = body['tempoFinanciamento']
 
-    print("CNPJ:", cnpj)
+    print("CPF:", cpf)
     print("Renda:", renda)
     print("Valor Imovel:", valor_imovel)
     print("Tempo Financiamento:", tempo_financiamento)
 
-    usuarios = select_db("SELECT Patrimonio, DataNascimento FROM Cliente WHERE CNPJ = ?", (cnpj,))
+    usuarios = select_db("SELECT Patrimonio, DataNascimento FROM Cliente WHERE CPF = ?", (cpf,))
 
     if not usuarios:
         resposta = {
@@ -109,7 +119,7 @@ def financiamento():
 
     import calculo_taxa
 
-    score_serasa = calculo_taxa.valor_score_serasa(int(cnpj))
+    score_serasa = calculo_taxa.valor_score_serasa(int(cpf))
 
     taxas = calculo_taxa.calcular_taxas(
         float(renda),
@@ -136,13 +146,16 @@ def financiamento():
 
 @app.route('/openbanking/v1/conta', methods=['POST'])
 def conta():
-    # create_db()
     body = request.json
-    cnpj = body['cnpj']
 
-    print("CNPJ:", cnpj)
+    if not body.get('cpf'):
+        return make_response(jsonify(), 400)
 
-    usuarios = select_db("SELECT CNPJ FROM Cliente WHERE CNPJ = ?", (cnpj,))
+    cpf = body['cpf']
+
+    print("CPF:", cpf)
+
+    usuarios = select_db("SELECT CPF FROM Cliente WHERE CPF = ?", (cpf,))
 
     if not usuarios:
         status = 404

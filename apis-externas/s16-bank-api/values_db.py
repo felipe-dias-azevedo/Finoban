@@ -13,7 +13,7 @@ def insert():
 
     c.execute(
         "CREATE TABLE IF NOT EXISTS Cliente ( \
-            CNPJ INTEGER PRIMARY KEY, \
+            CPF INTEGER PRIMARY KEY, \
             Nome TEXT, \
             Patrimonio REAL, \
             DataNascimento DATE \
@@ -30,7 +30,7 @@ def insert():
     
     for d in data:
         c.execute(
-            "INSERT INTO Cliente (CNPJ, Nome, Patrimonio, DataNascimento) VALUES (?, ?, ?, ?)", d
+            "INSERT INTO Cliente (CPF, Nome, Patrimonio, DataNascimento) VALUES (?, ?, ?, ?)", d
         )
     con.commit()
 
