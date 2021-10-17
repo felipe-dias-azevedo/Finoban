@@ -64,13 +64,17 @@ summary(Interlagos)
 n <- 2000
 
 medianaConsolacao <- median(Consolacao)
+
 medianaCentro <- median(Centro)
 medianaBrooklin <- median(Brooklin)
 medianaInterlagos <- median(Interlagos)
 medianaMooca <- median(Mooca)
 medianaSanto_Amaro <- median(Santo_Amaro)
 
+
 desvio_consolacao <- (5 * medianaConsolacao) / 100
+
+
 desvio_Mooca <- (5 * medianaMooca) / 100
 desvio_Centro <- (5 * medianaCentro) / 100
 desvio_interlagos <- (5 * medianaInterlagos) / 100
@@ -78,11 +82,13 @@ desvio_santoamaro <- (5 * medianaSanto_Amaro) / 100
 desvio_brooklin <- (5 * medianaBrooklin) / 100
 
 distribuicao_consolacao <- round(rnorm(n, mean = medianaConsolacao, sd = desvio_consolacao))
+
 distribuicao_centro <- round(rnorm(n, mean = medianaCentro, sd = desvio_Centro))
 distribuicao_brooklin <- round(rnorm(n, mean = medianaBrooklin, sd = desvio_brooklin))
 distribuicao_interlagos <- round(rnorm(n, mean = medianaInterlagos, sd = desvio_interlagos))
 distribuicao_mooca <- round(rnorm(n, mean = medianaMooca, sd = desvio_Mooca))
 distribuicao_santoamaro <- round(rnorm(n, mean = medianaSanto_Amaro, sd = desvio_santoamaro))
+
 
 ```
 
@@ -120,6 +126,9 @@ for (i in 1:(n*6)) {
   }
 }
 
+
+barplot(table(auxDescRegiao))
+
 ```
 
 ```{r}
@@ -139,6 +148,7 @@ for (i in 1:(n)) {
     valor_regiao[i] <- distribuicao_interlagos[i]
   }
 }
+
 ```
 
 
@@ -154,13 +164,52 @@ for (i in 1:(n*6)) {
   contSomaTempoAux <- contSomaTempoAux + 1
   data_craw[i] <- as.character(now + contSomaTempo)
 }
+
+
 ```
 
+
+```{r}
+
+
+barplot(table(regiao),
+        col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7", "#3A5B62"),
+        main = "Preço por região (Mediana)")
+
+plot(table(valor_regiao),
+        col=c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7", "#3A5B62"),
+        main = "Preço por região (Mediana)")
+
+
+barplot(table(distribuicao_consolacao))
+plot(table(distribuicao_consolacao))
+boxplot(distribuicao_consolacao, distribuicao_santoamaro)
+boxplot(distribuicao_consolacao)
+barplot(distribuicao_consolacao, distribuicao_santoamaro)
+
+boxplot(distribuicao_consolacao, distribuicao_santoamaro,distribuicao_centro)
+
+#barplot(table(valor_regiao, distribuicao_consolacao))
+
+#plot(x,valor_regiao, xlab <- "teste",
+#+ ylab<-"Probabilidade",main <- "Distribuição")
+# lines(x,valor_regiao)
+
+#"Consolacao"
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#283751  291504  321473  378960  488688  530000 
+ 
+ 
+a =  283751 
+b=  321473
+c = 530000 
+
+barplot(table(a,b,c))
+
+```
 
 ```{r}
 TableRegiao <- data.frame(id_regiao = id_regiao, descricao_regiao = descricao_regiao, valor_regiao = valor_regiao, data_craw = data_craw)
 write.csv(TableRegiao, file = "C:/Users/vinic/Downloads/TableRegiao/TableRegiao.csv", row.names = FALSE)
 ```
-
-
 
