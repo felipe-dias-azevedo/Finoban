@@ -3,7 +3,7 @@ import json
 import datetime
 import csv
 
-files = [file for file in os.listdir() if file != __file__ and not file.endswith('container.json') and file != 'result.csv']
+files = [file for file in os.listdir() if file != os.path.basename(__file__) and not file.endswith('container.json') and file != 'result.csv']
 result = [0,0]
 passed_results = 0
 finished_results = 0
@@ -39,7 +39,7 @@ print('FINISHED:', finished_results)
 print('FAILED:', len(files) - finished_results)
 print('AVERAGE:', round(100 * finished_results / len(files), 1), '%')
 print('-----------------------------------------------')
-print('SECONDS ELAPSED:', str(datetime.timedelta(milliseconds=sum(avg_secs_results)).seconds), 's')
+print('TOTAL SECONDS ELAPSED:', str(datetime.timedelta(milliseconds=sum(avg_secs_results)).seconds), 's')
 print('AVERAGE SECONDS ELAPSED:', round(sum(avg_secs_results) / len(avg_secs_results), 1), 'ms')
 print('MINIMUM SECONDS ELAPSED:', round(min(avg_secs_results) / len(avg_secs_results), 1), 'ms')
 print('MINIMUM SECONDS ELAPSED:', round(max(avg_secs_results) / len(avg_secs_results), 1), 'ms')
