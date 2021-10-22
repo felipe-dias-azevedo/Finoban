@@ -2,21 +2,21 @@ package com.bandtec.br.finoban.dominio.requisicao;
 
 import org.springframework.beans.factory.annotation.Required;
 
-public class BancoRequisicao {
+public class BancoRequisicaoModel {
 
     private String cpf;
     private Integer renda;
     private Integer valorImovel;
     private Integer tempoFinanciamento;
 
-    public BancoRequisicao(String cpf, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
+    public BancoRequisicaoModel(String cpf, Integer renda, Integer valorImovel, Integer tempoFinanciamento) {
         this.cpf = cpf;
         this.renda = renda;
         this.valorImovel = valorImovel;
         this.tempoFinanciamento = tempoFinanciamento;
     }
 
-    public BancoRequisicao() {
+    public BancoRequisicaoModel() {
 
     }
 
