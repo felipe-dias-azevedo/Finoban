@@ -50,6 +50,7 @@ public class FinanciamentoService {
 
         try {
             respostaApiS16Bank = clienteS16Bank.postS16Bank(novaRequisicao);
+            respostaApiS16Bank.getData().setTaxaTotal(respostaApiS16Bank.getData().getTaxaTotal() * 100);
             log.info("Sucesso ao fazer requisição na API S16 Bank");
             log.info(novaRequisicao);
         }catch (Exception ex) {
@@ -61,7 +62,7 @@ public class FinanciamentoService {
 
         try {
             respostaApiPresil = clientePresil.postBancoPresil(novaRequisicao);
-            respostaApiPresil.getData().setTaxaTotal(respostaApiPresil.getData().getTaxaTotal() * 100);
+            respostaApiPresil.getData().setTaxaTotal(respostaApiPresil.getData().getTaxaTotal() * 110);
             log.info("Sucesso ao fazer requisição na API Banco do Presil");
             log.info(novaRequisicao);
         } catch (Exception ex) {
