@@ -49,3 +49,8 @@ sudo docker run --name $APP -it -p 8080:8080 -d $APP:1.0
 # Apaga o arquivo .jar
 rm api-finoban.jar
 cd ..
+
+# Comunicando final do script
+echo $SEP
+echo "Iniciando o script..."
+echo $SEP
