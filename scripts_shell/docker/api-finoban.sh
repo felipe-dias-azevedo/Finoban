@@ -15,17 +15,17 @@ echo $SEP
 echo "Criando JAR"
 echo $SEP
 cd ../../api-finoban/finoban
-mvn clean
+sudo mvn clean
 
 # Cria o jar
-./mvnw install
+sudo ./mvnw install
 
 # Move .jar para pasta do Dockerfile
-mv target/demo-0.0.1-SNAPSHOT.jar $DIR
+sudo mv target/demo-0.0.1-SNAPSHOT.jar $DIR
 
 # Renomeia o arquivo .jar
 cd $DIR
-mv demo-0.0.1-SNAPSHOT.jar api-finoban.jar
+sudo mv demo-0.0.1-SNAPSHOT.jar api-finoban.jar
 
 # Apaga imagem docker
 echo $SEP
