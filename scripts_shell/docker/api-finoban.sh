@@ -52,5 +52,5 @@ cd ..
 
 # Comunicando final do script
 echo $SEP
-echo "Iniciando o script..."
+echo "Finalizando script"
 echo $SEP
