@@ -53,16 +53,16 @@ def main():
             testresults.append(
                 tuple([
                     result['fullName'].replace('com.bandtec.br.finoban.', ''),
-                    result['name'],
-                    result['status'],
+                    (result['stop'] - result['start']),
                     result['stage'],
-                    (result['stop'] - result['start'])
+                    result['name'],
+                    result['status']
                 ]))
 
     nprint("generating CSV report file.")
     with open('testresult.csv', 'w', newline='') as resultfile:
         writer = csv.writer(resultfile, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(tuple(['classe', 'nomeTeste', 'status', 'estagio', 'duracao']))
+        writer.writerow(tuple(["CLASSE", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
         writer.writerows(testresults)
     nprint("successfully generated CSV report file.")
 

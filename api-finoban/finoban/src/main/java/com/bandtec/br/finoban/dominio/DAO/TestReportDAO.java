@@ -8,27 +8,27 @@ public class TestReportDAO {
 
     @Getter
     @Setter
-    @CsvBindByName(column = "classe", required = true)
+    @CsvBindByName(column = "CLASSE", required = true)
     private String nomeClasse;
 
     @Getter
     @Setter
-    @CsvBindByName(required = true)
+    @CsvBindByName(column = "NOMETESTE", required = true)
     private String nomeTeste;
 
     @Getter
     @Setter
-    @CsvBindByName(required = true)
+    @CsvBindByName(column = "STATUS", required = true)
     private String status;
 
     @Getter
     @Setter
-    @CsvBindByName(required = true)
+    @CsvBindByName(column = "ESTAGIO", required = true)
     private String estagio;
 
     @Getter
     @Setter
-    @CsvBindByName(required = true)
+    @CsvBindByName(column = "DURACAO", required = true)
     private String duracao;
 
 }

@@ -24,13 +24,6 @@ public class TestReportDTO {
 
     @Getter
     @Setter
-    private String duracao;
+    private Integer duracao;
 
-    public TestReportDTO(TestReportDAO testReports) {
-        this.nomeClasse = testReports.getNomeClasse();
-        this.nomeTeste = testReports.getNomeTeste();
-        this.status = testReports.getStatus();
-        this.estagio = testReports.getEstagio();
-        this.duracao = testReports.getDuracao();
-    }
 }

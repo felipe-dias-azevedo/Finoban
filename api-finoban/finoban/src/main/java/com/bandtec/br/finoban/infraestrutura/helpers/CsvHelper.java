@@ -12,18 +12,18 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CsvHelper <T> {
 
-    public List<T> read(String fileName, Class<T> classType) {
+    public List<T> read(String fileName, Class<T> classType) throws IOException, NoSuchFileException {
         return this.read(Paths.get(fileName), classType);
     }
 
-    public List<T> read(Path file, Class<T> classType) {
+    public List<T> read(Path file, Class<T> classType) throws IOException {
         try (
             Reader reader = Files.newBufferedReader(file);
         ) {
@@ -35,12 +35,7 @@ public class CsvHelper <T> {
                     .build();
 
             return csvToBean.parse();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
-        return new ArrayList<T>();
     }
 
     public void write(String fileName, List<T> dataToCsv) {

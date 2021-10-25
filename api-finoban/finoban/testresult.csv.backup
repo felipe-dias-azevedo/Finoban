@@ -1,47 +1,47 @@
-classe;nomeTeste;status;estagio;duracao
-controller.CadastroControllerTest.novoCadastro;/POST - Cadastro de usuário realizado com sucesso - STATUS 201;passed;finished;8
-controller.RegiaoControllerTest.atualizarRegiaoOk;/PUT - Atualizar uma região já existente - STATUS 200;passed;finished;4
-controller.CadastroControllerTest.listarUsuarios;/GET - Lista todos os usuários com sucesso - STATUS 200;passed;finished;5
-controller.AcessoControllerTest.deleteAcessoNotOK;/DELETE - Falha ao deletar um acesso não existente - 404;failed;finished;6
-controller.DownloadControllerTest.downloadTxt;Download de um arquivo csv - TAMANHO 195bytes;passed;finished;7
-controller.LoginControllerTest.efetuarLogoff;/POST - Efetuar logoff de um usuário já logado - STATUS 200;passed;finished;6
-controller.AcessoControllerTest.getAcesso;/GET{id} - Requisição de um um único acesso - 200;passed;finished;4
-controller.CadastroControllerTest.getAvaliacoesOk;/GET - Listar todos as avaliações, STATUS 200;passed;finished;5
-controller.GravaCsvControllerTest.postRegistro;/POST - Gravar um documento de layout em csv - STATUS 201;passed;finished;3
-controller.CadastroControllerTest.deleteUsuarioNotOk;/DELETE - Excluir um usuário, porém ele não existe - STATUS 404;passed;finished;3
-controller.DownloadControllerTest.downloadCsv;Download de um arquivo txt - TAMANHO 189bytes;passed;finished;79
-controller.CadastroControllerTest.deleteUsuario;/DELETE - Excluir um usuário, status 204;passed;finished;3
-controller.AcessoControllerTest.deleteAcesso;/DELETE - Deletar um acesso existete - 204;passed;finished;5
-controller.RegiaoControllerTest.getRegiaoNotOk;/GET/{id} - Resgatar uma única região com id não encontrado - STATUS 404;passed;finished;4
-controller.CadastroControllerTest.novaAvaliacaoNaoGostou;/POST - Criar nova avaliação sendo que usuário não gostou da solução - status 201;passed;finished;4
-controller.CadastroControllerTest.novaAvaliacaoNaoGostouENaoPassouFeedback;/POST - Criar nova avaliação sendo que usuário não gostou da solução, mas não deu feedback - status 400;passed;finished;4
-controller.FinanciamentoApisExternasControllerTest.retornaLista;/POST - Criação de um financiamento com apis externas ligadas - STATUS 200;passed;finished;4548
-controller.LoginControllerTest.novoLoginNotOk;/POST - Fazer login com usuário não existente - STATUS 204;passed;finished;6
-controller.LoginControllerTest.novoLoginOk;/POST - Fazer login com usuário já existente - STATUS 200;passed;finished;5
-service.TokenServiceTest.decodeTokenNotOK;Decode token - Erro;passed;finished;16
-controller.RegiaoControllerTest.deleteRegiaoOk;/DELETE - Deletar uma região já existente - STATUS 200;passed;finished;3
-controller.CadastroControllerTest.listarUsuariosNotOK;/GET - Lista todos os usuários, mas não existem nenhum - STATUS 204;passed;finished;4
-controller.CadastroControllerTest.deleteAvaliacaoOk;/DELETE/{id} - Deleter uma avaliação - STATUS 200;passed;finished;5
-controller.AcessoControllerTest.getAcessoNotOK;/GET{id} - Requisição de um um único acesso e ele não existe - 404;failed;finished;5
-controller.RegiaoControllerTest.postRegiao;/POST - Regitrar uma região - STATUS 201;passed;finished;3
-controller.CadastroControllerTest.getUsuario;/GET - Resgata um usuário, status 200;passed;finished;7
-controller.CadastroControllerTest.getAvaliacaoOk;/GET/{id} - Resgatar uma única avaliação - STATUS 200;passed;finished;4
-controller.AcessoControllerTest.postAcessoNotOK;/POST - Criar acesso, com região inexistente -;failed;finished;5
-controller.RegiaoControllerTest.getRegiaoOk;/GET/{id} - Resgatar uma única região - STATUS 200;passed;finished;3
-controller.CadastroControllerTest.getUsuarioNotOK;/GET - Resgata um usuário, porém ele não existe - status 404;passed;finished;4
-controller.RegiaoControllerTest.getRegioesNotOk;/GET - Listar as últimas regiões cadastradas no banco, sendo que não existe nenhuma -STATUS 204;passed;finished;3
-controller.CadastroControllerTest.getAvaliacoesNotOK;/GET - Listar todas as avaliações mas não é encontrada nenhuma -STATUS 204;passed;finished;4
-controller.RegiaoControllerTest.deleteRegiaoNotOk;/DELETE - Deletar uma região não existente - STATUS 200;passed;finished;3
-controller.AcessoControllerTest.getAcessosNotOK;/GET - Resgatar todos os acessos e não existem nenhum - 204;passed;finished;3
-controller.AcessoControllerTest.getAcessos;/GET - Resgatar todos os acessos - 200;passed;finished;4
-controller.CadastroControllerTest.getAvaliacaoNotOK;/GET/{id} - Resgatar uma única avaliação, mas ela não existe - STATUS 404;passed;finished;17
-controller.CadastroControllerTest.deleteAvaliacaoNotOK;/DELETE/{id} - Deletar uma avaliação, sendo que ela não existe - STATUS 404;passed;finished;4
-FinobanApplicationTests.contextLoads;contextLoads();passed;finished;2
-controller.LoginControllerTest.efetutarLogoffNotOk;/POST - Efetuar logoff de um usuário que não está logado - STATUS 404;failed;finished;7
-controller.CadastroControllerTest.novaAvaliacaoGostou;/POST - Criar nova avaliação sendo que usuário gostou da solução - status 201;passed;finished;12
-controller.CadastroControllerTest.novaAvaliacaoNaoAchouAcesso;/POST - Criar nova avaliação com id de acesso inválido - status 404;passed;finished;5
-controller.RegiaoControllerTest.getRegioesOk;/GET - Listar as ultimas regiões cadastradas no banco - STATUS 200;passed;finished;3
-controller.AcessoControllerTest.postAcesso;/POST - Criar acesso - 201;passed;finished;4
-controller.GravaArquivoControllerTest.postRegistro;/POST - Gravação de um arquivo txt - STATUS 201;passed;finished;8
-service.TokenServiceTest.decodeToken;Decode token - Sucesso;passed;finished;334
-controller.RegiaoControllerTest.atualizarRegiaoNotOk;/PUT - Atualizar uma região não existente - STATUS 404;passed;finished;4
+CLASSE;DURACAO;ESTAGIO;NOMETESTE;STATUS
+FinobanApplicationTests.contextLoads;3;finished;contextLoads();passed
+controller.RegiaoControllerTest.atualizarRegiaoOk;3;finished;/PUT - Atualizar uma região já existente - STATUS 200;passed
+controller.AcessoControllerTest.postAcessoNotOK;17;finished;/POST - Criar acesso, com região inexistente -;failed
+controller.AcessoControllerTest.getAcessosNotOK;4;finished;/GET - Resgatar todos os acessos e não existem nenhum - 204;passed
+controller.GravaCsvControllerTest.postRegistro;3;finished;/POST - Gravar um documento de layout em csv - STATUS 201;passed
+controller.CadastroControllerTest.deleteAvaliacaoOk;5;finished;/DELETE/{id} - Deleter uma avaliação - STATUS 200;passed
+controller.RegiaoControllerTest.getRegiaoNotOk;7;finished;/GET/{id} - Resgatar uma única região com id não encontrado - STATUS 404;passed
+controller.CadastroControllerTest.getAvaliacaoOk;4;finished;/GET/{id} - Resgatar uma única avaliação - STATUS 200;passed
+controller.DownloadControllerTest.downloadCsv;81;finished;Download de um arquivo txt - TAMANHO 189bytes;passed
+controller.LoginControllerTest.novoLoginOk;5;finished;/POST - Fazer login com usuário já existente - STATUS 200;passed
+controller.FinanciamentoApisExternasControllerTest.retornaLista;4545;finished;/POST - Criação de um financiamento com apis externas ligadas - STATUS 200;passed
+controller.RegiaoControllerTest.getRegioesNotOk;3;finished;/GET - Listar as últimas regiões cadastradas no banco, sendo que não existe nenhuma -STATUS 204;passed
+controller.RegiaoControllerTest.postRegiao;3;finished;/POST - Regitrar uma região - STATUS 201;passed
+controller.RegiaoControllerTest.atualizarRegiaoNotOk;3;finished;/PUT - Atualizar uma região não existente - STATUS 404;passed
+service.TokenServiceTest.decodeToken;286;finished;Decode token - Sucesso;passed
+controller.RegiaoControllerTest.getRegioesOk;5;finished;/GET - Listar as ultimas regiões cadastradas no banco - STATUS 200;passed
+controller.CadastroControllerTest.listarUsuariosNotOK;4;finished;/GET - Lista todos os usuários, mas não existem nenhum - STATUS 204;passed
+controller.CadastroControllerTest.getAvaliacoesNotOK;5;finished;/GET - Listar todas as avaliações mas não é encontrada nenhuma -STATUS 204;passed
+controller.LoginControllerTest.efetutarLogoffNotOk;10;finished;/POST - Efetuar logoff de um usuário que não está logado - STATUS 404;failed
+controller.CadastroControllerTest.deleteUsuarioNotOk;4;finished;/DELETE - Excluir um usuário, porém ele não existe - STATUS 404;passed
+controller.LoginControllerTest.novoLoginNotOk;9;finished;/POST - Fazer login com usuário não existente - STATUS 204;passed
+controller.CadastroControllerTest.listarUsuarios;6;finished;/GET - Lista todos os usuários com sucesso - STATUS 200;passed
+controller.AcessoControllerTest.getAcessoNotOK;5;finished;/GET{id} - Requisição de um um único acesso e ele não existe - 404;failed
+controller.CadastroControllerTest.novoCadastro;8;finished;/POST - Cadastro de usuário realizado com sucesso - STATUS 201;passed
+controller.RegiaoControllerTest.getRegiaoOk;2;finished;/GET/{id} - Resgatar uma única região - STATUS 200;passed
+controller.CadastroControllerTest.novaAvaliacaoNaoGostou;4;finished;/POST - Criar nova avaliação sendo que usuário não gostou da solução - status 201;passed
+service.TokenServiceTest.decodeTokenNotOK;16;finished;Decode token - Erro;passed
+controller.GravaArquivoControllerTest.postRegistro;6;finished;/POST - Gravação de um arquivo txt - STATUS 201;passed
+controller.CadastroControllerTest.getAvaliacoesOk;4;finished;/GET - Listar todos as avaliações, STATUS 200;passed
+controller.AcessoControllerTest.getAcesso;5;finished;/GET{id} - Requisição de um um único acesso - 200;passed
+controller.CadastroControllerTest.deleteUsuario;3;finished;/DELETE - Excluir um usuário, status 204;passed
+controller.CadastroControllerTest.novaAvaliacaoNaoGostouENaoPassouFeedback;4;finished;/POST - Criar nova avaliação sendo que usuário não gostou da solução, mas não deu feedback - status 400;passed
+controller.LoginControllerTest.efetuarLogoff;8;finished;/POST - Efetuar logoff de um usuário já logado - STATUS 200;passed
+controller.RegiaoControllerTest.deleteRegiaoOk;3;finished;/DELETE - Deletar uma região já existente - STATUS 200;passed
+controller.AcessoControllerTest.postAcesso;4;finished;/POST - Criar acesso - 201;passed
+controller.AcessoControllerTest.deleteAcesso;14;finished;/DELETE - Deletar um acesso existete - 204;passed
+controller.AcessoControllerTest.getAcessos;14;finished;/GET - Resgatar todos os acessos - 200;passed
+controller.CadastroControllerTest.getAvaliacaoNotOK;19;finished;/GET/{id} - Resgatar uma única avaliação, mas ela não existe - STATUS 404;passed
+controller.CadastroControllerTest.novaAvaliacaoNaoAchouAcesso;5;finished;/POST - Criar nova avaliação com id de acesso inválido - status 404;passed
+controller.CadastroControllerTest.getUsuario;15;finished;/GET - Resgata um usuário, status 200;passed
+controller.RegiaoControllerTest.deleteRegiaoNotOk;6;finished;/DELETE - Deletar uma região não existente - STATUS 200;passed
+controller.CadastroControllerTest.getUsuarioNotOK;6;finished;/GET - Resgata um usuário, porém ele não existe - status 404;passed
+controller.AcessoControllerTest.deleteAcessoNotOK;16;finished;/DELETE - Falha ao deletar um acesso não existente - 404;failed
+controller.DownloadControllerTest.downloadTxt;5;finished;Download de um arquivo csv - TAMANHO 195bytes;passed
+controller.CadastroControllerTest.novaAvaliacaoGostou;13;finished;/POST - Criar nova avaliação sendo que usuário gostou da solução - status 201;passed
+controller.CadastroControllerTest.deleteAvaliacaoNotOK;3;finished;/DELETE/{id} - Deletar uma avaliação, sendo que ela não existe - STATUS 404;passed
