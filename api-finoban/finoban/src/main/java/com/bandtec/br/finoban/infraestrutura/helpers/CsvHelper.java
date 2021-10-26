@@ -29,9 +29,9 @@ public class CsvHelper <T> {
         ) {
             CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(reader)
                     .withType(classType)
-                    .withSeparator(';')
-                    .withQuoteChar('|')
-                    .withEscapeChar(CSVWriter.DEFAULT_ESCAPE_CHARACTER)
+//                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+//                    .withQuoteChar(CSVWriter.DEFAULT_QUOTE_CHARACTER)
+//                    .withEscapeChar(CSVWriter.DEFAULT_ESCAPE_CHARACTER)
                     .build();
 
             return csvToBean.parse();
@@ -47,7 +47,8 @@ public class CsvHelper <T> {
             Writer writer = java.nio.file.Files.newBufferedWriter(file);
         ) {
             StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer)
-                    .withSeparator(';')
+                    .withQuotechar(CSVWriter.DEFAULT_QUOTE_CHARACTER)
+                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                     .withEscapechar(CSVWriter.DEFAULT_ESCAPE_CHARACTER)
                     .withLineEnd(CSVWriter.DEFAULT_LINE_END)
                     .build();

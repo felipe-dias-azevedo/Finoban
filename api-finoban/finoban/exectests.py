@@ -11,7 +11,7 @@ BOLD = "\033[1m"
 def nprint(*args):
     print("[" + CYAN + "FINOBAN" + ENDC + "]", end=" ")
     for arg in args:
-        print(BOLD+str(arg)+ENDC, end=" ")
+        print(BOLD + str(arg) + ENDC, end=" ")
     print()
 
 
@@ -59,9 +59,11 @@ def main():
                     result['status']
                 ]))
 
+    # TODO: COLOCAR DATA DE EXECUÇÃO NO FINAL DO HEADER
+
     nprint("generating CSV report file.")
     with open('testresult.csv', 'w', newline='') as resultfile:
-        writer = csv.writer(resultfile, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(resultfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
         writer.writerow(tuple(["CLASSE", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
         writer.writerows(testresults)
     nprint("successfully generated CSV report file.")

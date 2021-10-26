@@ -35,6 +35,7 @@ public class TestReportService {
                     csvHelper.read(TEST_REPORT_FILENAME, TestReportDAO.class)
             );
         } catch (NoSuchFileException e) {
+            System.out.println("[FINOBAN] Reading CSV Backup Tests Report");
             try {
                 return TestReportAdapter.testReportsAccesstoTransfer(
                         csvHelper.read(
@@ -51,6 +52,8 @@ public class TestReportService {
 
     public void atualizarTestes() throws IOException
     {
+        // TODO: COLOCAR DATA DE EXECUÇÃO NO FINAL DO HEADER
+
         File[] oldReports = Paths.get("target", "allure-results").toFile().listFiles();
         if (oldReports != null) {
             for (File oldReport : oldReports) {
