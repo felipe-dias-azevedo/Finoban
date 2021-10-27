@@ -64,6 +64,7 @@ def main():
     nprint("generating CSV report file.")
     with open('testresult.csv', 'w', newline='') as resultfile:
         writer = csv.writer(resultfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
+        #writer.writerow(tuple(["CLASSE", "DATAINSERCAO", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
         writer.writerow(tuple(["CLASSE", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
         writer.writerows(testresults)
     nprint("successfully generated CSV report file.")
