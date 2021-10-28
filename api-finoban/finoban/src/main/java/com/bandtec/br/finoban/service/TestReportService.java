@@ -6,6 +6,7 @@ import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
 import com.bandtec.br.finoban.infraestrutura.helpers.CsvHelper;
 import com.bandtec.br.finoban.infraestrutura.adapters.TestReportAdapter;
 
+import com.bandtec.br.finoban.infraestrutura.helpers.DateHelper;
 import com.bandtec.br.finoban.infraestrutura.helpers.JsonHelper;
 import com.bandtec.br.finoban.infraestrutura.helpers.ProcessHelper;
 import org.apache.commons.exec.ExecuteException;
@@ -16,8 +17,10 @@ import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class TestReportService {
@@ -27,7 +30,6 @@ public class TestReportService {
 
     public List<TestReportDTO> obterTestes()
     {
-
         CsvHelper<TestReportDAO> csvHelper = new CsvHelper<>();
 
         try {
@@ -52,15 +54,12 @@ public class TestReportService {
 
     public void atualizarTestes() throws IOException
     {
-        // TODO: COLOCAR DATA DE EXECUÇÃO NO FINAL DO HEADER
+        String dateNow = DateHelper.obterDataAgoraPadraoISO8601();
 
         File[] oldReports = Paths.get("target", "allure-results").toFile().listFiles();
-        if (oldReports != null) {
-            for (File oldReport : oldReports) {
-                if (oldReport.getName().endsWith("result.json"))
-                    oldReport.delete();
-            }
-        }
+        Arrays.stream(Objects.requireNonNull(oldReports))
+                .filter(oldReport -> oldReport.getName().endsWith("result.json"))
+                .forEach(File::delete);
 
         try {
             ProcessHelper.executarComando(MAVEN_TEST_COMMAND);
@@ -74,16 +73,15 @@ public class TestReportService {
             throw new IOException();
         }
 
-        List<TestReportDAO> testResults = new ArrayList<>();
         JsonHelper<TestReport> jsonHelper = new JsonHelper<>();
 
-        for (File report : Objects.requireNonNull(allureReportsFolder.listFiles())) {
-            if (!report.getName().endsWith("container.json"))
-            {
-                testResults.add(TestReportAdapter.allureResultToTestReport(
-                        jsonHelper.serializeFromFile(report, TestReport.class)));
-            }
-        }
+        List<TestReportDAO> testResults = Arrays
+                .stream(Objects.requireNonNull(allureReportsFolder.listFiles()))
+                .filter(report -> !report.getName().endsWith("container.json"))
+                .map(report -> TestReportAdapter.allureResultToTestReport(
+                        jsonHelper.safeSerializeFromFile(report, TestReport.class),
+                        dateNow))
+                .collect(Collectors.toList());
 
         CsvHelper<TestReportDAO> csvHelper = new CsvHelper<>();
         csvHelper.write(TEST_REPORT_FILENAME, testResults);

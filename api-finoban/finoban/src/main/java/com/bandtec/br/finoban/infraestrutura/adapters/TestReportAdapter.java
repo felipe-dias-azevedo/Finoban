@@ -23,10 +23,11 @@ public class TestReportAdapter {
         testReportDTO.setStatus(testReportDAO.getStatus());
         testReportDTO.setEstagio(testReportDAO.getEstagio());
         testReportDTO.setDuracao(Integer.valueOf(testReportDAO.getDuracao()));
+        testReportDTO.setDataInsercao(testReportDAO.getDataInsercao());
         return testReportDTO;
     }
 
-    public static TestReportDAO allureResultToTestReport(TestReport allureResult)
+    public static TestReportDAO allureResultToTestReport(TestReport allureResult, String dataInsercao)
     {
         TestReportDAO testReport = new TestReportDAO();
         testReport.setNomeTeste(allureResult.getName());
@@ -34,6 +35,7 @@ public class TestReportAdapter {
         testReport.setEstagio(allureResult.getStage());
         testReport.setDuracao(String.valueOf(allureResult.getStop() - allureResult.getStart()));
         testReport.setNomeClasse(allureResult.getFullName().replace("com.bandtec.br.finoban.", ""));
+        testReport.setDataInsercao(dataInsercao);
         return testReport;
     }
 }

@@ -31,4 +31,9 @@ public class TestReportDAO {
     @CsvBindByName(column = "DURACAO", required = true)
     private String duracao;
 
+    @Getter
+    @Setter
+    @CsvBindByName(column = "DATAINSERCAO", required = true)
+    private String dataInsercao;
+
 }

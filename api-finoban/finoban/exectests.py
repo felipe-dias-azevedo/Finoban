@@ -2,6 +2,7 @@ from os import path, listdir, remove, popen
 from json import loads
 import csv
 from time import time
+from datetime import datetime
 
 CYAN = "\033[96m"
 ENDC = "\033[0m"
@@ -15,11 +16,16 @@ def nprint(*args):
     print()
 
 
+def getdatewithformat() -> str:
+    return datetime.utcnow().replace(second=0, microsecond=0).isoformat()[:-3]+'Z'
+
+
 def getfiles(files: list) -> list:
     return [file for file in files if not file.endswith('container.json')]
 
 
 def main():
+    datenow = getdatewithformat()
     allurefolder = path.join("target", "allure-results")
     if path.exists(allurefolder):
         oldreports = getfiles(listdir(allurefolder))
@@ -27,7 +33,6 @@ def main():
         nprint()
         for report in getfiles(listdir(allurefolder)):
             remove(path.join(allurefolder, report))
-            pass
 
     nprint("starting maven tests.")
     beforetime = time()
@@ -53,19 +58,17 @@ def main():
             testresults.append(
                 tuple([
                     result['fullName'].replace('com.bandtec.br.finoban.', ''),
+                    datenow,
                     (result['stop'] - result['start']),
                     result['stage'],
                     result['name'],
                     result['status']
                 ]))
 
-    # TODO: COLOCAR DATA DE EXECUÇÃO NO FINAL DO HEADER
-
     nprint("generating CSV report file.")
     with open('testresult.csv', 'w', newline='') as resultfile:
         writer = csv.writer(resultfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
-        #writer.writerow(tuple(["CLASSE", "DATAINSERCAO", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
-        writer.writerow(tuple(["CLASSE", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
+        writer.writerow(tuple(["CLASSE", "DATAINSERCAO", "DURACAO", "ESTAGIO", "NOMETESTE", "STATUS"]))
         writer.writerows(testresults)
     nprint("successfully generated CSV report file.")
 

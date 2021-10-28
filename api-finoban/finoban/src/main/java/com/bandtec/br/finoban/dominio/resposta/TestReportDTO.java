@@ -26,4 +26,8 @@ public class TestReportDTO {
     @Setter
     private Integer duracao;
 
+    @Getter
+    @Setter
+    private String dataInsercao;
+
 }
