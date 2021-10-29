@@ -3,6 +3,7 @@ package com.bandtec.br.finoban.service;
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
 import com.bandtec.br.finoban.dominio.TestReport;
 import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
+import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
 import com.bandtec.br.finoban.infraestrutura.helpers.*;
@@ -20,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class TestReportService {
@@ -33,13 +33,13 @@ public class TestReportService {
         CsvHelper<TestReportDAO> csvHelper = new CsvHelper<>();
 
         try {
-            return TestReportAdapter.testReportsAccesstoTransfer(
+            return TestReportAdapter.testReportsAccessToTransfer(
                     csvHelper.read(TEST_REPORT_FILENAME, TestReportDAO.class)
             );
         } catch (NoSuchFileException e) {
             System.out.println("[FINOBAN] Reading CSV Backup Tests Report");
             try {
-                return TestReportAdapter.testReportsAccesstoTransfer(
+                return TestReportAdapter.testReportsAccessToTransfer(
                         csvHelper.read(
                                 String.format("%s.backup", TEST_REPORT_FILENAME),
                                 TestReportDAO.class));
@@ -106,6 +106,7 @@ public class TestReportService {
                 .collect(Collectors.toList());
 
         app.setNomeAplicacao("API Finoban");
+        app.setQuantidadeTestes(testes.size());
         app.setDataExecucao(testes.get(0).getDataInsercao());
         app.setStatusGeral(testesConcluidos.stream()
                 .findAny()
@@ -115,10 +116,49 @@ public class TestReportService {
         app.setDuracaoExecucao(NumberHelper.valueOf(testes.stream()
                 .mapToInt(TestReportDTO::getDuracao)
                 .sum()) / 100);
+        double porcentagemSucesso = NumberHelper.valueOf(testesConcluidos.size()) / NumberHelper.valueOf(testes.size());
+        app.setPorcentagemSucesso(NumberHelper.round(porcentagemSucesso,2));
 
-        double sucessPercentage = NumberHelper.valueOf(testesConcluidos.size()) / NumberHelper.valueOf(testes.size());
-        app.setPorcentagemSucesso(NumberHelper.round(sucessPercentage,2));
         testesPorApps.add(app);
         return testesPorApps;
+    }
+
+    public List<TestReportAppSpecificDTO> obterTestesPorAppEspecifico(List<TestReportDTO> testes)
+    {
+        var testesAppEspecifico = new ArrayList<TestReportAppSpecificDTO>();
+        var classesInserted = new ArrayList<String>();
+        String actualClass;
+
+        for (TestReportDTO test : testes)
+        {
+            actualClass = TestReportAdapter.classNameHandle(test.getNomeClasse());
+            if (!classesInserted.contains(actualClass))
+            {
+                TestReportAppSpecificDTO appSpecific = new TestReportAppSpecificDTO();
+                appSpecific.setQuantidadeFuncoes(0);
+                appSpecific.setDuracaoExecucao(0.0);
+                appSpecific.setPorcentagemCobertura(0.0);
+                appSpecific.setNomeClasseTeste(actualClass);
+                classesInserted.add(actualClass);
+                for (TestReportDTO t : testes)
+                {
+                    if (actualClass.equals(TestReportAdapter.classNameHandle(t.getNomeClasse())))
+                    {
+                        appSpecific.setQuantidadeFuncoes(appSpecific.getQuantidadeFuncoes() + 1);
+                        appSpecific.setPorcentagemCobertura(
+                                appSpecific.getPorcentagemCobertura() + (t.getStatus().equals("passed") ? 1 : 0));
+                        appSpecific.setDuracaoExecucao(
+                                appSpecific.getDuracaoExecucao() + (NumberHelper.valueOf(t.getDuracao()) / 100));
+                    }
+                }
+                appSpecific.setDuracaoExecucao(NumberHelper.round(appSpecific.getDuracaoExecucao(), 2));
+                appSpecific.setPorcentagemCobertura(NumberHelper.round(
+                                appSpecific.getPorcentagemCobertura() / appSpecific.getQuantidadeFuncoes(),
+                                2));
+                testesAppEspecifico.add(appSpecific);
+            }
+        }
+
+        return testesAppEspecifico;
     }
 }

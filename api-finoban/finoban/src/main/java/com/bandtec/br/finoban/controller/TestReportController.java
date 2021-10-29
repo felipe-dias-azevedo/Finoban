@@ -1,5 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
+import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestsDashboardDTO;
@@ -43,9 +44,16 @@ public class TestReportController {
     }
 
     @GetMapping("/apps/{id}")
-    public ResponseEntity<?> getTestsAppsSpecific(@PathVariable Integer id)
+    public ResponseEntity<List<TestReportAppSpecificDTO>> getTestsAppsSpecific(@PathVariable Integer id)
     {
-        return ResponseEntity.status(503).build();
+        List<TestReportAppSpecificDTO> reports = testReportService.obterTestesPorAppEspecifico(
+                testReportService.obterTestes());
+        if (id != 0) {
+            return ResponseEntity.status(404).build();
+        } else if (reports.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(reports);
     }
 
     @GetMapping("/dashboard")

@@ -12,6 +12,10 @@ public class TestReportAppsDTO {
 
     @Getter
     @Setter
+    private Integer quantidadeTestes;
+
+    @Getter
+    @Setter
     private TestStatusGeralEnum statusGeral;
 
     @Getter
