@@ -2,13 +2,12 @@ package com.bandtec.br.finoban.service;
 
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
 import com.bandtec.br.finoban.dominio.TestReport;
+import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
+import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
-import com.bandtec.br.finoban.infraestrutura.helpers.CsvHelper;
+import com.bandtec.br.finoban.infraestrutura.helpers.*;
 import com.bandtec.br.finoban.infraestrutura.adapters.TestReportAdapter;
 
-import com.bandtec.br.finoban.infraestrutura.helpers.DateHelper;
-import com.bandtec.br.finoban.infraestrutura.helpers.JsonHelper;
-import com.bandtec.br.finoban.infraestrutura.helpers.ProcessHelper;
 import org.apache.commons.exec.ExecuteException;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class TestReportService {
@@ -89,5 +89,36 @@ public class TestReportService {
 
     public void inserirTestes(List<TestReportDTO> testReports) {
 
+    }
+
+    /**
+     * Recebe os testes e gera um relatorio geral dos testes por "dominio" de teste.
+     *
+     * @param testes bateria de testes obtida do CSV de report do allure.
+     */
+    public List<TestReportAppsDTO> obterTestesPorApps(List<TestReportDTO> testes)
+    {
+        List<TestReportAppsDTO> testesPorApps = new ArrayList<>();
+
+        TestReportAppsDTO app = new TestReportAppsDTO();
+        List<TestReportDTO> testesConcluidos = testes.stream()
+                .filter(teste -> teste.getStatus().equals("passed"))
+                .collect(Collectors.toList());
+
+        app.setNomeAplicacao("API Finoban");
+        app.setDataExecucao(testes.get(0).getDataInsercao());
+        app.setStatusGeral(testesConcluidos.stream()
+                .findAny()
+                .isPresent()
+                ? TestStatusGeralEnum.PASSOU
+                : TestStatusGeralEnum.FALHOU);
+        app.setDuracaoExecucao(NumberHelper.valueOf(testes.stream()
+                .mapToInt(TestReportDTO::getDuracao)
+                .sum()) / 100);
+
+        double sucessPercentage = NumberHelper.valueOf(testesConcluidos.size()) / NumberHelper.valueOf(testes.size());
+        app.setPorcentagemSucesso(NumberHelper.round(sucessPercentage,2));
+        testesPorApps.add(app);
+        return testesPorApps;
     }
 }

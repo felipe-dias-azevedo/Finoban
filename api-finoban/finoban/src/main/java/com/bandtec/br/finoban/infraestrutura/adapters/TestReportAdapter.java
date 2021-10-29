@@ -2,6 +2,7 @@ package com.bandtec.br.finoban.infraestrutura.adapters;
 
 import com.bandtec.br.finoban.dominio.TestReport;
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
+import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
 
 import java.util.List;
@@ -38,4 +39,9 @@ public class TestReportAdapter {
         testReport.setDataInsercao(dataInsercao);
         return testReport;
     }
+
+//    public static TestReportAppsDTO testReportToApps(TestReportDTO testReport)
+//    {
+//
+//    }
 }
