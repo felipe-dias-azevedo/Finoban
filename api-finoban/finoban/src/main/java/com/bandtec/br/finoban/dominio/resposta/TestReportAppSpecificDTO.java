@@ -11,7 +11,7 @@ public class TestReportAppSpecificDTO {
 
     @Getter
     @Setter
-    private Double porcentagemCobertura;
+    private Double porcentagemSucesso;
 
     @Getter
     @Setter

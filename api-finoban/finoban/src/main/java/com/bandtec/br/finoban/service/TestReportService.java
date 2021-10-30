@@ -137,7 +137,7 @@ public class TestReportService {
                 TestReportAppSpecificDTO appSpecific = new TestReportAppSpecificDTO();
                 appSpecific.setQuantidadeFuncoes(0);
                 appSpecific.setDuracaoExecucao(0.0);
-                appSpecific.setPorcentagemCobertura(0.0);
+                appSpecific.setPorcentagemSucesso(0.0);
                 appSpecific.setNomeClasseTeste(actualClass);
                 classesInserted.add(actualClass);
                 for (TestReportDTO t : testes)
@@ -145,15 +145,15 @@ public class TestReportService {
                     if (actualClass.equals(TestReportAdapter.classNameHandle(t.getNomeClasse())))
                     {
                         appSpecific.setQuantidadeFuncoes(appSpecific.getQuantidadeFuncoes() + 1);
-                        appSpecific.setPorcentagemCobertura(
-                                appSpecific.getPorcentagemCobertura() + (t.getStatus().equals("passed") ? 1 : 0));
+                        appSpecific.setPorcentagemSucesso(
+                                appSpecific.getPorcentagemSucesso() + (t.getStatus().equals("passed") ? 1 : 0));
                         appSpecific.setDuracaoExecucao(
                                 appSpecific.getDuracaoExecucao() + (NumberHelper.valueOf(t.getDuracao()) / 100));
                     }
                 }
                 appSpecific.setDuracaoExecucao(NumberHelper.round(appSpecific.getDuracaoExecucao(), 2));
-                appSpecific.setPorcentagemCobertura(NumberHelper.round(
-                                appSpecific.getPorcentagemCobertura() / appSpecific.getQuantidadeFuncoes(),
+                appSpecific.setPorcentagemSucesso(NumberHelper.round(
+                                appSpecific.getPorcentagemSucesso() / appSpecific.getQuantidadeFuncoes(),
                                 2));
                 testesAppEspecifico.add(appSpecific);
             }
