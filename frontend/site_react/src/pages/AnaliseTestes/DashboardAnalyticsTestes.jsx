@@ -62,7 +62,7 @@ export default function DashboardAnalyticsTestes() {
         <>
             <Header />
             <div id="app">
-                <div className="chart-holder tiny-holder">
+                <div className="chart-holder test-chart-holder">
                     <ChartHolder id={0} moveCard={moveCardHandler}>
                         {returnChart(0)}
                     </ChartHolder>
