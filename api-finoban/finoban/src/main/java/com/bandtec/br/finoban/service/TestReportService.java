@@ -16,10 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,22 +25,42 @@ public class TestReportService {
 
     private static final String TEST_REPORT_FILENAME = "testresult.csv";
     private static final String MAVEN_TEST_COMMAND = "mvn test";
+    private List<TestReportDTO> actualTestReports;
+    private BasicFileAttributes actualAttributes;
 
     public List<TestReportDTO> obterTestes()
     {
         CsvHelper<TestReportDAO> csvHelper = new CsvHelper<>();
 
+        if (actualAttributes != null && !actualTestReports.isEmpty()) {
+            try {
+                var attributes = FileHelper.getAttributes(FileHelper.getFilePath(TEST_REPORT_FILENAME));
+                if (DateHelper.converterDataPadraoISO8601(attributes.creationTime()).
+                        equals(DateHelper.converterDataPadraoISO8601(actualAttributes.creationTime()))
+                        && attributes.size() == actualAttributes.size())
+                {
+                    return actualTestReports;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         try {
-            return TestReportAdapter.testReportsAccessToTransfer(
-                    csvHelper.read(TEST_REPORT_FILENAME, TestReportDAO.class)
-            );
+            actualTestReports = TestReportAdapter.testReportsAccessToTransfer(
+                    csvHelper.read(TEST_REPORT_FILENAME, TestReportDAO.class));
+            actualAttributes = FileHelper.getAttributes(FileHelper.getFilePath(TEST_REPORT_FILENAME));
+            return actualTestReports;
         } catch (NoSuchFileException e) {
             System.out.println("[FINOBAN] Reading CSV Backup Tests Report");
             try {
-                return TestReportAdapter.testReportsAccessToTransfer(
+                actualTestReports = TestReportAdapter.testReportsAccessToTransfer(
                         csvHelper.read(
                                 String.format("%s.backup", TEST_REPORT_FILENAME),
                                 TestReportDAO.class));
+                actualAttributes = FileHelper.getAttributes(FileHelper.getFilePath(
+                        String.format("%s.backup", TEST_REPORT_FILENAME)));
+                return actualTestReports;
             } catch (Exception exception) {
                 exception.printStackTrace();
             }

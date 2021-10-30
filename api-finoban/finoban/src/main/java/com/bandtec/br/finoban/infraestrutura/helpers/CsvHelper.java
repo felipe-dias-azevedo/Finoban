@@ -14,13 +14,12 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 public class CsvHelper <T> {
 
     public List<T> read(String fileName, Class<T> classType) throws IOException, NoSuchFileException {
-        return this.read(Paths.get(fileName), classType);
+        return this.read(FileHelper.getFilePath(fileName), classType);
     }
 
     public List<T> read(Path file, Class<T> classType) throws IOException {
@@ -39,7 +38,7 @@ public class CsvHelper <T> {
     }
 
     public void write(String fileName, List<T> dataToCsv) {
-        this.write(Paths.get(fileName), dataToCsv);
+        this.write(FileHelper.getFilePath(fileName), dataToCsv);
     }
 
     public void write(Path file, List<T> dataToCsv) {
