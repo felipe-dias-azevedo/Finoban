@@ -11,7 +11,7 @@ const Breadcrumbs = props => {
     history,
     location: { pathname }
   } = props;
-  const pathnames = pathname.split("/").filter(x => x);
+  const pathnames = pathname.split("/").map(path => path.charAt(0).toUpperCase()+path.slice(1)).filter(x => x);
   return (
     <MUIBreadcrumbs separator="•" aria-label="breadcrumb">
       {pathnames.length > 0 ? (
