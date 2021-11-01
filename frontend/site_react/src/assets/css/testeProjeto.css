@@ -1,0 +1,38 @@
+.box-card-teste {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--braco);
+    color: var(--preto-terciario);
+    margin: 5% 5% 4rem 5%;
+    padding: 0px 70px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.grafico-torta-porcentagem {
+    width: 10%;
+    height: 100px;
+}
+
+.btn-card-teste {
+    /* background-color: var(--botao-passou); */
+    color: var(--branco);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 8px 16px 8px 16px;
+}
+
+.titulo-teste-projeto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5% 5% 4rem 5%;
+    padding: 0px 70px;
+    color: var(--verde);
+}
+
+.nome-projeto-card-teste {
+    font-weight: bold;
+    color: var(--verde);
+}

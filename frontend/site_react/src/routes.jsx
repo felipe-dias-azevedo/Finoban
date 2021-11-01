@@ -14,6 +14,7 @@ import EsqueciMinhaSenha from './pages/EsqueciMinhaSenha';
 import RedefinirSenha from './pages/RedefinirSenha';
 import PaginaNaoExiste from './pages/PaginaNaoExiste';
 import DashboardAnalyticsTestes from './pages/AnaliseTestes/DashboardAnalyticsTestes';
+import TestesProjetos from './pages/AnaliseTestes/TestesProjetos';
 
 function Routes() {
     return (
@@ -34,6 +35,7 @@ function Routes() {
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
                 <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
 
+                <Route exact path="/testes-projetos" component={TestesProjetos} />
                 <Route exact path="/testes/analytics" component={DashboardAnalyticsTestes} />
                                     
                 <Route exact path="/not-found" component={PaginaNaoExiste} />
