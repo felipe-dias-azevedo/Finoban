@@ -106,6 +106,12 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.test-chart-holder {
+    height: 24rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
 .chart {
     position: relative;
     /* height: 100%; */

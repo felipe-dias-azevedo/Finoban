@@ -13,6 +13,7 @@ import SobreNos from './pages/SobreNos';
 import EsqueciMinhaSenha from './pages/EsqueciMinhaSenha';
 import RedefinirSenha from './pages/RedefinirSenha';
 import PaginaNaoExiste from './pages/PaginaNaoExiste';
+import DashboardAnalyticsTestes from './pages/AnaliseTestes/DashboardAnalyticsTestes';
 
 function Routes() {
     return (
@@ -32,6 +33,8 @@ function Routes() {
                 <Route exact path="/analise" component={LoginNegocio} />
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
                 <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
+
+                <Route exact path="/testes/analytics" component={DashboardAnalyticsTestes} />
                                     
                 <Route exact path="/not-found" component={PaginaNaoExiste} />
                 <Redirect from="*" to="/not-found" />

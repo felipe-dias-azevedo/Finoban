@@ -8,6 +8,8 @@
 *.ear
 *.nar
 hs_err_pid*
+application.log*
+.attach_pid*
 
 ##############################
 ## Maven
