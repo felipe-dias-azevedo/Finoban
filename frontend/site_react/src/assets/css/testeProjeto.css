@@ -1,6 +1,6 @@
 .box-card-teste {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
     align-items: center;
     background-color: var(--braco);
     color: var(--preto-terciario);
@@ -22,11 +22,13 @@
     cursor: pointer;
     padding: 8px 16px 8px 16px;
     width: 20%;
+    display:flex;
+    justify-content: center;
 }
 
 .titulo-teste-projeto {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
     align-items: center;
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
