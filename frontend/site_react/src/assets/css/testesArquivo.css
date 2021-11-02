@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 1fr;
     padding-left: 2rem;
+    text-align: center;
 }
 
 .table-header h1 {
@@ -25,10 +26,11 @@
 .card-testes-arquivos span {
     font-size: 15px;
     color: #3A5B62;
+    text-align: center;
 }
 
 .text-porcentagem-sucesso {
-    width: 50%;
+    width: 100%;
     background-color: #64AE6C;
     color: white !important;
     text-align: center;

@@ -7,7 +7,8 @@
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 15px;
+    text-align: center;
 }
 
 .grafico-torta-porcentagem {
@@ -21,7 +22,6 @@
     border-radius: 3px;
     cursor: pointer;
     padding: 8px 16px 8px 16px;
-    width: 20%;
     display:flex;
     justify-content: center;
 }
@@ -33,6 +33,7 @@
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
     color: var(--verde);
+    text-align: center;
 }
 
 .nome-projeto-card-teste {
