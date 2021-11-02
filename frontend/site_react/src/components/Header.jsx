@@ -67,6 +67,9 @@ function Header() {
 						<li>
 							<Link to="/openbanking">OPENBANKING</Link>
 						</li>
+						<li>
+							<Link to="/testes">TESTES INTERNOS</Link>
+						</li>
 					</ul>
 				</div>
 				<div className="topheader-options">

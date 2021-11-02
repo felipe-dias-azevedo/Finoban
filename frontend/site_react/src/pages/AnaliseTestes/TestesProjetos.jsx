@@ -27,7 +27,7 @@ function TestesProjetos() {
 
 			<div className="titulo-teste-projeto">
 				<h5> Aplicação </h5>
-				<h5> Estatus </h5>
+				<h5> Status </h5>
 				<h5> Testes </h5>
 				<h5> Data execução </h5>
 				<h5> Duração execução </h5>

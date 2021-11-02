@@ -119,22 +119,19 @@ public class TestReportService {
         List<TestReportAppsDTO> testesPorApps = new ArrayList<>();
 
         TestReportAppsDTO app = new TestReportAppsDTO();
-        List<TestReportDTO> testesConcluidos = testes.stream()
-                .filter(teste -> teste.getStatus().equals("passed"))
-                .collect(Collectors.toList());
 
         app.setNomeAplicacao("API Finoban");
         app.setQuantidadeTestes(testes.size());
         app.setDataExecucao(testes.get(0).getDataInsercao());
-        app.setStatusGeral(testesConcluidos.stream()
-                .findAny()
-                .isPresent()
-                ? TestStatusGeralEnum.PASSOU
-                : TestStatusGeralEnum.FALHOU);
+        app.setStatusGeral(testes.stream()
+                .anyMatch(teste -> teste.getStatus().equals("failed"))
+                ? TestStatusGeralEnum.FALHOU
+                : TestStatusGeralEnum.PASSOU);
         app.setDuracaoExecucao(NumberHelper.valueOf(testes.stream()
                 .mapToInt(TestReportDTO::getDuracao)
                 .sum()) / 100);
-        double porcentagemSucesso = NumberHelper.valueOf(testesConcluidos.size()) / NumberHelper.valueOf(testes.size());
+        double porcentagemSucesso = NumberHelper.valueOf((int) testes.stream()
+                .filter(teste -> teste.getStatus().equals("passed")).count()) / NumberHelper.valueOf(testes.size());
         app.setPorcentagemSucesso(NumberHelper.round(porcentagemSucesso,2));
 
         testesPorApps.add(app);

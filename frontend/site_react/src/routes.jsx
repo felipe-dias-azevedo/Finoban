@@ -36,9 +36,9 @@ function Routes() {
                 <Route exact path="/analise/dashboard" component={DashboardNegocio} />
                 <Route exact path="/analise/dashboard/:id" component={GraficoNegocio} />
 
-                <Route exact path="/testes-projetos" component={TestesProjetos} />
-                <Route exact path="/testes/analytics" component={DashboardAnalyticsTestes} />
+                <Route exact path="/testes" component={TestesProjetos} />
                 <Route exact path="/testes/arquivos" component={TestesArquivos} />
+                <Route exact path="/testes/analytics" component={DashboardAnalyticsTestes} />
                 
                                     
                 <Route exact path="/not-found" component={PaginaNaoExiste} />
