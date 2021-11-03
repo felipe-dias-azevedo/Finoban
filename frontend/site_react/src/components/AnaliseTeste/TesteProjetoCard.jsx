@@ -38,25 +38,25 @@ function BankCard(props) {
 					{" "}
 					{props.duracao_execucao}s{" "}
 				</span>
-				<div className="grafico-torta-porcentagem">
-					<Chart
-						width={"100px"}
-						height={"100px"}
-						chartType="PieChart"
-						loader={<div>Carregando o gráfico</div>}
-						data={dataChart}
-						options={{
-							tooltip: { textStyle: { fontSize: 1 } },
-							legend: "none",
-							pieSliceText: "none",
-							pieHole: 0.7,
-							slices: {
-								0: { color: "#64AE6C" },
-								1: { color: "#DA5C5C" },
-							},
-							backgroundColor: chartBackgroundColor,
-						}}
-					/>
+				<div className="div-grafico-teste">
+				<Chart
+					width={"100px"}
+					height={"100px"}
+					chartType="PieChart"
+					loader={<div className="grafico-torta-porcentagem">Carregando o gráfico</div>}
+					data={dataChart}
+					options={{
+						tooltip: { textStyle: { fontSize: 1 } },
+						legend: "none",
+						pieSliceText: "none",
+						pieHole: 0.7,
+						slices: {
+							0: { color: "#64AE6C" },
+							1: { color: "#DA5C5C" },
+						},
+						backgroundColor: chartBackgroundColor,
+					}}
+				/>
 				</div>
 			</div>
 		</>

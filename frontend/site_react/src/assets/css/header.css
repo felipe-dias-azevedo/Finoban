@@ -97,7 +97,6 @@ header .topheader .links {
     bottom: 0;
     color: var(--verde);
     margin-top: 10px;
-
     display: flex;
     align-items: center;
     justify-content: center;

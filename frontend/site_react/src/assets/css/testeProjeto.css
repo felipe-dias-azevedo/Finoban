@@ -1,6 +1,6 @@
 .box-card-teste {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
     align-items: center;
     background-color: var(--braco);
     color: var(--preto-terciario);
@@ -11,9 +11,18 @@
     text-align: center;
 }
 
+.div-grafico-teste{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grafico-torta-porcentagem {
-    width: 10%;
+    width: 100px;
     height: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-card-teste {
@@ -28,7 +37,7 @@
 
 .titulo-teste-projeto {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
     align-items: center;
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
