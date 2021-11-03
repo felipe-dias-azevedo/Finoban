@@ -112,3 +112,6 @@
 00FINANCIAMENTO24-10-2021 22:53:2701
 02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
 010000000001
+00FINANCIAMENTO29-10-2021 17:24:4601
+02 Banco Banco TesteCliente Teste                                                                                  3000000Regiao Teste        15
+010000000001

@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.infraestrutura.helpers;
 
-import javax.xml.bind.DatatypeConverter;
+import java.nio.file.attribute.FileTime;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -25,12 +25,20 @@ public class DateHelper {
         return Date.from(Instant.from(DateTimeFormatter.ISO_DATE_TIME.parse(date)));
     }
 
+    public static Date fileTimeToDate(FileTime fileTime) {
+        return Date.from(fileTime.toInstant());
+    }
+
     public static Date obterDataAgoraUTC() {
         return Date.from(LocalDateTime.now(ZoneOffset.UTC).toInstant(ZoneOffset.UTC));
     }
 
     public static String obterDataAgoraPadraoISO8601() {
         return converterDataPadraoISO8601(obterDataAgoraUTC());
+    }
+
+    public static String converterDataPadraoISO8601(FileTime fileTime) {
+        return converterDataPadraoISO8601(fileTimeToDate(fileTime));
     }
 
     public static String converterDataPadraoISO8601(LocalDateTime localDateTime) {

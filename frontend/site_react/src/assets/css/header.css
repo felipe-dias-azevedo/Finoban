@@ -2,6 +2,7 @@ header .topheader {
     background-color: var(--cinza-claro);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 1rem 0;
 }
@@ -10,7 +11,6 @@ header .topheader-logo {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 50%;
     padding-left: 5%;
 }
 
@@ -29,7 +29,6 @@ header .topheader-options {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 50%;
     padding-right: 5%;
     font-size: 15px;
 }
@@ -98,6 +97,10 @@ header .topheader .links {
     bottom: 0;
     color: var(--verde);
     margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header .topheader .links li {

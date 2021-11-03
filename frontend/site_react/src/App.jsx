@@ -21,6 +21,8 @@ import './assets/css/esqueci-minha-senha.css'
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/redefinir-senha.css';
 import './assets/css/pagina-nao-existe.css'
+import './assets/css/testeProjeto.css'
+import './assets/css/testesArquivo.css'
 
 export default function App() {
 

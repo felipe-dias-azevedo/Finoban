@@ -4,12 +4,13 @@ import com.bandtec.br.finoban.dominio.TestReport;
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TestReportAdapter {
 
-    public static List<TestReportDTO> testReportsAccesstoTransfer(List<TestReportDAO> testReports)
+    public static List<TestReportDTO> testReportsAccessToTransfer(List<TestReportDAO> testReports)
     {
         return testReports.stream()
                 .map(TestReportAdapter::testReportDAOToDTO)
@@ -38,4 +39,28 @@ public class TestReportAdapter {
         testReport.setDataInsercao(dataInsercao);
         return testReport;
     }
+
+    public static String[] classNameSplit(String className)
+    {
+        return className.split("\\.");
+    }
+
+    public static String classNameHandle(String className)
+    {
+        String[] classes = classNameSplit(className);
+
+        if (classes.length <= 1) {
+            return "";
+        }
+        return Arrays.stream(classes)
+                .filter(c -> c.contains("Test"))
+                .findFirst()
+                .map(val -> val.replace("Test", ""))
+                .orElse("");
+    }
+
+//    public static TestReportAppsDTO testReportToApps(TestReportDTO testReport)
+//    {
+//
+//    }
 }

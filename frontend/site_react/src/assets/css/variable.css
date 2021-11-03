@@ -11,6 +11,8 @@
     --texto-base: #1F1F1F;
     --shadow: rgba(178,178,178,0.45);
     --taxa-texto-forte: rgb(43, 41, 41);
+    --botao-passou: #64AE6C;
+    --botao-falhou: #DA5C5C;
 }
 
 .dark-mode {
@@ -24,5 +26,7 @@
     --branco: #353535;
     --texto-verde-branco: #EBECEC;
     --shadow: rgb(48, 48, 48);
-    --taxa-texto-forte: #c2c2c2;;
+    --taxa-texto-forte: #c2c2c2;
+    --botao-passou: #64AE6C;
+    --botao-falhou: #DA5C5C;
 } 
