@@ -92,6 +92,7 @@ const Form = () => {
 						className={`input ${errors.email && "is-danger"}`}
 						type="text"
 						name="email"
+						id="email"
 						onChange={handleChange}
 						value={values.email || ""}
 						onKeyPress={(e) => handler(e)}
@@ -106,6 +107,7 @@ const Form = () => {
 						className={`input ${errors.password && "is-danger"}`}
 						type="password"
 						name="password"
+						id="password"
 						onChange={handleChange}
 						value={values.password || ""}
 						onKeyPress={(e) => handler(e)}
@@ -133,7 +135,8 @@ const Form = () => {
 				</div>
 
 				<div className="button-holder-sign-in-up">
-					<button type="submit">Entrar</button>
+					<button type="submit"
+					id="submit">Entrar</button>
 				</div>
 			</form>
 		</>
