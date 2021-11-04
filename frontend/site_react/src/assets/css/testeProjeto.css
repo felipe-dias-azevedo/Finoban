@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
     align-items: center;
-    background-color: var(--braco);
+    background-color: var(--branco);
     color: var(--preto-terciario);
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
@@ -23,13 +23,13 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    color: var(--verde);
 }
 
 .btn-card-teste {
     /* background-color: var(--botao-passou); */
     color: var(--branco);
     border-radius: 3px;
-    cursor: pointer;
     padding: 8px 16px 8px 16px;
     display:flex;
     justify-content: center;
@@ -46,6 +46,6 @@
 }
 
 .nome-projeto-card-teste {
-    font-weight: bold;
+    cursor: pointer;
     color: var(--verde);
 }

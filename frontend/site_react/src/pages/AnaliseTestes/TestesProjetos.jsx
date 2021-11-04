@@ -6,13 +6,24 @@ import { useState, useEffect } from "react";
 
 function TestesProjetos() {
 	const [responseProjectTest, setResponseProjectTests] = useState([]);
-
+	const mockResponse = [
+		{
+			dataExecucao: "2021-10-29T20:24Z",
+			duracaoExecucao: 50.74,
+			nomeAplicacao: "API Finoban",
+			porcentagemSucesso: 0.93,
+			quantidadeTestes: 55,
+			statusGeral: "PASSOU"
+		}
+	]
+	
 	const getTestes = async () => {
 		try {
 			const response = await api.get("/tests/apps");
-			console.log(response);
+			console.log({ responseTesteProjeto: response });
 			setResponseProjectTests(response.data);
 		} catch (error) {
+			setResponseProjectTests(mockResponse);
 			console.log(error);
 		}
 	};
