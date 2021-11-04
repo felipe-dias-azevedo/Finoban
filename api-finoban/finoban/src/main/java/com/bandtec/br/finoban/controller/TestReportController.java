@@ -59,7 +59,12 @@ public class TestReportController {
     @GetMapping("/dashboard")
     public ResponseEntity<TestsDashboardDTO> getTestsDashboard()
     {
-        return ResponseEntity.status(503).build();
+        var testes = testReportService.obterTestes();
+        TestsDashboardDTO dataDashboard = testReportService.obterTestesPorAnalytics(testes);
+        if (dataDashboard == null) {
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(dataDashboard);
     }
 
     @PostMapping
