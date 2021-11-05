@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 import Chart from "react-google-charts";
 
@@ -18,10 +19,12 @@ function BankCard(props) {
 	return (
 		<>
 			<div className="box-card-teste shadow">
-				<span className="nome-projeto-card-teste">
-					{" "}
-					{props.nome_aplicacao}{" "}
-				</span>
+				<Link to="/testes/arquivos">
+					<span className="nome-projeto-card-teste">
+						{" "}
+						{props.nome_aplicacao}{" "}
+					</span>
+				</Link>
 				<div
 					className="btn-card-teste"
 					style={{ backgroundColor: btnBackgroundColor }}
@@ -38,15 +41,18 @@ function BankCard(props) {
 					{" "}
 					{props.duracao_execucao}s{" "}
 				</span>
-				<div className="grafico-torta-porcentagem">
+				<div className="div-grafico-teste">
+					<span className="text-porcentagem-sucesso">{props.porcentagem_sucesso * 100}%</span>
 					<Chart
 						width={"100px"}
 						height={"100px"}
 						chartType="PieChart"
-						loader={<div>Carregando o gráfico</div>}
+						loader={<div className="grafico-torta-porcentagem">Carregando o gráfico</div>}
 						data={dataChart}
 						options={{
-							tooltip: { textStyle: { fontSize: 1 } },
+							tooltip : {
+								trigger: "none"
+							  },
 							legend: "none",
 							pieSliceText: "none",
 							pieHole: 0.7,

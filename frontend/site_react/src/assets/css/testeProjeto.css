@@ -1,8 +1,8 @@
 .box-card-teste {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
     align-items: center;
-    background-color: var(--braco);
+    background-color: var(--branco);
     color: var(--preto-terciario);
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
@@ -11,16 +11,30 @@
     text-align: center;
 }
 
+.div-grafico-teste{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grafico-torta-porcentagem {
-    width: 10%;
+    width: 100px;
     height: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--verde);
+}
+
+.text-porcentagem-sucesso {
+    position: absolute;
+    z-index: 1000;
+    font-size: 0.8rem;
 }
 
 .btn-card-teste {
-    /* background-color: var(--botao-passou); */
     color: var(--branco);
     border-radius: 3px;
-    cursor: pointer;
     padding: 8px 16px 8px 16px;
     display:flex;
     justify-content: center;
@@ -28,7 +42,7 @@
 
 .titulo-teste-projeto {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
     align-items: center;
     margin: 5% 5% 4rem 5%;
     padding: 0px 70px;
@@ -37,6 +51,6 @@
 }
 
 .nome-projeto-card-teste {
-    font-weight: bold;
+    cursor: pointer;
     color: var(--verde);
 }

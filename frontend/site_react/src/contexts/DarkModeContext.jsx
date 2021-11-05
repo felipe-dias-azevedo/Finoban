@@ -12,7 +12,9 @@ export function DarkModeProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        document.querySelector('html').className = isDarkEnable ? 'dark-mode' : 'light-mode';
+        document.querySelector('html').className = isDarkEnable ? 'dark-mode' : 'light-mode';   
+        document.querySelector(".sun-logo").classList.toggle("animate-sun");
+        document.querySelector(".moon-logo").classList.toggle("animate-moon");
     }, [isDarkEnable]);
     
     const changeDarkModeState = () => {

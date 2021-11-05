@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { WiMoonAltWaningGibbous1 } from "react-icons/wi";
+import { HiSun } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import LogoFinobanLight from "../assets/images/logo-finoban-light.svg";
 import LogoFinobanDark from "../assets/images/logo-finoban-dark.svg";
 import { DarkModeContext } from "../contexts/DarkModeContext";
@@ -107,11 +108,22 @@ function Header() {
 						</button>
 					)}
 
-					<WiMoonAltWaningGibbous1
-						onClick={changeDarkModeState}
-						id="dark-icon"
-						className="dark-icon"
-					/>
+					<div className="div-logo-dark-mode">
+						<div className="sun sun-logo">
+							<HiSun
+								className="sun-icon"
+								onClick={changeDarkModeState}>
+							</HiSun>
+						</div>
+
+						<div className="moon moon-logo">
+							<HiMoon
+								className="moon-icon"
+								onClick={changeDarkModeState}>
+							</HiMoon>
+						</div>
+
+					</div>
 				</div>
 			</div>
 			<div className="subheader shadow-header">

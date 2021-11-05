@@ -6,6 +6,8 @@ import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
 import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
+import com.bandtec.br.finoban.dominio.resposta.TestsDashboardDTO;
+import com.bandtec.br.finoban.infraestrutura.adapters.TestsDashboardAdapter;
 import com.bandtec.br.finoban.infraestrutura.helpers.*;
 import com.bandtec.br.finoban.infraestrutura.adapters.TestReportAdapter;
 
@@ -175,5 +177,10 @@ public class TestReportService {
         }
 
         return testesAppEspecifico;
+    }
+
+    public TestsDashboardDTO obterTestesPorAnalytics(List<TestReportDTO> testes)
+    {
+        return new TestsDashboardAdapter(testes).testsToDashboardDTO();
     }
 }

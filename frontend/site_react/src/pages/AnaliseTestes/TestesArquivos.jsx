@@ -55,7 +55,7 @@ function TestesArquivos() {
 		},
 		{
 			nomeClasseTeste: "RegiaoController",
-			porcentagemSucesso: 1.0,
+			porcentagemSucesso: 0.30,
 			quantidadeFuncoes: 9,
 			duracaoExecucao: 0.22,
 		},
@@ -67,7 +67,7 @@ function TestesArquivos() {
 		},
 		{
 			nomeClasseTeste: "GravaCsvController",
-			porcentagemSucesso: 1.0,
+			porcentagemSucesso: 0.5,
 			quantidadeFuncoes: 1,
 			duracaoExecucao: 0.03,
 		},
@@ -91,7 +91,7 @@ function TestesArquivos() {
 		},
 		{
 			nomeClasseTeste: "FinobanApplications",
-			porcentagemSucesso: 1.0,
+			porcentagemSucesso: 0.1,
 			quantidadeFuncoes: 1,
 			duracaoExecucao: 0.02,
 		},
@@ -100,7 +100,6 @@ function TestesArquivos() {
 	return (
 		<>
 			<Header />
-			<Container>
 				<div className="table-header">
 					<h1>Arquivo</h1>
 					<h1>Porcent. de sucesso</h1>
@@ -116,9 +115,9 @@ function TestesArquivos() {
 							quantidadeFuncoes={test.quantidadeFuncoes}
 							tempoExecucao={test.duracaoExecucao}
 						/>
+						
 					))}
 				</div>
-			</Container>
 			<Footer />
 		</>
 	);
