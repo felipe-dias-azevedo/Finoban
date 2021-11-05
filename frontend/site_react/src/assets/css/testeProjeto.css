@@ -26,8 +26,13 @@
     color: var(--verde);
 }
 
+.text-porcentagem-sucesso {
+    position: absolute;
+    z-index: 1000;
+    font-size: 0.8rem;
+}
+
 .btn-card-teste {
-    /* background-color: var(--botao-passou); */
     color: var(--branco);
     border-radius: 3px;
     padding: 8px 16px 8px 16px;

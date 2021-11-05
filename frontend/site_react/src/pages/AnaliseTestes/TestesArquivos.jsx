@@ -100,7 +100,6 @@ function TestesArquivos() {
 	return (
 		<>
 			<Header />
-			<Container>
 				<div className="table-header">
 					<h1>Arquivo</h1>
 					<h1>Porcent. de sucesso</h1>
@@ -119,7 +118,6 @@ function TestesArquivos() {
 						
 					))}
 				</div>
-			</Container>
 			<Footer />
 		</>
 	);

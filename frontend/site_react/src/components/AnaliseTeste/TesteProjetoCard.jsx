@@ -42,6 +42,7 @@ function BankCard(props) {
 					{props.duracao_execucao}s{" "}
 				</span>
 				<div className="div-grafico-teste">
+					<span className="text-porcentagem-sucesso">{props.porcentagem_sucesso * 100}%</span>
 					<Chart
 						width={"100px"}
 						height={"100px"}
@@ -49,7 +50,9 @@ function BankCard(props) {
 						loader={<div className="grafico-torta-porcentagem">Carregando o gráfico</div>}
 						data={dataChart}
 						options={{
-							tooltip: { textStyle: { fontSize: 1 } },
+							tooltip : {
+								trigger: "none"
+							  },
 							legend: "none",
 							pieSliceText: "none",
 							pieHole: 0.7,
