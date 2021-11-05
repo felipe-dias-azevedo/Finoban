@@ -4,7 +4,7 @@ import com.bandtec.br.finoban.builder.RegiaoBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Regiao;
 import com.bandtec.br.finoban.dominio.exceptions.RegiaoNaoEncontradaException;
 import com.bandtec.br.finoban.repository.database.RegiaoRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -35,7 +35,7 @@ class RegiaoControllerTest {
     void getRegioesOk() {
         List<Regiao> acessoList = Arrays.asList(new Regiao(), new Regiao());
         Mockito.when(regiaoRepository.findAllRegiaoLatest()).thenReturn(acessoList);
-        ResponseEntity<ResponseGeneric<List<Regiao>>> resposta = regiaoController.getRegioes();
+        ResponseEntity<SingleResponse<List<Regiao>>> resposta = regiaoController.getRegioes();
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(2, resposta.getBody().getData().size());
     }
@@ -55,7 +55,7 @@ class RegiaoControllerTest {
         RegiaoBuilder regiaoBuilder = new RegiaoBuilder();
         Regiao regiao = regiaoBuilder.criarRegiao().getRegiao();
         Mockito.when(regiaoRepository.findById(1)).thenReturn(Optional.of(regiao));
-        ResponseEntity<ResponseGeneric<Regiao>> respota = regiaoController.getRegiao(1);
+        ResponseEntity<SingleResponse<Regiao>> respota = regiaoController.getRegiao(1);
         assertEquals(200, respota.getStatusCodeValue());
         assertEquals(regiao.getValorRegiao(), respota.getBody().getData().getValorRegiao());
     }
@@ -99,7 +99,7 @@ class RegiaoControllerTest {
         Regiao regiao = regiaoBuilder.criarRegiao().getRegiao();
         Mockito.when(regiaoRepository.existsById(regiao.getIdRegiao())).thenReturn(true);
         Mockito.when(regiaoRepository.findById(regiao.getIdRegiao())).thenReturn(Optional.of(regiao));
-        ResponseEntity<ResponseGeneric<Regiao>> resposta = regiaoController.atualizarRegiao(regiao);
+        ResponseEntity<SingleResponse<Regiao>> resposta = regiaoController.atualizarRegiao(regiao);
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals("Interlagos", resposta.getBody().getData().getDescricaoRegiao());
     }

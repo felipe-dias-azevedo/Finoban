@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.entidades.Acesso;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.repository.*;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -20,7 +20,7 @@ public class AcessoController {
 
     @GetMapping("/{id}")
     public ResponseEntity getAcesso(@PathVariable int id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric(gestaoUsuariosRepository.resgatarAcessoPeloId(id)));
+        return ResponseEntity.status(200).body(new SingleResponse(gestaoUsuariosRepository.resgatarAcessoPeloId(id)));
     }
 
     @GetMapping
@@ -29,7 +29,7 @@ public class AcessoController {
         if (acessoList.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(acessoList));
+        return ResponseEntity.status(200).body(new SingleResponse(acessoList));
     }
 
     @ApiResponses(value = {

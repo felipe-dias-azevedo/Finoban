@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import com.bandtec.br.finoban.service.core.FinanciamentoService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -34,7 +34,7 @@ public class FinanciamentoApisExternasController {
     })
     @PostMapping("/financiamento")
     public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicao novaRequisicao){
-        return ResponseEntity.status(200).body(new ResponseGeneric(financiamentoService.RealizarRequisicaoApisExternas(novaRequisicao)));
+        return ResponseEntity.status(200).body(new SingleResponse(financiamentoService.RealizarRequisicaoApisExternas(novaRequisicao)));
     }
 
 }

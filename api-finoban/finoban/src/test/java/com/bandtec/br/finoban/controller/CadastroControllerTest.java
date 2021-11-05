@@ -5,7 +5,7 @@ import com.bandtec.br.finoban.builder.CadastroBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.*;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
 import com.bandtec.br.finoban.repository.database.AcessoRepository;
 import com.bandtec.br.finoban.repository.database.AvaliacaoRepository;
@@ -54,7 +54,7 @@ class CadastroControllerTest {
     void listarUsuarios() {
         Iterable<Usuario> usuarioLista = Arrays.asList(new Usuario(), new Usuario(), new Usuario());
         Mockito.when(cadastroRepository.findAll()).thenReturn(usuarioLista);
-        ResponseEntity<ResponseGeneric<List<Usuario>>> resposta = cadastroController.listarUsuarios();
+        ResponseEntity<SingleResponse<List<Usuario>>> resposta = cadastroController.listarUsuarios();
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().getData().size());
     }
@@ -73,7 +73,7 @@ class CadastroControllerTest {
         CadastroBuilder cadastroBuilder = new CadastroBuilder();
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.of(usuario));
-        ResponseEntity<ResponseGeneric<UsuarioRespostaSimples>> resposta = cadastroController.getUsuario(1);
+        ResponseEntity<SingleResponse<UsuarioRespostaSimples>> resposta = cadastroController.getUsuario(1);
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(usuario.getEmail(), resposta.getBody().getData().getEmail());
     }
@@ -148,7 +148,7 @@ class CadastroControllerTest {
         List<Avaliacao> avaliacaos = Arrays.asList(new Avaliacao(), new Avaliacao());
         Mockito.when(avaliacaoRepository.findAll()).thenReturn(avaliacaos);
         Mockito.when(avaliacaoRepository.findAllByIdAvaliacao()).thenReturn(avaliacaos);
-        ResponseEntity<ResponseGeneric<List<Avaliacao>>> resposta = cadastroController.getAvaliacoes();
+        ResponseEntity<SingleResponse<List<Avaliacao>>> resposta = cadastroController.getAvaliacoes();
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(2, resposta.getBody().getData().size());
     }
@@ -170,7 +170,7 @@ class CadastroControllerTest {
         Avaliacao avaliacao = avaliacaoBuilder.criarAvaliacao().setAvaliacaoNaoGostou().setAvaliacaoSemFeedback()
                 .getAvaliacao();
         Mockito.when(avaliacaoRepository.findById(1)).thenReturn(Optional.of(avaliacao));
-        ResponseEntity<ResponseGeneric<Avaliacao>> resposta = cadastroController.getAvaliacao(1);
+        ResponseEntity<SingleResponse<Avaliacao>> resposta = cadastroController.getAvaliacao(1);
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(avaliacao.getAvalPositivo(), resposta.getBody().getData().getAvalPositivo());
     }

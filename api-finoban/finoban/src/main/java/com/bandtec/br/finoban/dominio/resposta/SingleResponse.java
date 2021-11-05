@@ -4,19 +4,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
 
-public class ResponseGeneric<T> {
+public class SingleResponse<T> {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<T> messages;
 
-    public ResponseGeneric(T data, List<T> messages) {
+    public SingleResponse(T data, List<T> messages) {
         this.data = data;
         this.messages = messages;
     }
 
-    public ResponseGeneric(T data) {
+    public SingleResponse(T data) {
         this.data = data;
     }
 

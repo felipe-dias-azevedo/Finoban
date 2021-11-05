@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.entidades.Regiao;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.service.core.GestaoRegioesService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -41,7 +41,7 @@ public class RegiaoController {
         if (regioes.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(regioes));
+        return ResponseEntity.status(200).body(new SingleResponse(regioes));
     }
 
     @ApiResponses(value = {
@@ -57,7 +57,7 @@ public class RegiaoController {
     })
     @GetMapping("/{id}")
     public ResponseEntity getRegiao(@PathVariable Integer id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoRegioesService.resgatarRegiaoPeloId(id)));
+        return ResponseEntity.status(200).body(new SingleResponse<>(gestaoRegioesService.resgatarRegiaoPeloId(id)));
     }
 
 
@@ -93,7 +93,7 @@ public class RegiaoController {
             @ApiResponse(
                     responseCode = "200",
                     description = "Região atualizada com sucesso",
-                    content = @Content(schema = @Schema(implementation = ResponseGeneric.class))
+                    content = @Content(schema = @Schema(implementation = SingleResponse.class))
             ),
             @ApiResponse(
                     responseCode = "404",
@@ -102,6 +102,6 @@ public class RegiaoController {
     })
     @PutMapping
     public ResponseEntity atualizarRegiao(@RequestBody Regiao regiao) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoRegioesService.atualizarRegiao(regiao)));
+        return ResponseEntity.status(200).body(new SingleResponse<>(gestaoRegioesService.atualizarRegiao(regiao)));
     }
 }

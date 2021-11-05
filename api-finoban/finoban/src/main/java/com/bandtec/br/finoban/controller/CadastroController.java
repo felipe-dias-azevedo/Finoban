@@ -5,20 +5,16 @@ import com.bandtec.br.finoban.dominio.exceptions.EmailNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.RedefinicaoSenhaModel;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.RedefinirSenhaModel;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.UsuarioRespostaSimples;
 import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.service.usuarios.GestaoAvaliacoesService;
 import com.bandtec.br.finoban.service.usuarios.GestaoUsuariosService;
-import com.sun.net.httpserver.HttpContext;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,12 +52,12 @@ public class CadastroController {
             return ResponseEntity.status(204).build();
 
         return ResponseEntity.status(200)
-                .body(new ResponseGeneric<>(UsuarioRespostaSimples.converterListaUsuarioParaUsuarioSimples(usuarioList)));
+                .body(new SingleResponse<>(UsuarioRespostaSimples.converterListaUsuarioParaUsuarioSimples(usuarioList)));
     }
 
     @GetMapping("/usuarios/{id}")
     public ResponseEntity getUsuario(@PathVariable Integer id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(new UsuarioRespostaSimples(gestaoUsuariosService.resgatarUsuarioPeloId(id))));
+        return ResponseEntity.status(200).body(new SingleResponse<>(new UsuarioRespostaSimples(gestaoUsuariosService.resgatarUsuarioPeloId(id))));
     }
 
     @DeleteMapping("/usuarios/{id}")
@@ -91,12 +87,12 @@ public class CadastroController {
         if (avaliacoes.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(avaliacoes));
+        return ResponseEntity.status(200).body(new SingleResponse(avaliacoes));
     }
 
     @GetMapping("/avaliacoes/{id}")
     public ResponseEntity getAvaliacao(@PathVariable int id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric(gestaoAvaliacoesService.resgatarAvaliacaoPeloId(id)));
+        return ResponseEntity.status(200).body(new SingleResponse(gestaoAvaliacoesService.resgatarAvaliacaoPeloId(id)));
     }
 
     @DeleteMapping("/avaliacoes/{id}")
@@ -113,7 +109,7 @@ public class CadastroController {
 
     @GetMapping("/usuarios/redefinir-senha/verificar/{jwt}")
     public ResponseEntity verificarRedefinicaoSenha(@PathVariable String jwt) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(gestaoUsuariosService.verificarRedeficicaoSenha(jwt)));
+        return ResponseEntity.status(200).body(new SingleResponse<>(gestaoUsuariosService.verificarRedeficicaoSenha(jwt)));
     }
 
     @PostMapping("/usuarios/redefinir-senha")
@@ -123,7 +119,7 @@ public class CadastroController {
             throw new EmailNaoEncontradoException();
 
         usuario.setSenha(redefinirSenhaModel.getNovaSenha());
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(new UsuarioRespostaSimples(gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel))));
+        return ResponseEntity.status(200).body(new SingleResponse<>(new UsuarioRespostaSimples(gestaoUsuariosService.atualizarDadosCadastrais(usuario, redefinirSenhaModel))));
     }
 
 }
