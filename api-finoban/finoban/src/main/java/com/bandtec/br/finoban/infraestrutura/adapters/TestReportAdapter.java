@@ -3,6 +3,7 @@ package com.bandtec.br.finoban.infraestrutura.adapters;
 import com.bandtec.br.finoban.dominio.TestReport;
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
+import com.bandtec.br.finoban.infraestrutura.helpers.TextHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ public class TestReportAdapter {
     
     public static TestReportDTO testReportDAOToDTO(TestReportDAO testReportDAO) {
         TestReportDTO testReportDTO = new TestReportDTO();
-        testReportDTO.setNomeClasse(testReportDAO.getNomeClasse());
+        testReportDTO.setNomePackage(testReportDAO.getNomeClasse());
         testReportDTO.setNomeTeste(testReportDAO.getNomeTeste());
         testReportDTO.setStatus(testReportDAO.getStatus());
         testReportDTO.setEstagio(testReportDAO.getEstagio());
@@ -45,6 +46,16 @@ public class TestReportAdapter {
         return className.split("\\.");
     }
 
+    public static String domainNameHandle(String className)
+    {
+        String[] classes = classNameSplit(className);
+
+        if (classes.length <= 1 || classes[0] == null || classes[0].contains("Test")) {
+            return "";
+        }
+        return TextHelper.capitalize(classes[0]);
+    }
+
     public static String classNameHandle(String className)
     {
         String[] classes = classNameSplit(className);
@@ -58,9 +69,4 @@ public class TestReportAdapter {
                 .map(val -> val.replace("Test", ""))
                 .orElse("");
     }
-
-//    public static TestReportAppsDTO testReportToApps(TestReportDTO testReport)
-//    {
-//
-//    }
 }

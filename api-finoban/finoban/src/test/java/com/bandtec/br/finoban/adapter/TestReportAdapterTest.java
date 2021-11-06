@@ -8,6 +8,36 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestReportAdapterTest {
 
     @Test
+    void domainNameHandleSucessoController() {
+        assertEquals("Controller", TestReportAdapter.domainNameHandle("controller.AcessoControllerTest.deleteAcessoNotOK"));
+    }
+
+    @Test
+    void domainNameHandleSucessoService() {
+        assertEquals("Service", TestReportAdapter.domainNameHandle("service.TokenServiceTest.decodeTokenNotOK"));
+    }
+
+    @Test
+    void domainNameHandleSucessoHelper() {
+        assertEquals("Helper", TestReportAdapter.domainNameHandle("helper.DateHelperTest.converterDataParaPadraoISOFuncionaDate"));
+    }
+
+    @Test
+    void domainNameHandleSucessoAdapter() {
+        assertEquals("Adapter", TestReportAdapter.domainNameHandle("adapter.blablabla.blablablabla"));
+    }
+
+    @Test
+    void domainNameHandleSucessoSemDiretorioAntes() {
+        assertEquals("", TestReportAdapter.domainNameHandle("FinobanApplicationTests.contextLoads"));
+    }
+
+    @Test
+    void domainNameHandleFalhou() {
+        assertEquals("", TestReportAdapter.domainNameHandle("dosajkndsanjdsasnkjdnkjwandkjwanjkdawjnkdwa"));
+    }
+
+    @Test
     void classNameHandleSucesso() {
         assertEquals("AcessoController", TestReportAdapter.classNameHandle("controller.AcessoControllerTest.deleteAcessoNotOK"));
     }

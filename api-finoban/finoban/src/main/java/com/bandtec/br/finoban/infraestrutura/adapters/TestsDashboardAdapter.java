@@ -1,25 +1,32 @@
 package com.bandtec.br.finoban.infraestrutura.adapters;
 
 import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
+import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
+import com.bandtec.br.finoban.dominio.resposta.TestReportDomainSpecificDTO;
 import com.bandtec.br.finoban.dominio.resposta.TestsDashboardDTO;
 import com.bandtec.br.finoban.infraestrutura.helpers.NumberHelper;
+import com.bandtec.br.finoban.service.TestReportService;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class TestsDashboardAdapter {
 
     private final List<TestReportDTO> testes;
+    private final TestReportService testService;
 
     public TestsDashboardAdapter(List<TestReportDTO> testes) {
+        this.testService = new TestReportService();
         this.testes = testes;
     }
 
     public TestsDashboardDTO testsToDashboardDTO()
     {
         TestsDashboardDTO dashboardDTO = new TestsDashboardDTO();
-        dashboardDTO.setPorcentagemSucessoPorFuncoes(this.testsToPorcentagemSucessoPorFuncoes());
+        dashboardDTO.setPorcentagemSucessoPorClasse(this.testsToPorcentagemSucessoPorClasse());
         dashboardDTO.setPorcentagemGeralSucesso(this.testsToPorcentagemGeralSucesso());
         dashboardDTO.setQuantidadeTestes(this.testsToQuantidadeTestes());
         dashboardDTO.setUltimaDataExecucao(this.testsToUltimaDataExecucao());
@@ -29,11 +36,6 @@ public class TestsDashboardAdapter {
         dashboardDTO.setTempoMedioExecucaoPorDominio(this.testsToTempoMedioExecucaoPorDominio());
         dashboardDTO.setTempoMedioExecucaoPorClasse(this.testsToTempoMedioExecucaoPorClasse());
         return dashboardDTO;
-    }
-
-    public Object testsToPorcentagemSucessoPorFuncoes()
-    {
-        return null;
     }
 
     public Double testsToPorcentagemGeralSucesso()
@@ -78,18 +80,67 @@ public class TestsDashboardAdapter {
                 : TestStatusGeralEnum.PASSOU;
     }
 
-    public Object testsToPorcentagemSucessoPorDominio()
+    public List<List<Object>> testsToPorcentagemSucessoPorDominio()
     {
-        return null;
+        List<TestReportDomainSpecificDTO> testsDomainSpecific = this.testService.obterTestesPorDominioEspecifico(this.testes);
+        List<List<Object>> sucessoPorDominio = new ArrayList<>();
+
+        sucessoPorDominio.add(List.of("Nome do domínio", "Porcentagem de sucesso"));
+
+        testsDomainSpecific.stream()
+                .<List<Object>>map(appSpecific -> Arrays.asList(
+                        appSpecific.getNomeDominioTeste(),
+                        appSpecific.getPorcentagemSucesso() * 100))
+                .forEach(sucessoPorDominio::add);
+
+        return sucessoPorDominio;
     }
 
-    public Object testsToTempoMedioExecucaoPorDominio()
+    public List<List<Object>> testsToTempoMedioExecucaoPorDominio()
     {
-        return null;
+        List<TestReportDomainSpecificDTO> testsDomainSpecific = this.testService.obterTestesPorDominioEspecifico(this.testes);
+        List<List<Object>> execucaoPorDominio = new ArrayList<>();
+
+        execucaoPorDominio.add(List.of("Nome do domínio", "Duração da execução"));
+
+        testsDomainSpecific.stream()
+                .<List<Object>>map(appSpecific -> Arrays.asList(
+                        appSpecific.getNomeDominioTeste(),
+                        appSpecific.getDuracaoExecucao()))
+                .forEach(execucaoPorDominio::add);
+
+        return execucaoPorDominio;
     }
 
-    public Object testsToTempoMedioExecucaoPorClasse()
+    public List<List<Object>> testsToPorcentagemSucessoPorClasse()
     {
-        return null;
+        List<TestReportAppSpecificDTO> testsAppSpecific = this.testService.obterTestesPorAppEspecifico(this.testes);
+        List<List<Object>> sucessoPorClasse = new ArrayList<>();
+
+        sucessoPorClasse.add(List.of("Nome da classe", "Porcentagem de sucesso"));
+
+        testsAppSpecific.stream()
+                .<List<Object>>map(appSpecific -> Arrays.asList(
+                        appSpecific.getNomeClasseTeste(),
+                        appSpecific.getPorcentagemSucesso() * 100))
+                .forEach(sucessoPorClasse::add);
+
+        return sucessoPorClasse;
+    }
+
+    public List<List<Object>> testsToTempoMedioExecucaoPorClasse()
+    {
+        List<TestReportAppSpecificDTO> testsAppSpecific = this.testService.obterTestesPorAppEspecifico(this.testes);
+        List<List<Object>> execucaoPorClasse = new ArrayList<>();
+
+        execucaoPorClasse.add(List.of("Nome da classe", "Duração da execução"));
+
+        testsAppSpecific.stream()
+                .<List<Object>>map(appSpecific -> Arrays.asList(
+                        appSpecific.getNomeClasseTeste(),
+                        appSpecific.getDuracaoExecucao()))
+                .forEach(execucaoPorClasse::add);
+
+        return execucaoPorClasse;
     }
 }
