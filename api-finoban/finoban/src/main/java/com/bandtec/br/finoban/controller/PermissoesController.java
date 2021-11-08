@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.entidades.Permissoes;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.repository.PermissoesInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class PermissoesController {
         if (permissoesList.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(permissoesList));
+        return ResponseEntity.status(200).body(new SingleResponse<>(permissoesList));
     }
 
     @PostMapping

@@ -3,10 +3,7 @@ package com.bandtec.br.finoban.service;
 import com.bandtec.br.finoban.dominio.DAO.TestReportDAO;
 import com.bandtec.br.finoban.dominio.TestReport;
 import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
-import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestsDashboardDTO;
+import com.bandtec.br.finoban.dominio.resposta.*;
 import com.bandtec.br.finoban.infraestrutura.adapters.TestsDashboardAdapter;
 import com.bandtec.br.finoban.infraestrutura.helpers.*;
 import com.bandtec.br.finoban.infraestrutura.adapters.TestReportAdapter;
@@ -148,7 +145,7 @@ public class TestReportService {
 
         for (TestReportDTO test : testes)
         {
-            actualClass = TestReportAdapter.classNameHandle(test.getNomeClasse());
+            actualClass = TestReportAdapter.classNameHandle(test.getNomePackage());
             if (!classesInserted.contains(actualClass))
             {
                 TestReportAppSpecificDTO appSpecific = new TestReportAppSpecificDTO();
@@ -159,7 +156,7 @@ public class TestReportService {
                 classesInserted.add(actualClass);
                 for (TestReportDTO t : testes)
                 {
-                    if (actualClass.equals(TestReportAdapter.classNameHandle(t.getNomeClasse())))
+                    if (actualClass.equals(TestReportAdapter.classNameHandle(t.getNomePackage())))
                     {
                         appSpecific.setQuantidadeFuncoes(appSpecific.getQuantidadeFuncoes() + 1);
                         appSpecific.setPorcentagemSucesso(
@@ -170,13 +167,51 @@ public class TestReportService {
                 }
                 appSpecific.setDuracaoExecucao(NumberHelper.round(appSpecific.getDuracaoExecucao(), 2));
                 appSpecific.setPorcentagemSucesso(NumberHelper.round(
-                                appSpecific.getPorcentagemSucesso() / appSpecific.getQuantidadeFuncoes(),
-                                2));
+                        appSpecific.getPorcentagemSucesso() / appSpecific.getQuantidadeFuncoes(),
+                        2));
                 testesAppEspecifico.add(appSpecific);
             }
         }
 
         return testesAppEspecifico;
+    }
+
+    public List<TestReportDomainSpecificDTO> obterTestesPorDominioEspecifico(List<TestReportDTO> testes)
+    {
+        var testsSpecificDomain = new ArrayList<TestReportDomainSpecificDTO>();
+        var domainsInserted = new ArrayList<String>();
+        String actualDomain;
+
+        for (TestReportDTO test : testes)
+        {
+            actualDomain = TestReportAdapter.domainNameHandle(test.getNomePackage());
+            if (!domainsInserted.contains(actualDomain) && !actualDomain.equals(""))
+            {
+                TestReportDomainSpecificDTO domainSpecific = new TestReportDomainSpecificDTO();
+                domainSpecific.setQuantidadeFuncoes(0);
+                domainSpecific.setDuracaoExecucao(0.0);
+                domainSpecific.setPorcentagemSucesso(0.0);
+                domainSpecific.setNomeDominioTeste(actualDomain);
+                domainsInserted.add(actualDomain);
+                for (TestReportDTO t : testes)
+                {
+                    if (actualDomain.equals(TestReportAdapter.domainNameHandle(t.getNomePackage())))
+                    {
+                        domainSpecific.setQuantidadeFuncoes(domainSpecific.getQuantidadeFuncoes() + 1);
+                        domainSpecific.setPorcentagemSucesso(
+                                domainSpecific.getPorcentagemSucesso() + (t.getStatus().equals("passed") ? 1 : 0));
+                        domainSpecific.setDuracaoExecucao(
+                                domainSpecific.getDuracaoExecucao() + (NumberHelper.valueOf(t.getDuracao()) / 100));
+                    }
+                }
+                domainSpecific.setDuracaoExecucao(NumberHelper.round(domainSpecific.getDuracaoExecucao(), 2));
+                domainSpecific.setPorcentagemSucesso(NumberHelper.round(
+                        domainSpecific.getPorcentagemSucesso() / domainSpecific.getQuantidadeFuncoes(),
+                        2));
+                testsSpecificDomain.add(domainSpecific);
+            }
+        }
+        return testsSpecificDomain;
     }
 
     public TestsDashboardDTO obterTestesPorAnalytics(List<TestReportDTO> testes)

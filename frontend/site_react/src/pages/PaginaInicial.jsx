@@ -281,7 +281,7 @@ const Form = () => {
 								)}
 							</div>
 							<div className="option-value-simulate">
-								<button className="bt-simular" required>
+								<button id="bt-simular" className="bt-simular" required>
 									Simular
 								</button>
 							</div>
@@ -292,10 +292,14 @@ const Form = () => {
 						<h3>Já sabe o valor do imóvel?</h3>
 						<section>
 							<button
+								
 								onClick={() => {
 									setSabeValorImovel(true);
 									setRespondeuBotao(true);
-								}}
+								
+								}
+							}
+							id="sim"
 							>
 								Sim
 							</button>
@@ -304,6 +308,8 @@ const Form = () => {
 									setSabeValorImovel(false);
 									setRespondeuBotao(true);
 								}}
+
+								id="nao"
 							>
 								Não
 							</button>

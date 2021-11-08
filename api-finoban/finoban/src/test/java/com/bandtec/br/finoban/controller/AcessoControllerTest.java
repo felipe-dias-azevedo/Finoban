@@ -8,7 +8,7 @@ import com.bandtec.br.finoban.repository.database.AcessoRepository;
 import com.bandtec.br.finoban.repository.GestaoAcessosRepository;
 import com.bandtec.br.finoban.repository.database.UsuarioRepository;
 import com.bandtec.br.finoban.repository.database.RegiaoRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -66,7 +66,7 @@ class AcessoControllerTest {
         acessoBuilder.criarAcesso().setBancoCifra().setPaginaSaidaHome().setStatusSaidaConfirmou();
         Mockito.when(acessoRepository.findById(1)).thenReturn(Optional.of(acessoBuilder.getAcesso()));
         Mockito.when(gestaoAcessosRepository.resgatarAcessoPeloId(1)).thenReturn(acessoBuilder.getAcesso());
-        ResponseEntity<ResponseGeneric<Acesso>> resposta = acessoController.getAcesso(1);
+        ResponseEntity<SingleResponse<Acesso>> resposta = acessoController.getAcesso(1);
         assertEquals(200, resposta.getStatusCodeValue());
 //        assertEquals("Teste Legal", resposta.getBody().getData().getFkCliente().getNome());
     }
@@ -99,7 +99,7 @@ class AcessoControllerTest {
         List<Acesso> acessoList = Arrays.asList(new Acesso(), new Acesso(), new Acesso());
         Mockito.when(acessoRepository.findAll()).thenReturn(acessoList);
         Mockito.when(gestaoAcessosRepository.resgatarTodosAcessos()).thenReturn(acessoList);
-        ResponseEntity<ResponseGeneric<List<Acesso>>> resposta = acessoController.getAcessos();
+        ResponseEntity<SingleResponse<List<Acesso>>> resposta = acessoController.getAcessos();
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().getData().size());
     }

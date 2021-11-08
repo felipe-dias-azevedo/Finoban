@@ -1,9 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.dominio.resposta.TestReportAppSpecificDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestReportAppsDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestReportDTO;
-import com.bandtec.br.finoban.dominio.resposta.TestsDashboardDTO;
+import com.bandtec.br.finoban.dominio.resposta.*;
 import com.bandtec.br.finoban.service.TestReportService;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
@@ -27,6 +24,17 @@ public class TestReportController {
     public ResponseEntity<List<TestReportDTO>> getTestsReports()
     {
         List<TestReportDTO> reports = testReportService.obterTestes();
+        if (reports.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(reports);
+    }
+
+    @GetMapping("/domains")
+    public ResponseEntity<List<TestReportDomainSpecificDTO>> getTestsDomains()
+    {
+        List<TestReportDomainSpecificDTO> reports =
+                testReportService.obterTestesPorDominioEspecifico(testReportService.obterTestes());
         if (reports.isEmpty()) {
             return ResponseEntity.status(204).build();
         }
@@ -70,6 +78,10 @@ public class TestReportController {
     @PostMapping
     public ResponseEntity<?> postRodarTests()
     {
+        /*
+         * TODO: Cenário em que o usuário solicita execução e armazena em uma lista o processo para checar se foi finalizado
+         * Se ainda não foi finalizado retornar STATUS 102, e assim que finalizar o processo, retirar o item da lista.
+         */
         ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
         service.submit(() -> {
             try {

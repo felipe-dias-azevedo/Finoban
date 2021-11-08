@@ -8,7 +8,7 @@ import com.bandtec.br.finoban.dominio.exceptions.EmailNaoEncontradoException;
 import com.bandtec.br.finoban.dominio.exceptions.SenhaIncorretaException;
 import com.bandtec.br.finoban.dominio.exceptions.UsuarioLogadoException;
 import com.bandtec.br.finoban.repository.database.UsuarioRepository;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.service.usuarios.LoginUsuarioService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -65,7 +65,7 @@ class LoginControllerTest {
         Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
         usuariosLogados.add(usuario.getEmail());
         Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
-        ResponseEntity<ResponseGeneric<Usuario>> resposta = controller.efetuarLogoff(login);
+        ResponseEntity<SingleResponse<Usuario>> resposta = controller.efetuarLogoff(login);
         assertEquals(204, resposta.getStatusCodeValue());
     }
 

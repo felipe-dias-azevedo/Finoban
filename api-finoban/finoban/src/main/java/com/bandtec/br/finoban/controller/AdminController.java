@@ -2,7 +2,7 @@ package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.Login;
 import com.bandtec.br.finoban.dominio.entidades.Admin;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.repository.AdminInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class AdminController {
         if (adminList.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return  ResponseEntity.status(200).body(new ResponseGeneric<>(adminList));
+        return  ResponseEntity.status(200).body(new SingleResponse<>(adminList));
     }
 
     @PostMapping
@@ -34,12 +34,12 @@ public class AdminController {
 
     @GetMapping("/{id}")
     public ResponseEntity getAdminForId(@PathVariable int id) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(adminRepository.resgatarAdminPeloId(id)));
+        return ResponseEntity.status(200).body(new SingleResponse<>(adminRepository.resgatarAdminPeloId(id)));
     }
 
     @PostMapping("/login")
     public ResponseEntity loginAdmin(@RequestBody Login login) {
-        return ResponseEntity.status(201).body(new ResponseGeneric<>(adminRepository.realizarLogin(login)));
+        return ResponseEntity.status(201).body(new SingleResponse<>(adminRepository.realizarLogin(login)));
     }
 
     @PostMapping("/logoff")
@@ -50,7 +50,7 @@ public class AdminController {
 
     @PutMapping("/atualizar-status")
     public ResponseEntity atualizarStatus(@RequestBody Admin admin) {
-        return ResponseEntity.status(200).body(new ResponseGeneric<>(adminRepository.atualizarStatusAdmin(admin)));
+        return ResponseEntity.status(200).body(new SingleResponse<>(adminRepository.atualizarStatusAdmin(admin)));
     }
 
     @DeleteMapping("/{id}")

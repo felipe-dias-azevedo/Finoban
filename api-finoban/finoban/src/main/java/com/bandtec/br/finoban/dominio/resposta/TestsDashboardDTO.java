@@ -4,12 +4,9 @@ import com.bandtec.br.finoban.dominio.enums.TestStatusGeralEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-public class TestsDashboardDTO {
+import java.util.List;
 
-    /** Porcentagem de sucesso por quantidade de funções */
-    @Getter
-    @Setter
-    private Object porcentagemSucessoPorFuncoes;
+public class TestsDashboardDTO {
     
     /** Porcentagem geral de sucesso */
     @Getter
@@ -39,16 +36,21 @@ public class TestsDashboardDTO {
     /** Porcentagem de sucesso por dominio (ex: controller, service, etc) */
     @Getter
     @Setter
-    private Object porcentagemSucessoPorDominio;
+    private List<List<Object>> porcentagemSucessoPorDominio;
     
     /** Tempo médio de execução por domínio */
     @Getter
     @Setter
-    private Object tempoMedioExecucaoPorDominio;
+    private List<List<Object>> tempoMedioExecucaoPorDominio;
+
+    /** Porcentagem de sucesso por quantidade de funções */
+    @Getter
+    @Setter
+    private List<List<Object>> porcentagemSucessoPorClasse;
     
     /** Tempo médio de execução por classe */
     @Getter
     @Setter
-    private Object tempoMedioExecucaoPorClasse;
+    private List<List<Object>> tempoMedioExecucaoPorClasse;
 
 }

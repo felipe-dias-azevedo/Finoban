@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.dominio.entidades.RedefinicaoSenha;
-import com.bandtec.br.finoban.dominio.resposta.ResponseGeneric;
+import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.repository.GestaoRedefinicaoSenhaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +24,6 @@ public class RedefinicaoSenhaController {
         if (redefinicaoSenhaList.isEmpty())
             return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(200).body(new ResponseGeneric(redefinicaoSenhaList));
+        return ResponseEntity.status(200).body(new SingleResponse(redefinicaoSenhaList));
     }
 }

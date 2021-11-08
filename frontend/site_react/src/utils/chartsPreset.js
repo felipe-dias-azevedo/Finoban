@@ -56,6 +56,52 @@ const chartsPreset = [
         graphic: chartsEnum.BANCOS_ESCOLHIDOS.graphicId, 
         name: chartsEnum.BANCOS_ESCOLHIDOS.name
     },
+    // > 11
+    {
+        id: chartsEnum.SUCESSO_GERAL.id,
+        graphic: chartsEnum.SUCESSO_GERAL.graphicId,
+        name: chartsEnum.SUCESSO_GERAL.name
+    },
+    {
+        id: chartsEnum.QUANTIDADE_TESTES.id,
+        graphic: chartsEnum.QUANTIDADE_TESTES.graphicId,
+        name: chartsEnum.QUANTIDADE_TESTES.name
+    },
+    {
+        id: chartsEnum.DATA_EXECUCAO.id,
+        graphic: chartsEnum.DATA_EXECUCAO.graphicId,
+        name: chartsEnum.DATA_EXECUCAO.name
+    },
+    {
+        id: chartsEnum.DURACAO_EXECUCAO.id,
+        graphic: chartsEnum.DURACAO_EXECUCAO.graphicId,
+        name: chartsEnum.DURACAO_EXECUCAO.name
+    },
+    {
+        id: chartsEnum.STATUS_GERAL.id,
+        graphic: chartsEnum.STATUS_GERAL.graphicId,
+        name: chartsEnum.STATUS_GERAL.name
+    },
+    {
+        id: chartsEnum.SUCESSO_DOMINIO.id,
+        graphic: chartsEnum.SUCESSO_DOMINIO.graphicId,
+        name: chartsEnum.SUCESSO_DOMINIO.name
+    },
+    {
+        id: chartsEnum.TEMPO_MEDIO_DOMINIO.id,
+        graphic: chartsEnum.TEMPO_MEDIO_DOMINIO.graphicId,
+        name: chartsEnum.TEMPO_MEDIO_DOMINIO.name
+    },
+    {
+        id: chartsEnum.SUCESSO_CLASSE.id,
+        graphic: chartsEnum.SUCESSO_CLASSE.graphicId,
+        name: chartsEnum.SUCESSO_CLASSE.name
+    },
+    {
+        id: chartsEnum.TEMPO_MEDIO_CLASSE.id,
+        graphic: chartsEnum.TEMPO_MEDIO_CLASSE.graphicId,
+        name: chartsEnum.TEMPO_MEDIO_CLASSE.name
+    }
 ];
 
 export default chartsPreset
