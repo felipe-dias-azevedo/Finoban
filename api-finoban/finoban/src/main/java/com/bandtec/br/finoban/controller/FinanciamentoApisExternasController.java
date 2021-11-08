@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicaoModel;
 import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import com.bandtec.br.finoban.service.core.FinanciamentoService;
@@ -33,7 +33,7 @@ public class FinanciamentoApisExternasController {
             @ApiResponse(responseCode = "500", description = "Não foi possível obter dados das apis.")
     })
     @PostMapping("/financiamento")
-    public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicao novaRequisicao){
+    public ResponseEntity realizarFinaciamento(@RequestBody BancoRequisicaoModel novaRequisicao){
         return ResponseEntity.status(200).body(new SingleResponse(financiamentoService.RealizarRequisicaoApisExternas(novaRequisicao)));
     }
 

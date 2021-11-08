@@ -1,12 +1,12 @@
 package com.bandtec.br.finoban.builder;
 
-import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicaoModel;
 
 public class RestServiceBuilder {
-    private BancoRequisicao bancoRequisicao;
+    private BancoRequisicaoModel bancoRequisicao;
 
     public RestServiceBuilder() {
-        this.bancoRequisicao = new BancoRequisicao();
+        this.bancoRequisicao = new BancoRequisicaoModel();
     }
 
     public RestServiceBuilder criarRequisicao() {
@@ -17,7 +17,7 @@ public class RestServiceBuilder {
         return this;
     }
 
-    public BancoRequisicao getBancoRequisicao() {
+    public BancoRequisicaoModel getBancoRequisicao() {
         return bancoRequisicao;
     }
 }

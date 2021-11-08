@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.RestServiceBuilder;
-import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicaoModel;
 import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +25,7 @@ class FinanciamentoApisExternasControllerTest {
     @DisplayName("/POST - Criação de um financiamento com apis externas ligadas - STATUS 200")
     void retornaLista() {
         RestServiceBuilder restServiceBuilder = new RestServiceBuilder();
-        BancoRequisicao bancoRequisicao = restServiceBuilder.criarRequisicao().getBancoRequisicao();
+        BancoRequisicaoModel bancoRequisicao = restServiceBuilder.criarRequisicao().getBancoRequisicao();
         ResponseEntity<SingleResponse<List<RespostaApi>>> resposta =  controller.realizarFinaciamento(bancoRequisicao);
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().getData().size());

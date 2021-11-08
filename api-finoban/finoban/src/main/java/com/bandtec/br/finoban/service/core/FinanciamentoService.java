@@ -1,11 +1,11 @@
 package com.bandtec.br.finoban.service.core;
 
 import com.bandtec.br.finoban.controller.CadastroController;
+import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicaoModel;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasCifra;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasPresil;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasS16Bank;
 import com.bandtec.br.finoban.dominio.Data;
-import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicao;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +28,7 @@ public class FinanciamentoService {
     private ClienteApisExternasPresil clientePresil;
     private static final Logger log = LogManager.getLogger(CadastroController.class.getName());
 
-    public List<RespostaApi> RealizarRequisicaoApisExternas(BancoRequisicao novaRequisicao) {
+    public List<RespostaApi> RealizarRequisicaoApisExternas(BancoRequisicaoModel novaRequisicao) {
 
         Data dataMockadaParaErro = new Data();
         dataMockadaParaErro.setDfi(1.70);

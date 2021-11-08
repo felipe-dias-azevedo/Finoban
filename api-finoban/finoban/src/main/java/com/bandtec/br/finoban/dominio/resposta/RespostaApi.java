@@ -10,6 +10,15 @@ public class RespostaApi {
     private Integer status;
     private Data data;
 
+    public RespostaApi(boolean ok, Integer status, Data data) {
+        this.ok = ok;
+        this.status = status;
+        this.data = data;
+    }
+
+    public RespostaApi() {
+    }
+
     public boolean isOk() {
         return ok;
     }
