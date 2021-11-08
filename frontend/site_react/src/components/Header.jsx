@@ -60,25 +60,26 @@ function Header() {
 				<div className="links">
 					<ul>
 						<li>
-							<Link to="/analise">ANÁLISES DE NEGÓCIO</Link>
+							<Link id="analise" to="/analise">ANÁLISES DE NEGÓCIO</Link>
 						</li>
 						<li>
-							<Link to="/sobrenos">SOBRE</Link>
+							<Link id="sobrenos" to="/sobrenos">SOBRE</Link>
 						</li>
 						<li>
-							<Link to="/openbanking">OPENBANKING</Link>
+							<Link id="openbanking" to="/openbanking">OPENBANKING</Link>
 						</li>
 						<li>
-							<Link to="/testes">TESTES INTERNOS</Link>
+							<Link id="testes" to="/testes">TESTES INTERNOS</Link>
 						</li>
 					</ul>
 				</div>
 				<div className="topheader-options">
 					<button
+					
 						className="btn-topheader"
 						onClick={() => history.push("/cadastro")}
 					>
-						Cadastro
+						Cadastroooo
 					</button>
 
 					{usuarioLogado == "true" && (
