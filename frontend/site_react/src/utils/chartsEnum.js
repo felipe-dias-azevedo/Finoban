@@ -56,6 +56,51 @@ const chartsEnum = {
         graphicId: graphicEnum.HISTOGRAMA,
         name: "Bancos Escolhidos"
     },
+    SUCESSO_GERAL: {
+        id: 11,
+        graphicId: graphicEnum.VALOR,
+        name: "Porcentagem Geral de Sucesso"
+    },
+    QUANTIDADE_TESTES: {
+        id: 12,
+        graphicId: graphicEnum.VALOR,
+        name: "Quantidade de Testes Executados"
+    },
+    DATA_EXECUCAO: {
+        id: 13,
+        graphicId: graphicEnum.VALOR,
+        name: "Data da Execução"
+    },
+    DURACAO_EXECUCAO: {
+        id: 14,
+        graphicId: graphicEnum.VALOR,
+        name: "Duração da Execução"
+    },
+    STATUS_GERAL: {
+        id: 15,
+        graphicId: graphicEnum.STATUS,
+        name: "Status Geral dos Testes"
+    },
+    SUCESSO_DOMINIO: {
+        id: 16,
+        graphicId: graphicEnum.AREA,
+        name: "Sucesso por Domínio"
+    },
+    TEMPO_MEDIO_DOMINIO: {
+        id: 17,
+        graphicId: graphicEnum.AREA,
+        name: "Tempo médio por Domínio"
+    },
+    SUCESSO_CLASSE: {
+        id: 18,
+        graphicId: graphicEnum.AREA,
+        name: "Sucesso por Classe"
+    },
+    TEMPO_MEDIO_CLASSE: {
+        id: 19,
+        graphicId: graphicEnum.AREA,
+        name: "Tempo médio por Classe"
+    }
 }
 
 export default chartsEnum;

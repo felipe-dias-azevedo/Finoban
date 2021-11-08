@@ -4,21 +4,26 @@ import ChartHolder from "../../components/AnaliseNegocio/ChartHolder";
 import MovableItem from "../../components/AnaliseNegocio/MovableItem";
 import Header from "../../components/Header";
 import DataChartHandler from "../../utils/dataChartHandler";
+import chartsPreset from '../../utils/chartsPreset';
+import api from '../../services/api';
 
 export default function DashboardAnalyticsTestes() {
 
-    const [charts, setCharts] = useState([
-        {id: 0, graphic: 2, name: "oi"}, 
-        {id: 1, graphic: 2, name: "io"}
-    ]);
-    const [dataDashboard, setDataDashboard] = useState([
-        ['x','y'],
-        ['10',20],
-        ['30',40]
-    ]);
+    const [charts, setCharts] = useState(chartsPreset);
+    const [dataDashboard, setDataDashboard] = useState();
 
     useEffect(() => {
-    
+        api.get("/tests/dashboard", {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+            }
+        }).then(e => {
+            // setDataDashboard(e.data);
+            console.log("REQ DEU CERTO;");
+        }).catch(e => {
+            console.error(e);
+        });
     }, []);
     
     function returnChart(index) {
@@ -63,23 +68,33 @@ export default function DashboardAnalyticsTestes() {
             <Header />
             <div id="app">
                 <div className="chart-holder test-chart-holder">
-                    {/* <ChartHolder id={0} moveCard={moveCardHandler}>
-                        {returnChart(0)}
+                    <ChartHolder id={11} moveCard={moveCardHandler}>
+                        {returnChart(11)}
                     </ChartHolder>
-                    <ChartHolder id={1} moveCard={moveCardHandler}>
-                        {returnChart(1)}
-                    </ChartHolder> */}
-                    
-                    {/* TODO: GRÁFICOS A SEREM INSERIDOS FUTURAMENTE */}
-                    <h3>Porcentagem de sucesso por quantidade de funções</h3>
-                    <h3>Porcentagem geral de sucesso</h3>
-                    <h3>Quantidade de testes executados</h3>
-                    <h3>Data de execução do último teste</h3>
-                    <h3>Duração da execução total dos testes</h3>
-                    <h3>Status geral dos testes (Passou[verde] ou Falhou[vermelho])</h3>
-                    <h3>Porcentagem de sucesso por dominio (ex: controller, service, etc)</h3>
-                    <h3>Tempo médio de execução por domínio</h3>
-                    <h3>Tempo médio de execução por classe</h3>
+                    <ChartHolder id={12} moveCard={moveCardHandler}>
+                        {returnChart(12)}
+                    </ChartHolder>
+                    <ChartHolder id={13} moveCard={moveCardHandler}>
+                        {returnChart(13)}
+                    </ChartHolder>
+                    <ChartHolder id={14} moveCard={moveCardHandler}>
+                        {returnChart(14)}
+                    </ChartHolder>
+                    <ChartHolder id={15} moveCard={moveCardHandler}>
+                        {returnChart(15)}
+                    </ChartHolder>
+                    <ChartHolder id={16} moveCard={moveCardHandler}>
+                        {returnChart(16)}
+                    </ChartHolder>
+                    <ChartHolder id={17} moveCard={moveCardHandler}>
+                        {returnChart(17)}
+                    </ChartHolder>
+                    <ChartHolder id={18} moveCard={moveCardHandler}>
+                        {returnChart(18)}
+                    </ChartHolder>
+                    <ChartHolder id={19} moveCard={moveCardHandler}>
+                        {returnChart(19)}
+                    </ChartHolder>
                 </div>
             </div>
         </>

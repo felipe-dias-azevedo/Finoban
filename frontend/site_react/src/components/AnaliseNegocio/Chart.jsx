@@ -100,6 +100,21 @@ function Chart({ id, data }) {
                     rootProps={{ 'data-testid': '1' }}
                 />
             );
+        case graphicEnum.AREA:
+            return (
+                // TODO: https://react-google-charts.com/area-chart
+                <div>AREA CHART</div>
+            );
+        case graphicEnum.VALOR:
+            return (
+                // TODO
+                <div>VALOR X</div>
+            );
+        case graphicEnum.STATUS:
+            return (
+                // TODO
+                <div>STATUS</div>
+            );
         default:
             return (
                 <div>NO CHART</div>

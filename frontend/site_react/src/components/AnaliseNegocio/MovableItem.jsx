@@ -21,10 +21,14 @@ function MovableItem({children, id, name, idGraph}) {
             className="movable-item chart-drag"
             id={id}
         >
-            <Link to={`/analise/dashboard/${idGraph}`}>
+            {idGraph > 10 ? (
                 <h3>{name}</h3>
-                <FiExternalLink />
-            </Link>
+            ) : (
+                <Link to={`/analise/dashboard/${idGraph}`}>
+                    <h3>{name}</h3>
+                    <FiExternalLink />
+                </Link>
+            )}
             <div>
                 {children}
             </div>
