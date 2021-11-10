@@ -30,5 +30,4 @@ class FinanciamentoApisExternasControllerTest {
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().getData().size());
     }
-
 }

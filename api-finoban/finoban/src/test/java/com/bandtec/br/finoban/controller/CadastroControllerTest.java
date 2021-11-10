@@ -1,7 +1,7 @@
 package com.bandtec.br.finoban.controller;
 
 import com.bandtec.br.finoban.builder.AvaliacaoBuilder;
-import com.bandtec.br.finoban.builder.CadastroBuilder;
+import com.bandtec.br.finoban.builder.UsuarioBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Avaliacao;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.exceptions.*;
@@ -41,8 +41,8 @@ class CadastroControllerTest {
     @Test
     @DisplayName("/POST - Cadastro de usuário realizado com sucesso - STATUS 201")
     void novoCadastro() {
-        CadastroBuilder cadastroBuilder = new CadastroBuilder();
-        Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
+        UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
+        Usuario usuario = usuarioBuilder.criarUsuario().getUsuario();
         Mockito.when(cadastroRepository.existsUsuarioByEmail(usuario.getEmail())).thenReturn(false);
         Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
         ResponseEntity resposta = cadastroController.novoCadastro(usuario);
@@ -70,8 +70,8 @@ class CadastroControllerTest {
     @Test
     @DisplayName("/GET - Resgata um usuário, status 200")
     void getUsuario() throws ParseException {
-        CadastroBuilder cadastroBuilder = new CadastroBuilder();
-        Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
+        UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
+        Usuario usuario = usuarioBuilder.criarUsuario().getUsuario();
         Mockito.when(cadastroRepository.findById(1)).thenReturn(Optional.of(usuario));
         ResponseEntity<SingleResponse<UsuarioRespostaSimples>> resposta = cadastroController.getUsuario(1);
         assertEquals(200, resposta.getStatusCodeValue());

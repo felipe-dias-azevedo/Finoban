@@ -4,18 +4,18 @@ import com.bandtec.br.finoban.dominio.entidades.Usuario;
 
 import java.time.LocalDateTime;
 
-public class CadastroBuilder {
+public class UsuarioBuilder {
     private Usuario usuario;
 
-    public CadastroBuilder() {
+    public UsuarioBuilder() {
         this.usuario = new Usuario();
     }
 
-    public CadastroBuilder criarCadastro() {
+    public UsuarioBuilder criarUsuario() {
         usuario.setId(1);
         usuario.setNumero(597);
         usuario.setDataCriacao(LocalDateTime.now());
-        usuario.setCep("01414001");
+        usuario.setCep("09781220");
         usuario.setCpf("01234567890000");
         usuario.setSenha("teste123");
         usuario.setEmail("teste.teste@teste.com");

@@ -1,6 +1,6 @@
 package com.bandtec.br.finoban.controller;
 
-import com.bandtec.br.finoban.builder.CadastroBuilder;
+import com.bandtec.br.finoban.builder.UsuarioBuilder;
 import com.bandtec.br.finoban.builder.LoginBuilder;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.Login;
@@ -40,8 +40,8 @@ class LoginControllerTest {
     void novoLoginOk() {
         LoginBuilder loginBuilder = new LoginBuilder();
         Login login = loginBuilder.criarLogin().getLogin();
-        CadastroBuilder cadastroBuilder = new CadastroBuilder();
-        Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
+        UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
+        Usuario usuario = usuarioBuilder.criarUsuario().getUsuario();
         Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(usuario);
         assertThrows(SenhaIncorretaException.class, () -> controller.novoLogin(login));
     }
@@ -61,8 +61,8 @@ class LoginControllerTest {
         List<String> usuariosLogados = new ArrayList<>();
         LoginBuilder loginBuilder = new LoginBuilder();
         Login login = loginBuilder.criarLogin().getLogin();
-        CadastroBuilder cadastroBuilder = new CadastroBuilder();
-        Usuario usuario = cadastroBuilder.criarCadastro().getUsuario();
+        UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
+        Usuario usuario = usuarioBuilder.criarUsuario().getUsuario();
         usuariosLogados.add(usuario.getEmail());
         Mockito.when(cadastroRepository.findByEmailContaining(usuario.getEmail())).thenReturn(usuario);
         ResponseEntity<SingleResponse<Usuario>> resposta = controller.efetuarLogoff(login);
@@ -74,7 +74,7 @@ class LoginControllerTest {
     void efetutarLogoffNotOk() {
         LoginBuilder loginBuilder = new LoginBuilder();
         Login login = loginBuilder.criarLogin().getLogin();
-        Usuario usuario = new CadastroBuilder().criarCadastro().getUsuario();
+        Usuario usuario = new UsuarioBuilder().criarUsuario().getUsuario();
         Mockito.when(cadastroRepository.findByEmailContaining(login.getEmail())).thenReturn(usuario);
         Mockito.when(!loginUsuarioService.verificaUsuarioLogado(usuario)).thenReturn(false);
         assertThrows(UsuarioLogadoException.class, () -> controller.efetuarLogoff(login));
