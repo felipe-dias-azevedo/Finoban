@@ -25,7 +25,7 @@ TBD
   <img width="800" src="./.github/architecture-lld2.png">
 </p>
 
-### Redes
+### Redes/ Infra
 
 #### V1
 
