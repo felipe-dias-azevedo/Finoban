@@ -55,3 +55,8 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+/* .slc-gg {
+    height: auto;
+    min-height: calc(100vh - 200px);
+} */

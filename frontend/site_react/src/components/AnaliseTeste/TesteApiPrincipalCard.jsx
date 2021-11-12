@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 import Chart from "react-google-charts";
 
-function BankCard(props) {
+function TesteApiPrincipalCard(props) {
 	console.log(props);
 
 	const { isDarkEnable } = useContext(DarkModeContext);
 	const chartBackgroundColor = isDarkEnable ? "#353535" : "#ffffff";
-	const btnBackgroundColor = props.estatus ? "#64AE6C" : "#DA5C5C";
+	const btnBackgroundColor = props.status ? "#64AE6C" : "#DA5C5C";
 
 	const dataChart = [
 		["Status", "Porcentagem"],
@@ -29,7 +29,7 @@ function BankCard(props) {
 						style={{ backgroundColor: btnBackgroundColor }}
 					>
 						{" "}
-						{props.estatus ? "Passou" : "Falhou"}{" "}
+						{props.status ? "Passou" : "Falhou"}{" "}
 					</div>
 					<span className="qtd-test-card-teste">
 						{" "}
@@ -78,4 +78,4 @@ function BankCard(props) {
 	);
 }
 
-export default BankCard;
+export default TesteApiPrincipalCard;

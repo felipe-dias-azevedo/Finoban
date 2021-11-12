@@ -79,7 +79,7 @@ function Header() {
 						className="btn-topheader"
 						onClick={() => history.push("/cadastro")}
 					>
-						Cadastroooo
+						Cadastro
 					</button>
 
 					{usuarioLogado == "true" && (

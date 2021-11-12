@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TesteProjetoCard from "../../components/AnaliseTeste/TesteProjetoCard";
+import TesteApiPrincipalCard from "../../components/AnaliseTeste/TesteApiPrincipalCard";
+import TesteApiExternaCard from "../../components/AnaliseTeste/TesteApiExternaCard";
 import api from "../../services/api";
 import { useState, useEffect } from "react";
 
@@ -16,17 +17,17 @@ function TestesProjetos() {
 			statusGeral: "PASSOU"
 		}
 	]
-	
+
 	const getTestes = async () => {
 		try {
 			const response = await api.get("/tests/apps");
-			console.log({ responseTesteProjeto: response });
-			setResponseProjectTests(response.data);
+			console.log({ responseTesteApiPrincipal: response })
+			setResponseProjectTests(response.data)
 		} catch (error) {
-			setResponseProjectTests(mockResponse);
-			console.log(error);
+			setResponseProjectTests(mockResponse)
+			console.log(error)
 		}
-	};
+	}
 
 	useEffect(() => {
 		getTestes();
@@ -35,7 +36,6 @@ function TestesProjetos() {
 	return (
 		<>
 			<Header />
-
 			<div className="titulo-teste-projeto">
 				<h5> Aplicação </h5>
 				<h5> Status </h5>
@@ -46,15 +46,17 @@ function TestesProjetos() {
 			</div>
 
 			{responseProjectTest.map((project) => (
-				<TesteProjetoCard
+				<TesteApiPrincipalCard
 					nome_aplicacao={project.nomeAplicacao}
-					estatus={project.statusGeral == "PASSOU" ? true : false}
+					status={project.statusGeral == "PASSOU" ? true : false}
 					qtd_testes={project.quantidadeTestes}
 					data_execucao={project.dataExecucao}
 					duracao_execucao={project.duracaoExecucao}
 					porcentagem_sucesso={project.porcentagemSucesso}
 				/>
 			))}
+
+			<TesteApiExternaCard/>
 
 			<Footer />
 		</>
