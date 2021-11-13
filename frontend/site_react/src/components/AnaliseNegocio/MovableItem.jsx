@@ -29,9 +29,7 @@ function MovableItem({children, id, name, idGraph}) {
                     <FiExternalLink />
                 </Link>
             )}
-            <div>
-                {children}
-            </div>
+            {children}
         </div>
     )
 }

@@ -19,8 +19,8 @@ export default function DashboardAnalyticsTestes() {
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
             }
         }).then(e => {
-            // setDataDashboard(e.data);
-            console.log("REQ DEU CERTO;");
+            setDataDashboard(e.data);
+            console.log("Data", e.data);
         }).catch(e => {
             console.error(e);
         });
