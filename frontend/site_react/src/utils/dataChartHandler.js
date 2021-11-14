@@ -1,8 +1,8 @@
 import graphicEnum from '../utils/graphicEnum';
 import chartsEnum from './chartsEnum';
+import dateHelper from './dateHelper';
 
 function DataChartHandler ( chartEnum, chartId, data ) {
-
     switch (chartEnum) {
         case graphicEnum.LINHA:
             return data.rendimentoMensal;
@@ -48,7 +48,45 @@ function DataChartHandler ( chartEnum, chartId, data ) {
             }
         case graphicEnum.MAPA:
             return data.cepRegiaoEscolhida;
-            
+        
+        case graphicEnum.AREA:
+            switch ( chartId ) {
+                case chartsEnum.SUCESSO_DOMINIO.id:
+                    return data.porcentagemSucessoPorDominio;
+
+                case chartsEnum.TEMPO_MEDIO_DOMINIO.id:
+                    return data.tempoMedioExecucaoPorDominio;
+
+                case chartsEnum.SUCESSO_CLASSE.id:
+                    return data.porcentagemSucessoPorClasse;
+
+                case chartsEnum.TEMPO_MEDIO_CLASSE.id:
+                    return data.tempoMedioExecucaoPorClasse;
+                
+                default:
+                    return null;
+            }
+        case graphicEnum.VALOR:
+            switch ( chartId ) {
+                case chartsEnum.SUCESSO_GERAL.id:
+                    return (data.porcentagemGeralSucesso * 100) + ' %';
+
+                case chartsEnum.QUANTIDADE_TESTES.id:
+                    return data.quantidadeTestes;
+
+                case chartsEnum.DURACAO_EXECUCAO.id:
+                    return data.duracaoExecucao + ' s';
+
+                case chartsEnum.DATA_EXECUCAO.id:
+                    return dateHelper(data.ultimaDataExecucao);
+                    //return data.ultimaDataExecucao;
+
+                default:
+                    return null;
+            }
+        case graphicEnum.STATUS:
+            return data.statusGeralTestes;
+
         default:
             return null;
     }

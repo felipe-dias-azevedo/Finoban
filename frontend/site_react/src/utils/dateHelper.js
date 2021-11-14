@@ -1,13 +1,10 @@
+import moment from 'moment';
 
 const dateHelper = (dataAnterior) => {
-
-    let dataConvertida = dataAnterior.replace('T', ' ').replace('Z', '');
     
-    for (let i = 0; i < dataConvertida.length; i++) {
-        dataConvertida.replace('-', '/');
-    }
+    moment.locale('pt-br');
 
-    return dataConvertida;
+    return moment(dataAnterior).format("DD/MM/YYYY HH:mm");
 }
 
 export default dateHelper;

@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import DataChartHandler from "../../utils/dataChartHandler";
 import chartsPreset from '../../utils/chartsPreset';
 import api from '../../services/api';
+import LoadingScreenSemHeader from '../../components/LoadingScreenSemHeader.jsx';
 
 export default function DashboardAnalyticsTestes() {
 
@@ -39,8 +40,7 @@ export default function DashboardAnalyticsTestes() {
                 <Chart
                     id={chart.graphic}
                     data={
-                        dataDashboard
-                        // DataChartHandler(chart.graphic, chart.id, dataDashboard)
+                        DataChartHandler(chart.graphic, chart.id, dataDashboard)
                     } 
                 />
             </MovableItem>
@@ -61,6 +61,15 @@ export default function DashboardAnalyticsTestes() {
                 return coppyChart;
             }));
         }
+    }
+
+    if (!dataDashboard) {
+        return (
+            <>
+                <Header />
+                <LoadingScreenSemHeader />
+            </>
+        );
     }
 
     return (

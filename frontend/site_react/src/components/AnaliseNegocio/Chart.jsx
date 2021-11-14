@@ -6,8 +6,6 @@ import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 function Chart({ id, data }) {
 
-    //if (!data) return;
-
     const { isDarkEnable } = useContext(DarkModeContext);
 	const chartBackgroundColor = isDarkEnable ? "#353535" : "#ffffff";
 
@@ -117,8 +115,6 @@ function Chart({ id, data }) {
             );
         case graphicEnum.AREA:
             return (
-                // TODO: https://react-google-charts.com/area-chart
-                // <div>AREA CHART</div>
                 <div className="chart-value">
                     <GoogleChart
                         width={'100%'}
@@ -126,14 +122,7 @@ function Chart({ id, data }) {
                         loader={
                             <img src={Loading} alt="loading" className="loading" />
                         }
-                        // data={data}
-                        data={[
-                            ['Year', 'Expenses'],
-                            ['2013', 400],
-                            ['2014', 460],
-                            ['2015', 1120],
-                            ['2016', 540],
-                        ]}
+                        data={data}
                         options={{
                             legend: { position: 'none' },
                             vAxis: { minValue: 0 },
@@ -144,25 +133,21 @@ function Chart({ id, data }) {
             );
         case graphicEnum.VALOR:
             return (
-                // TODO
                 <div className="chart-value">
                     <h3 className="chart-value-holder">
-                        {/* { data } */}
-                        VALOR X
+                        { data }
                     </h3>
                 </div>
             );
         case graphicEnum.STATUS:
             const bgColor = (data === "FALHOU" ? "#DA5C5C" : "#64AE6C");
             return (
-                // TODO
                 <div className="chart-value">
                     <h3 
-                        style={{ backgroundColor: bgColor, marginTop: '0.5rem', width: '33%' }} 
+                        style={{ backgroundColor: bgColor, marginTop: '0.5rem', width: '50%' }} 
                         className="chart-value-holder status-health-check status-chart"
                     >
-                        {/* { data } */}
-                        PASSOU
+                        { data }
                     </h3>
                 </div>
             );
