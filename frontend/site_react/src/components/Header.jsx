@@ -10,6 +10,7 @@ import Api from "../services/api";
 import configurarToast from "../utils/toastService";
 import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
+import Dropdown from "../components/Dropdown";
 
 function Header() {
 	const history = useHistory();
@@ -69,7 +70,10 @@ function Header() {
 							<Link id="openbanking" to="/openbanking">OPENBANKING</Link>
 						</li>
 						<li>
-							<Link id="testes" to="/testes">TESTES INTERNOS</Link>
+							<Dropdown title="TESTES INTERNOS">
+								<Link id="testes" to="/testes">GERAL</Link>
+								<Link id="testes-analytics" to="/testes/analytics">ANALYTICS</Link>
+							</Dropdown>
 						</li>
 					</ul>
 				</div>

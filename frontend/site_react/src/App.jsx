@@ -23,6 +23,7 @@ import './assets/css/redefinir-senha.css';
 import './assets/css/pagina-nao-existe.css'
 import './assets/css/testeProjeto.css'
 import './assets/css/testesArquivo.css'
+import './assets/css/dropdown.css';
 
 export default function App() {
 
