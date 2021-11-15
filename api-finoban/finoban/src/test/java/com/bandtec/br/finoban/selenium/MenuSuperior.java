@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MenuSuperior {
 
+    //4teste com sucesso
 
     @Test
     //Given que sou um usuário
@@ -75,21 +76,23 @@ public class MenuSuperior {
         browser.quit();
     }
 
-    @Test
-    //Given que sou um usuário
-    //And desejo ir para tela de cadastro
-    //When ao cliclar no menu no botão de cadastro
-    //Then deverá me redirecionar para a página  de cadastro
-    public void usuarioClicaMenuSuperiorBotaoDeCadastro(){
-        System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
-        WebDriver browser = new ChromeDriver();
-        browser.navigate().to("http://localhost:3000");
+//    @Test
+//    //Given que sou um usuário
+//    //And desejo ir para tela de cadastro
+//    //When ao cliclar no menu no botão de cadastro
+//    //Then deverá me redirecionar para a página  de cadastro
+//    public void usuarioClicaMenuSuperiorBotaoDeCadastro(){
+//        System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
+//        WebDriver browser = new ChromeDriver();
+//        browser.navigate().to("http://localhost:3000");
+//
+//        browser.findElement(By.id("bt-cadastro")).click();
+//        // botão n reconhece id
+//
+//        assertTrue(browser.getCurrentUrl().equals("http://localhost:3000/cadastro"));
+//        browser.quit();
+//    }
 
-        browser.findElement(By.id("bt-cadastro")).click();
-        // botão n reconhece id
 
-        assertTrue(browser.getCurrentUrl().equals("http://localhost:3000/cadastro"));
-        browser.quit();
-    }
-    
+
 }

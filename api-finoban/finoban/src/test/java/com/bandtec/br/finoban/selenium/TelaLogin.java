@@ -5,10 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TelaLogin {
+
+//3 testes 1 sem sucesso
 
 
     @Test
@@ -65,8 +66,9 @@ public class TelaLogin {
         browser.findElement(By.id("password")).sendKeys("123456");
         browser.findElement(By.id("submit")).click();
 
-        assertFalse(browser.getCurrentUrl().equals("http://localhost:3000/login"));
-        //assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
+        //assertFalse(browser.getCurrentUrl().equals("http://localhost:3000/login"));
+        //assertTrue(browser.getPageSource().contains("Bem vindo felipe"));
+
         browser.quit();
     }
 

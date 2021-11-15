@@ -18,8 +18,4 @@ public class Selenium {
         browser.quit();
     }
 
-
-
-
-
 }
