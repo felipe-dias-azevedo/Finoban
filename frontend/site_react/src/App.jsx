@@ -24,6 +24,7 @@ import './assets/css/pagina-nao-existe.css'
 import './assets/css/testeProjeto.css'
 import './assets/css/testesArquivo.css'
 import './assets/css/dropdown.css';
+import './assets/css/errorpage.css';
 
 export default function App() {
 

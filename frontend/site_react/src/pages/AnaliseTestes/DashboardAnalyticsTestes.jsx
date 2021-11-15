@@ -7,9 +7,11 @@ import DataChartHandler from "../../utils/dataChartHandler";
 import chartsPreset from '../../utils/chartsPreset';
 import api from '../../services/api';
 import LoadingScreenSemHeader from '../../components/LoadingScreenSemHeader.jsx';
+import ErrorPage from "../../components/ErrorPage";
 
 export default function DashboardAnalyticsTestes() {
 
+    const [errorStatus, setErrorStatus] = useState(false);
     const [charts, setCharts] = useState(chartsPreset);
     const [dataDashboard, setDataDashboard] = useState();
 
@@ -24,6 +26,7 @@ export default function DashboardAnalyticsTestes() {
             console.log("Data", e.data);
         }).catch(e => {
             console.error(e);
+            setErrorStatus(true);
         });
     }, []);
     
@@ -63,11 +66,18 @@ export default function DashboardAnalyticsTestes() {
         }
     }
 
-    if (!dataDashboard) {
+    if (!dataDashboard && !errorStatus) {
         return (
             <>
                 <Header />
                 <LoadingScreenSemHeader />
+            </>
+        );
+    } else if (errorStatus) {
+        return (
+            <>
+                <Header />
+                <ErrorPage />
             </>
         );
     }

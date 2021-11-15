@@ -16,6 +16,7 @@ import PaginaNaoExiste from './pages/PaginaNaoExiste';
 import DashboardAnalyticsTestes from './pages/AnaliseTestes/DashboardAnalyticsTestes';
 import TestesProjetos from './pages/AnaliseTestes/TestesProjetos';
 import TestesArquivos from './pages/AnaliseTestes/TestesArquivos';
+import ErrorPage from './components/ErrorPage';
 
 function Routes() {
     return (
@@ -40,6 +41,7 @@ function Routes() {
                 <Route exact path="/testes/arquivos" component={TestesArquivos} />
                 <Route exact path="/testes/analytics" component={DashboardAnalyticsTestes} />
                 
+                <Route exact path="/error" component={ErrorPage} />
                                     
                 <Route exact path="/not-found" component={PaginaNaoExiste} />
                 <Redirect from="*" to="/not-found" />

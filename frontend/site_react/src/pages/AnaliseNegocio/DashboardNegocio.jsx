@@ -11,10 +11,12 @@ import { NegocioContext } from '../../contexts/NegocioContext';
 import LoadingScreen from '../../components/LoadingScreen';
 import { SwitchGraficoNegocioContext } from '../../contexts/SwitchGraficoNegocioContext';
 import api from '../../services/api';
+import ErrorPage from '../../components/ErrorPage';
 
 export default function Dashboard() {
 
     const [charts, setCharts] = useState(chartsPreset);
+    const [errorStatus, setErrorStatus] = useState(false);
     const { chartsVisible, setChartsVisible } = useContext(SwitchGraficoNegocioContext);
     const { dataDashboard, setDataDashboard } = useContext(NegocioContext);
 
@@ -31,6 +33,7 @@ export default function Dashboard() {
             sessionStorage.setItem('dataDash', JSON.stringify(data));
         }).catch(e => {
             console.error(e);
+            setErrorStatus(true);
         });
     }, [setDataDashboard]);
 
@@ -78,9 +81,19 @@ export default function Dashboard() {
         }
     }
 
-    if (!dataDashboard) {
+    if (!dataDashboard && !errorStatus) {
         return (
-            <LoadingScreen />
+            <>
+                <Header />
+                <LoadingScreen />
+            </>
+        );
+    } else if (errorStatus) {
+        return (
+            <>
+                <Header />
+                <ErrorPage />
+            </>
         );
     }
 

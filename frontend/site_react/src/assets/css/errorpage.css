@@ -1,0 +1,41 @@
+
+.error-page {
+    height: calc(100vh - 8rem);
+    width: 100vw;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.error-page-card {
+    background-color: var(--cinza-claro);
+    height: 60%;
+    width: 40%;
+    border: 2px solid var(--preto-terciario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 16px;
+}
+
+.error-page-icon {
+    height: 5rem; 
+    width: 5rem; 
+    color: red; 
+    margin-bottom: 1rem;
+}
+
+.error-page-card h1 {
+    margin-bottom: 1rem;
+    color: var(--preto-terciario);
+}
+
+.error-page-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--preto-terciario); 
+}
+
+.error-page-card p {
+    color: var(--preto-terciario);
+}
