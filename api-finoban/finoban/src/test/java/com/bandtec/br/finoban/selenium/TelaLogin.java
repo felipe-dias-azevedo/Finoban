@@ -31,30 +31,6 @@ public class TelaLogin {
         browser.quit();
     }
 
-
-    @Test
-    //GIVEN que sou um usuário
-    //AND desejo realizar me login no site
-    //When passar meu email nao cadastrado
-    //AND clicar para fazer login
-    //THEN devo receber uma menssagem de email não encontrado
-    public void login_ComEmailNaoCadastrado() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
-        WebDriver browser = new ChromeDriver();
-        browser.navigate().to("http://localhost:3000/login");
-
-        browser.findElement(By.id("email")).sendKeys("invalido@gmail.com");
-        browser.findElement(By.id("password")).sendKeys("12312873");
-        browser.findElement(By.id("submit")).click();
-
-        Thread.sleep(2000);
-
-        assertTrue(browser.getCurrentUrl().equals("http://localhost:3000/login"));
-        assertTrue(browser.getPageSource().contains("email não encontrado"));
-
-        browser.quit();
-    }
-
     @Test
     //GIVEN que sou um usuário
     //AND desejo realizar me login no site
