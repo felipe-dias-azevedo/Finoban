@@ -243,11 +243,11 @@ const Form = () => {
 
 					<div className="form-subtext-holder mt-5">
 						<p className="fonte-16">Já possui uma conta?</p>
-						<Link to="/login">Clique aqui para fazer login.</Link>
+						<Link id="possui-conta-login" to="/login">Clique aqui para fazer login.</Link>
 					</div>
 
 					<div className="button-holder-sign-in-up">
-						<button type="submit">Cadastrar</button>
+						<button id="bnt-cadastro" type="submit">Cadastrar</button>
 					</div>
 				</div>
 			</form>
