@@ -27,7 +27,7 @@ router.post('/clientes', async (req, res) => {
     res.status(201).json({ result });
 });
 
-router.get('/clientes', async (req, res) => {
+router.get('/clientes', async (_, res) => {
     const clientes = await bd.selectAllClient();
     res.status(200).send(clientes);
 });

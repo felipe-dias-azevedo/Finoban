@@ -7,7 +7,7 @@ const response = require('../services/response');
 const taxas_fixas = require('../services/taxas_fixas.json');
 
 // Rotas
-router.get('/', (req, res) => {
+router.get('/', (_, res) => {
     res.send('API Openbancking');
 })
 
