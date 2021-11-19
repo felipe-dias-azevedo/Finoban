@@ -13,6 +13,7 @@ import LoadingScreen from "../components/LoadingScreenSemHeader";
 import respostaEnum from "../utils/respostaEnum";
 
 const Form = () => {
+	
 	const history = useHistory();
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
 	const { values, errors, handleChange, handleSubmit } = UseForm(
@@ -28,50 +29,48 @@ const Form = () => {
 		}
 	};
 
-	function efetuarLogin(e) {
-		const data = {
+	async function efetuarLogin(e) {
+		const req = {
 			email: values.email,
 			senha: values.password,
 		};
 
-		api.post("/login", data, {})
-			.then((e) => {
-				setResposta(respostaEnum.ESPERANDO);
-				if (e.status === 200) {
-					console.log(e);
-					var objUsuario = {
-						id: e.data.data.id,
-						nome: e.data.data.nome,
-						email: e.data.data.email,
-					};
+		try {
+			setResposta(respostaEnum.ESPERANDO);
+			const response = await api.post("/login", req);
+			toast.success(`Bem-vindo(a) ${response.data.data.nome}!`);
+			sessionStorage.setItem("tokenAuth", response.data.data.token);
+			sessionStorage.setItem("dadosUsuario", JSON.stringify({
+				id: response.data.data.id,
+				nome: response.data.data.nome,
+				email: response.data.data.email,
+			}));
 
-					var token = e.data.data.token;
+			<LoadingScreen />;
 
-					toast.success(`Bem-vindo(a) ${objUsuario.nome}!`);
-					sessionStorage.setItem("dadosUsuario", JSON.stringify(objUsuario));
-					sessionStorage.setItem("usuarioLogado", true);
-					sessionStorage.setItem("tokenAuth", token);
-
-					<LoadingScreen />
-
-					setTimeout(() => {
-						setResposta(respostaEnum.SUCESSO);
-						history.push({
-							pathname: "/dashboard",
-						});
-					}, 5000);
+			 setTimeout(() => {
+				setResposta(respostaEnum.SUCESSO);
+				if (!sessionStorage.getItem("dadosSimulador")) {
+					history.push({
+						pathname: "/",
+						state: {
+							message: "N_TEM_SIMULADOR",
+						},
+					});
 				} else {
-					setResposta(respostaEnum.ERROR);
-					toast.warning("Usuário ou senha incorreto");
+					history.push({
+						pathname: "/dashboard",
+					});
 				}
-			})
-			.catch((e) => {
-				const status = e.response.data.code;
-				if (status == "FIN007") toast.error("Email não encontrado");
-				if (status == "FIN008") toast.error("A senha informada é inválida");
-				if (status == "FIN009") toast.error("Usuário já possui uma sessão ativa");
-				setResposta(respostaEnum.ERROR);
-			});
+			}, 3000);
+			
+		} catch (error) {
+			const status = error.response.data.code;
+			if (status == "FIN007") toast.error("Email não encontrado");
+			if (status == "FIN008") toast.error("A senha informada é inválida");
+			if (status == "FIN009") toast.error("Usuário já possui uma sessão ativa");
+			setResposta(respostaEnum.ERROR);
+		}
 	}
 
 	if (resposta === respostaEnum.ESPERANDO) {
@@ -125,18 +124,18 @@ const Form = () => {
 				</div>
 
 				<div className="form-subtext-holder">
-				<Link
+					<Link
 						to="/esqueci-minha-senha"
 						className="font-weight-bold"
 					>
 						<u>Esqueci minha senha</u>
 					</Link>
-				
 				</div>
 
 				<div className="button-holder-sign-in-up">
-					<button type="submit"
-					id="submit">Entrar</button>
+					<button type="submit" id="submit">
+						Entrar
+					</button>
 				</div>
 			</form>
 		</>
