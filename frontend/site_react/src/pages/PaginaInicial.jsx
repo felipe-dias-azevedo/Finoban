@@ -17,16 +17,26 @@ import respostaEnum from "../utils/respostaEnum";
 import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
 
 const Form = () => {
-	const { values, errors, handleChange, handleSubmit } = UseForm(
-		buscarTaxas,
-		validate
-	);
+
+	useEffect(() => {
+		try {
+			const response = api.get("/regioes");
+			setImoveisList(response.data.data);
+		} catch {
+			toast.error("Ocorreu um erro ao buscar dados de regiões");
+		}
+
+	}, []);
 
 	const history = useHistory();
 	const [sabeValorImovel, setSabeValorImovel] = useState(null);
 	const [respondeuBotao, setRespondeuBotao] = useState(false);
 	const [imoveisList, setImoveisList] = useState([]);
 	const [resposta, setResposta] = useState(respostaEnum.NAO_REQUISITADO);
+	const { values, errors, handleChange, handleSubmit } = UseForm(
+		buscarTaxas,
+		validate
+	);
 
 	const handler = (event) => {
 		if (event.key == "Enter") {
@@ -36,59 +46,37 @@ const Form = () => {
 		}
 	};
 
-	useEffect(() => {
-		api.get("/regioes")
-			.then((e) => {
-				const imoveis = e.data.data;
-				if (e.status === 200) {
-					setImoveisList(imoveis);
-				}
-			})
-			.catch((e) => {
-				console.error(e);
-			});
-	}, []);
-
-	function buscarTaxas() {
+	async function buscarTaxas() {
 		<LoadingScreen />;
 
-		const dataSimulador = {
+		const reqSimulador = {
 			cpf: "123",
 			renda: parseInt(values.renda),
 			valorImovel: values.valorImovel,
 			tempoFinanciamento: parseInt(values.tempoFinanciamento),
 		};
 
-		sessionStorage.setItem("dadosSimulador", JSON.stringify(dataSimulador));
-
-		api.post("/financiamento", dataSimulador, {})
-			.then((e) => {
-				setResposta(respostaEnum.ESPERANDO);
-				console.log(e.data);
-				var respostaSimulacao = e.data;
-				if (e.status == 200) {
-					setTimeout(() => {
-						setResposta(respostaEnum.SUCESSO);
-						history.push({
-							pathname: "/simulador",
-						});
-					}, 5000);
-					var respostaFinanciamento = sessionStorage.setItem(
-						"respostaFinanciamento",
-						JSON.stringify(respostaSimulacao)
-					);
-				}
-			})
-			.catch((e) => {
-				console.error(e);
-				setResposta(respostaEnum.ERROR);
-				toast.error("Ocorreu um erro ao realizar a requisição!");
-			});
-	}
+		try {
+			setResposta(respostaEnum.ESPERANDO);
+			const response = await api.post("/financiamento", reqSimulador);
+			sessionStorage.setItem("dadosSimulador", JSON.stringify(reqSimulador));
+			sessionStorage.setItem("respostaFinanciamento", JSON.stringify(response.data));
+			setTimeout(() => {
+				setResposta(respostaEnum.SUCESSO);
+				history.push({
+					pathname: "/simulador",
+				});
+			}, 3000);
+			
+		} catch (error) {
+			setResposta(respostaEnum.ERROR);
+			toast.error("Ocorreu um erro ao realizar a requisição!");
+		}
+	};
 
 	if (resposta === respostaEnum.ESPERANDO) {
 		return <LoadingScreen />;
-	}
+	};
 
 	return (
 		<>
@@ -215,6 +203,7 @@ const Form = () => {
 										<p id="mudar">Região</p>
 										<select
 											id="select-imoveis"
+											className="mb-4 w-100 height-40"
 											defaultValue={
 												values.valorImovel || ""
 											}
@@ -326,6 +315,9 @@ function PaginaInicial(props) {
 
 	useEffect(() => {
 		if (props && props.location.state != undefined) {
+			if (props.location.state.message == "N_TEM_SIMULADOR") {
+				toast.warning("Faça uma simulação para visualizar as taxas de cada banco");
+			}
 			if (props.location.state.logoff) {
 				toast.success("Você foi deslogado com com sucesso!");
 				history.replace({ state: { logoff: true } });

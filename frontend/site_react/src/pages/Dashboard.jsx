@@ -196,9 +196,9 @@ function Dashboard() {
 	var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
 	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
 
-	if (objDashboard == null) {
-		history.push("/");
-	}
+	// if (objDashboard == null) {
+	// 	history.push("/");
+	// }
 
 	const history = useHistory();
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
@@ -466,6 +466,14 @@ function Dashboard() {
 				</div>
 
 				<div className="d-flex flex-row justify-content-end">
+				<button
+						className="btn-contratar mr-3"
+						onClick={() => {
+							setModalShowContratar(true);
+						}}
+					>
+						Gerar PDF
+					</button>
 					<button
 						className="btn-contratar"
 						onClick={() => {

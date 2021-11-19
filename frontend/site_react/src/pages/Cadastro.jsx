@@ -35,28 +35,24 @@ const Form = () => {
 		}
 	};
 
-	function validarCep(event) {
-		if (event.target.value.length == 8) {
+	async function validarCep(event) {
+		if (event.target.value.length >= 8) {
 			const cepDigitado = event.target.value;
+			cepDigitado.includes("-") ? cepDigitado.replace("-", "") : cepDigitado;
 			setCep(cepDigitado);
-			axios
-				.get(`https://viacep.com.br/ws/${cepDigitado}/json/`, {})
-				.then((e) => {
-					const dadosCepRes = e.data;
-					setDadosCep(dadosCepRes);
-					setBairro(dadosCep.bairro);
-					setEndereco(`${dadosCepRes.logradouro} ${
-						numero ? `, ${numero}` : ""
-					}, ${dadosCepRes.bairro},
-        ${dadosCepRes.localidade} - ${dadosCepRes.uf}`);
-				})
-				.catch(() => {
-					toast.error("Ocorreu um erro ao verificar o seu CEP!");
-				});
+
+			try {
+				const response = await api.get(`https://viacep.com.br/ws/${cepDigitado}/json/`);
+				setDadosCep(response.data);
+				setBairro(response.data.bairro);
+				setEndereco(`${response.data.logradouro} ${numero ? `, ${numero}` : ""}, ${bairro}, ${response.data.localidade} - ${response.data.uf}`);
+			} catch {
+				toast.error("Ocorreu um erro ao verificar o seu CEP!");
+			}
 		}
 	}
 
-	function efetuarCadastro() {
+	async function efetuarCadastro() {
 		const data = {
 			nome: values.nome,
 			cpf: values.cpf,
@@ -68,23 +64,20 @@ const Form = () => {
 			dataNasc: dataNasc,
 		};
 
-		console.log(data);
-		api.post("/cadastro", data, {})
-			.then(() => {
-				setResposta(respostaEnum.ESPERANDO);
-				toast.success("Cadastro realizado com sucesso...");
-				<LoadingScreen />;
-				setTimeout(() => {
-					setResposta(respostaEnum.SUCESSO);
-					history.push({
-						pathname: "/login",
-					});
-				}, 5000);
-			})
-			.catch(() => {
-				setResposta(respostaEnum.ERROR);
-				toast.error("Ocorreu um erro ao realizar o seu cadastro!");
-			});
+		try {
+			setResposta(respostaEnum.ESPERANDO);
+			await api.post("/cadastro", data);
+			toast.success("Cadastro realizado com sucesso...");
+			setTimeout(() => {
+				setResposta(respostaEnum.SUCESSO);
+				history.push({
+					pathname: "/login"
+				});
+			}, 3000);
+		} catch {
+			setResposta(respostaEnum.ERROR);
+			toast.error("Ocorreu um erro ao realizar o cadastro!");
+		}
 	}
 
 	if (resposta === respostaEnum.ESPERANDO) {
@@ -195,6 +188,7 @@ const Form = () => {
 								name="cep"
 								id="cep_cadastro"
 								onChange={validarCep}
+								maxLength="9"
 							/>
 						</div>
 						<div className="single-input-holder">
@@ -243,11 +237,15 @@ const Form = () => {
 
 					<div className="form-subtext-holder mt-5">
 						<p className="fonte-16">Já possui uma conta?</p>
-						<Link id="possui-conta-login" to="/login">Clique aqui para fazer login.</Link>
+						<Link id="possui-conta-login" to="/login">
+							Clique aqui para fazer login.
+						</Link>
 					</div>
 
 					<div className="button-holder-sign-in-up">
-						<button id="bnt-cadastro" type="submit">Cadastrar</button>
+						<button id="bnt-cadastro" type="submit">
+							Cadastrar
+						</button>
 					</div>
 				</div>
 			</form>
