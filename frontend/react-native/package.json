@@ -1,0 +1,39 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.11.7",
+    "@react-navigation/native": "^5.9.2",
+    "@react-navigation/native-stack": "^6.2.5",
+    "axios": "^0.23.0",
+    "expo": "~42.0.1",
+    "expo-status-bar": "~1.0.4",
+    "i": "^0.3.7",
+    "npm": "^8.1.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-chart-kit": "^6.11.0",
+    "react-native-form-validator": "^0.5.1",
+    "react-native-intl": "^1.0.0",
+    "react-native-mask-cpf-cnpj": "^2.0.3",
+    "react-native-paper": "^4.9.2",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.4.0",
+    "react-native-toast-message": "^1.6.0",
+    "react-native-touch-id": "^4.4.1",
+    "react-native-web": "~0.13.12",
+    "react-router-dom": "^5.3.0",
+    "twilio": "^3.70.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0"
+  },
+  "private": true
+}
