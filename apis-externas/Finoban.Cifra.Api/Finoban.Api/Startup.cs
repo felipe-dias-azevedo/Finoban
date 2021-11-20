@@ -10,6 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Finoban.Api {
     public class Startup {
@@ -31,7 +36,10 @@ namespace Finoban.Api {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHealthChecks("/status");
+            app.UseHealthChecks("/health-check", new HealthCheckOptions()
+            {
+                ResponseWriter = WriterResponse
+            });
 
             app.UseHttpsRedirection();
 
@@ -42,6 +50,24 @@ namespace Finoban.Api {
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
+        }
+        
+        private static Task WriterResponse(HttpContext httpContext, HealthReport result) {
+            httpContext.Response.ContentType = "application/json";
+            if (result.Status.ToString().Equals("Healthy"))
+            {
+                var json = new JObject(
+                    new JProperty("statusHealthCkeck", "OK")
+                );
+                return httpContext.Response.WriteAsync(json.ToString(Formatting.Indented));   
+            }
+            else
+            {
+                var json = new JObject(
+                    new JProperty("statusHealthCkeck", "NOK")
+                );
+                return httpContext.Response.WriteAsync(json.ToString(Formatting.Indented));   
+            }
         }
     }
 }
