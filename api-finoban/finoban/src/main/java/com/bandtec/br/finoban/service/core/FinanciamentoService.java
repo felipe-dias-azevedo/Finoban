@@ -35,7 +35,7 @@ public class FinanciamentoService {
         dataMockadaParaErro.setMip(1.90);
         dataMockadaParaErro.setTaxa(1.59);
         dataMockadaParaErro.setTaxaAdministracao(1.50);
-        dataMockadaParaErro.setTaxaTotal(dataMockadaParaErro.getTaxa() + dataMockadaParaErro.getTaxaAdministracao() + dataMockadaParaErro.getDfi() + dataMockadaParaErro.getMip());
+        dataMockadaParaErro.setTaxaTotal((double) Math.round(dataMockadaParaErro.getTaxa() + dataMockadaParaErro.getTaxaAdministracao() + dataMockadaParaErro.getDfi() + dataMockadaParaErro.getMip()));
 
         try {
             respostaApiCifra = clienteCifra.postCifra(novaRequisicao);

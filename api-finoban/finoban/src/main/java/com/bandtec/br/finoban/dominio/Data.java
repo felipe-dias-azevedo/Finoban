@@ -8,6 +8,17 @@ public class Data {
     private Double mip;
     private Double taxaTotal;
 
+    public Data(Double taxa, Double taxaAdministracao, Double dfi, Double mip, Double taxaTotal) {
+        this.taxa = taxa;
+        this.taxaAdministracao = taxaAdministracao;
+        this.dfi = dfi;
+        this.mip = mip;
+        this.taxaTotal = taxaTotal;
+    }
+
+    public Data() {
+    }
+
     public Double getTaxa() {
         return taxa;
     }
@@ -46,5 +57,16 @@ public class Data {
 
     public void setTaxaTotal(Double taxaTotal) {
         this.taxaTotal = taxaTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "taxa=" + taxa +
+                ", taxaAdministracao=" + taxaAdministracao +
+                ", dfi=" + dfi +
+                ", mip=" + mip +
+                ", taxaTotal=" + taxaTotal +
+                '}';
     }
 }

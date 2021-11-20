@@ -1,6 +1,7 @@
 package com.bandtec.br.finoban.dominio.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ public class Usuario implements Serializable {
     @Column(name = "idCliente")
     private int id;
 
+    @CPF
     private String cpf;
     private String nome;
     private String email;
