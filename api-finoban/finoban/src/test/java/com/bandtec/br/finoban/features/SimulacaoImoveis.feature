@@ -11,7 +11,7 @@ Feature: Gestão de Simulaçoes realizadas pelo usuário
     Given que sou um usuario
     And desejo realizar uma simulacao
     When inserir os dados
-      | renda | regiao | tempoFinanciamento | porcentagemRenda |
-      | 50000 | Centro | 15                 | 15               |
+      | renda | regiao | tempoFinanciamento | porcentagemRenda | valorImovel |
+      | 50000 | Centro | 15                 | 15               | 2500000     |
     And realizar a simulacao
     Then devera retornar os dados da simulacao

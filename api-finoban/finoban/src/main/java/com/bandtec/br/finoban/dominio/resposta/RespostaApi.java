@@ -42,4 +42,13 @@ public class RespostaApi {
     public void setData(Data data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ok=" + ok +
+                ", status=" + status +
+                ", data=" + data +
+                '}';
+    }
 }
