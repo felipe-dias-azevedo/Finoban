@@ -71,7 +71,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
     color: var(--verde);
-    margin: 5% 5% 10% 5%;
+    margin: 5% 0 10% 0;
 }
 
 .box-projeto-externo-teste-card {
@@ -84,7 +84,7 @@
     font-size: 15px;
     text-align: center;
     align-items: center;
-    margin: 5% 5% 4rem 5%;
+    margin: 5% 0 4rem 0;
 }
 
 

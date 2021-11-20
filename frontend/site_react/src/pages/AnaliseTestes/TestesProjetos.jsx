@@ -1,9 +1,10 @@
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import TesteApiPrincipalCard from "../../components/AnaliseTeste/TesteApiPrincipalCard";
 import TesteApiExternaCard from "../../components/AnaliseTeste/TesteApiExternaCard";
 import api from "../../services/api";
-import { useState, useEffect } from "react";
+import dateHelper from '../../utils/dateHelper'
 
 function TestesProjetos() {
 	const [responseProjectTest, setResponseProjectTests] = useState([]);
@@ -50,7 +51,7 @@ function TestesProjetos() {
 					nome_aplicacao={project.nomeAplicacao}
 					status={project.statusGeral == "PASSOU" ? true : false}
 					qtd_testes={project.quantidadeTestes}
-					data_execucao={project.dataExecucao}
+					data_execucao={dateHelper(project.dataExecucao)}
 					duracao_execucao={project.duracaoExecucao}
 					porcentagem_sucesso={project.porcentagemSucesso}
 				/>
