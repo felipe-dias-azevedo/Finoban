@@ -2,13 +2,13 @@ package com.bandtec.br.finoban.dominio.resposta;
 
 public class StatusHealthCkeck {
 
-    private String statusHealthCkeck;
+    private String statusHealthCheck;
 
-    public String getStatusHealthCkeck() {
-        return statusHealthCkeck;
+    public String getStatusHealthCheck() {
+        return statusHealthCheck;
     }
 
-    public void setStatusHealthCkeck(String statusHealthCkeck) {
-        this.statusHealthCkeck = statusHealthCkeck;
+    public void setStatusHealthCheck(String statusHealthCheck) {
+        this.statusHealthCheck = statusHealthCheck;
     }
 }
