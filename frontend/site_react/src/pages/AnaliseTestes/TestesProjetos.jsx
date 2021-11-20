@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import TesteApiPrincipalCard from "../../components/AnaliseTeste/TesteApiPrincipalCard";
 import TesteApiExternaCard from "../../components/AnaliseTeste/TesteApiExternaCard";
+import LoadingScreenSemHeader from '../../components/LoadingScreenSemHeader.jsx';
 import api from "../../services/api";
 import dateHelper from '../../utils/dateHelper'
 
@@ -34,34 +35,44 @@ function TestesProjetos() {
 		getTestes();
 	}, []);
 
-	return (
-		<>
-			<Header />
-			<div className="titulo-teste-projeto">
-				<h5> Aplicação </h5>
-				<h5> Status </h5>
-				<h5> Testes </h5>
-				<h5> Data execução </h5>
-				<h5> Duração execução </h5>
-				<h5> % de sucesso </h5>
-			</div>
+	if (responseProjectTest.length == 0) {
+		return (
+			<>
+				<Header />
+				<LoadingScreenSemHeader />
+				<Footer />
+			</>
+		);
+	} else {
+		return (
+			<>
+				<Header />
+				<div className="titulo-teste-projeto">
+					<h5> Aplicação </h5>
+					<h5> Status </h5>
+					<h5> Testes </h5>
+					<h5> Data execução </h5>
+					<h5> Duração execução </h5>
+					<h5> % de sucesso </h5>
+				</div>
 
-			{responseProjectTest.map((project) => (
-				<TesteApiPrincipalCard
-					nome_aplicacao={project.nomeAplicacao}
-					status={project.statusGeral == "PASSOU" ? true : false}
-					qtd_testes={project.quantidadeTestes}
-					data_execucao={dateHelper(project.dataExecucao)}
-					duracao_execucao={project.duracaoExecucao}
-					porcentagem_sucesso={project.porcentagemSucesso}
-				/>
-			))}
+				{responseProjectTest.map((project) => (
+					<TesteApiPrincipalCard
+						nome_aplicacao={project.nomeAplicacao}
+						status={project.statusGeral == "PASSOU" ? true : false}
+						qtd_testes={project.quantidadeTestes}
+						data_execucao={dateHelper(project.dataExecucao)}
+						duracao_execucao={project.duracaoExecucao}
+						porcentagem_sucesso={project.porcentagemSucesso}
+					/>
+				))}
 
-			<TesteApiExternaCard/>
+				<TesteApiExternaCard />
 
-			<Footer />
-		</>
-	);
+				<Footer />
+			</>
+		);
+	}
 }
 
 export default TestesProjetos;
