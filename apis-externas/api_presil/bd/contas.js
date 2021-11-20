@@ -4,26 +4,25 @@ async function isConnect() {
     return knex.raw("SELECT 1 AS ok FROM Cliente LIMIT 1");
 }
 
-function insertClient(client) {
+async function insertClient(client) {
     return knex("Cliente").insert(client);
 };
 
-function selectAllClient() {
+async function selectAllClient() {
     return knex("Cliente").select("*");
 };
 
-function findClient(cpf) {
-    return knex("Cliente").where("cnpj", cpf);
+async function findClient(cpf) {
+    return knex("Cliente").where("cpf", cpf);
 };
 
-function deleteClient(cpf) {
-    return knex("Cliente").where("cnpj", cpf).del();
+async function deleteClient(cpf) {
+    return knex("Cliente").where("cpf", cpf).del();
 };
 
-function updateClient(cpf, client) {
-    return knex("Cliente").where("cnpj", cpf).update(client);
+async function updateClient(cpf, client) {
+    return knex("Cliente").where("cpf", cpf).update(client);
 };
-
 
 module.exports = {
     isConnect,

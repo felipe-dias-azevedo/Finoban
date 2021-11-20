@@ -23,28 +23,86 @@ router.get('/health-check', async (_, res) => {
 });
 
 router.post('/clientes', async (req, res) => {
-    const result = await bd.insertClient(req.body);
-    res.status(201).json({ result });
+    let status = 201;
+
+    const result = await bd.insertClient(req.body)
+        .then(() => {
+            return undefined;
+        })
+        .catch(err => {
+            status = 500;
+            return resposta = {
+                mensagem: "Erro para se conectar ao banco",
+                erro: err
+            };
+        });
+
+    res.status(status).send(result);
 });
 
 router.get('/clientes', async (_, res) => {
-    const clientes = await bd.selectAllClient();
-    res.status(200).send(clientes);
+    let status = 200;
+
+    const clientes = await bd.selectAllClient()
+        .catch(err => {
+            status = 500;
+            return {
+                mensagem: "Erro para se conectar ao banco",
+                erro: err
+            }
+        });
+
+    res.status(status).send(clientes);
 });
 
 router.get('/clientes/:cpf', async (req, res) => {
-    const cliente = await bd.findClient(req.params.cpf);
-    res.status(200).send(cliente[0]);
+    let status = 200;
+
+
+    const cliente = await bd.findClient(req.params.cpf)
+        .catch(err => {
+            status = 500;
+            return {
+                mensagem: "Erro para se conectar ao banco",
+                erro: err
+            }
+        });
+
+    res.status(status).send(cliente);
 });
 
 router.patch('/clientes/:cpf', async (req, res) => {
-    const clienteAtt = await bd.updateClient(req.params.cpf, req.body);
-    res.sendStatus(202).send(clienteAtt);
+    let status = 202;
+    const clienteAtt = await bd.updateClient(req.params.cpf, req.body)
+        .then(() => {
+            return undefined;
+        })
+        .catch(err => {
+            status = 500;
+            return {
+                mensagem: "Erro para se conectar ao banco",
+                erro: err
+            };
+        });
+
+    res.status(status).send(clienteAtt);
 });
 
 router.delete('/clientes/:cpf', async (req, res) => {
-    const cliente = await bd.deleteClient(req.params.cpf);
-    res.sendStatus(200).send(cliente);
+    let status = 200;
+    const cliente = await bd.deleteClient(req.params.cpf)
+    .then(() => {
+        return undefined;
+    })
+    .catch(err => {
+        status = 500;
+        return {
+            mensagem: "Erro para se conectar ao banco",
+            erro: err
+        };
+    });
+
+    res.status(status).send(cliente);
 });
 
 module.exports = router;

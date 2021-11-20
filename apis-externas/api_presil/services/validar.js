@@ -1,7 +1,27 @@
+function numInvalido(num) {
+    if (num == undefined) {
+        return true;
+    }
+
+    if (isNaN(Number(num))) {
+        return true;
+    }
+
+    if (Number(num) == 0) {
+        return true;
+    }
+
+    if (num == "") {
+        return true;
+    }
+
+    return false;
+};
+
 let validar_cpf = (cpf) => {
 
-    if (isNaN(Number(cpf))) {
-        return false;    
+    if (numInvalido(cpf)) {
+        return false;
     }
 
     return true;
@@ -12,21 +32,26 @@ let validar_financiamento = (dados) => {
 
     let body = dados;
     let valido = true;
-    let erros = []
+    let erros = [];
 
-    if (body.cpf == undefined || isNaN(Number(body.cpf))) {
+    if (numInvalido(body.cpf)) {
         valido = false;
         erros.push("CPF inválido");
     }
 
-    if (body.valorImovel == undefined || isNaN(Number(body.valorImovel))) {
+    if (numInvalido(body.valorImovel)) {
         valido = false;
         erros.push("Valor do imovel inválido");
     }
 
-    if (body.tempoFinanciamento == undefined || isNaN(Number(body.tempoFinanciamento))) {
+    if (numInvalido(body.tempoFinanciamento)) {
         valido = false;
         erros.push("Tempo de financiamento inválido");
+    }
+
+    if (numInvalido(body.renda)) {
+        valido = false;
+        erros.push("Valor de renda inválido");
     }
 
     return {

@@ -20,13 +20,22 @@ router.post('/conta', async (req, res) => {
 
     if (v_body) {
 
-        const conta = await bd.findClient(cpf);
-        let possui_conta = conta.length > 0 ? true : false;
-        status = conta.length > 0 ? 200 : 404;
-        data = {
-            banco: "Banco do Presil",
-            possui_conta: possui_conta
-        }
+        await bd.findClient(cpf)
+            .then((res) => {
+                let possui_conta = res.length > 0 ? true : false;
+                status = possui_conta ? 200 : 404;
+                data = {
+                    banco: "Banco do Presil",
+                    possui_conta: possui_conta
+                }
+            })
+            .catch(err => {
+                status = 500;
+                data = {
+                    mensagem: "Erro para se conectar ao banco",
+                    erro: err
+                }
+            });
 
     } else {
         status = 400;
@@ -50,41 +59,48 @@ router.post('/financiamento', async (req, res) => {
 
     if (v_dados.valido) {
 
-        let cliente = await bd.findClient(dados.cpf);
-
-        if (cliente[0]) {
-            status = 200;
-            let c = cliente[0];
-            let patrimonio = c.patrimonio;
-            let renda = dados.renda;
-            let tempo_f = dados.tempoFinanciamento;
-            let valor_imovel = dados.valorImovel;
-            let idade = parseInt(((Date.now() - new Date(cliente[0].DataNascimento).getTime()) / 60000) / 525600);
-            let txa = await calc(patrimonio, idade, renda, tempo_f, valor_imovel, dados.cpf);
-            data = {
-                taxa: parseFloat(txa.toFixed(2)),
-                taxaAdministracao: taxas_fixas.tx_adm,
-                dfi: taxas_fixas.dfi,
-                mip: taxas_fixas.mip,
-                taxaTotal: parseFloat((txa + taxas_fixas.tx_adm + taxas_fixas.dfi + taxas_fixas.mip))
-            }
-        } else {
-            status = 404;
-            data = {
-                erro: "Cliente não encontrado na base de dados"
-            }
-        }
+        await bd.findClient(dados.cpf)
+            .then(async res => {
+                if (res[0]) {
+                    status = 200;
+                    let c = res[0];
+                    let patrimonio = c.patrimonio;
+                    let renda = dados.renda;
+                    let tempo_f = dados.tempoFinanciamento;
+                    let valor_imovel = dados.valorImovel;
+                    let idade = parseInt(((Date.now() - new Date(res[0].DataNascimento).getTime()) / 60000) / 525600);
+                    let txa = await calc(patrimonio, idade, renda, tempo_f, valor_imovel, dados.cpf);
+                    data = {
+                        taxa: parseFloat(txa.toFixed(2)),
+                        taxaAdministracao: taxas_fixas.tx_adm,
+                        dfi: taxas_fixas.dfi,
+                        mip: taxas_fixas.mip,
+                        taxaTotal: parseFloat((txa + taxas_fixas.tx_adm + taxas_fixas.dfi + taxas_fixas.mip))
+                    }
+                } else {
+                    status = 404;
+                    data = {
+                        erro: "Cliente não encontrado na base de dados"
+                    }
+                }
+            })
+            .catch(err => {
+                status = 500;
+                data = {
+                    mensagem: "Erro para se conectar ao banco",
+                    erro: err
+                }
+            });
 
     } else {
-
         status = 400;
         v_dados.erros.forEach(erro => {
             erros.push(erro);
         });
+
         data = {
             erro: erros
         }
-
     }
 
     res.status(status).json(response(status, data));
