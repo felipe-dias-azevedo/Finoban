@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router";
 import api from "../services/api";
 import { Link } from "react-router-dom";
 import LogoFinobanLight from "../assets/images/logo-finoban-light.svg";
@@ -91,7 +89,7 @@ const Form = () => {
 									onKeyPress={(e) => handler(e)}
 								/>
 								{errors.email && (
-									<p className="text-danger">
+									<p className="text-danger mb-4">
 										{errors.email}
 									</p>
 								)}

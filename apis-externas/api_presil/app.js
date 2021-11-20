@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Rotas
-app.get('/', (req, res) => res.send('API funcionando'));
+app.get('/', (_, res) => res.send('API funcionando'));
 app.use("/admin", admin);
 app.use("/openbanking/v1", ob);
 

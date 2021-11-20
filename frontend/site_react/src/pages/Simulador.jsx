@@ -2,18 +2,17 @@ import React from 'react';
 import Header from '../components/Header';
 import BankCard from '../components/BankCard';
 import Footer from '../components/Footer';
+import { useHistory } from "react-router";
 
 function Simulador() {
+    const history = useHistory();
 
+    if (sessionStorage.getItem("dadosSimulador") === null) history.push("/");
+    
     // Local Storage
-    var dadosSimuladorRecebido = sessionStorage.getItem("dadosSimulador");
     var respostaSimulacao = JSON.parse(sessionStorage.getItem("respostaFinanciamento"));
-    let dataSimulacao = JSON.parse(dadosSimuladorRecebido);
-    console.log(dataSimulacao);
-    if (dadosSimuladorRecebido == null) {
-        window.location.href="/";
-    }
-
+    let dataSimulacao = JSON.parse(sessionStorage.getItem("dadosSimuladorRecebido"));
+    
     // Taxas
     var taxa1 = respostaSimulacao.data[0].data.taxaTotal;
     var taxa2 = respostaSimulacao.data[1].data.taxaTotal;
@@ -77,7 +76,7 @@ function Simulador() {
     console.log(objSetLocalStorages);
 
     // Objeto enviado para a dashboard
-    var objParaDashboard = sessionStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
+   sessionStorage.setItem("objDashboard", JSON.stringify(objSetLocalStorages));
     
     return (
         <>
