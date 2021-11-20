@@ -43,3 +43,10 @@ CREATE TABLE avaliacao (
     fk_acesso INT,
     FOREIGN KEY (fk_acesso) REFERENCES acesso (id_entrada)  
 );
+
+CREATE TABLE metricas (
+	fk_cliente INT,
+	nome_banco VARCHAR(30),
+	valor_imovel DECIMAL(14,2),
+	FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
+);
