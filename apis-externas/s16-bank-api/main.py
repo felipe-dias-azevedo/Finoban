@@ -1,6 +1,7 @@
 import sqlite3
 from flask import Flask, request, g, jsonify, make_response
 from markupsafe import escape
+from healthcheck import HealthCheck
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -173,3 +174,15 @@ def conta():
         }
     }
     return make_response(jsonify(resposta), status)
+
+
+
+@app.route('/healthcheck', methods=['GET'])
+def database_check():
+    cur = get_db().execute('SELECT 1')
+    cur.close()
+    healthyResponse = {
+        "statusHealthCheck": "OK"
+    }
+    return make_response(jsonify(healthyResponse))
+    
