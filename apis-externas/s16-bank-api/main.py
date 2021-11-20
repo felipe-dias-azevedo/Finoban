@@ -177,7 +177,7 @@ def conta():
 
 
 
-@app.route('/healthcheck', methods=['GET'])
+@app.route('/health-check', methods=['GET'])
 def database_check():
     cur = get_db().execute('SELECT 1')
     cur.close()
