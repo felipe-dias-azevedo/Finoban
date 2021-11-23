@@ -3,8 +3,14 @@ package com.bandtec.br.finoban.service;
 
 import com.bandtec.br.finoban.controller.CadastroController;
 import com.bandtec.br.finoban.dominio.StatusHealthCheckApisExternas;
+import com.bandtec.br.finoban.dominio.requisicao.GetStatusHealthCheckApiPresilRequest;
+import com.bandtec.br.finoban.dominio.requisicao.GetStatusHealthCkeckApiS16BankRequest;
 import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
 import com.bandtec.br.finoban.dominio.resposta.StatusHealthCkeck;
+import com.bandtec.br.finoban.http.HttpConnectionFinoban;
+import com.bandtec.br.finoban.http.HttpRepository;
+import com.bandtec.br.finoban.http.HttpRequestFinoban;
+import com.bandtec.br.finoban.http.HttpResponseFinoban;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasCifra;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasPresil;
 import com.bandtec.br.finoban.infraestrutura.integration.ClienteApisExternasS16Bank;
@@ -25,7 +31,7 @@ import java.io.IOException;
 
 @Service
 @AllArgsConstructor
-public class HealthCheckApisExternasService implements com.bandtec.br.finoban.repository.StatusHealthCheckApisExternas {
+public class HealthCheckApisExternasService extends HttpRepository<StatusHealthCheckApisExternas> {
 
     private ClienteApisExternasCifra clienteApisExternasCifra;
 
@@ -67,39 +73,13 @@ public class HealthCheckApisExternasService implements com.bandtec.br.finoban.re
         return statusHealthCkeckApisExternas;
     }
 
-    @Override
-    public StatusHealthCkeck getStatusHealthCheckApiS16Bank() throws IOException {
-        var httpClient = HttpClients.createDefault();
-        var httpGet = new HttpGet("http://localhost:5000/health-check");
-        ResponseHandler responseHandler = response -> {
-            if (response.getStatusLine().getStatusCode() == 200) {
-                var entity = response.getEntity();
-                return entity != null ? EntityUtils.toString(entity) : null;
-            } else {
-                throw new ClientProtocolException("Unexpected response status: " + response
-                        .getStatusLine()
-                        .getStatusCode());
-            }
-        };
-        var responseBody = httpClient.execute(httpGet, responseHandler);
-        return this.gson.fromJson(responseBody.toString(), StatusHealthCkeck.class);
+    public StatusHealthCkeck getStatusHealthCheckApiS16Bank() throws Exception {
+        var httpClient = this.getHttpConnection().doRequest(new GetStatusHealthCkeckApiS16BankRequest());
+        return (StatusHealthCkeck) httpClient;
     }
 
-    @Override
-    public StatusHealthCkeck getStatusHealthCheckApiPresil() throws IOException {
-        var httpClient = HttpClients.createDefault();
-        var httpGet = new HttpGet("http://localhost:3333/admin/health-check");
-        ResponseHandler responseHandler = response -> {
-            if (response.getStatusLine().getStatusCode() == 200) {
-                var entity = response.getEntity();
-                return entity != null ? EntityUtils.toString(entity) : null;
-            } else {
-                throw new ClientProtocolException("Unexpected response status: " + response
-                        .getStatusLine()
-                        .getStatusCode());
-            }
-        };
-        var responseBody = httpClient.execute(httpGet, responseHandler);
-        return this.gson.fromJson(responseBody.toString(), StatusHealthCkeck.class);
+    public StatusHealthCkeck getStatusHealthCheckApiPresil() throws Exception {
+        var httpClient = this.getHttpConnection().doRequest(new GetStatusHealthCheckApiPresilRequest());
+        return (StatusHealthCkeck) httpClient;
     }
 }
