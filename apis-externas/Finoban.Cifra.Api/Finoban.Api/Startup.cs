@@ -57,7 +57,7 @@ namespace Finoban.Api {
             if (result.Status.ToString().Equals("Healthy"))
             {
                 var json = new JObject(
-                    new JProperty("statusHealthCkeck", "OK")
+                    new JProperty("statusHealthCheck", "OK")
                 );
                 return httpContext.Response.WriteAsync(json.ToString(Formatting.Indented));   
             }
