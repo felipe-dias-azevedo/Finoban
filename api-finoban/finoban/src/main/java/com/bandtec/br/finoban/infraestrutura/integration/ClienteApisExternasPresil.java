@@ -14,7 +14,4 @@ public interface ClienteApisExternasPresil {
     @PostMapping("openbanking/v1/financiamento")
     RespostaApi postBancoPresil(@RequestBody BancoRequisicaoModel bancoRequisicao);
 
-    @GetMapping("admin/health-check")
-    StatusHealthCkeck getStatusPresil();
-
 }

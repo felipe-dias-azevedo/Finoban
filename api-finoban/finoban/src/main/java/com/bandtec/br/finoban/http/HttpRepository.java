@@ -8,13 +8,13 @@ import java.net.http.HttpRequest;
 
 public class HttpRepository<T> {
 
-    private HttpConnectionFinoban<T> httpConnection;
+    private HttpConnectionFinoban httpConnection;
 
     public HttpRepository() {
-        this.httpConnection = new HttpConnectionFinoban<T>();
+        this.httpConnection = new HttpConnectionFinoban();
     }
 
-    public T doRequest(HttpRequestFinoban httpRequest) throws Exception {
+    public HttpResponseFinoban doRequest(HttpRequestFinoban httpRequest) throws Exception {
         return this.httpConnection.doRequest(httpRequest);
     }
 

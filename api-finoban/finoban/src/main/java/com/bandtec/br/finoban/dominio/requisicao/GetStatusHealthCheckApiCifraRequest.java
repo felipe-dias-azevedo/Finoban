@@ -6,14 +6,13 @@ import org.springframework.http.MediaType;
 
 import java.util.HashMap;
 
-public class GetStatusHealthCkeckApiS16BankRequest extends HttpRequestFinoban {
-
-    public GetStatusHealthCkeckApiS16BankRequest() {
+public class GetStatusHealthCheckApiCifraRequest extends HttpRequestFinoban {
+    public GetStatusHealthCheckApiCifraRequest() {
         setHeaders(new HashMap<>()
         {{
             put("Content-Type", new MediaType(MediaType.APPLICATION_JSON));
         }});
         setHttpMethod(HttpMethod.GET);
-        setUriRelative("http://localhost:5000/health-check");
+        setUriRelative("http://localhost:8008/health-check");
     }
 }

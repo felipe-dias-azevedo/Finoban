@@ -13,7 +13,4 @@ public interface ClienteApisExternasS16Bank {
 
     @PostMapping("openbanking/v1/financiamento")
     RespostaApi postS16Bank(@RequestBody BancoRequisicaoModel bancoRequisicao);
-
-    @GetMapping("health-ckeck")
-    StatusHealthCkeck getStatusS16Bank();
 }

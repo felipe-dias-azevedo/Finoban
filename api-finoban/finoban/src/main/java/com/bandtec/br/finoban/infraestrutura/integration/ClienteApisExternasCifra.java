@@ -13,7 +13,4 @@ public interface ClienteApisExternasCifra {
 
     @PostMapping("openbanking/v1/financiamento")
     RespostaApi postCifra(@RequestBody BancoRequisicaoModel bancoRequisicao);
-
-    @GetMapping("health-check")
-    StatusHealthCkeck getStatusCifra();
 }

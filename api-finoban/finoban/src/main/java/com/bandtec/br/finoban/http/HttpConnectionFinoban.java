@@ -1,9 +1,5 @@
 package com.bandtec.br.finoban.http;
 
-import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
-import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
-import com.bandtec.br.finoban.dominio.resposta.StatusHealthCkeck;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.http.client.ClientProtocolException;
@@ -13,26 +9,25 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.http.HttpMethod;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
-public class HttpConnectionFinoban<T> {
+public class HttpConnectionFinoban {
 
     private HttpClient httpClient;
-    private Gson json;
-    private T content;
 
     public HttpConnectionFinoban() {
         this.httpClient = HttpClient.newBuilder().build();
-        this.json = new Gson();
     }
 
-    public T doRequest(HttpRequestFinoban httpRequestFinoban) throws Exception {
+    public HttpResponseFinoban doRequest(HttpRequestFinoban httpRequestFinoban) throws Exception {
 
+        Instant start = Instant.now();
         HttpRequest httpRequest = null;
         HttpResponse<?> httpResponse = null;
 
@@ -47,7 +42,14 @@ public class HttpConnectionFinoban<T> {
             var uri = URI.create(httpRequestFinoban.getUriRelative());
 
             if (httpRequestFinoban.getHttpMethod() == HttpMethod.GET) {
-                var httpClient = HttpClients.createDefault();
+//                httpRequest = HttpRequest.newBuilder()
+//                        .uri(uri)
+//                        .timeout(Duration.of(3, ChronoUnit.SECONDS))
+//                        .GET()
+//                        .build();
+//
+//                httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+                var httpClientRequest = HttpClients.createDefault();
                 var httpGet = new HttpGet(httpRequestFinoban.getUriRelative());
                 ResponseHandler responseHandler = response -> {
                     if (response.getStatusLine().getStatusCode() == 200) {
@@ -59,8 +61,10 @@ public class HttpConnectionFinoban<T> {
                                 .getStatusCode());
                     }
                 };
-                var responseBody = httpClient.execute(httpGet, responseHandler);
-                return (T) this.json.fromJson(responseBody.toString(), StatusHealthCkeck.class);
+
+                var responseBody = httpClientRequest.execute(httpGet, responseHandler);
+                Instant end = Instant.now();
+                return new HttpResponseFinoban(responseBody.toString(), Duration.between(start, end));
 
             } else if (httpRequestFinoban.getHttpMethod() == HttpMethod.POST) {
                 httpRequest = HttpRequest.newBuilder()
@@ -75,8 +79,8 @@ public class HttpConnectionFinoban<T> {
             }
         }
 
-        var fooType = new TypeToken<T>() {}.getType();
-        return this.json.fromJson(httpResponse.body().toString(), fooType);
+        Instant end = Instant.now();
+        return new HttpResponseFinoban(httpResponse.body().toString(), Duration.between(start, end));
     }
 
     public HttpClient getHttpClient() {
@@ -85,13 +89,5 @@ public class HttpConnectionFinoban<T> {
 
     public void setHttpClient(HttpClient httpClient) {
         this.httpClient = httpClient;
-    }
-
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
     }
 }
