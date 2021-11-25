@@ -60,7 +60,7 @@ const Form = () => {
 			setResposta(respostaEnum.ESPERANDO);
 			const response = await api.post("/financiamento", reqSimulador);
 			sessionStorage.setItem("dadosSimulador", JSON.stringify(reqSimulador));
-			sessionStorage.setItem("respostaFinanciamento", JSON.stringify(response.data));
+			sessionStorage.setItem("respostaFinanciamento", JSON.stringify(response.data.data));
 			setTimeout(() => {
 				setResposta(respostaEnum.SUCESSO);
 				history.push({
