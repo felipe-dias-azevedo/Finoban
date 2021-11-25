@@ -159,4 +159,18 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(new ApiError(erroRemoverDadoRelacionadoException.getCode(),
                 erroRemoverDadoRelacionadoException.getMessage()), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(MetricaNaoEncontradaException.class)
+    public final ResponseEntity<Object> handleMetricaNaoEncontradaException() {
+        MetricaNaoEncontradaException erroRemoverDadoRelacionadoException = new MetricaNaoEncontradaException();
+        return new ResponseEntity(new ApiError(erroRemoverDadoRelacionadoException.getCode(),
+                erroRemoverDadoRelacionadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MetricaJaExistenteException.class)
+    public final ResponseEntity<Object> handleMetricaJaExistenteException() {
+        MetricaJaExistenteException erroRemoverDadoRelacionadoException = new MetricaJaExistenteException();
+        return new ResponseEntity(new ApiError(erroRemoverDadoRelacionadoException.getCode(),
+                erroRemoverDadoRelacionadoException.getMessage()), HttpStatus.NOT_FOUND);
+    }
 }
