@@ -5,8 +5,12 @@ import com.bandtec.br.finoban.dominio.Data;
 import com.bandtec.br.finoban.dominio.entidades.Regiao;
 import com.bandtec.br.finoban.dominio.entidades.Usuario;
 import com.bandtec.br.finoban.dominio.requisicao.BancoRequisicaoModel;
+import com.bandtec.br.finoban.dominio.requisicao.FinanciamentoFinobanRequest;
+import com.bandtec.br.finoban.dominio.requisicao.GetAllRegioesFinobanRequest;
 import com.bandtec.br.finoban.dominio.resposta.RespostaApi;
 import com.bandtec.br.finoban.dominio.resposta.SingleResponse;
+import com.bandtec.br.finoban.http.HttpConnectionFinoban;
+import com.bandtec.br.finoban.http.HttpRepository;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import io.cucumber.datatable.DataTable;
@@ -40,20 +44,16 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Scope(scopeName = "Gestão de Simulaçoes realizadas pelo usuário")
-public class GestaoSimulacoesRealizadasUsuario {
+public class GestaoSimulacoesRealizadasUsuario extends HttpRepository {
 
     private Usuario usuario;
     private List<Regiao> regiaoList;
     private BancoRequisicaoModel bancoRequisicaoModel;
     private SingleResponse<List<RespostaApi>> respostaApiFinanciamento;
-    private static final String ENDPOINT_REGIOES = "http://localhost:8080/api-finoban/regioes";
-    private static final String ENDPOINT_FINANCIAMENTO = "http://localhost:8080/api-finoban/financiamento";
 
-    private CloseableHttpClient httpClient;
     private Gson gson;
 
     public GestaoSimulacoesRealizadasUsuario() {
-        this.httpClient = HttpClients.createDefault();
         this.gson = new Gson();
     }
 
@@ -82,20 +82,9 @@ public class GestaoSimulacoesRealizadasUsuario {
     }
 
     @When("escolher que nao conheco o valor do imovel")
-    public void escolherQueNaoConhecoValorImovel() throws IOException {
-         var httpGet = new HttpGet(ENDPOINT_REGIOES);
-         ResponseHandler responseHandler = response -> {
-             if (response.getStatusLine().getStatusCode() == 200) {
-                 var entity = response.getEntity();
-                 return entity != null ? EntityUtils.toString(entity) : null;
-             } else {
-                 throw new ClientProtocolException("Unexpected response status: " + response
-                         .getStatusLine()
-                         .getStatusCode());
-             }
-         };
-        var responseBody = (String) this.httpClient.execute(httpGet, responseHandler);
-        var responseSingleResponse = this.gson.fromJson(responseBody, SingleResponse.class);
+    public void escolherQueNaoConhecoValorImovel() throws Exception {
+         var request = this.getHttpConnection().doRequest(new GetAllRegioesFinobanRequest());
+        var responseSingleResponse = this.gson.fromJson(request.getContentResponse(), SingleResponse.class);
 
         this.regiaoList = (List<Regiao>) responseSingleResponse.getData();
     }
@@ -111,18 +100,11 @@ public class GestaoSimulacoesRealizadasUsuario {
     }
 
     @And("realizar a simulacao")
-    public void realizarASimulacao() throws IOException, InterruptedException {
-        var httpClient = HttpClient.newBuilder().build();
-        var bodyRequest = this.gson.toJson(this.bancoRequisicaoModel);
-        var request = HttpRequest.newBuilder()
-                .uri(URI.create(ENDPOINT_FINANCIAMENTO))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(bodyRequest))
-                .build();
+    public void realizarASimulacao() throws Exception {
+        var request = this.getHttpConnection().doRequest(new FinanciamentoFinobanRequest(this.bancoRequisicaoModel));
 
-        HttpResponse<?> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         var fooType = new TypeToken<SingleResponse<List<RespostaApi>>>() {}.getType();
-        this.respostaApiFinanciamento = this.gson.fromJson(response.body().toString(), fooType);
+        this.respostaApiFinanciamento = this.gson.fromJson(request.getContentResponse(), fooType);
     }
 
     @Then("devera retornar os dados da simulacao")
