@@ -24,6 +24,8 @@ FIN018 - "Admin já encontrado."
 FIN019 - "Admin já se encontra logado."
 FIN020 - "Não encontra-se admin logado."
 FIN021 - "Erro ao remover dado relacionado em outra tabela."
+FIN022 - "Métrica não encontrada."
+FIN023 - "Métrica já existente."
 ```
 
 ### Testes Integrados
