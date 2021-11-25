@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FaPlay } from 'react-icons/fa'
 import api from '../../services/healthcheck';
-import dateHelper from '../../utils/dateHelper'
-
 function TesteApiExternaCard() {
 
     const [responseCifraHealthCheck, setResponseCifraHealthCheck] = useState([])
@@ -34,12 +32,15 @@ function TesteApiExternaCard() {
     const getHealthCheck = async (nome_aplicacao) => {
         switch (nome_aplicacao) {
             case 'API Cifra':
+                setResponseCifraHealthCheck('aguarde...')
                 getCifraHealthCheck()
                 break;
             case 'API Presil':
+                setResponsePresilHealthCheck('aguarde...')
                 getPresilHealthCheck()
                 break;
             case 'API S16':
+                setResponseS16HealthCheck('aguarde...')
                 getS16HealthCheck()
                 break;
             default:
@@ -50,14 +51,15 @@ function TesteApiExternaCard() {
     const getApisHealthCheck = async () => {
         try {
             const responseHealthCheck = await api.get('/apis-externas');
-            return responseHealthCheck.data
+            console.log(responseHealthCheck.data.data);
+            return responseHealthCheck.data.data
         } catch (error) {
             const mockResponseHealthCheck = {
                 statusApi16Bank: 'OK',
                 statusApiCifra: 'OK',
                 statusApiPresil: 'NOK'
             }
-            console.log({error: error, mock: mockResponseHealthCheck});
+            console.log({ error: error, mock: mockResponseHealthCheck });
             return mockResponseHealthCheck
         }
     }

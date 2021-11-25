@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+import Loading from '../../assets/images/Loading.gif';
 import Chart from "react-google-charts";
 
 function TesteApiPrincipalCard(props) {
@@ -51,11 +52,6 @@ function TesteApiPrincipalCard(props) {
 							width={"100px"}
 							height={"100px"}
 							chartType="PieChart"
-							loader={
-								<div className="grafico-torta-porcentagem">
-									Carregando o gráfico
-								</div>
-							}
 							data={dataChart}
 							options={{
 								tooltip: {

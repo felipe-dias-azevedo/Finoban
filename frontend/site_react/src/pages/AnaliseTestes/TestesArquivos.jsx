@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import api from "../../services/api";
-import { Container } from "react-bootstrap";
 import TesteArquivoCard from "../../components/AnaliseTeste/TesteArquivoCard";
+import LoadingScreenSemHeader from '../../components/LoadingScreenSemHeader.jsx';
 
 function TestesArquivos() {
 	const [responseTests, setResponseTests] = useState([]);
@@ -97,9 +97,18 @@ function TestesArquivos() {
 		},
 	];
 
-	return (
-		<>
-			<Header />
+	if (responseTests.length == 0) {
+		return (
+			<>
+				<Header />
+				<LoadingScreenSemHeader />
+				<Footer />
+			</>
+		);
+	} else {
+		return (
+			<>
+				<Header />
 				<div className="table-header">
 					<h1>Arquivo</h1>
 					<h1>Porcent. de sucesso</h1>
@@ -115,12 +124,13 @@ function TestesArquivos() {
 							quantidadeFuncoes={test.quantidadeFuncoes}
 							tempoExecucao={test.duracaoExecucao}
 						/>
-						
+
 					))}
 				</div>
-			<Footer />
-		</>
-	);
+				<Footer />
+			</>
+		);
+	}
 }
 
 export default TestesArquivos;

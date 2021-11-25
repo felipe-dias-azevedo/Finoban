@@ -5,7 +5,7 @@
     background-color: var(--branco);
     color: var(--preto-terciario);
     margin: 5% 5% 4rem 5%;
-    padding: 0px 50px;
+    padding: 30px 50px;
     border-radius: 4px;
     font-size: 15px;
     text-align: center;
@@ -104,3 +104,4 @@
     justify-content: center;
     width: 100%;
 }
+
