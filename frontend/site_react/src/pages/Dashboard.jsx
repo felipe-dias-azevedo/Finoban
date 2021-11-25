@@ -4,228 +4,28 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { RangeStepInput } from "react-range-step-input";
 import GoogleChart from "../components/GoogleChart";
-import { useHistory } from "react-router";
 import Like from "../assets/images/like.svg";
 import Deslike from "../assets/images/deslike.svg";
 import BtnClose from "../assets/images/btn-close.svg";
-import Api from "../services/api";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import api from "../services/api";
 import configurarToast from "../utils/toastService";
 import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
-
-function ModalFeedback(props) {
-	const [feedback, setFeedback] = useState("");
-
-	function avaliacaoLike() {
-		const dataAvaliacao = {
-			avalPositivo: 0,
-			feedbackAval: feedback,
-			fkAcesso: {
-				idEntrada: 13,
-			},
-		};
-
-		Api.post("/avaliacao", dataAvaliacao, {})
-			.then((e) => {
-				console.log(e.data);
-				if (e.status === 201) {
-					console.log("ok");
-					props.onHide();
-				}
-			})
-			.catch((e) => {
-				console.error(e);
-			});
-	}
-
-	return (
-		<Modal
-			{...props}
-			size="xs"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title id="contained-modal-title-vcenter">
-					Nos dê um feedback
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<Form.Group controlId="exampleForm.ControlTextarea1">
-					<Form.Label name="feedback" className="fonte-16">
-						Digite sua mensagem
-					</Form.Label>
-					<Form.Control
-						as="textarea"
-						rows={2}
-						name="feedback"
-						onChange={(e) => setFeedback(e.target.value)}
-					/>
-				</Form.Group>
-			</Modal.Body>
-			<Modal.Footer>
-				<div
-					onClick={props.onHide}
-					className="btn-avaliacao btn-avaliacao-cancelar"
-				>
-					Fechar
-				</div>
-				<div onClick={avaliacaoLike} className="btn-avaliacao">
-					Enviar
-				</div>
-			</Modal.Footer>
-		</Modal>
-	);
-}
-
-function ModalContratar(props) {
-	const [modalShowSucesso, setModalShowSucesso] = React.useState(false);
-	const [modalShowContratar, setModalShowContratar] = React.useState(false);
-	const [showAgendarHorario, setShowAgendarHorario] = React.useState(false);
-
-	function IrWhatsapp() {
-		window.location.href = "https://wa.me/551131758248";
-	}
-
-	function IrEmail() {
-		window.location.href = "mailto: safra@safra.com.br";
-	}
-
-	return (
-		<Modal
-			{...props}
-			size="lg"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title>
-					<p className="cor-verde fonte-20">
-						De que forma você gostaria de entrar em contato?
-					</p>
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<Form.Group controlId="exampleForm.ControlTextarea1">
-					<div className="d-flex justify-content-center mt-3">
-						<Form.Label className="cor-verde fonte-16">
-							Gostaria de agendar um horário?{" "}
-							<input
-								type="checkbox"
-								id="agendar-horario"
-								onClick={() => {
-									if (!showAgendarHorario)
-										setShowAgendarHorario(true);
-									else setShowAgendarHorario(false);
-								}}
-							></input>
-							<div
-								className={
-									showAgendarHorario ? "display-block" : "display-none"
-								}
-							>
-								<input
-									type="date"
-									className="input-data"
-								></input>
-								<input type="time" id="input-hora"></input>
-							</div>
-						</Form.Label>
-					</div>
-					<br />
-
-					<div className="d-flex flex-row">
-						<div className="btn-contato" onClick={() => {}}>
-							Telefone
-						</div>
-						<div
-							className="btn-contato"
-							onClick={() => IrWhatsapp()}
-						>
-							WhatsApp
-						</div>
-						<div className="btn-contato" onClick={() => IrEmail()}>
-							E-mail
-						</div>
-						<div className="btn-contato">Visita na Agência</div>
-					</div>
-
-					<ModalSucesso
-						show={modalShowSucesso}
-						onHide={() => setModalShowSucesso(false)}
-					/>
-				</Form.Group>
-			</Modal.Body>
-		</Modal>
-	);
-}
-
-function ModalSucesso(props) {
-	return (
-		<Modal
-			{...props}
-			size="lg"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title>
-					<p className="cor-verde">Parabéns!!</p>
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<Form.Group controlId="exampleForm.ControlTextarea1">
-					<div className="d-flex justify-content-center">
-						<Form.Label className="cor-verde">
-							O Banco Cifra irá entrar em contato com você!
-							<br />
-						</Form.Label>
-					</div>
-					<br />
-				</Form.Group>
-			</Modal.Body>
-		</Modal>
-	);
-}
+import ModalContratar from "../components/Modal/ModalContratar";
+import ModalFeedback from "../components/Modal/ModalFeedback";
 
 function Dashboard() {
+
 	// Pegando dados do sessionStorage
 	var objDashboard = JSON.parse(sessionStorage.getItem("objDashboard"));
-	var porcentagemRenda = sessionStorage.getItem("porcentagemRenda");
-	var dadosUsuario = sessionStorage.getItem("dadosUsuario");
-
-	// if (objDashboard == null) {
-	// 	history.push("/");
-	// }
-
-	const history = useHistory();
+	
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
 	const [showFb, setShowFb] = React.useState(true);
 
 	const anoInicial = new Date().getFullYear();
-	const anoFinal = objDashboard
-		? anoInicial + objDashboard.tempoFinanciamento
-		: anoInicial + 30;
+	const anoFinal = objDashboard ? anoInicial + objDashboard.tempoFinanciamento : anoInicial + 30;
 	const [value, setValue] = useState(((anoInicial + anoFinal) / 2).toFixed());
-
-	function efetuarLogoff() {
-		const req = {
-			email: dadosUsuario.email,
-		};
-
-		Api.post("/logoff", req, {})
-			.then((e) => {
-				console.log(e.data);
-				if (e.status == 200) {
-				}
-			})
-			.catch((e) => {
-				toast.error("Ocorreu um erro, tente novamente mais tarde.");
-			});
-	}
 
 	const [selectValue, setSelectValue] = useState(1);
 	const listaBancos = [
@@ -234,9 +34,10 @@ function Dashboard() {
 		{ id: 3, name: "Banco S16" },
 	];
 
+
 	let financiamentoCifra = financiar(
 		objDashboard.valorImovel,
-		objDashboard.taxa3 / 25,
+		Number(objDashboard.taxa3) / 25,
 		objDashboard.tempoFinanciamento
 	);
 
@@ -366,7 +167,7 @@ function Dashboard() {
 		});
 	}
 
-	function avaliacaoDeslike() {
+	async function avaliacaoDeslike() {
 		const dataAvaliacao = {
 			avalPositivo: 1,
 			feedbackAval: "Deslike",
@@ -375,18 +176,12 @@ function Dashboard() {
 			},
 		};
 
-		Api.post("/avaliacao", dataAvaliacao, {})
-			.then((e) => {
-				console.log(e.data);
-				if (e.status === 201) {
-					toast.success("Recebemos a sua avaliação, obrigado!");
-				} else {
-					toast.error("Ocorreu um erro, tente novamente mais tarde.");
-				}
-			})
-			.catch((e) => {
-				toast.error("Ocorreu um erro, tente novamente mais tarde.");
-			});
+		try {
+			await api.post("/avaliacao", dataAvaliacao);
+			toast.success("Recebemos a sua avaliação, obrigado!");
+		} catch {
+			toast.error("Ocorreu um erro, tente novamente mais tarde.");
+		}
 	}
 
 	return (

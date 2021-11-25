@@ -6,7 +6,7 @@ function TesteArquivoCard(props) {
 
     return (
         <>
-            <div className="card-testes-arquivos shadow">
+            <div className="card-testes-arquivos weak-shadow">
                 <span>{props.nomeArquivo}</span>
                 <div className="barra-progresso-porcentagem-sucesso">
                     <span className="barra-cor-porcentagem-sucesso"

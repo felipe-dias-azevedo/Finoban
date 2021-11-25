@@ -6,7 +6,7 @@ import LogoFinobanLight from "../assets/images/logo-finoban-light.svg";
 import LogoFinobanDark from "../assets/images/logo-finoban-dark.svg";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import Breadcrumbs from "./Breadcrumbs";
-import Api from "../services/api";
+import api from "../services/api";
 import configurarToast from "../utils/toastService";
 import { toast } from "react-toastify";
 import ModalAviso from "../components/Toastify";
@@ -16,26 +16,23 @@ function Header() {
 	const history = useHistory();
 	const { isDarkEnable, changeDarkModeState } = useContext(DarkModeContext);
 	const usuarioLogado = sessionStorage.getItem("usuarioLogado");
-	const dadosUsuarioLogado = JSON.parse(
-		sessionStorage.getItem("dadosUsuario")
-	);
-	console.log(usuarioLogado);
+	const dadosUsuarioLogado = JSON.parse(sessionStorage.getItem("dadosUsuario"));
 
-	function efetuarLogoff() {
-		var req = {};
-		req.email = dadosUsuarioLogado.email;
+	async function efetuarLogoff() {
+		var req = {
+			email: dadosUsuarioLogado.email
+		};
 
-		Api.post("/logoff", req, {})
-			.then(() => {
-				sessionStorage.setItem("usuarioLogado", false);
-				history.push({
-					pathname: "/",
-					state: { logoff: true },
-				});
-			})
-			.catch(() => {
-				toast.error("Ocorreu um erro. Tente novamente mais tarde.");
+		try {
+			const response = await api.post("/logoff", req);
+			sessionStorage.setItem("usuarioLogado", false);
+			history.push({
+				pathname: "/",
+				state: { logoff: true },
 			});
+		} catch {
+			toast.error("Ocorreu um erro. Tente novamente mais tarde.");
+		}
 	}
 
 	return (
