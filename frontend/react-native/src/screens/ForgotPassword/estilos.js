@@ -28,7 +28,7 @@ export default StyleSheet.create({
     },
     btnLogin: {
         width:"80%",
-        backgroundColor:"#fb5b5a",
+        backgroundColor:"#3A5C62",
         borderRadius:10,
         height:50,
         alignItems:"center",
@@ -37,8 +37,9 @@ export default StyleSheet.create({
         marginBottom:10
     },
     textLogin: {
-        fontSize: 17,
-        color: 'white'
+        fontSize: 16,
+        color: 'white',
+        fontWeight: 'bold',
     },
     registerAccount: {
         marginTop: 10,

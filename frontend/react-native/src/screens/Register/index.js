@@ -50,13 +50,17 @@ export default function Register({ navigation }) {
         setNeighborhood(cepDetails.bairro);
       } catch (error) {
         console.log(error);
-        ToastUtils({ type: 'error', text1: 'Finoban', text2: 'Ocorreu um erro ao consultar o seu CEP.'})
       }
   }
 }
 
-  const submitRegister = () => {
-        RegisterService({ name, cpf, email, password, cep, addressNumber, neighborhood, dateBirth});
+  const submitRegister = async () => {
+    try {
+      const response = await RegisterService({ name, cpf, email, password, cep, addressNumber, neighborhood });
+      navigation.navigate('Login');
+    } catch (error) {
+      console.log(error);
+    } 
 } 
 
     return (

@@ -39,8 +39,7 @@ export default function Simulator({ navigation }) {
 
         FinanceService({ cpf: cpf, renda: renda, valorImovel: valorImovel, tempoFinanciamento: tempoFinanciamento }).then((success) => {
             const infoFinance = success;
-            console.log(infoFinance);
-            navigation.navigate('Dashboard', infoFinance);
+            navigation.navigate("Login", infoFinance);
         });
 
     }

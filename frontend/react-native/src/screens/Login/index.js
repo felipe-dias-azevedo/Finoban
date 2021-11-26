@@ -11,7 +11,7 @@ import TextInput from '../../components/TextInput';
 
 const Stack = createNativeStackNavigator();
 
-export default function Login({ navigation }) {
+export default function Login({ route, navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' })
 
@@ -25,9 +25,12 @@ export default function Login({ navigation }) {
       return;
     }
 
-    const response = await LoginService({ email: email, password: password });
-    console.log(response);
-    console.log("status", response.data);
+    try {
+      const response = await LoginService({ email: email, password: password });
+      navigation.navigate("Dashboard", route.params);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return <DefaultScreen style={estilosGlobal.preencher}>
     <View style={estilos.containerLogin}>
@@ -66,9 +69,9 @@ export default function Login({ navigation }) {
       </Button>
 
       <Text style={estilos.registerAccount}>Não tem uma conta?</Text>
-        <Text
-          style={estilos.bold}
-          onPress={() => navigation.navigate("Register")}>Cadastre-se</Text>
+      <Text
+        style={estilos.bold}
+        onPress={() => navigation.navigate("Register")}>Cadastre-se</Text>
     </View>
   </DefaultScreen>
 }
