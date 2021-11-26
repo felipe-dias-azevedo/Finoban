@@ -38,6 +38,7 @@ const Form = () => {
 		try {
 			setResposta(respostaEnum.ESPERANDO);
 			const response = await api.post("/login", req);
+			console.log(response.data);
 			toast.success(`Bem-vindo(a) ${response.data.data.nome}!`);
 			sessionStorage.setItem("usuarioLogado", true);
 			sessionStorage.setItem("tokenAuth", response.data.data.token);

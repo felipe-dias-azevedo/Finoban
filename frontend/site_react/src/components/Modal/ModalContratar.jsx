@@ -1,8 +1,40 @@
-import React from 'react';
+import React from "react";
+import { useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Api from "../../services/api";
 
 function ModalContratar(props) {
+	const dadosUsuario = JSON.parse(sessionStorage.getItem("dadosUsuario"));
+	const dataSimulacao = JSON.parse(sessionStorage.getItem("dadosSimulador"));
+	const bancoSelecionado = sessionStorage.getItem("bancoSelecionado");
+	
+	console.log(dadosUsuario);
+	console.log(dataSimulacao);
+	console.log(bancoSelecionado);
+
+	useEffect(() => {
+		console.log("teste useEffect");
+	})
+
+
+	// const efetuarMetrica = async () => {
+	// 	const req = {
+	// 		usuario: {
+	// 			id: dadosUsuario.id,
+	// 		},
+	// 		nomeBanco: bancoSelecionado,
+	// 		valorImovel: dataSimulacao.valorImovel,
+	// 	};
+
+	// 	try {
+	// 		const response = await Api.post("/metricas", req);
+	// 		console.log(response);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
+
 	const [showAgendarHorario, setShowAgendarHorario] = React.useState(false);
 
 	function IrWhatsapp() {
@@ -43,7 +75,9 @@ function ModalContratar(props) {
 							></input>
 							<div
 								className={
-									showAgendarHorario ? "display-block" : "display-none"
+									showAgendarHorario
+										? "display-block"
+										: "display-none"
 								}
 							>
 								<input

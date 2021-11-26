@@ -18,6 +18,7 @@ function Dashboard() {
 
 	// Pegando dados do sessionStorage
 	var objDashboard = JSON.parse(sessionStorage.getItem("objDashboard"));
+	const dadosUsuario = JSON.parse(sessionStorage.getItem("dadosUsuario"));
 	
 	const [modalShowFeedback, setModalShowFeedback] = React.useState(false);
 	const [modalShowContratar, setModalShowContratar] = React.useState(false);
@@ -81,6 +82,7 @@ function Dashboard() {
 			currency: "BRL",
 		});
 		nomeBanco = "Banco Cifra";
+		sessionStorage.setItem("bancoSelecionado", nomeBanco);
 	}
 
 	if (selectValue == 2) {
@@ -102,6 +104,7 @@ function Dashboard() {
 			currency: "BRL",
 		});
 		nomeBanco = "Banco do Presil";
+		sessionStorage.setItem("bancoSelecionado", nomeBanco);
 	}
 
 	if (selectValue == 3) {
@@ -123,6 +126,7 @@ function Dashboard() {
 			currency: "BRL",
 		});
 		nomeBanco = "Banco S16";
+		sessionStorage.setItem("bancoSelecionado", nomeBanco);
 	}
 
 	taxaSimulacao = taxaSimulacao + "% a.a.";
@@ -184,6 +188,23 @@ function Dashboard() {
 		}
 	}
 
+	const efetuarMetrica = async () => {
+		setModalShowContratar(true);
+			const req = {
+				usuario: {
+					id: dadosUsuario.id,
+				},
+				nomeBanco: nomeBanco,
+				valorImovel: objDashboard.valorImovel,
+			};
+	
+			try {
+				const response = await api.post("/metricas", req);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+	
 	return (
 		<>
 			<Header />
@@ -271,9 +292,7 @@ function Dashboard() {
 					</button>
 					<button
 						className="btn-contratar"
-						onClick={() => {
-							setModalShowContratar(true);
-						}}
+						onClick={() => {efetuarMetrica()}}
 					>
 						Gostei, quero contratar
 					</button>
