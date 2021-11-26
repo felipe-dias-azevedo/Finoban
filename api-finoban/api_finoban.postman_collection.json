@@ -1,0 +1,843 @@
+{
+	"info": {
+		"_postman_id": "77afaf1e-a75a-4873-8102-b2ce4f380597",
+		"name": "API Finoban",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crud regiao",
+			"item": [
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "inserir",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "Zmlub2JhbmVhbWVsaG9yZG9tdW5kbw==",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricaoRegiao\": \"Centro\",\r\n    \"valorRegiao\":400000,\r\n    \"dataCraw\": \"2021-11-10T20:55:37.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/regioes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"regioes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/regioes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"regioes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/regioes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"regioes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "crud-acesso",
+			"item": [
+				{
+					"name": "acesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataHoraEntrada\": \"2021-05-20T10:54\",\r\n    \"dataHoraSaida\": \"2021-05-11T00:39\",\r\n    \"paginaSaida\": 4,\r\n    \"statusSaida\": \"nao confirmou\",\r\n    \"renda\": 140000,\r\n    \"valorImovel\": 1200000,\r\n    \"tempoFinanciamento\": 25,\r\n    \"porcentagemRenda\" : 15,\r\n    \"bancoEscolhido\": 0,\r\n    \"fkRegiao\": {\r\n        \"idRegiao\": 4\r\n    },\r\n    \"fkCliente\": {\r\n        \"id\": 4\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/acessos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"acessos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acesso",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/acessos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"acessos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/acessos/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"acessos",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get acesso por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "avaliacao",
+			"item": [
+				{
+					"name": "post-avaliacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"avalPositivo\": \"Nao gostou\",\r\n    \"feedbackAval\": \"Teste\",\r\n    \"dataAval\": \"2021-05-13 10:52:00\",\r\n    \"fkAcesso\": {\r\n        \"idEntrada\": 13\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/avaliacao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"avaliacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-avaliacoes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/avaliacoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"avaliacoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "crud-usuarios",
+			"item": [
+				{
+					"name": "get-usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-usuarios por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/usuarios/1006",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"usuarios",
+								"1006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizar-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"senha\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizar-logoff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jose.silva@bandtec.com.br\",\r\n    \"senha\": \"jose1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/logoff",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"logoff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnpj\": \"123789\",\r\n    \"nome\": \"José Paulo\",\r\n    \"email\": \"teste@teste.com\",\r\n    \"senha\": \"jose1234\",\r\n    \"cep\": \"09781220\",\r\n    \"bairro\": \"Ferrazópolis\",\r\n    \"numero\": 1700,\r\n    \"dataNasc\": \"2002-05-26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/cadastro",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rest-service",
+			"item": [
+				{
+					"name": "apis externas",
+					"item": [
+						{
+							"name": "golang/serasa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": 123456789000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8082/consultas/v1/score",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"consultas",
+										"v1",
+										"score"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dotnet/cifra",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "nodejs/banco_presil",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://3.222.7.102:3333/",
+									"protocol": "http",
+									"host": [
+										"3",
+										"222",
+										"7",
+										"102"
+									],
+									"port": "3333",
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "python/s16bank",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "financiamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnpj\": \"123\",\r\n    \"renda\": 40000,\r\n    \"valorImovel\": 1200000,\r\n    \"tempoFinanciamento\": 25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/financiamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"financiamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"silvio@santos.com\",\r\n    \"senha\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"silvio@santos.com\",\r\n    \"senha\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/logoff",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"logoff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "redefinicao-senha",
+			"item": [
+				{
+					"name": "iniciar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jose.silva@bandtec.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/usuarios/iniciar-redefinicao-senha",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"usuarios",
+								"iniciar-redefinicao-senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificar-",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "redefinir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jose.silva@bandtec.com.br\",\r\n    \"novaSenha\" : \"jose\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/usuarios/redefinir-senha",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"usuarios",
+								"redefinir-senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admins",
+			"item": [
+				{
+					"name": "permissoes",
+					"item": [
+						{
+							"name": "post permissao",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api-finoban/permisoes",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api-finoban",
+										"permisoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all permissoes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "atualizar cargo",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api-finoban/permissoes",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api-finoban",
+										"permissoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETAR PERMISSAO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login/logoff",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "logoff",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get all admin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "post admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"José Paulo Marinho\",\r\n    \"email\": \"josepaulomarinho2@gmail.com\",\r\n    \"senha\": \"jose123\",\r\n    \"permissoes\": {\r\n        \"idPermissao\": 2\r\n    },\r\n    \"usuario\": {\r\n        \"id\": 1075\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/admins",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETAR ADMIN",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "metricas",
+			"item": [
+				{
+					"name": "all metricas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "postar metrica",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"id\": 1001\r\n    },\r\n    \"nomeBanco\": \"Banco S16 Bank\",\r\n    \"valorImovel\": 2500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api-finoban/metricas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"metricas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get metrica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "deletar metrica",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api-finoban/metricas/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-finoban",
+								"metricas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HEALTH-CHECK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "health-check-apis-externas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
