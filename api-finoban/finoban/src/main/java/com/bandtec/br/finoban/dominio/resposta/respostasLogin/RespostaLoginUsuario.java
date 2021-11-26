@@ -12,6 +12,7 @@ public class RespostaLoginUsuario extends RespostaLogin {
     private String cpf;
 
     public RespostaLoginUsuario(Usuario usuario, String token) {
+        this.setId(usuario.getId());
         this.setCpf(usuario.getCpf());
         this.setNome(usuario.getNome());
         this.setEmail(usuario.getEmail());
