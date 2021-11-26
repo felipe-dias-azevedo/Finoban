@@ -1,14 +1,19 @@
 # syntax=docker/dockerfile:1
 FROM golang:1.16-alpine
+RUN apk add build-base
 
 WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
+COPY serasa.db ./
+
 RUN go mod download
 
 COPY *.go ./
 
-RUN go build -o /api_serasa
+RUN go build -o /docker-api-serasa
 
-CMD [ "/api_serasa" ]
+EXPOSE 8082
+
+CMD [ "/docker-api-serasa" ]

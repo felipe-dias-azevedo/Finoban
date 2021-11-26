@@ -1,20 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-WORKDIR /src
-COPY ["Finoban.Api/Finoban.Api.Cifra.csproj", "Finoban.Api/"]
-RUN dotnet restore "Finoban.Api/Finoban.Api.Cifra.csproj"
-COPY . .
-WORKDIR "/src/Finoban.Api"
-RUN dotnet build "Finoban.Api.Cifra.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "Finoban.Api.Cifra.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# Copiar csproj e restaurar dependencias
+COPY *.csproj ./
+RUN dotnet restore
+RUN pwsh -Command Write-Host "Mvc31: Gerando imagem Docker e testando o PowerShell Core"
+# Build da aplicacao
+COPY . ./
+RUN dotnet publish -c Release -o dist
+# Build da imagem
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Finoban.Api.Cifra.dll"]
+COPY --from=build-env /app/dist .
+ENTRYPOINT ["dotnet", "Finoban.Cifra.Api.dll"]

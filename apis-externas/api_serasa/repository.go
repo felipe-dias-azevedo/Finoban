@@ -10,11 +10,19 @@ import (
 type Database struct{}
 
 func (d Database) selectBancoDeDados(cpfCliente int) Usuario {
+
+	var usuario Usuario
+
 	fmt.Println(cpfCliente)
 	database, _ := sql.Open("sqlite3", "./serasa.db")
 	var query string = fmt.Sprintf("SELECT * FROM Cliente where CPF = %d", cpfCliente)
-	rows, _ := database.Query(query)
-	var usuario Usuario
+	rows, err := database.Query(query)
+
+	if err != nil {
+		fmt.Println("Erro ao fazer requisição no banco")
+		return usuario
+	}
+
 	var cpf int
 	var nome string
 	var patrimonio float64
