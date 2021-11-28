@@ -1,0 +1,10 @@
+
+```{r}
+library("tm")
+barplot(CPU_Utilization$cpu_utilization,
+las = 2,
+main = "% da utilização da CPU por mês",
+names.arg = c("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"),
+col ="lightblue",)
+```
+
