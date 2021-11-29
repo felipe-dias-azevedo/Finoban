@@ -5,6 +5,37 @@ barplot(CPU_Utilization$cpu_utilization,
 las = 2,
 main = "% da utilização da CPU por mês",
 names.arg = c("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"),
-col ="lightblue",)
+col =c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7", "#3A5B62"),)
+
+dev.off()
+png("C:/Users/catarina/Desktop/Finoban/data_science/Ultima sprint/avaliacaoPlot.png", width = 3000, height = 3000,units="px",res=400, bg="white")
+```
+
+```{r}
+##preço
+
+barplot( dados$novosCadastro,
+main = "novos cadastros em Novembro",
+ylab ="cadastros",
+     xlab = "ano",
+col =c("#39ADC7", "#3A5B62"))
+
+
+
+dev.off()
+png("C:/Users/catarina/Desktop/Finoban/data_science/Ultima sprint/avaliacaoPlot.png", width = 3000, height = 3000,units="px",res=400, bg="white")
+```
+
+```{r}
+##HORARIO
+
+barplot(dados$usoCpu, dados$horario,
+main = "novos cadastos em Novembro",
+ylab ="cadastros",
+     xlab = "ano",
+col =c("#39ADC7", "#3A5B62","#39ADC7", "#3A5B62","#39ADC7", "#3A5B62"),)
+
+dev.off()
+png("C:/Users/catarina/Desktop/Finoban/data_science/Ultima sprint/cadastro.png", width = 3000, height = 3000,units="px",res=400, bg="white")
 ```
 
