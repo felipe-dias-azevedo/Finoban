@@ -35,12 +35,14 @@ function ModalLogin(props) {
 
 					<div className="d-flex flex-row justify-content-around">
 						<button
+						id="bnt-hub-loginFail"
 							className="btn-proposta fonte-15 bg-transparente cor-verde"
 							onClick={props.onHide}
 						>
 							Não fazer login
 						</button>
 						<button
+						id="bnt-hub-login"
 							className="btn-proposta fonte-15 bg-verde"
 							onClick={IrLogin}
 						>
