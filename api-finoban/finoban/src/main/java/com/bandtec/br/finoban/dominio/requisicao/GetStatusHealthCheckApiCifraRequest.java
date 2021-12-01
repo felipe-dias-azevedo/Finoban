@@ -13,6 +13,6 @@ public class GetStatusHealthCheckApiCifraRequest extends HttpRequestFinoban {
             put("Content-Type", new MediaType(MediaType.APPLICATION_JSON));
         }});
         setHttpMethod(HttpMethod.GET);
-        setUriRelative("http://localhost:8008/health-check");
+        setUriRelative("http://localhost:8000/health-check");
     }
 }

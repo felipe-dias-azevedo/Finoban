@@ -21,7 +21,7 @@ public class HealthCheckApisExternasService extends HttpRepository {
 
     private Gson gson;
 
-    private static final Logger log = LogManager.getLogger(CadastroController.class.getName());
+    private static final Logger log = LogManager.getLogger(HealthCheckApisExternasService.class.getName());
 
     public StatusHealthCheckApisExternas obterStatusHealthCheckApisExternas() {
 

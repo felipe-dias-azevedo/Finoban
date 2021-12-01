@@ -27,4 +27,8 @@ public class JsonHelper <T> {
     {
         return gson.fromJson(Files.asCharSource(json, Charsets.UTF_8).read(), jsonClassType);
     }
+
+    public String serializeToJson(T objeto) {
+        return gson.toJson(objeto);
+    }
 }

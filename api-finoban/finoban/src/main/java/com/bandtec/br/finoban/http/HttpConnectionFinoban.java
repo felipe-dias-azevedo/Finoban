@@ -42,13 +42,7 @@ public class HttpConnectionFinoban {
             var uri = URI.create(httpRequestFinoban.getUriRelative());
 
             if (httpRequestFinoban.getHttpMethod() == HttpMethod.GET) {
-//                httpRequest = HttpRequest.newBuilder()
-//                        .uri(uri)
-//                        .timeout(Duration.of(3, ChronoUnit.SECONDS))
-//                        .GET()
-//                        .build();
-//
-//                httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
                 var httpClientRequest = HttpClients.createDefault();
                 var httpGet = new HttpGet(httpRequestFinoban.getUriRelative());
                 ResponseHandler responseHandler = response -> {

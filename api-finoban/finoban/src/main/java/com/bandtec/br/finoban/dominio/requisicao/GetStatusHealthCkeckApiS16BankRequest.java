@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import java.util.HashMap;
 
 public class GetStatusHealthCkeckApiS16BankRequest extends HttpRequestFinoban {
-
     public GetStatusHealthCkeckApiS16BankRequest() {
         setHeaders(new HashMap<>()
         {{

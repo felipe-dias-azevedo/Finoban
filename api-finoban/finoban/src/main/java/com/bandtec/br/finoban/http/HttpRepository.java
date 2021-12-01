@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 
-public class HttpRepository<T> {
+public class HttpRepository {
 
     private HttpConnectionFinoban httpConnection;
 

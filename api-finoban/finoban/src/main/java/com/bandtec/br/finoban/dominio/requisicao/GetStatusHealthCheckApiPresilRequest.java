@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import java.util.HashMap;
 
 public class GetStatusHealthCheckApiPresilRequest extends HttpRequestFinoban {
-
     public GetStatusHealthCheckApiPresilRequest() {
         setHeaders(new HashMap<>()
         {{
