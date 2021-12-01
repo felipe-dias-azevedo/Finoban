@@ -122,7 +122,12 @@ public class Hub {
 
         Thread.sleep(5000);
 
-        // descobrir onde fica o modal
+        browser.findElement(By.id("bnt-hub-login")).click();
+        Thread.sleep(1000);
+
+        browser.findElement(By.id("email")).sendKeys("catarina@bandtec.com");
+        browser.findElement(By.id("password")).sendKeys("123456");
+        browser.findElement(By.id("submit")).click();
 
         browser.quit();
     }

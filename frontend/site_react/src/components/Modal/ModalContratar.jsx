@@ -95,10 +95,11 @@ function ModalContratar(props) {
 							Telefone
 						</div>
 						<div
-							className="btn-contato"
+							className="btn-contato-wpp"
+							id="wpp"
 							onClick={() => IrWhatsapp()}
 						>
-							WhatsApp
+							WhatsAppaaaa
 						</div>
 						<div className="btn-contato" onClick={() => IrEmail()}>
 							E-mail

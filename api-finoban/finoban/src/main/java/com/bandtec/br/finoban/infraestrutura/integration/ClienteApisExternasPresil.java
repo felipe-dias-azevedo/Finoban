@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "apiexternapresil", url = "http://localhost:3333/")
+@FeignClient(name = "apiexternapresil", url = "http://3.229.234.24:3333/")
 public interface ClienteApisExternasPresil {
 
     @PostMapping("openbanking/v1/financiamento")

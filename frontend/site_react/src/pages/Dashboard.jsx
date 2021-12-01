@@ -290,7 +290,9 @@ function Dashboard() {
 					>
 						Gerar PDF
 					</button>
+
 					<button
+					id="btn-contratar"
 						className="btn-contratar"
 						onClick={() => {efetuarMetrica()}}
 					>

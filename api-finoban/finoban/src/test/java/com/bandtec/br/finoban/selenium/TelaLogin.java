@@ -81,6 +81,7 @@ public class TelaLogin {
         System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
         WebDriver browser = new ChromeDriver();
         browser.navigate().to("http://localhost:3000/login");
+
         browser.findElement(By.id("email")).sendKeys("felipe@admin.com");
         browser.findElement(By.id("password")).sendKeys("123456");
         browser.findElement(By.id("submit")).click();
